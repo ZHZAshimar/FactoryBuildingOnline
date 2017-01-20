@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeSecondPathCollectionViewCell" id="gTV-IL-0wX" customClass="HomeSecondPathCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="70" height="86"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="70" height="86"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="my_list_icon5" translatesAutoresizingMaskIntoConstraints="NO" id="RI2-RJ-Sqr">
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="RI2-RJ-Sqr" secondAttribute="height" multiplier="1:1" id="4R4-aP-wxK"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我要出租" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Mh-Wp-ePv">
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.34113579988479614" green="0.34119981527328491" blue="0.34113171696662903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="RI2-RJ-Sqr" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="AOo-WE-QcL"/>
+                <constraint firstItem="5Mh-Wp-ePv" firstAttribute="top" secondItem="RI2-RJ-Sqr" secondAttribute="bottom" constant="10" id="GXv-pQ-Fsn"/>
+                <constraint firstItem="RI2-RJ-Sqr" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="1:2" id="QaK-Iv-Hwx"/>
+                <constraint firstAttribute="trailing" secondItem="5Mh-Wp-ePv" secondAttribute="trailing" id="hbv-TY-Ky8"/>
+                <constraint firstItem="5Mh-Wp-ePv" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="hcs-lF-b7O"/>
+                <constraint firstItem="RI2-RJ-Sqr" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="jjR-89-T4I"/>
+            </constraints>
+            <size key="customSize" width="77" height="86"/>
+            <connections>
+                <outlet property="imageView" destination="RI2-RJ-Sqr" id="yop-on-CzC"/>
+                <outlet property="titleLabel" destination="5Mh-Wp-ePv" id="eTs-an-kiW"/>
+            </connections>
+            <point key="canvasLocation" x="-325" y="137"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="my_list_icon5" width="22" height="22"/>
+    </resources>
+</document>

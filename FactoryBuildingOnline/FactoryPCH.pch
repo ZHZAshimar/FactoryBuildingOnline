@@ -1,0 +1,39 @@
+//
+//  FactoryPCH.pch
+//  FactoryBuildingOnline
+//
+//  Created by myios on 16/9/30.
+//  Copyright © 2016年 XFZY. All rights reserved.
+//
+
+#ifndef FactoryPCH_pch
+#define FactoryPCH_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "CustomDefine.h"
+#import <RDVTabBarController.h>
+#import <RDVTabBarItem.h>
+#import "AppDelegate.h"
+
+#import "NSArray+ZHZUtil.h"
+#import "UINavigationBar+Awesome.h"
+#import "UIColor+Hex.h"
+#import "NSString+Judge.h"
+#import "UIFont+AdaptSize.h"
+
+#import <MJRefresh.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <SDWebImage/UIButton+WebCache.h>
+
+#import "EmptyView.h"
+
+#import "MBProgressHUD+NH.h"
+#import "RequestManager.h"
+
+#import "CustomURL.h"
+
+#endif /* FactoryPCH_pch */

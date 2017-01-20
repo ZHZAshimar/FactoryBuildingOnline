@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="DetailMapCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="183"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="183"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rU9-R7-Zjl">
+                        <rect key="frame" x="62" y="156.5" width="243" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.26271244883537292" green="0.2627638578414917" blue="0.26270923018455505" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EkO-9l-GxB">
+                        <rect key="frame" x="0.0" y="182" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.8587297797203064" green="0.85887759923934937" blue="0.85872042179107666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="PeL-Kr-0c9"/>
+                        </constraints>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detail_map" translatesAutoresizingMaskIntoConstraints="NO" id="Mq7-Rr-Im8">
+                        <rect key="frame" x="29" y="155" width="25" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="cao-QW-gmK"/>
+                            <constraint firstAttribute="width" constant="25" id="e91-ey-i8i"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="28I-s7-oIl">
+                        <rect key="frame" x="15" y="15" width="290" height="130"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="rU9-R7-Zjl" firstAttribute="centerY" secondItem="Mq7-Rr-Im8" secondAttribute="centerY" id="IEr-QK-ncu"/>
+                <constraint firstItem="28I-s7-oIl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="J45-ra-nFl"/>
+                <constraint firstItem="Mq7-Rr-Im8" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="29" id="KNw-Zd-sjK"/>
+                <constraint firstAttribute="trailing" secondItem="rU9-R7-Zjl" secondAttribute="trailing" constant="15" id="M8y-d0-NdD"/>
+                <constraint firstAttribute="bottom" secondItem="EkO-9l-GxB" secondAttribute="bottom" id="Qgv-iW-njQ"/>
+                <constraint firstItem="Mq7-Rr-Im8" firstAttribute="top" secondItem="28I-s7-oIl" secondAttribute="bottom" constant="10" id="RxB-RL-GGD"/>
+                <constraint firstItem="rU9-R7-Zjl" firstAttribute="leading" secondItem="Mq7-Rr-Im8" secondAttribute="trailing" constant="8" id="Zo8-Cq-611"/>
+                <constraint firstItem="28I-s7-oIl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="bQm-OE-oxh"/>
+                <constraint firstAttribute="trailing" secondItem="EkO-9l-GxB" secondAttribute="trailing" id="j1K-65-1aa"/>
+                <constraint firstItem="EkO-9l-GxB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="kVo-ZN-CkY"/>
+                <constraint firstItem="28I-s7-oIl" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="130:183" id="seS-Cn-5Ps"/>
+                <constraint firstAttribute="trailing" secondItem="28I-s7-oIl" secondAttribute="trailing" constant="15" id="uNO-O0-4Ab"/>
+            </constraints>
+            <size key="customSize" width="320" height="189"/>
+            <connections>
+                <outlet property="addressLabel" destination="rU9-R7-Zjl" id="oFi-aI-Cy8"/>
+                <outlet property="mapImageView" destination="28I-s7-oIl" id="A4z-u8-VDj"/>
+            </connections>
+            <point key="canvasLocation" x="-199" y="116"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="detail_map" width="20" height="16"/>
+    </resources>
+</document>

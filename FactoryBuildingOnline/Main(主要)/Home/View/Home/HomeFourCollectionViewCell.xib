@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeFourCollectionViewCell" id="gTV-IL-0wX" customClass="HomeFourCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="160" height="60"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="160" height="60"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nav_icon2_pressed" translatesAutoresizingMaskIntoConstraints="NO" id="dJQ-s8-TNN">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="VWx-hu-5co"/>
+                            <constraint firstAttribute="width" constant="44" id="bwP-7R-rCX"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="找装修" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwH-DR-M6X">
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="abcdefghijklmnopqrstuvwxyz" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tHC-K4-eFD">
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="dJQ-s8-TNN" firstAttribute="leading" secondItem="cwH-DR-M6X" secondAttribute="trailing" constant="8" id="6M2-z1-ZED"/>
+                <constraint firstItem="tHC-K4-eFD" firstAttribute="top" secondItem="cwH-DR-M6X" secondAttribute="bottom" id="6ee-5B-vDj"/>
+                <constraint firstItem="tHC-K4-eFD" firstAttribute="bottom" secondItem="dJQ-s8-TNN" secondAttribute="bottom" id="8dt-4T-Ykv"/>
+                <constraint firstItem="tHC-K4-eFD" firstAttribute="leading" secondItem="cwH-DR-M6X" secondAttribute="leading" id="FKx-1N-7GM"/>
+                <constraint firstItem="cwH-DR-M6X" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="LQh-bM-5B8"/>
+                <constraint firstAttribute="trailing" secondItem="dJQ-s8-TNN" secondAttribute="trailing" constant="8" id="Yfp-LA-84I"/>
+                <constraint firstItem="cwH-DR-M6X" firstAttribute="top" secondItem="dJQ-s8-TNN" secondAttribute="top" id="ase-t9-X9R"/>
+                <constraint firstItem="tHC-K4-eFD" firstAttribute="trailing" secondItem="cwH-DR-M6X" secondAttribute="trailing" id="e2Q-EG-1Zo"/>
+                <constraint firstItem="dJQ-s8-TNN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="ewY-uK-1zM"/>
+                <constraint firstItem="dJQ-s8-TNN" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="knk-2A-bhV"/>
+                <constraint firstAttribute="bottom" secondItem="dJQ-s8-TNN" secondAttribute="bottom" constant="8" id="moO-fe-eVa"/>
+            </constraints>
+            <size key="customSize" width="81" height="50"/>
+            <connections>
+                <outlet property="imageView" destination="dJQ-s8-TNN" id="Dwm-GB-eGN"/>
+                <outlet property="subtextLabel" destination="tHC-K4-eFD" id="auA-t4-IxE"/>
+                <outlet property="textLabel" destination="cwH-DR-M6X" id="way-K5-M5A"/>
+            </connections>
+            <point key="canvasLocation" x="-117" y="174"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="nav_icon2_pressed" width="30" height="30"/>
+    </resources>
+</document>

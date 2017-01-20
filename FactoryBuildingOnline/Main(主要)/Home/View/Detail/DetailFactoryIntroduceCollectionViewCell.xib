@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="DetailFactoryIntroduceCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="126"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="126"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OAJ-Qd-fRs">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="126"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOk-dc-flb">
+                                <rect key="frame" x="15" y="15" width="290" height="61"/>
+                                <string key="text">Smyrichinsky称，他于10月初就在英属哥终于明白，有些路，只能一个人走。那些邀约好同行的人，一起相伴雨季，走过年华，但有一天终究会在某个渡口离散。红尘陌上，独自行走，绿萝拂过衣襟，青云打湿诺言。山和水可以两两相忘，日与月可以毫无瓜葛。那时候，只一个人的浮世清欢，一个人的细水长流。伦比</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.29408180713653564" green="0.29413825273513794" blue="0.29407823085784912" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X39-45-WzH">
+                                <rect key="frame" x="117" y="83" width="86" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="FLZ-UJ-A7a"/>
+                                    <constraint firstAttribute="width" constant="86" id="nGh-c1-uxk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="tintColor" red="0.098271347580000001" green="0.72068893909999998" blue="0.054757490749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="查看全部">
+                                    <color key="titleColor" red="0.098271347580000001" green="0.72068893909999998" blue="0.054757490749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vtm-51-dq3">
+                                <rect key="frame" x="0.0" y="125" width="320" height="1"/>
+                                <color key="backgroundColor" red="0.8587297797203064" green="0.85887759923934937" blue="0.85872042179107666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.5" id="tqR-vD-WjU"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="X39-45-WzH" firstAttribute="centerX" secondItem="OAJ-Qd-fRs" secondAttribute="centerX" id="0hj-o8-tFS"/>
+                            <constraint firstAttribute="bottom" secondItem="ZOk-dc-flb" secondAttribute="bottom" constant="50" id="CWB-Rj-yMJ"/>
+                            <constraint firstAttribute="trailing" secondItem="ZOk-dc-flb" secondAttribute="trailing" constant="15" id="aM9-Bn-Bq0"/>
+                            <constraint firstItem="Vtm-51-dq3" firstAttribute="leading" secondItem="OAJ-Qd-fRs" secondAttribute="leading" id="dOM-5R-Oeo"/>
+                            <constraint firstItem="ZOk-dc-flb" firstAttribute="top" secondItem="OAJ-Qd-fRs" secondAttribute="top" constant="15" id="iVu-5f-go2"/>
+                            <constraint firstItem="Vtm-51-dq3" firstAttribute="top" secondItem="X39-45-WzH" secondAttribute="bottom" constant="15" id="l1C-qL-0cb"/>
+                            <constraint firstItem="ZOk-dc-flb" firstAttribute="leading" secondItem="OAJ-Qd-fRs" secondAttribute="leading" constant="15" id="mkm-Sw-8gX"/>
+                            <constraint firstAttribute="trailing" secondItem="Vtm-51-dq3" secondAttribute="trailing" id="vpF-Dp-s3W"/>
+                            <constraint firstAttribute="bottom" secondItem="Vtm-51-dq3" secondAttribute="bottom" id="y2F-1X-LGf"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="OAJ-Qd-fRs" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Il3-Io-CjH"/>
+                <constraint firstAttribute="bottom" secondItem="OAJ-Qd-fRs" secondAttribute="bottom" id="Q8A-bx-GtU"/>
+                <constraint firstItem="OAJ-Qd-fRs" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="hQ7-dv-gbm"/>
+                <constraint firstAttribute="trailing" secondItem="OAJ-Qd-fRs" secondAttribute="trailing" id="vWw-1W-qwt"/>
+            </constraints>
+            <size key="customSize" width="320" height="126"/>
+            <connections>
+                <outlet property="intruduceLabel" destination="ZOk-dc-flb" id="vnH-Ag-g7J"/>
+                <outlet property="labelConstraintHeight" destination="CWB-Rj-yMJ" id="gwZ-pM-2EW"/>
+                <outlet property="seeAllButton" destination="X39-45-WzH" id="0Jo-2v-uf5"/>
+            </connections>
+            <point key="canvasLocation" x="-392" y="90"/>
+        </collectionViewCell>
+    </objects>
+</document>

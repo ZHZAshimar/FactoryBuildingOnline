@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="FivePathHeadCollectionReusableView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="32"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="优质厂房" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XAy-cg-RiC">
+                    <rect key="frame" x="25" y="15" width="57.5" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.10001001507043839" green="0.71276795864105225" blue="0.05817423015832901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OZz-Gi-vME">
+                    <rect key="frame" x="14" y="15" width="4" height="17"/>
+                    <color key="backgroundColor" red="0.10435257107019424" green="0.72068649530410767" blue="0.054642863571643829" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="GK9-0o-aRF"/>
+                        <constraint firstAttribute="width" constant="4" id="pxh-vU-Vla"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="OZz-Gi-vME" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="14" id="2EG-kL-lcD"/>
+                <constraint firstAttribute="bottom" secondItem="OZz-Gi-vME" secondAttribute="bottom" id="Odo-RK-dq4"/>
+                <constraint firstItem="XAy-cg-RiC" firstAttribute="leading" secondItem="OZz-Gi-vME" secondAttribute="trailing" constant="7" id="ueu-py-In9"/>
+                <constraint firstItem="XAy-cg-RiC" firstAttribute="centerY" secondItem="OZz-Gi-vME" secondAttribute="centerY" id="xvm-WT-Soh"/>
+            </constraints>
+            <connections>
+                <outlet property="label" destination="XAy-cg-RiC" id="hhf-uV-5dD"/>
+            </connections>
+            <point key="canvasLocation" x="-65" y="88"/>
+        </collectionReusableView>
+    </objects>
+</document>

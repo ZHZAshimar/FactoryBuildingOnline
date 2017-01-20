@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HomeHorizontalCellView">
+            <rect key="frame" x="0.0" y="0.0" width="76" height="97"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_standar" translatesAutoresizingMaskIntoConstraints="NO" id="rCT-0g-cgL">
+                    <rect key="frame" x="17.5" y="13" width="41" height="41"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="41" id="6qQ-cu-qvs"/>
+                        <constraint firstAttribute="width" constant="41" id="ws0-6H-jXx"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标准" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y5b-yg-TU6">
+                    <rect key="frame" x="0.0" y="64" width="76" height="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.27055478096008301" green="0.27060747146606445" blue="0.27055147290229797" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_goldmedal" translatesAutoresizingMaskIntoConstraints="NO" id="K29-3W-1vp">
+                    <rect key="frame" x="3" y="82" width="11" height="8"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="8" id="Bld-7M-HRj"/>
+                        <constraint firstAttribute="width" constant="11" id="njr-98-Ugu"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PS6-R5-N9a">
+                    <rect key="frame" x="0.0" y="0.0" width="76" height="97"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="金牌经纪人" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6o-Xg-yGR">
+                    <rect key="frame" x="16" y="79" width="60" height="13.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <color key="textColor" red="0.98492914438247681" green="0.82524293661117554" blue="0.11542848497629166" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="PS6-R5-N9a" secondAttribute="trailing" id="0vA-yA-wXh"/>
+                <constraint firstItem="K29-3W-1vp" firstAttribute="centerY" secondItem="H6o-Xg-yGR" secondAttribute="centerY" id="60W-NO-Dla"/>
+                <constraint firstItem="PS6-R5-N9a" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="6G1-4I-fuX"/>
+                <constraint firstItem="rCT-0g-cgL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="13" id="7Ul-JM-yJB"/>
+                <constraint firstItem="H6o-Xg-yGR" firstAttribute="top" secondItem="Y5b-yg-TU6" secondAttribute="bottom" id="KYv-2I-hkR"/>
+                <constraint firstItem="Y5b-yg-TU6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Oq6-hF-a6x"/>
+                <constraint firstItem="K29-3W-1vp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="3" id="Pcj-HS-w2v"/>
+                <constraint firstAttribute="trailing" secondItem="H6o-Xg-yGR" secondAttribute="trailing" id="TFN-fo-bD4"/>
+                <constraint firstAttribute="bottom" secondItem="PS6-R5-N9a" secondAttribute="bottom" id="cSI-K0-dYG"/>
+                <constraint firstItem="H6o-Xg-yGR" firstAttribute="leading" secondItem="K29-3W-1vp" secondAttribute="trailing" constant="2" id="f48-Qa-9CZ"/>
+                <constraint firstItem="PS6-R5-N9a" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fiU-4V-CBv"/>
+                <constraint firstItem="Y5b-yg-TU6" firstAttribute="top" secondItem="rCT-0g-cgL" secondAttribute="bottom" constant="10" id="t8l-fw-2yG"/>
+                <constraint firstItem="Y5b-yg-TU6" firstAttribute="centerX" secondItem="rCT-0g-cgL" secondAttribute="centerX" id="tOa-Ii-aES"/>
+                <constraint firstItem="rCT-0g-cgL" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="vLk-l8-nOx"/>
+                <constraint firstAttribute="trailing" secondItem="Y5b-yg-TU6" secondAttribute="trailing" id="yRo-k5-86E"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="goldmedalImageView" destination="K29-3W-1vp" id="DMh-gu-a8E"/>
+                <outlet property="honourLabel" destination="H6o-Xg-yGR" id="wLT-ii-0eA"/>
+                <outlet property="imageView" destination="rCT-0g-cgL" id="AoS-BF-e3x"/>
+                <outlet property="nameLabel" destination="Y5b-yg-TU6" id="nl5-yr-5mR"/>
+                <outlet property="tagButton" destination="PS6-R5-N9a" id="ZPJ-6v-4Rq"/>
+            </connections>
+            <point key="canvasLocation" x="-114" y="26.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="home_goldmedal" width="11" height="8"/>
+        <image name="home_standar" width="41" height="41"/>
+    </resources>
+</document>

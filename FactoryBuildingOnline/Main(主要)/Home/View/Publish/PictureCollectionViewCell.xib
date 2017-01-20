@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PictureCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="111" height="111"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="111" height="111"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="11" translatesAutoresizingMaskIntoConstraints="NO" id="hTp-Xf-O8A"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2D6-VU-3kg">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="7ZQ-KV-REE"/>
+                            <constraint firstAttribute="width" constant="30" id="fk1-WK-Hw3"/>
+                        </constraints>
+                        <state key="normal" image="close"/>
+                    </button>
+                    <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3aX-4A-vae">
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="kxB-aL-TYd"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="封  面" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pE5-RP-98g">
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="9"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="hTp-Xf-O8A" secondAttribute="trailing" id="2l5-FJ-9hI"/>
+                <constraint firstItem="pE5-RP-98g" firstAttribute="height" secondItem="3aX-4A-vae" secondAttribute="height" id="8DA-Wr-v5S"/>
+                <constraint firstItem="hTp-Xf-O8A" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="A3P-V9-63Q"/>
+                <constraint firstItem="hTp-Xf-O8A" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="DKW-f6-yVp"/>
+                <constraint firstItem="pE5-RP-98g" firstAttribute="width" secondItem="3aX-4A-vae" secondAttribute="width" id="DOd-3e-WqA"/>
+                <constraint firstAttribute="bottom" secondItem="3aX-4A-vae" secondAttribute="bottom" id="HGh-iE-Wh6"/>
+                <constraint firstItem="2D6-VU-3kg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="LsH-Rp-VHv"/>
+                <constraint firstItem="pE5-RP-98g" firstAttribute="centerY" secondItem="3aX-4A-vae" secondAttribute="centerY" id="Ppd-Tl-WrD"/>
+                <constraint firstItem="3aX-4A-vae" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="T3k-3Z-dpv"/>
+                <constraint firstAttribute="trailing" secondItem="2D6-VU-3kg" secondAttribute="trailing" id="UJN-Le-B6L"/>
+                <constraint firstAttribute="trailing" secondItem="3aX-4A-vae" secondAttribute="trailing" id="cPL-Kt-dFC"/>
+                <constraint firstAttribute="bottom" secondItem="hTp-Xf-O8A" secondAttribute="bottom" id="i17-RO-ddw"/>
+                <constraint firstItem="pE5-RP-98g" firstAttribute="centerX" secondItem="3aX-4A-vae" secondAttribute="centerX" id="rD9-yW-kqe"/>
+            </constraints>
+            <size key="customSize" width="111" height="111"/>
+            <connections>
+                <outlet property="closeButton" destination="2D6-VU-3kg" id="N9Z-lB-moS"/>
+                <outlet property="coverLabel" destination="pE5-RP-98g" id="f1f-1D-Xvs"/>
+                <outlet property="coverView" destination="3aX-4A-vae" id="01Q-SY-fGh"/>
+                <outlet property="imageView" destination="hTp-Xf-O8A" id="WCY-aB-DPp"/>
+            </connections>
+            <point key="canvasLocation" x="-4.5" y="-69.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="11" width="600" height="896"/>
+        <image name="close" width="20" height="20"/>
+    </resources>
+</document>

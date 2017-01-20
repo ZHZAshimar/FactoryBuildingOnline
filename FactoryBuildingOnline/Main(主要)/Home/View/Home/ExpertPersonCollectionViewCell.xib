@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ExpertPersonCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="87"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="87"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YKz-gN-1UJ">
+                        <rect key="frame" x="20" y="14" width="58" height="58"/>
+                        <color key="backgroundColor" red="0.93305837560000005" green="0.52120499789999997" blue="0.53376418979999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="YKz-gN-1UJ" secondAttribute="height" multiplier="1:1" id="OOd-rw-gxX"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="刘大大" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9Q-vO-yGp">
+                        <rect key="frame" x="88" y="14" width="160" height="29"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="160" id="iAh-Ez-Nrj"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="客户经理" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5rO-mf-Jar">
+                        <rect key="frame" x="88" y="42" width="57.5" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="108" id="L9x-Rm-mjJ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.13331398367881775" green="0.13334444165229797" blue="0.13331207633018494" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_goldmedal" translatesAutoresizingMaskIntoConstraints="NO" id="KzC-4H-57A">
+                        <rect key="frame" x="269" y="31" width="31" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="31" id="Mij-KF-d8e"/>
+                            <constraint firstAttribute="width" secondItem="KzC-4H-57A" secondAttribute="height" multiplier="31:25" id="eYd-eS-W9T"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hla-aZ-jSs">
+                        <rect key="frame" x="20" y="87" width="280" height="0.0"/>
+                        <color key="backgroundColor" red="0.92931067943572998" green="0.92946994304656982" blue="0.92930072546005249" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="EuH-hd-7d6"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大岭山分部" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnz-uO-Pg8">
+                        <rect key="frame" x="171.5" y="42" width="87" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="87" id="oao-ax-Jvt"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.13331398367881775" green="0.13334444165229797" blue="0.13331207633018494" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="hla-aZ-jSs" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="1x6-DL-iEx"/>
+                <constraint firstItem="v9Q-vO-yGp" firstAttribute="leading" secondItem="YKz-gN-1UJ" secondAttribute="trailing" constant="10" id="8Zh-PK-0FN"/>
+                <constraint firstAttribute="trailing" secondItem="KzC-4H-57A" secondAttribute="trailing" constant="20" id="QHy-Oe-gfe"/>
+                <constraint firstItem="bnz-uO-Pg8" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" constant="55" id="TTG-XW-JfO"/>
+                <constraint firstAttribute="bottom" secondItem="hla-aZ-jSs" secondAttribute="bottom" id="WId-tM-qPE"/>
+                <constraint firstAttribute="trailing" secondItem="hla-aZ-jSs" secondAttribute="trailing" constant="20" id="XZf-JU-ikB"/>
+                <constraint firstItem="YKz-gN-1UJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="Y6H-Gy-7r6"/>
+                <constraint firstItem="YKz-gN-1UJ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="14" id="eqy-2y-sOE"/>
+                <constraint firstItem="v9Q-vO-yGp" firstAttribute="top" secondItem="YKz-gN-1UJ" secondAttribute="top" id="gG5-G4-wWs"/>
+                <constraint firstItem="KzC-4H-57A" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="gKT-qw-XiT"/>
+                <constraint firstItem="5rO-mf-Jar" firstAttribute="top" secondItem="v9Q-vO-yGp" secondAttribute="bottom" constant="-1" id="mkl-m8-HkH"/>
+                <constraint firstItem="bnz-uO-Pg8" firstAttribute="top" secondItem="5rO-mf-Jar" secondAttribute="top" id="nFU-Io-fB8"/>
+                <constraint firstItem="bnz-uO-Pg8" firstAttribute="bottom" secondItem="5rO-mf-Jar" secondAttribute="bottom" id="nVb-7e-kw4"/>
+                <constraint firstItem="5rO-mf-Jar" firstAttribute="bottom" secondItem="YKz-gN-1UJ" secondAttribute="bottom" id="qnE-mc-6Jz"/>
+                <constraint firstItem="YKz-gN-1UJ" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="tB3-72-NHt"/>
+                <constraint firstItem="5rO-mf-Jar" firstAttribute="leading" secondItem="v9Q-vO-yGp" secondAttribute="leading" id="wIM-BR-I8i"/>
+                <constraint firstItem="v9Q-vO-yGp" firstAttribute="height" secondItem="YKz-gN-1UJ" secondAttribute="height" multiplier="1:2" id="wWg-hU-i1c"/>
+            </constraints>
+            <size key="customSize" width="514" height="90"/>
+            <connections>
+                <outlet property="areaLabel" destination="bnz-uO-Pg8" id="oWD-9D-7Qo"/>
+                <outlet property="avatarImageView" destination="YKz-gN-1UJ" id="BpM-8s-uvA"/>
+                <outlet property="globImageView" destination="KzC-4H-57A" id="MUt-DR-Irb"/>
+                <outlet property="jobLabel" destination="5rO-mf-Jar" id="Gla-YH-7P4"/>
+                <outlet property="nameLabel" destination="v9Q-vO-yGp" id="k7a-OZ-c9p"/>
+            </connections>
+            <point key="canvasLocation" x="-32" y="88.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="home_goldmedal" width="11" height="8"/>
+    </resources>
+</document>
