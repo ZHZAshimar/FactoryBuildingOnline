@@ -13,14 +13,16 @@
 
 #if IOS_DEBUG
     // 正式环境
-    #define URL_HOST @"http://116.62.44.204:8000/api/v1/"  // 阿里云服务器
+    #define URL_HOST @"http://192.168.0.143:8000/api/v1/"
+//    #define URL_HOST @"http://116.62.44.204:8000/api/v1/"  // 阿里云服务器
 //    #define URL_HOST @"http://45.76.69.192:8000/api/v1/"
 //    #define URL_HOST @"http://192.168.0.113:8000/api/v1/"
 #else
     // 测试服务器
 //    #define URL_HOST @"http://192.168.0.113:8000/api/v1/"// 本地服务器
 //    #define URL_HOST @"http://45.76.69.192:8000/api/v1/"  线上服务器
-    #define URL_HOST @"http://116.62.44.204:8000/api/v1/"  // 阿里云服务器
+//    #define URL_HOST @"http://116.62.44.204:8000/api/v1/"  // 阿里云服务器
+    #define URL_HOST @"http://192.168.0.143:8000/api/v1/"
 
 #endif /* CustomURL_h */
 
@@ -121,3 +123,10 @@
  *  @return
  */
 #define URL_POST_FEEDBACKS_WANTEDMESSAGE @"feedbacks/wantedmessage/"
+
+/**
+ *  POST 需求信息资源
+ *
+ *  @return
+ */
+#define URL_POST_NEEDEDMESSAGE @"neededmessages/"

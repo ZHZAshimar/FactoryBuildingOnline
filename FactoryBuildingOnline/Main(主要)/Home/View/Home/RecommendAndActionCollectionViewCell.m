@@ -20,7 +20,7 @@
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
         
-        self.layer.borderColor = GRAY_e6.CGColor;
+        self.layer.borderColor = GRAY_F6.CGColor;
         self.layer.borderWidth = 0.5;
         self.layer.cornerRadius = 2;
         self.layer.masksToBounds = YES;
@@ -45,8 +45,9 @@
 - (UILabel *)titleLabel {
     
     if (!_titleLabel) {
-        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(self_height*6/35 + 8+ 4, 8, self_width-20, self_height*6/35)];
         
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(self_height*6/35 + 8+ 4, 8, self_width-20, self_height*6/35)];
+        _titleLabel.textColor = GRAY_80;
         _titleLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:12.0f]];
         
     }
@@ -57,7 +58,7 @@
     
     if (!_contentLabel) {
         _contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, self_height*6/35 + 16, self_width-16, self_height - self_height*6/35 - 8*3)];
-        
+        _contentLabel.textColor = BLACK_42;
         _contentLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:13.0f]];
         _contentLabel.numberOfLines = 2;
         

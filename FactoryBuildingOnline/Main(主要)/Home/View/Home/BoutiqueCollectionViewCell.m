@@ -34,7 +34,7 @@
         
         self.scanLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:self.scanLabel.font.pointSize]];
         
-        self.imageView.layer.borderColor = GRAY_9e.CGColor;
+        self.imageView.layer.borderColor = GRAY_e6.CGColor;
         self.imageView.layer.borderWidth = 0.5;
         self.imageView.layer.masksToBounds = YES;
         self.imageView.layer.cornerRadius = 2;

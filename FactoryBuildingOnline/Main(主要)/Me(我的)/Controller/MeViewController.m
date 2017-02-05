@@ -268,23 +268,38 @@
             break;
         case 4:     // 身份切换
         {
-            
-            AppDelegate *appdelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            if (!isLogin) {
+                
+                // 跳转到登录界面
+                [self goLoginVC];
+                
+            } else {
+                
+                AppDelegate *appdelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
 
-            
-             self.roleSwitchView = [[RoleSwitchingView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, Screen_Height)];
-            __weak typeof(self) weakSelf = self;
-            // 选择回调
-            self.roleSwitchView.selectSwitchingBlock = ^(NSInteger index) {
-                NSLog(@"点中了%ld",index);
-                [weakSelf.roleSwitchView removeFromSuperview];
-            };
-            // 触碰回调
-            self.roleSwitchView.tapViewBlock = ^(){
-                [weakSelf.roleSwitchView removeFromSuperview];
-            };
-            [appdelegate.window addSubview:self.roleSwitchView];
-            
+                
+                 self.roleSwitchView = [[RoleSwitchingView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, Screen_Height)];
+                __weak typeof(self) weakSelf = self;
+                // 选择回调
+                self.roleSwitchView.selectSwitchingBlock = ^(NSInteger index) {
+                    NSLog(@"点中了%ld",index);
+                    
+                    NSDictionary *requestDic = @{@"update_type":@(4),@"update_value":[NSString stringWithFormat:@"%ld",index-100+1]};
+                    
+                    [HTTPREQUEST_SINGLE putRequestWithService:URL_POST_LOGIN andParameters:requestDic isShowActivity:YES success:^(RequestManager *manager, NSDictionary *response) {
+                        NSLog(@"身份切换：%@",response[@"erro_msg"]);
+                    } failure:^(RequestManager *manager, NSError *error) {
+                        NSLog(@"身份切换：%@",error);
+                    }];
+                    
+                    [weakSelf.roleSwitchView removeFromSuperview];
+                };
+                // 触碰回调
+                self.roleSwitchView.tapViewBlock = ^(){
+                    [weakSelf.roleSwitchView removeFromSuperview];
+                };
+                [appdelegate.window addSubview:self.roleSwitchView];
+            }
         }
             break;
         case 5:     // 设置

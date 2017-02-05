@@ -144,7 +144,7 @@
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     if (section == 0) {
         
-        return UIEdgeInsetsMake(14, 14, 0, 14);
+        return UIEdgeInsetsMake(14, 14, 14, 14);
     }
     return UIEdgeInsetsZero;
 }
@@ -178,6 +178,8 @@
             case 2:
             {
                 FivePathHeadCollectionReusableView *cellHeadView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"FivePathHeadCollectionReusableView" forIndexPath:indexPath];
+                [cellHeadView addSubview:self.yzActivityView];
+                
                 reusableView = cellHeadView;
             }
                 break;
@@ -321,7 +323,7 @@
             [weakSelf.myCollectionView.mj_footer endRefreshing];
         }];
         
-        [_myCollectionView addSubview:self.yzActivityView];
+//        [_myCollectionView addSubview:self.yzActivityView];
     }
     return _myCollectionView;
 }
@@ -332,7 +334,7 @@
     
     if (!_yzActivityView) {
         _yzActivityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        _yzActivityView.frame = CGRectMake(Screen_Width/2-15, self_height/2, 30, 30);
+        _yzActivityView.frame = CGRectMake(100, 5, 30, 30);
         _yzActivityView.hidden = YES;
     }
     

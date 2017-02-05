@@ -27,58 +27,49 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="浏览:203人" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvA-EW-ADQ">
-                        <rect key="frame" x="248" y="132" width="58" height="13.5"/>
+                        <rect key="frame" x="243" y="132" width="63" height="14.5"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="88" id="CeF-aL-Dxo"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <color key="textColor" red="0.7175678014755249" green="0.7176927924156189" blue="0.71755987405776978" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="openEye" translatesAutoresizingMaskIntoConstraints="NO" id="C3Y-qk-c12">
-                        <rect key="frame" x="226" y="134" width="16" height="10"/>
+                        <rect key="frame" x="220" y="134.5" width="16" height="10"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="水蛇涌科技园" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ayY-PS-ubh">
-                        <rect key="frame" x="14" y="18" width="138" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="mY4-98-I0k"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="水蛇涌科技园水蛇涌科技园水蛇涌科技园水蛇涌科技园水蛇涌科技园水蛇涌科技园" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p1a-ij-CpL">
                         <rect key="frame" x="14" y="39" width="138" height="60"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" red="0.20781612396240234" green="0.20785865187644958" blue="0.20781344175338745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.25882352941176467" green="0.25882352941176467" blue="0.25882352941176467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15000m²" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYO-nS-mh4">
-                        <rect key="frame" x="14" y="105.5" width="79" height="14.5"/>
+                        <rect key="frame" x="14" y="103" width="79" height="17"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="79" id="TzO-qz-bTd"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" red="0.16468328237533569" green="0.16471883654594421" blue="0.16468104720115662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.25882352941176467" green="0.25882352941176467" blue="0.25882352941176467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9/m²" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYz-3y-TI8">
-                        <rect key="frame" x="112" y="105.5" width="40" height="14.5"/>
+                        <rect key="frame" x="112" y="103" width="40" height="17"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="jwY-oF-krf"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.8758620023727417" green="0.26833564043045044" blue="0.26510301232337952" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="万江-水蛇涌" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fyn-74-fK6">
-                        <rect key="frame" x="14" y="128" width="131" height="22"/>
+                        <rect key="frame" x="14" y="128.5" width="131" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="6rq-Ek-pA9"/>
                             <constraint firstAttribute="width" constant="131" id="zi7-Lm-lwN"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" red="0.16468328239999999" green="0.16471883649999999" blue="0.16468104720000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" red="0.25882352941176467" green="0.25882352941176467" blue="0.25882352941176467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VKf-T4-b80">
@@ -88,6 +79,15 @@
                             <constraint firstAttribute="height" constant="0.5" id="Vgt-L5-SUx"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="水蛇涌科技园" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ayY-PS-ubh">
+                        <rect key="frame" x="14" y="18" width="138" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="mY4-98-I0k"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                        <color key="textColor" red="0.25882352941176467" green="0.25882352941176467" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -114,7 +114,7 @@
                 <constraint firstItem="VKf-T4-b80" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="14" id="mzS-8O-ZMC"/>
                 <constraint firstItem="ayY-PS-ubh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="14" id="u0j-Cc-1LG"/>
                 <constraint firstAttribute="trailing" secondItem="z7l-g2-4Sv" secondAttribute="trailing" constant="14" id="x8b-ZH-K08"/>
-                <constraint firstItem="tvA-EW-ADQ" firstAttribute="leading" secondItem="C3Y-qk-c12" secondAttribute="trailing" constant="6" id="zYV-WO-4v1"/>
+                <constraint firstItem="tvA-EW-ADQ" firstAttribute="leading" secondItem="C3Y-qk-c12" secondAttribute="trailing" constant="7" id="zYV-WO-4v1"/>
             </constraints>
             <size key="customSize" width="186" height="121"/>
             <connections>

@@ -414,7 +414,7 @@ typedef enum{
 #pragma mark - 注册
 - (void)registerAction:(UIButton *)sender {
     NSLog(@"注册");
-    RegisterViewController *registerVC = [[RegisterViewController alloc] init];
+    RegisterViewController *registerVC = [RegisterViewController new];
     [self.navigationController pushViewController:registerVC animated:YES];
 }
 #pragma mark - 忘记密码

@@ -18,7 +18,7 @@
 
 #define NAVBAR_CHANGE_POINT 64
 
-@interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UISearchBarDelegate>
+@interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UISearchBarDelegate,UITextFieldDelegate>
 {
     NSArray *fourPathTextArr;
     NSArray *fourPathSubtextArr;
@@ -184,16 +184,16 @@
     self.leftBarAreaLabel.text = self.cityNameStr;
 }
 
-#pragma mark - searchBar delegate
-- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
-{
-    NSLog(@"跳转到搜索界面");
-    SearchViewController *searchVC = [SearchViewController new];
-    searchVC.hidesBottomBarWhenPushed = YES;    // 隐藏 tabbar
-    [self.navigationController pushViewController:searchVC animated:YES];
-    
-    return NO;
-}
+//#pragma mark - searchBar delegate
+//- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
+//{
+//    NSLog(@"跳转到搜索界面");
+//    SearchViewController *searchVC = [SearchViewController new];
+//    searchVC.hidesBottomBarWhenPushed = YES;    // 隐藏 tabbar
+//    [self.navigationController pushViewController:searchVC animated:YES];
+//    
+//    return NO;
+//}
 
 #pragma mark - scroll delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -253,6 +253,16 @@
     return cell;
 }
 
+#pragma mark - textfield
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    
+    SearchViewController *searchVC = [SearchViewController new];
+    searchVC.hidesBottomBarWhenPushed = YES;    // 隐藏 tabbar
+    [self.navigationController pushViewController:searchVC animated:YES];
+    
+    return NO;
+}
+
 #pragma mark - 判断用户是否登录
 //- (BOOL)judgeUserLogin {
 
@@ -274,13 +284,13 @@
         _naviSegmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@" 首页 ",@" 列表 ",@" 专家 "]];
         
         // set frame
-        _naviSegmentedControl.frame = CGRectMake(Screen_Width/2, 10, Screen_Width/2-26, 30);
+        _naviSegmentedControl.frame = CGRectMake(Screen_Width/2, 5, Screen_Width/2-26, 30);
         
         // set font's style on normal
-        _naviSegmentedControl.titleTextAttributes = @{NSForegroundColorAttributeName:GRAY_9e,NSFontAttributeName:[UIFont adjustFont:[UIFont systemFontOfSize:14.0]]};
+        _naviSegmentedControl.titleTextAttributes = @{NSForegroundColorAttributeName:GRAY_80,NSFontAttributeName:[UIFont adjustFont:[UIFont systemFontOfSize:16.0]]};
         
         // set font's style on selected
-        _naviSegmentedControl.selectedTitleTextAttributes = @{NSForegroundColorAttributeName:GREEN_1ab8,NSFontAttributeName:[UIFont adjustFont:[UIFont systemFontOfSize:14.0]]};
+        _naviSegmentedControl.selectedTitleTextAttributes = @{NSForegroundColorAttributeName:GREEN_1ab8,NSFontAttributeName:[UIFont adjustFont:[UIFont systemFontOfSize:16.0]]};
 
         // set Color for the selection indicator stripe/box
         _naviSegmentedControl.selectionIndicatorColor = GREEN_1ab8;
@@ -309,12 +319,12 @@
         NSString *string = @"请输入您想搜索的街道/路段/园区";
         _searchTF = [[UITextField alloc] initWithFrame:CGRectMake(26, 0, Screen_Width-52, Screen_Height*15/284)];
         
-        _searchTF.backgroundColor = GRAY_cc;
+        _searchTF.backgroundColor = GRAY_F0;
         _searchTF.text = string;
         _searchTF.textAlignment = NSTextAlignmentCenter;
-        _searchTF.textColor = GRAY_80;
-        _searchTF.enabled = NO;
-        
+        _searchTF.textColor = GRAY_cc;
+//        _searchTF.enabled = NO;
+        _searchTF.delegate = self;
         _searchTF.layer.cornerRadius = Screen_Height*15/284/2;
         _searchTF.layer.masksToBounds = YES;
         
@@ -381,7 +391,7 @@
         [_leftBarView addGestureRecognizer:tapLeftBarView]; // 添加单击事件
         
         self.leftBarAreaLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 0, Screen_Width/4-19-10, 44)];
-        self.leftBarAreaLabel.font = [UIFont systemFontOfSize:16.0];
+        self.leftBarAreaLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:16.0]];
         self.leftBarAreaLabel.text = @"正在定位";
         self.leftBarAreaLabel.textColor = BLACK_42;
         self.leftBarAreaLabel.textAlignment = NSTextAlignmentCenter;

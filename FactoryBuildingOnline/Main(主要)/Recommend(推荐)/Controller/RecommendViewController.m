@@ -50,9 +50,9 @@
 @implementation RecommendViewController
 
 - (void)dealloc {
-    
-    self.collectionView.delegate = nil;
-    self.collectionView.dataSource = nil;
+//    
+//    self.collectionView.delegate = nil;
+//    self.collectionView.dataSource = nil;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SELECTSURE" object:nil];   // 移除 监听
     
@@ -61,7 +61,7 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self loadNaviControl]; // 设置导航栏
+//    [self loadNaviControl]; // 设置导航栏
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -267,14 +267,14 @@
     CGFloat keyboardHeight = [rectValue CGRectValue].size.height;
     CGFloat result = Screen_Height - keyboardHeight;
     NSLog(@"---- %f",self.selectBgView.frame.origin.y);
-    CGFloat textFieldY = self.selectBgView.frame.origin.y+self.selectBgView.priceView.frame.size.height;
+    CGFloat textFieldY = self.selectBgView.frame.origin.y+self.selectBgView.priceView.frame.size.height+ Screen_Height*15/284+64;
     if (result < textFieldY+40) {
         self.view.frame = CGRectMake(0, result - textFieldY, Screen_Width, Screen_Height);
     }
 }
 #pragma mark - 当键盘将要隐藏的时候，self.view 的 frame 恢复原来
 - (void)keyBoardHidden:(NSNotification *)sender {
-    self.view.frame = CGRectMake(0, 64, Screen_Width, Screen_Height+64);
+    self.view.frame = CGRectMake(0, 0, Screen_Width, Screen_Height+64);
 }
 
 #pragma mark - 点击屏幕移除 键盘
@@ -383,7 +383,7 @@
     
     [_selectBgView removeFromSuperview];        // 移除背景view
     
-    self.selectBgView = [[SelectBgView alloc] initWithFrame:CGRectMake(0, 40, Screen_Width, Screen_Height-104) withIndex:index];    // 初始化背景view
+    self.selectBgView = [[SelectBgView alloc] initWithFrame:CGRectMake(0, 40, Screen_Width, Screen_Height/2) withIndex:index];    // 初始化背景view
     
     [self.view addSubview:self.selectBgView];
     
@@ -541,7 +541,7 @@
     _segmentedControl.backgroundColor = [UIColor whiteColor];
 
     _segmentedControl.selectionIndicatorHeight = 5;         // 设置指示器的高度 为了来控制中间分割线的高度
-    _segmentedControl.selectionIndicatorColor = [UIColor whiteColor];
+    _segmentedControl.selectionIndicatorColor = [UIColor redColor];
     // 两个按钮之间的分割线
     _segmentedControl.verticalDividerWidth = 1;
     _segmentedControl.verticalDividerColor = GRAY_eb;
@@ -549,9 +549,9 @@
     
 
     //设置分段控件的文字大小及颜色
-    _segmentedControl.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont systemFontOfSize:14.0f]};
+    _segmentedControl.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont systemFontOfSize:[UIFont adjustFontSize:14.0f]]};
     // 设置分段控件选中时 的文字大小及颜色
-    _segmentedControl.selectedTitleTextAttributes = @{NSForegroundColorAttributeName:GREEN_1ab8,NSFontAttributeName:[UIFont systemFontOfSize:14.0f]};
+    _segmentedControl.selectedTitleTextAttributes = @{NSForegroundColorAttributeName:GREEN_1ab8,NSFontAttributeName:[UIFont systemFontOfSize:[UIFont adjustFontSize:14.0f]]};
     _segmentedControl.selectedSegmentIndex = index;
     __weak typeof(self) weakSelf = self;
     
@@ -566,13 +566,15 @@
         NSLog(@"点击了相同的 index :%ld",index);
         [weakSelf createSelectBGView:index];
     }];
-    _segmentedControl.translatesAutoresizingMaskIntoConstraints = NO;
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(0)-[_segmentedControl]-(0)-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(self.view,_segmentedControl)]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_segmentedControl(40)]-[_collectionView]-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(self.view,_segmentedControl,_collectionView)]];
+    _segmentedControl.frame = CGRectMake(0, 10, Screen_Width, 35);
+//    _segmentedControl.translatesAutoresizingMaskIntoConstraints = NO;
+    
+//    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(0)-[_segmentedControl]-(0)-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(self.view,_segmentedControl)]];
+//    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_segmentedControl(35)]-[_collectionView]-(0)-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(self.view,_segmentedControl,_collectionView)]];
     
     // 分割线
-    UIView *cuttingLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 39.5, Screen_Width, 0.5)];
+    UIView *cuttingLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 34.5, Screen_Width, 0.5)];
     cuttingLineView.backgroundColor = GRAY_db;
     [_segmentedControl addSubview:cuttingLineView];
 }

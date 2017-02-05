@@ -29,7 +29,7 @@
         }
         self = [arrayOfViews objectAtIndexCheck:0];
         
-        self.imageView.layer.borderColor = GRAY_9e.CGColor;
+        self.imageView.layer.borderColor = GRAY_e6.CGColor;
         self.imageView.layer.borderWidth = 0.5;
         self.imageView.layer.masksToBounds = YES;
         self.imageView.layer.cornerRadius = 2;
@@ -94,7 +94,7 @@
     
     self.addressLabel.text = [NSString stringWithFormat:@"%@",ftModel.address_overview];
     
-    NSString *price = [NSString stringWithFormat:@"%@元/m²/月",ftModel.price];
+    NSString *price = [NSString stringWithFormat:@"%@/m²",ftModel.price];
     
     self.moneyOfdayLabel.text = price;  // 每月一平方的租金
     CGFloat priceOfMonth = [ftModel.range floatValue] * [ftModel.price floatValue]; // 计算出每月的总租金

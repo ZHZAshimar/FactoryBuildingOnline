@@ -186,7 +186,8 @@
      
           activePlatforms:@[
                             @(SSDKPlatformTypeSinaWeibo),
-                            @(SSDKPlatformTypeWechat),
+                            @(SSDKPlatformSubTypeWechatTimeline),
+                            @(SSDKPlatformSubTypeWechatSession),
                             @(SSDKPlatformTypeQQ)]
                  onImport:^(SSDKPlatformType platformType)
      {

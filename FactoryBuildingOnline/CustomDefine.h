@@ -44,6 +44,9 @@
 #define GRAY_da [UIColor colorWithHex:0xdadada]
 #define GRAY_99 [UIColor colorWithHex:0x999999]
 #define GRAY_94 [UIColor colorWithHex:0x949494]
+#define GRAY_F0 [UIColor colorWithHex:0xf0f0f0]
+#define GRAY_F6 [UIColor colorWithHex:0xf6f6f6]
+//#define GRAY_F0 [UIColor colorWithHex:0xf0f0f0]
 
 #define BLACK_42 [UIColor colorWithHex:0x424242]
 #define BLACK_80 [UIColor colorWithHex:0x808080]

@@ -55,6 +55,22 @@
         return;
     }
     
+    CGFloat callBackDay = [tmpTextField.text floatValue];
+    
+    if (callBackDay < 0) {
+        return;
+    }
+    
+    NSDictionary *requestDic = @{@"content":myTextView.text,@"callback_day":@(callBackDay)};
+    
+    [HTTPREQUEST_SINGLE postRequestWithService:URL_POST_NEEDEDMESSAGE andParameters:requestDic dicIsEncode:NO success:^(RequestManager *manager, NSDictionary *response) {
+        
+        [MBProgressHUD showSuccess:response[@"msg"] ToView:nil];
+        
+    } failure:^(RequestManager *manager, NSError *error) {
+        NSLog(@"%@",error.debugDescription);
+//        [MBProgressHUD showError:error.debugDescription ToView:nil];
+    }];
     
     NSLog(@"%@",tmpTextField.text);
 }

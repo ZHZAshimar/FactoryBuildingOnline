@@ -30,7 +30,7 @@
     }
     return _homeOfHomeVC;
 }
-
+// 筛选的Cell
 - (RecommendViewController *)recommendOfHomeVC {
     
     if (!_recommendOfHomeVC) {

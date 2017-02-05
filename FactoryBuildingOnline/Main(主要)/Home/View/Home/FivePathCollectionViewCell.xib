@@ -33,13 +33,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10500 m²" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ieZ-el-plH">
-                        <rect key="frame" x="168.5" y="98.5" width="50.5" height="14"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <rect key="frame" x="168.5" y="98.5" width="62.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pf0-ye-73o">
-                        <rect key="frame" x="168.5" y="128.5" width="137.5" height="15"/>
+                        <rect key="frame" x="168.5" y="132" width="137.5" height="15"/>
                         <color key="backgroundColor" red="1" green="0.46956701490000002" blue="0.33327892549999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1KI-yf-fqJ">
@@ -49,28 +49,28 @@
                             <constraint firstAttribute="height" constant="0.5" id="xni-bd-ssV"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10元/m²/月" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9d-xv-EbZ">
-                        <rect key="frame" x="249" y="99" width="57" height="13.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10/m²" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9d-xv-EbZ">
+                        <rect key="frame" x="268" y="99" width="38" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.8680838942527771" green="0.24003282189369202" blue="0.23983258008956909" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="厚街三屯标准楼上1225平方米可分租可改造" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VSD-7n-Ilo">
                         <rect key="frame" x="168.5" y="20" width="137.5" height="40"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" red="0.26271244883537292" green="0.2627638578414917" blue="0.26270923018455505" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                        <color key="textColor" red="0.25882352941176467" green="0.25882352941176467" blue="0.25882352941176467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="openEye" translatesAutoresizingMaskIntoConstraints="NO" id="GAI-V6-h74">
                         <rect key="frame" x="14" y="136" width="16" height="10"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="浏览:203人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pd3-ex-eEe">
-                        <rect key="frame" x="36" y="134" width="58" height="14"/>
+                        <rect key="frame" x="37" y="134" width="63" height="14"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="114" id="czq-Ne-XFj"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <color key="textColor" red="0.65482908487319946" green="0.65494394302368164" blue="0.65482187271118164" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -85,7 +85,7 @@
                 <constraint firstItem="VSD-7n-Ilo" firstAttribute="top" secondItem="gVo-b0-12v" secondAttribute="top" id="LqR-uv-3CO"/>
                 <constraint firstItem="X3M-hp-M6z" firstAttribute="top" secondItem="VSD-7n-Ilo" secondAttribute="bottom" constant="16" id="M4s-DL-x1h"/>
                 <constraint firstItem="Pd3-ex-eEe" firstAttribute="centerY" secondItem="GAI-V6-h74" secondAttribute="centerY" id="S4A-Wt-QAX"/>
-                <constraint firstItem="Pd3-ex-eEe" firstAttribute="leading" secondItem="GAI-V6-h74" secondAttribute="trailing" constant="6" id="UPo-6a-YjA"/>
+                <constraint firstItem="Pd3-ex-eEe" firstAttribute="leading" secondItem="GAI-V6-h74" secondAttribute="trailing" constant="7" id="UPo-6a-YjA"/>
                 <constraint firstItem="1KI-yf-fqJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="14" id="Z8X-Ph-HVP"/>
                 <constraint firstItem="pf0-ye-73o" firstAttribute="leading" secondItem="ieZ-el-plH" secondAttribute="leading" id="ZBz-ok-MOo"/>
                 <constraint firstItem="X3M-hp-M6z" firstAttribute="leading" secondItem="VSD-7n-Ilo" secondAttribute="leading" id="auh-5L-wIF"/>
