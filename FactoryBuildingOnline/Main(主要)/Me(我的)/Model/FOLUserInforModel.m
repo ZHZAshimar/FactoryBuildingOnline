@@ -77,7 +77,7 @@
     
     // 插入数据
     if ([db open]) {
-        NSString *insertSQL = [NSString stringWithFormat:@"insert into '%@' ('%@','%@','%@','%@','%@','%@','%@','%@','%@','%@')values('%@','%@','%@','%d','%@','%ld','%@','%@','%@','%@')",TABLENAME,USERID,AVATAR,PHONENUM,PUBLISH_COUNT,REGIST_TIME,USERTYPE,USERNAME,TOKEN_TIME,TOKEN,PASSWORD,userInfoModel.userID,userInfoModel.avatar,userInfoModel.phoneNum,userInfoModel.publish_count,userInfoModel.regist_time,userInfoModel.type,userInfoModel.userName,userInfoModel.token_time,userInfoModel.token,userInfoModel.password];
+        NSString *insertSQL = [NSString stringWithFormat:@"insert into '%@' ('%@','%@','%@','%@','%@','%@','%@','%@','%@','%@')values('%@','%@','%@','%d','%@','%d','%@','%@','%@','%@')",TABLENAME,USERID,AVATAR,PHONENUM,PUBLISH_COUNT,REGIST_TIME,USERTYPE,USERNAME,TOKEN_TIME,TOKEN,PASSWORD,userInfoModel.userID,userInfoModel.avatar,userInfoModel.phoneNum,userInfoModel.publish_count,userInfoModel.regist_time,userInfoModel.type,userInfoModel.userName,userInfoModel.token_time,userInfoModel.token,userInfoModel.password];
         
         if (![db executeUpdate:insertSQL]) {
             flag = NO;

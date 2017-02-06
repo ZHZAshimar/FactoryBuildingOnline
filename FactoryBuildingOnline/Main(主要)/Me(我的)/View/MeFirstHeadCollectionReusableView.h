@@ -32,6 +32,8 @@
 
 @property (nonatomic, strong) UILabel *publishLabel;    // 发布
 
+@property (nonatomic, strong) CAShapeLayer *hexagonShapeLayer;
+
 @property (nonatomic, weak) id<MeFirstHeadCollectionReusableViewDelegate> delegate;
 
 @end

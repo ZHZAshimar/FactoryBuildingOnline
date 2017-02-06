@@ -15,10 +15,13 @@
 
 #import "BrokerAreaViewController.h"
 
+#import "ExpertHomeRequest.h"
+#import "PromediumsModel.h"
+
 @interface ExpertOfHomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UICollectionView *myCollectionView;
-
+@property (nonatomic, strong) NSArray *promediumsTOPArray;
 @end
 
 @implementation ExpertOfHomeViewController
@@ -28,7 +31,43 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor yellowColor];
     
+    self.promediumsTOPArray = [NSArray array];
+    
     [self.view addSubview:self.myCollectionView];
+    
+    [self getData];
+}
+
+- (void)getData {
+    
+    
+    
+    ExpertHomeRequest *expertRequest = [ExpertHomeRequest new];
+    
+    [expertRequest getPromediumsTOP];
+    
+    __weak typeof(self) weakSelf = self;
+    
+    expertRequest.promediumsBlock = ^(BOOL flag) {
+        if (flag) {
+            
+            NSMutableArray *array = [PromediumsModel findAll];
+            
+            if (array.count <= 0) {
+                
+                EmptyView *emptyView = [[EmptyView alloc] initWithFrame:self.view.bounds];
+                emptyView.image = [UIImage imageNamed:@"error_1"];
+                emptyView.emptyStr = @"网络连接有问题";
+                return ;
+            }
+            
+            weakSelf.promediumsTOPArray = array;
+            [weakSelf.myCollectionView reloadData];
+        }
+    };
+    
+    // 请求分店资源
+    [expertRequest getPromediumsArea];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -39,7 +78,7 @@
     if (section == 0) {
         return 0;
     }
-    return 3;
+    return self.promediumsTOPArray.count;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -94,6 +133,7 @@
     __kindof UICollectionViewCell *cell;
     
     ExpertPersonCollectionViewCell *personCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ExpertPersonCollectionViewCell" forIndexPath:indexPath];
+    personCell.model = self.promediumsTOPArray[indexPath.item];
     switch (indexPath.item) {
         case 0:
             personCell.globImageView.image = [UIImage imageNamed:@"num_1"];

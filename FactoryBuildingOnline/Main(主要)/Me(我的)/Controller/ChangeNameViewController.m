@@ -110,7 +110,7 @@
     NSDictionary *requestDic = @{@"update_type":@(2),@"update_value":self.myTextField.text};
     __weak typeof (self) weakSelf = self;
     
-    [HTTPREQUEST_SINGLE putRequestWithService:URL_POST_LOGIN andParameters:requestDic isShowActivity:YES success:^(RequestManager *manager, NSDictionary *response) {
+    [HTTPREQUEST_SINGLE putRequestWithService:URL_POST_LOGIN andParameters:requestDic isShowActivity:YES isEncode:YES success:^(RequestManager *manager, NSDictionary *response) {
 
         if ([response[@"erro_code"] intValue]!= 200) {
             

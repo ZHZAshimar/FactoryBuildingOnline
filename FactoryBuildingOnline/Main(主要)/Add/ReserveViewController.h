@@ -8,6 +8,6 @@
 
 #import "BaseViewController.h"
 
-@interface AddViewController : BaseViewController
+@interface ReserveViewController : BaseViewController
 
 @end

@@ -96,6 +96,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hiddenKeyboardAction:) name:UIKeyboardWillHideNotification object:nil];
 }
 
+- (void)backAction {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)drawView {
     
     publishDic = [NSDictionary dictionary];
@@ -481,7 +486,9 @@
         else [MBProgressHUD showSuccess:@"发布成功" ToView:nil];
         
         
-        [self.navigationController popViewControllerAnimated:YES];
+//        [self.navigationController popViewControllerAnimated:YES];
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
         
     } failure:^(RequestManager *manager, NSError *error) {
         NSLog(@"error:%@",error.debugDescription);

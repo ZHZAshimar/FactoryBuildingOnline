@@ -13,16 +13,16 @@
 
 #if IOS_DEBUG
     // 正式环境
-    #define URL_HOST @"http://192.168.0.143:8000/api/v1/"
-//    #define URL_HOST @"http://116.62.44.204:8000/api/v1/"  // 阿里云服务器
+//    #define URL_HOST @"http://192.168.0.143:8000/api/v1/"
+    #define URL_HOST @"http://116.62.44.204:8000/api/v1/"  // 阿里云服务器
 //    #define URL_HOST @"http://45.76.69.192:8000/api/v1/"
 //    #define URL_HOST @"http://192.168.0.113:8000/api/v1/"
 #else
     // 测试服务器
 //    #define URL_HOST @"http://192.168.0.113:8000/api/v1/"// 本地服务器
 //    #define URL_HOST @"http://45.76.69.192:8000/api/v1/"  线上服务器
-//    #define URL_HOST @"http://116.62.44.204:8000/api/v1/"  // 阿里云服务器
-    #define URL_HOST @"http://192.168.0.143:8000/api/v1/"
+    #define URL_HOST @"http://116.62.44.204:8000/api/v1/"  // 阿里云服务器
+//    #define URL_HOST @"http://192.168.0.143:8000/api/v1/"
 
 #endif /* CustomURL_h */
 
@@ -130,3 +130,24 @@
  *  @return
  */
 #define URL_POST_NEEDEDMESSAGE @"neededmessages/"
+
+/**
+ *  GET 获取排名前三的中介信息
+ *
+ *  @return
+ */
+#define URL_GET_PROMEDIUMS_TOP  @"promediums/top"
+
+/**
+ *  GET 获取对应分店的专家
+ *  /promediums/branches/{branch_id}
+ *  @return
+ */
+#define URL_GET_PROMEDIUMS_AREA  @"promediums/branches/"
+
+/**
+ *  GET 获取分店
+ *  /branches
+ *  @return
+ */
+#define URL_GET_BRANCHES  @"branches"

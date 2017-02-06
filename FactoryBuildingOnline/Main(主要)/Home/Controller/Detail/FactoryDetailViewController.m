@@ -547,7 +547,7 @@
 // 发布人打电话
 - (void)callPhone {
 //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",self.contanterDic[@"phone_num"]]]];
-    NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"tel:%@",self.model.ctModel.phone_num];
+    NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"tel:%@",self.contanterDic[@"phone_num"]];
     UIWebView *callWebview = [[UIWebView alloc] init];
     [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
     [self.view addSubview:callWebview];

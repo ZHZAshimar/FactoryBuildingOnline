@@ -16,6 +16,8 @@ typedef void(^TAPBUTTONBLOCK) (NSInteger index);
 
 @property (nonatomic, copy) TAPBUTTONBLOCK tapButtonBlock;  // 点击图标按钮回调
 
+- (id)initWithFrame:(CGRect)frame andType:(int)type;
+
 - (void)removeView;
 
 @end

@@ -39,7 +39,7 @@
     [view.layer addSublayer:shapeLayer];
     
     
-    
+    // 下面的View
     UIView *viewDown = [[UIView alloc] initWithFrame:CGRectMake(0, Screen_Height*73/284, Screen_Width, Screen_Height-Screen_Height*73/284)];
     
     view.backgroundColor = [UIColor clearColor];
@@ -57,6 +57,7 @@
     shapeLayerDown.fillColor = [UIColor whiteColor].CGColor;
     [viewDown.layer addSublayer:shapeLayerDown];
     
+    // 积分兑换的白色背景的绘制
     UIBezierPath *integralPath = [UIBezierPath bezierPath];
     [integralPath moveToPoint:CGPointMake(Screen_Width, Screen_Height*73/284)];
     [integralPath addLineToPoint:CGPointMake(Screen_Width*239/320, Screen_Height*195/568)];
@@ -81,6 +82,7 @@
     greenView.backgroundColor = GREEN_19b8;
     [view addSubview:greenView];
     
+    // 靠近蓝色的那条 灰色线条的绘制
     UIBezierPath *nearBluePath = [UIBezierPath bezierPath];
     [nearBluePath moveToPoint:CGPointMake(Screen_Width*61/80, Screen_Height*97/284)];
     [nearBluePath addLineToPoint:CGPointMake(Screen_Width*61/80, Screen_Height*65/142)];
@@ -94,7 +96,7 @@
     nearBlueLayer.strokeColor = GRAY_F5.CGColor;
     [view.layer addSublayer:nearBlueLayer];
 
-    
+    // 靠近绿色的那条 灰色线条的绘制
     UIBezierPath *nearGreenPath = [UIBezierPath bezierPath];
     [nearGreenPath moveToPoint:CGPointMake(Screen_Width*25/32, Screen_Height*95/284)];
     [nearGreenPath addLineToPoint:CGPointMake(Screen_Width*25/32, Screen_Height*255/568)];

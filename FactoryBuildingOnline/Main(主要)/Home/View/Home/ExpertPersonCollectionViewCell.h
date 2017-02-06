@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PromediumsModel.h"
 
 @interface ExpertPersonCollectionViewCell : UICollectionViewCell
 
@@ -15,4 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *jobLabel;
 @property (weak, nonatomic) IBOutlet UILabel *areaLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *globImageView;
+
+@property (nonatomic, strong) PromediumsModel *model;
 @end

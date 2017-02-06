@@ -41,12 +41,12 @@
 //        [self setBottomView];
         
         NSString *strContent = @"哈哈";
-        
-        NSString *strImage = nil;
-        
-        NSString *strUrl = @"http://www.baidu.com";
-        
-        NSString *strDes = @"测试一下";
+//        
+//        NSString *strImage = nil;
+//        
+//        NSString *strUrl = @"http://www.baidu.com";
+//        
+//        NSString *strDes = @"测试一下";
         
         NSString *strTitle = @"请忽略";
         

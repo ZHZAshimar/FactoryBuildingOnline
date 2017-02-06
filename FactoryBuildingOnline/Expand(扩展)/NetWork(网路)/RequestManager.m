@@ -558,10 +558,11 @@ static AFHTTPSessionManager * instance;
  *  @param urlStr     请求接口
  *  @param params     向服务器请求时的参数
  *  @param isShow     显示提示框
+ *  @param isEncode   是否加密处理
  *  @param success    请求成功，block的参数为服务返回的数据
  *  @param failure    请求失败，block的参数为错误信息
  */
-- (void)putRequestWithService:(NSString *)urlStr andParameters:(NSDictionary *)params isShowActivity:(BOOL)isShow success:(void(^)(RequestManager *manager,NSDictionary *response))success failure:(void(^)(RequestManager *manager,NSError *error))failure{
+- (void)putRequestWithService:(NSString *)urlStr andParameters:(NSDictionary *)params isShowActivity:(BOOL)isShow isEncode:(BOOL)isEncode success:(void(^)(RequestManager *manager,NSDictionary *response))success failure:(void(^)(RequestManager *manager,NSError *error))failure{
     
     urlStr = [NSString stringWithFormat:@"%@%@",URL_HOST,urlStr];
     
@@ -571,12 +572,18 @@ static AFHTTPSessionManager * instance;
     
     NSString *time = [RequestManager getTokenAndTime];  // 设置 TIME AND TOKEN
     
-    NSString *encodeDic = [NSString dictionaryToJson:params];   // 将字典转成字符串
+    NSString *encodeStr = [NSString dictionaryToJson:params];   // 将字典转成字符串
     
-    NSString *encodeStr = [SecurityUtil AES128Encrypt:encodeDic andKey:time andIV:[time stringByReversed]];
+    if (isEncode) {
+        
+        encodeStr = [SecurityUtil AES128Encrypt:encodeStr andKey:time andIV:[time stringByReversed]];
+    }
+    
     
     params = [NSDictionary dictionary];
     params = @{@"updateUser":encodeStr};
+    
+    
     
     NSLog(@"%@",params);
     

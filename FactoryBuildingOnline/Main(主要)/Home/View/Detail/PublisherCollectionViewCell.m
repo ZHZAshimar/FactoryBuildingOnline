@@ -28,10 +28,10 @@
         // 头像的背景
         self.imageBGView.layer.borderColor = GRAY_cc.CGColor;
         self.imageBGView.layer.borderWidth = 1;
-        self.imageBGView.layer.cornerRadius = 35;
+        self.imageBGView.layer.cornerRadius = (Screen_Height*14/71)*67/112/2;
         self.imageBGView.layer.masksToBounds = YES;
         // 头像
-        self.publisherHeadImageView.layer.cornerRadius = 32;
+        self.publisherHeadImageView.layer.cornerRadius = ((Screen_Height*14/71)*67/112-3)/2;
         self.publisherHeadImageView.layer.masksToBounds = YES;
         self.publisherHeadImageView.userInteractionEnabled = YES;
         

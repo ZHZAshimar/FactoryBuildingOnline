@@ -66,6 +66,7 @@
 #define BLUE_bg   [UIColor colorWithHex:0xc3e3fa]
 #define BLUE_font [UIColor colorWithHex:0x3c97f0]
 #define BLUE_5ca6 [UIColor colorWithHex:0x5ca6ed]
+#define BLUE_FE   [UIColor colorWithHex:0x49BEFE]
 
 #define YELLOW_bg [UIColor colorWithHex:0xf7f79c]
 #define YELLOW_font [UIColor colorWithHex:0xedba1d]

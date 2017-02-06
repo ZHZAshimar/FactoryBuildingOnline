@@ -18,7 +18,7 @@
 
 @implementation AddRootView
 
-- (id)initWithFrame:(CGRect)frame {
+- (id)initWithFrame:(CGRect)frame andType:(int)type{
     
     if (self = [super initWithFrame:frame]) {
         
@@ -56,11 +56,18 @@
 //        self.button.backgroundColor = [UIColor redColor];
         self.button.frame = CGRectMake(Screen_Width/2-Screen_Height*17/142/2, Screen_Height-150-Screen_Height*17/142, Screen_Height*17/142, Screen_Height*17/142+30);
         
-        [self.button setImage:[UIImage imageNamed:@"add_reserve"] forState:UIControlStateNormal];
+        if (type == 2) {   // 身份为专家时，可发布厂房
+            [self.button setImage:[UIImage imageNamed:@"add_publish"] forState:UIControlStateNormal];
+            [self.button setTitle:@"发布" forState:UIControlStateNormal];
+            self.button.tag = 1;
+        } else {           // 身份为普通用户时，可发布需求
+            [self.button setImage:[UIImage imageNamed:@"add_reserve"] forState:UIControlStateNormal];
+            [self.button setTitle:@"预定" forState:UIControlStateNormal];
+            self.button.tag = 0;
+        }
+
         [self.button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [self.button setTitle:@"预定" forState:UIControlStateNormal];
         self.button.titleLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:14.0f]];
-        self.button.tag = 0;
         self.button.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
         self.button.titleEdgeInsets = UIEdgeInsetsMake(0, -Screen_Height*17/142, -Screen_Height*11/71, 0);
 //        self.button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;

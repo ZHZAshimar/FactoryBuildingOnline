@@ -16,7 +16,8 @@
 #import "LogoViewController.h"
 
 #import "AddRootView.h"
-#import "AddViewController.h"
+#import "ReserveViewController.h"
+#import "PublishScrollViewViewController.h"
 
 @interface BaseTabBarViewController ()<RDVTabBarControllerDelegate>
 {
@@ -157,8 +158,17 @@
     BaseNavigationController *bos = (BaseNavigationController *)viewController;
     
     if (![[bos.viewControllers objectAtIndex:0] isKindOfClass:[BaseViewController class]]) {
+        
+        NSMutableArray *userArr = [FOLUserInforModel findAll];
+        
+        if (userArr.count <= 0) {
+            [MBProgressHUD showAutoMessage:@"您还没有登录😯" ToView:nil];
+            return NO;
+        }
+        
+        FOLUserInforModel *userModel = userArr[0];
         // ➕ 按钮
-        self.addView = [[AddRootView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, Screen_Height)];
+        self.addView = [[AddRootView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, Screen_Height) andType:userModel.type];
         
         AppDelegate *appdelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         
@@ -170,10 +180,10 @@
             
             switch (index) {
                 case 0:
-                {
-                    AddViewController *addVC = [AddViewController new];
+                {   // 预定
+                    ReserveViewController *reserveVC = [ReserveViewController new];
                     
-                    BaseNavigationController *navi = [[BaseNavigationController alloc] initWithRootViewController:addVC];
+                    BaseNavigationController *navi = [[BaseNavigationController alloc] initWithRootViewController:reserveVC];
 
                     [weakSelf presentViewController:navi animated:YES completion:nil];
 
@@ -181,7 +191,20 @@
 
                 }
                     break;
+                case 1:
+                {   // 发布
+                    PublishScrollViewViewController *publishVC = [PublishScrollViewViewController new];
                     
+                    publishVC.publish_type = RENT_TYPE; // 发布类型为出租
+                    
+                    BaseNavigationController *navi = [[BaseNavigationController alloc] initWithRootViewController:publishVC];
+                    
+                    [weakSelf presentViewController:navi animated:YES completion:nil];
+                    
+                    [weakSelf.addView removeView];
+                    
+                }
+                    break;
                 default:
                     break;
             }

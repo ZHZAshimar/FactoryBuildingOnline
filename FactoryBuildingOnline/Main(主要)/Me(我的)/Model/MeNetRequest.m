@@ -95,7 +95,7 @@
     
     NSDictionary *requestDic = @{@"update_type":@(updateType),@"update_value":value};
     
-    [HTTPREQUEST_SINGLE putRequestWithService:URL_POST_LOGIN andParameters:requestDic isShowActivity:NO success:^(RequestManager *manager, NSDictionary *response) {
+    [HTTPREQUEST_SINGLE putRequestWithService:URL_POST_LOGIN andParameters:requestDic isShowActivity:NO isEncode:YES success:^(RequestManager *manager, NSDictionary *response) {
         
         int code = [response[@"erro_code"] intValue];
         

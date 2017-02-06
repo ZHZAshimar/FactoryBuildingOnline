@@ -7,6 +7,7 @@
 //
 
 #import "ExpertPersonCollectionViewCell.h"
+#import "SecurityUtil.h"
 
 @implementation ExpertPersonCollectionViewCell
 
@@ -42,6 +43,17 @@
     
     self.areaLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:self.areaLabel.font.pointSize]];
 
+}
+
+- (void)setModel:(PromediumsModel *)model {
+    
+    self.nameLabel.text = model.realName;
+    self.areaLabel.text = model.branch;
+    
+    NSString *avatarStr = [SecurityUtil decodeBase64String:model.avatar];
+    
+    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarStr] placeholderImage:[UIImage imageNamed:@"my_default"]];
+    self.jobLabel.text = [NSString stringWithFormat:@"%@年经验",model.workYear];
 }
 
 @end

@@ -6,9 +6,9 @@
 //  Copyright © 2017年 XFZY. All rights reserved.
 //
 
-#import "AddViewController.h"
+#import "ReserveViewController.h"
 
-@interface AddViewController ()<UITextViewDelegate,UITextFieldDelegate>
+@interface ReserveViewController ()<UITextViewDelegate,UITextFieldDelegate>
 
 {
     UITextField *tmpTextField;
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation AddViewController
+@implementation ReserveViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -63,9 +63,13 @@
     
     NSDictionary *requestDic = @{@"content":myTextView.text,@"callback_day":@(callBackDay)};
     
-    [HTTPREQUEST_SINGLE postRequestWithService:URL_POST_NEEDEDMESSAGE andParameters:requestDic dicIsEncode:NO success:^(RequestManager *manager, NSDictionary *response) {
-        
-        [MBProgressHUD showSuccess:response[@"msg"] ToView:nil];
+    NSString *requestSrt = [NSString dictionaryToJson:requestDic];
+    
+    NSDictionary *paramDic = @{@"publishNeed":requestSrt};
+    
+    [HTTPREQUEST_SINGLE postRequestWithService:URL_POST_NEEDEDMESSAGE andParameters:paramDic dicIsEncode:NO success:^(RequestManager *manager, NSDictionary *response) {
+        NSLog(@"需求信息发布：%@",response);
+        [MBProgressHUD showSuccess:response[@"erro_msg"] ToView:nil];
         
     } failure:^(RequestManager *manager, NSError *error) {
         NSLog(@"%@",error.debugDescription);
@@ -140,6 +144,7 @@
     [timeView addSubview:line4];
     
     NSArray *timeArray = @[@"1天",@"7天",@"30天",@"其他"];
+    
     for (int i = 0; i < 4; i++) {
         myTextField = [[UITextField alloc] initWithFrame:CGRectMake(15+(15+Screen_Width*53/320)*i, timeView.frame.size.height*7/44, Screen_Width*53/320, timeView.frame.size.height*15/22)];
         myTextField.textColor = GRAY_80;

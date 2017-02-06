@@ -20,8 +20,8 @@
         effectView.alpha = 0.93;
         [self addSubview:effectView];
         
-        NSArray *titleArr = @[@"专家",@"用户"];
-        NSArray *imgArray = @[@"broker",@"userType"];
+        NSArray *titleArr = @[@"用户",@"专家"];
+        NSArray *imgArray = @[@"userType",@"broker"];
         
         for (int i = 0; i < 2; i++) {
             

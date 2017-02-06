@@ -80,6 +80,8 @@
     self.view.backgroundColor = GRAY_F5;
     
     [self drawBgView];
+    
+//    []
 }
 
 - (void)drawBgView {
@@ -177,7 +179,10 @@
         firstHeadReusableView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"MeFirstHeadCollectionReusableView" forIndexPath:indexPath];
         firstHeadReusableView.delegate = self;
         
+        
         if (isLogin) {    // 登录状态
+            
+            userInfoModelArr = [FOLUserInforModel findAll];
             
             FOLUserInforModel *userModel = userInfoModelArr[0];
             
@@ -186,6 +191,11 @@
             [firstHeadReusableView.userHeadImageView sd_setImageWithURL:[NSURL URLWithString:userAvatar] placeholderImage:[UIImage imageNamed:@"my_default"]];
            
             [firstHeadReusableView.nameBtn setTitle:[NSString stringWithFormat:@"%@",userModel.userName] forState:0];
+            if (userModel.type == 2) {
+                firstHeadReusableView.hexagonShapeLayer.fillColor = BLUE_FE.CGColor;
+            } else {
+                firstHeadReusableView.hexagonShapeLayer.fillColor = GREEN_19b8.CGColor;
+            }
             
         } else {    // 未登录状态
             firstHeadReusableView.userHeadImageView.image = [UIImage imageNamed:@"my_default"];
@@ -286,8 +296,18 @@
                     
                     NSDictionary *requestDic = @{@"update_type":@(4),@"update_value":[NSString stringWithFormat:@"%ld",index-100+1]};
                     
-                    [HTTPREQUEST_SINGLE putRequestWithService:URL_POST_LOGIN andParameters:requestDic isShowActivity:YES success:^(RequestManager *manager, NSDictionary *response) {
+                    [HTTPREQUEST_SINGLE putRequestWithService:URL_POST_LOGIN andParameters:requestDic isShowActivity:YES isEncode:YES success:^(RequestManager *manager, NSDictionary *response) {
                         NSLog(@"身份切换：%@",response[@"erro_msg"]);
+                        [MBProgressHUD showSuccess:[NSString stringWithFormat:@"身份切换%@",response[@"erro_msg"]] ToView:nil];
+                        // 修改成功的时候
+                        if ([response[@"erro_code"] intValue] == 200) {
+                            
+                            FOLUserInforModel *userModel = [FOLUserInforModel findAll][0];
+                            // 修改数据库中 userInfo 表中的type 的值
+                            [FOLUserInforModel updateUserInfo:@"type" andupdateValue:[NSString stringWithFormat:@"%ld",index-100+1] andUserID:userModel.userID];
+                            [weakSelf.myCollectionView reloadData];
+                        }
+                        
                     } failure:^(RequestManager *manager, NSError *error) {
                         NSLog(@"身份切换：%@",error);
                     }];

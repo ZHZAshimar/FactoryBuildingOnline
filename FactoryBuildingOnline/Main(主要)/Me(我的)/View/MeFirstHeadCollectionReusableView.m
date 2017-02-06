@@ -69,11 +69,14 @@
     [path addLineToPoint:CGPointMake(btn_width, btn_height*13/54)];
     [path closePath];   // 关闭路径，形成闭合路线
     
-    CAShapeLayer *shapeLayer = [CAShapeLayer layer];
-    shapeLayer.fillColor = GREEN_19b8.CGColor;
-    shapeLayer.path = path.CGPath;
+    self.hexagonShapeLayer = [CAShapeLayer layer];
     
-    [hexagonView.layer addSublayer:shapeLayer];
+
+    self.hexagonShapeLayer.fillColor = GREEN_19b8.CGColor;
+
+    self.hexagonShapeLayer.path = path.CGPath;
+    
+    [hexagonView.layer addSublayer:self.hexagonShapeLayer];
     
     // 创建button
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];

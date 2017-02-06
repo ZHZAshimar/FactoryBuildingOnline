@@ -231,7 +231,7 @@
         
         // token 和密码 保存到本地，无需解密
 //        NSDictionary *dic = @{@"id":userDic[@"id"],@"userName":userDic[@"userName"],@"phoneNum":userDic[@"phoneNum"],@"publish_count":userDic[@"publish_count"],@"regist_time":userDic[@"regist_time"],@"avatar":userDic[@"avatar"],@"type":userDic[@"type"],@"token_time":time,@"token":response[@"token"],};
-        NSDictionary *dic = @{@"userID":userDic[@"id"],@"userName":userDic[@"username"],@"phoneNum":self.phoneNumTF.text,@"publish_count":userDic[@"publish_count"],@"regist_time":time,@"avatar": userDic[@"avatar"],@"type":@1,@"token_time":time,@"token":response[@"token"],@"password":self.pswTF.text};
+        NSDictionary *dic = @{@"userID":userDic[@"id"],@"userName":userDic[@"username"],@"phoneNum":self.phoneNumTF.text,@"publish_count":userDic[@"publish_count"],@"regist_time":time,@"avatar": userDic[@"avatar"],@"type":userDic[@"type"],@"token_time":time,@"token":response[@"token"],@"password":self.pswTF.text};
         
         FOLUserInforModel *model = [[FOLUserInforModel alloc] initWithDictionary:dic];
         

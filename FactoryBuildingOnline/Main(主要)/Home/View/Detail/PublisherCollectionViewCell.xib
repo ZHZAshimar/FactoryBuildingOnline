@@ -45,17 +45,15 @@
                         <rect key="frame" x="26" y="22.5" width="67" height="67"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="my_default" translatesAutoresizingMaskIntoConstraints="NO" id="gsl-E5-9vX">
-                                <rect key="frame" x="1.5" y="2.5" width="63" height="63"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="gsl-E5-9vX" secondAttribute="height" multiplier="1:1" id="ihi-B2-Dtn"/>
-                                </constraints>
+                                <rect key="frame" x="3" y="2.5" width="61.5" height="61.5"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="gsl-E5-9vX" firstAttribute="width" secondItem="AvD-TF-J8h" secondAttribute="width" multiplier="63:67" id="5mJ-1I-iLZ"/>
-                            <constraint firstItem="gsl-E5-9vX" firstAttribute="centerY" secondItem="AvD-TF-J8h" secondAttribute="centerY" constant="0.5" id="LpL-yf-f1L"/>
-                            <constraint firstItem="gsl-E5-9vX" firstAttribute="centerX" secondItem="AvD-TF-J8h" secondAttribute="centerX" constant="-0.5" id="QEU-Iq-Ok1"/>
+                            <constraint firstItem="gsl-E5-9vX" firstAttribute="top" secondItem="AvD-TF-J8h" secondAttribute="top" constant="3" id="76W-O5-CvO"/>
+                            <constraint firstAttribute="trailing" secondItem="gsl-E5-9vX" secondAttribute="trailing" constant="3" id="FOK-NV-vqm"/>
+                            <constraint firstAttribute="bottom" secondItem="gsl-E5-9vX" secondAttribute="bottom" constant="3" id="SVe-vE-kwK"/>
+                            <constraint firstItem="gsl-E5-9vX" firstAttribute="leading" secondItem="AvD-TF-J8h" secondAttribute="leading" constant="3" id="bxF-qu-K5x"/>
                             <constraint firstAttribute="width" secondItem="AvD-TF-J8h" secondAttribute="height" multiplier="1:1" id="tTZ-64-ZbZ"/>
                         </constraints>
                     </view>

@@ -300,7 +300,7 @@ typedef enum{
         
         NSLog(@"user %@",userDic);
         
-        NSDictionary *responsedic = @{@"userID":userDic[@"id"],@"userName":userDic[@"username"],@"phoneNum":self.loginOfUserView.userTF.text,@"publish_count":userDic[@"publish_count"],@"regist_time":userDic[@"regist_time"],@"avatar":userDic[@"avatar"],@"type":@1,@"token_time":time,@"token":response[@"token"],@"password":self.loginOfUserView.pswTF.text};
+        NSDictionary *responsedic = @{@"userID":userDic[@"id"],@"userName":userDic[@"username"],@"phoneNum":self.loginOfUserView.userTF.text,@"publish_count":userDic[@"publish_count"],@"regist_time":userDic[@"regist_time"],@"avatar":userDic[@"avatar"],@"type":userDic[@"type"],@"token_time":time,@"token":response[@"token"],@"password":self.loginOfUserView.pswTF.text};
         
         FOLUserInforModel *usermodel = [[FOLUserInforModel alloc] initWithDictionary:responsedic];
         [FOLUserInforModel insertUserInfoModel:usermodel];

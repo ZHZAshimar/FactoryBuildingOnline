@@ -56,16 +56,18 @@
  *  @param failure    请求失败，block的参数为错误信息
  */
 - (void)postRequestWithURL:(NSString *)urlStr andParameters:(NSDictionary *)params andShowAction:(BOOL)isShow success:(void (^)(RequestManager *manager,NSDictionary *response))success failure:(void (^)(RequestManager *manager, NSError *error))failure;
+
 /**
  *  PUT 请求 带token
  *
  *  @param urlStr     请求接口
  *  @param params     向服务器请求时的参数
  *  @param isShow     显示提示框
+ *  @param isEncode   是否加密处理
  *  @param success    请求成功，block的参数为服务返回的数据
  *  @param failure    请求失败，block的参数为错误信息
  */
-- (void)putRequestWithService:(NSString *)urlStr andParameters:(NSDictionary *)params isShowActivity:(BOOL)isShow success:(void(^)(RequestManager *manager,NSDictionary *response))success failure:(void(^)(RequestManager *manager,NSError *error))failure;
+- (void)putRequestWithService:(NSString *)urlStr andParameters:(NSDictionary *)params isShowActivity:(BOOL)isShow isEncode:(BOOL)isEncode success:(void(^)(RequestManager *manager,NSDictionary *response))success failure:(void(^)(RequestManager *manager,NSError *error))failure;
 
 /**
  *  get请求 不带header

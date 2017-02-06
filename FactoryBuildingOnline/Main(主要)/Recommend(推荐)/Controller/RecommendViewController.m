@@ -121,13 +121,13 @@
     self.segmentedZoneStr = @"区域";
     self.segmentedPriceStr = @"价格";
     self.segmentedAreaStr = @"面积";
-    self.segmentedClassify = @"分类";
+//    self.segmentedClassify = @"分类";
     self.requestDic = [NSMutableDictionary dictionary];
     self.requestTypeArr = [NSMutableArray array];
     requestMaxDic = [NSMutableDictionary dictionary];
     requestMinDic = [NSMutableDictionary dictionary];
     
-    _segmentedTitleArray = @[self.segmentedZoneStr,self.segmentedPriceStr,self.segmentedAreaStr,self.segmentedClassify];
+    _segmentedTitleArray = @[self.segmentedZoneStr,self.segmentedPriceStr,self.segmentedAreaStr];
     
     self.mDataSource = [NSMutableArray array];
     
@@ -232,7 +232,7 @@
             [self segmentedControl:2];
         }
         
-        self.segmentedTitleArray = @[self.segmentedZoneStr,self.segmentedPriceStr,self.segmentedAreaStr,self.segmentedClassify];
+        self.segmentedTitleArray = @[self.segmentedZoneStr,self.segmentedPriceStr,self.segmentedAreaStr];
     }
     if (![self.requestTypeArr containsObject:@(type)]) {
         [self.requestTypeArr addObject:@(type)];
@@ -383,7 +383,7 @@
     
     [_selectBgView removeFromSuperview];        // 移除背景view
     
-    self.selectBgView = [[SelectBgView alloc] initWithFrame:CGRectMake(0, 40, Screen_Width, Screen_Height/2) withIndex:index];    // 初始化背景view
+    self.selectBgView = [[SelectBgView alloc] initWithFrame:CGRectMake(0, 40, Screen_Width, Screen_Height-80) withIndex:index];    // 初始化背景view
     
     [self.view addSubview:self.selectBgView];
     
@@ -457,7 +457,7 @@
                 weakSelf.segmentedZoneStr = [NSString stringWithFormat:@"  %@  ",selectStr];
             }
             weakSelf.rightSelectIndex = indexPath.row;
-            weakSelf.segmentedTitleArray = @[weakSelf.segmentedZoneStr,weakSelf.segmentedPriceStr,weakSelf.segmentedAreaStr,weakSelf.segmentedClassify];
+            weakSelf.segmentedTitleArray = @[weakSelf.segmentedZoneStr,weakSelf.segmentedPriceStr,weakSelf.segmentedAreaStr];
 //        }
         [weakSelf segmentedControl:index];
         NSLog(@"%@",weakSelf.segmentedZoneStr);
@@ -494,7 +494,7 @@
         
         if (index > 1) {    // 面积
             weakSelf.segmentedAreaStr = price;
-            weakSelf.segmentedTitleArray = @[weakSelf.segmentedZoneStr,weakSelf.segmentedPriceStr,weakSelf.segmentedAreaStr,weakSelf.segmentedClassify];
+            weakSelf.segmentedTitleArray = @[weakSelf.segmentedZoneStr,weakSelf.segmentedPriceStr,weakSelf.segmentedAreaStr];
 
             weakSelf.areaSelectIndex = indexPath.row;
             // 另外两个 selectIndex 为o
@@ -504,7 +504,7 @@
             
         } else {            // 价格
             weakSelf.segmentedPriceStr = price;
-            weakSelf.segmentedTitleArray = @[weakSelf.segmentedZoneStr,weakSelf.segmentedPriceStr,weakSelf.segmentedAreaStr,weakSelf.segmentedClassify];
+            weakSelf.segmentedTitleArray = @[weakSelf.segmentedZoneStr,weakSelf.segmentedPriceStr,weakSelf.segmentedAreaStr];
             weakSelf.priceSelectIndex = indexPath.row;
             // 另外两个 selectIndex 为o
             weakSelf.areaSelectIndex = weakSelf.areaSelectIndex;
@@ -533,15 +533,15 @@
         // 初始化 segmentedControl
 //    _segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:self.segmentedTitleArray];
     _segmentedControl = [[HMSegmentedControl alloc] initWithSectionImages:
-                         @[[UIImage imageNamed:@"turnDown"],[UIImage imageNamed:@"turnDown"],[UIImage imageNamed:@"turnDown"],[UIImage imageNamed:@"turnDown"]]
-                        sectionSelectedImages:@[[UIImage imageNamed:@"turnUp"],[UIImage imageNamed:@"turnUp"],[UIImage imageNamed:@"turnUp"],[UIImage imageNamed:@"turnUp"]] titlesForSections:self.segmentedTitleArray showTextAndImage:YES];
+                         @[[UIImage imageNamed:@"turnDown"],[UIImage imageNamed:@"turnDown"],[UIImage imageNamed:@"turnDown"]]
+                        sectionSelectedImages:@[[UIImage imageNamed:@"turnUp"],[UIImage imageNamed:@"turnUp"],[UIImage imageNamed:@"turnUp"]] titlesForSections:self.segmentedTitleArray showTextAndImage:YES];
     
     [self.view addSubview:_segmentedControl];
     // 设置分段控件的背景颜色
     _segmentedControl.backgroundColor = [UIColor whiteColor];
 
     _segmentedControl.selectionIndicatorHeight = 5;         // 设置指示器的高度 为了来控制中间分割线的高度
-    _segmentedControl.selectionIndicatorColor = [UIColor redColor];
+    _segmentedControl.selectionIndicatorColor = [UIColor whiteColor];
     // 两个按钮之间的分割线
     _segmentedControl.verticalDividerWidth = 1;
     _segmentedControl.verticalDividerColor = GRAY_eb;

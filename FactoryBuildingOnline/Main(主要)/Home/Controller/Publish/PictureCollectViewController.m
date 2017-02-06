@@ -186,11 +186,12 @@
     NSMutableArray *mArrImageName = [NSMutableArray array];
     
     for (int i = 0; i < photos.count; i++) {
+        // 对图片的名称进行处理规则为 factory+"_"+UUID (UUID每次请求都是不同的)
         [mArrImageName addObject:[NSString stringWithFormat:@"factory_%@.jpg",[[NSUUID UUID] UUIDString]]];
     }
     
     [MBProgressHUD showAction:@"加载中..." ToView:nil];
-    
+    // 获取上传七牛的令牌
     [HTTPREQUEST_SINGLE requestWithServiceOfCollection:@"qiniutokens/1/" andParameters:nil requestType:0 isShowActivity:NO success:^(RequestManager *manager, NSDictionary *response) {
         
         NSLog(@"%@--%@",response,response[@"token"]);
@@ -210,6 +211,7 @@
             for (int i = 0; i < photos.count; i++) {
                 
                 NSData *data = [self compressOriginalImage:photos[i] toMaxDataSizeKBytes:100.0f];      // 压缩图片到 100K
+                
                 QNUploadOption *uploadOption = [[QNUploadOption alloc] initWithProgressHandler:^(NSString *key, float percent) {
                     NSLog(@"percent = %f",percent);
                     dispatch_async(dispatch_get_main_queue(), ^{
@@ -218,39 +220,48 @@
                     });
                 }];
                 __block int count = 0;
+                // 将数据上传到七牛
                 [upManager putData:data key:mArrImageName[i] token:token
                           complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
-                              
+                      
                       NSLog(@"%d -- %@", i, info);
                       NSLog(@"%@", resp);
+                      
+                      @try {
+                          if (resp == nil) {
                               
-                      if (resp == nil) {
-                          
-                          NSLog(@"%d--%d -- %@",i,count,self.dataSource);
-                          if (count > 0) {
-                              
-                              [self.dataSource removeObjectAtIndex:i-count];
-                          } else {
-                          
-                              [self.dataSource removeObjectAtIndex:i];
-                          }
-                          count ++;
-                      } else {
-                          if (self.littleBtnPhotos.count > 0) {
-                              [self.dataSource addObject:photos[i]];
-                          }
+                              NSLog(@"%d--%d -- %@",i,count,self.dataSource);
+                              if (count > 0) {
                                   
-                          [self.mArrImageKey addObject:resp[@"key"]];
-                      }
-                      NSLog(@"imageKey:%@- dataSource:%@",self.mArrImageKey,self.dataSource);
+                                  [self.dataSource removeObjectAtIndex:i-count];
+                              } else {
+                                  
+                                  [self.dataSource removeObjectAtIndex:i];
+                              }
+                              count ++;
+                          } else {
+                              if (self.littleBtnPhotos.count > 0) {
+                                  [self.dataSource addObject:photos[i]];
+                              }
                               
-                      [self.myCollectionView reloadData];
-                              
-                      if (i+1 == photos.count) {
-                          dispatch_async(dispatch_get_main_queue(), ^{
-                              self.littleBtnPhotos = nil;
-                          });
+                              [self.mArrImageKey addObject:resp[@"key"]];
+                          }
+                          NSLog(@"imageKey:%@- dataSource:%@",self.mArrImageKey,self.dataSource);
+                          
+                          [self.myCollectionView reloadData];
+                          
+                          if (i+1 == photos.count) {
+                              dispatch_async(dispatch_get_main_queue(), ^{
+                                  self.littleBtnPhotos = nil;
+                              });
+                          }
+                          
+                      } @catch (NSException *exception) {
+                          NSLog(@"%@",exception);
+                      } @finally {
+                          
                       }
+                              
                               
                   } option:uploadOption];
                 
@@ -327,12 +338,12 @@
 #pragma mark - collectionView delegate 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.item == self.dataSource.count) {
+    if (indexPath.item == self.dataSource.count) {  // 点击 ➕号的响应事件
         
-        int shounldSelectImageCount = 9 - (int)self.dataSource.count;
+        int shounldSelectImageCount = 9 - (int)self.dataSource.count;   // 判断应该选择几张图片
         
-        if (shounldSelectImageCount <= 0) {
-            
+        if (shounldSelectImageCount <= 0) {    // 当应当选择的图片数量小于零时，则不能进行图片选择
+            // 弹出提示框
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:@"最多只能选择9张图片" preferredStyle:UIAlertControllerStyleAlert];
             
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
@@ -343,13 +354,13 @@
             
             [self presentViewController:alertController animated:YES completion:nil];
         }
-        
+        // 进行图片选择
         TZImagePickerController *imagePickerVC = [[TZImagePickerController alloc] initWithMaxImagesCount:shounldSelectImageCount columnNumber:3 delegate:self pushPhotoPickerVc:YES];
         
         imagePickerVC.sortAscendingByModificationDate = NO;
         
         __weak typeof(self) weakSelf = self;
-        
+        // 选中图片的回调
         [imagePickerVC setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
             
             [self pushPictureToQiniu:photos];       // 将选中的图片上传至7牛

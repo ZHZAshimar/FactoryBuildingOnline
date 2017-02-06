@@ -22,6 +22,7 @@
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RVB-zq-1UK">
                         <rect key="frame" x="96.5" y="37.5" width="32" height="32"/>
+                        <color key="tintColor" red="0.28627450980392155" green="0.74509803921568629" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="RVB-zq-1UK" secondAttribute="height" multiplier="1:1" id="jhn-Eq-Zd8"/>
                         </constraints>

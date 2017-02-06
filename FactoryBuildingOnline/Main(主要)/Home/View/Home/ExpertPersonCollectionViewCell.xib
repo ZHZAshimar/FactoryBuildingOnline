@@ -46,9 +46,9 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_goldmedal" translatesAutoresizingMaskIntoConstraints="NO" id="KzC-4H-57A">
-                        <rect key="frame" x="269" y="31" width="31" height="25"/>
+                        <rect key="frame" x="280" y="35.5" width="20" height="16"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="31" id="Mij-KF-d8e"/>
+                            <constraint firstAttribute="width" constant="20" id="Mij-KF-d8e"/>
                             <constraint firstAttribute="width" secondItem="KzC-4H-57A" secondAttribute="height" multiplier="31:25" id="eYd-eS-W9T"/>
                         </constraints>
                     </imageView>
