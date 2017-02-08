@@ -7,7 +7,7 @@
 //  首页的专家
 
 #import "ExpertOfHomeViewController.h"
-
+#import "BrokerInfoViewController.h"
 
 #import "ExpertAearHeadCollectionReusableView.h"    // 地方区域名
 #import "ExpertImageCollectionReusableView.h"   // 销售冠军
@@ -17,6 +17,7 @@
 
 #import "ExpertHomeRequest.h"
 #import "PromediumsModel.h"
+#import "BrancheModel.h"
 
 @interface ExpertOfHomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
@@ -39,8 +40,6 @@
 }
 
 - (void)getData {
-    
-    
     
     ExpertHomeRequest *expertRequest = [ExpertHomeRequest new];
     
@@ -82,7 +81,7 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(Screen_Width, Screen_Height * 43/284);
+    return CGSizeMake(Screen_Width, Screen_Height * 10/71);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
@@ -108,12 +107,13 @@
             
             ExpertAearHeadCollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"ExpertAearHeadCollectionReusableView" forIndexPath:indexPath];
             
+            headerView.mDataArray = [BrancheModel findAll];
 //            __weak typeof(self) weakSelf = self;
             
-            headerView.areaBlock = ^(NSInteger index, NSString *areaStr) {
+            headerView.areaBlock = ^(NSInteger index, BrancheModel *model) {
                 // 跳转到区域经纪人
                 BrokerAreaViewController *brokerAreaVC = [BrokerAreaViewController new];
-                brokerAreaVC.titleStr = areaStr;
+                brokerAreaVC.model = model;
                 [self.navigationController pushViewController:brokerAreaVC animated:YES];
             };
             
@@ -150,6 +150,23 @@
     cell = personCell;
     
     return cell;
+}
+
+#pragma mark - 跳转到专家详情页
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section == 1) {
+        BrokerInfoViewController *brokerInfoVC = [BrokerInfoViewController new];
+        
+        PromediumsModel *model = self.promediumsTOPArray[indexPath.item];
+        
+        NSDictionary *brokerDic = @{@"branch":model.branch,@"real_name":model.realName,@"id":@(model.promediumsID),@"year_experience":model.workYear,@"avatar":model.avatar,@"phone_num":model.phoneNum};
+        
+        brokerInfoVC.infoDic = brokerDic;
+        
+        [self.navigationController pushViewController:brokerInfoVC animated:YES];
+    }
+    
 }
 
 #pragma mark - 

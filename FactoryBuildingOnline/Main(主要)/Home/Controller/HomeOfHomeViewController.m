@@ -121,7 +121,7 @@
             return CGSizeMake(Screen_Width*17/40, (Screen_Width*17/40)*35/69);
             break;
         case 1:case 2:
-            return CGSizeMake(self_width, self_width*17/32);    // 用宽高的比例去算
+            return CGSizeMake(self_width, self_width*83/160);    // 用宽高的比例去算
             break;
         default:
             break;

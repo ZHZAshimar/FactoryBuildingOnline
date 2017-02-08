@@ -22,7 +22,8 @@
 @property (nonatomic, strong) NSString *update_time;
 /// contacter 联系人ID 用于关联 联系人表
 @property (nonatomic, strong) ContacterModel *ctModel;
-
+/// 浏览量
+@property (nonatomic, assign) NSInteger view_count;
 /// 发布人的id
 @property (nonatomic, assign) NSInteger owner_id;
 /// 工厂ID 用于关联 厂房详情的表

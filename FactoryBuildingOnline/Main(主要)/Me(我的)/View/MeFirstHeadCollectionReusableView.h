@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FOLUserInforModel.h"
 
 @protocol MeFirstHeadCollectionReusableViewDelegate <NSObject>
 
@@ -35,5 +36,7 @@
 @property (nonatomic, strong) CAShapeLayer *hexagonShapeLayer;
 
 @property (nonatomic, weak) id<MeFirstHeadCollectionReusableViewDelegate> delegate;
+
+@property (nonatomic, strong) FOLUserInforModel *userModel;
 
 @end

@@ -9,10 +9,14 @@
 #import "BoutiqueViewController.h"
 
 #import "BoutiqueCollectionViewCell.h"
+#import "FactoryDetailViewController.h"
+
+#import "BoutiqueRequest.h"
 
 @interface BoutiqueViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UICollectionView *myCollectionView;
+@property (nonatomic, strong) NSArray *dataArray;
 @end
 
 @implementation BoutiqueViewController
@@ -20,10 +24,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.dataArray = [NSArray array];
     
     self.myCollectionView.delegate = self;
     
     self.myCollectionView.dataSource = self;
+    
+    [self getBoutiqueFactoryData];
+}
+
+#pragma mark - 获取精品厂房的数据
+- (void)getBoutiqueFactoryData {
+    
+    BoutiqueRequest *request = [BoutiqueRequest new];
+    
+    [request getBoutiqueFactoryData];
+    __weak typeof(self) weakSelf = self;
+    request.dataBlock = ^(NSMutableArray *mArr) {
+        
+        weakSelf.dataArray = mArr;
+        [weakSelf.myCollectionView reloadData];
+    };
 }
 
 #pragma mark - scrollView delegate
@@ -50,7 +71,7 @@
 
 #pragma mark - collection dele
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 3;
+    return self.dataArray.count;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -67,8 +88,17 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     BoutiqueCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BoutiqueCollectionViewCell" forIndexPath:indexPath];
-    
+    cell.model = self.dataArray[indexPath.section];
     return cell;
+}
+#pragma mark - 跳转到厂房详情
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    FactoryDetailViewController *factoryDetailVC = [FactoryDetailViewController new];
+    
+    factoryDetailVC.model = self.dataArray[indexPath.section];
+    
+    [self.navigationController pushViewController:factoryDetailVC animated:YES];
 }
 
 

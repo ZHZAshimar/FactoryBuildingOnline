@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BrancheModel.h"
 
 @interface AreaCollectionViewCell : UICollectionViewCell
+
 @property (weak, nonatomic) IBOutlet UIImageView *areaImageView;
 
 @property (weak, nonatomic) IBOutlet UILabel *areaLabel;
+
+@property (nonatomic, strong) BrancheModel *model;
 
 @end

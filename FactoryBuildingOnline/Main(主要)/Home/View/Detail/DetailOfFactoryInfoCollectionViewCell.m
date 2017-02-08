@@ -51,10 +51,10 @@
     
     NSString *time = [NSString getTimeFormatter:dataDic[@"created_time"]];
     self.publishTimeLabel.text = time;
-//    int count = (arc4random()%280) + 1;
-    self.scanCountLabel.text = [NSString stringWithFormat:@"%d",40];
+    self.scanCountLabel.text = [NSString stringWithFormat:@"%d",[dataDic[@"view_count"] integerValue]];
     self.rentTypeLabel.text = dataDic[@"rent_type"];
     self.cashpledgeLabel.text = dataDic[@"pre_pay"];
+    self.numberLabel.text = [NSString stringWithFormat:@"%@",dataDic[@"factory_id"]];
 }
 
 - (void)awakeFromNib {

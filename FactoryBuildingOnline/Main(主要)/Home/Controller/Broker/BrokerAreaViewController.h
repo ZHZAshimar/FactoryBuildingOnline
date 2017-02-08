@@ -7,9 +7,9 @@
 //
 
 #import "BaseViewController.h"
-
+#import "BrancheModel.h"
 @interface BrokerAreaViewController : BaseViewController
 
-@property (nonatomic, strong) NSString *titleStr;
+@property (nonatomic, strong) BrancheModel *model;
 
 @end

@@ -226,6 +226,8 @@
         
     } failure:^(RequestManager *manager, NSError *error) {
         
+        
+        
     }];
     
 }
@@ -270,6 +272,38 @@
         
     } failure:^(RequestManager *manager, NSError *error) {
         
+    }];
+    
+}
+
+/**
+ *  获取历史记录  path My 页面
+ *
+ */
+- (void)getHistoryData {
+    
+    [MBProgressHUD showAction:@"正在加载" ToView:nil];
+    
+    [HTTPREQUEST_SINGLE getUserInfo:URL_GET_HISTORY andParameters:nil success:^(RequestManager *manager, NSDictionary *response, NSString *time) {
+        [MBProgressHUD hideHUD];
+        
+        NSLog(@"历史记录：%@",response);
+        
+        if ([response[@"erro_code"] intValue] != 200) {
+            return ;
+        }
+        
+        NSMutableArray *mArray = [RequestMessage dealWithDatabase:response andArray:response[@"wantedMessage"] andWriteSQL:NO];
+        
+        [self.delegate refreshView:mArray];   // 代理赋值
+        
+    } failure:^(RequestManager *manager, NSError *error) {
+        [MBProgressHUD hideHUD];
+        NSLog(@"历史记录：%@", error);
+        // 当请求失败时，返回一个空的数组，以判断请求失败
+        NSMutableArray *array = [NSMutableArray array];
+        
+        [self.delegate refreshView:array];
     }];
     
 }
@@ -319,6 +353,7 @@
         NSString *f_tags_str = [NSString arrayToJson:f_tags];
         
         NSInteger userid = [wmDic[@"id"] integerValue];
+        NSInteger view_count = [wmDic[@"view_count"] integerValue];
         NSInteger update_id = [wmDic[@"update_id"] integerValue];
         NSInteger delete_id = [wmDic[@"delete_id"] integerValue];
         NSString * update_time = wmDic[@"update_time"];
@@ -334,7 +369,7 @@
         
         FactoryModel *factoryModel = [[FactoryModel alloc] initWithDictionary:f_dic];
         
-        NSDictionary *wantedDic = @{@"id":@(userid),@"update_id":@(update_id),
+        NSDictionary *wantedDic = @{@"id":@(userid),@"view_count":@(view_count),@"update_id":@(update_id),
                                     @"delete_id":@(delete_id),@"update_time":update_time,
                                     @"ctModel":contacterModel,@"owner_id":@(owner_id),
                                     @"ftModel":factoryModel,@"isCollect":@(isCollect),

@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^AREABLOCK) (NSInteger index, NSString *areaStr);
+#import "BrancheModel.h"
+typedef void(^AREABLOCK) (NSInteger index, BrancheModel *model);
 
 @interface ExpertAearHeadCollectionReusableView : UICollectionReusableView
 
 @property (nonatomic, copy) AREABLOCK areaBlock;
+
+@property (nonatomic, strong) NSMutableArray *mDataArray;
 
 @end

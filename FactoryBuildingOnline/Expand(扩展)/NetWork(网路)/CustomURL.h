@@ -75,7 +75,6 @@
  */
 #define URL_GET_Factorypois @"factorypois/district/"
 
-
 /**
  *  获取当前登录用户发布的文章
  *
@@ -151,3 +150,25 @@
  *  @return
  */
 #define URL_GET_BRANCHES  @"branches"
+
+/**
+ *  GET 首页的优质厂房 （精品厂房）
+ *  /wantedmessages/fabulous
+ *  @return
+ */
+#define URL_GET_BOUTIQUE  @"wantedmessages/fabulous"
+
+
+/**
+ *  GET 用户浏览的厂房历史信息
+ *
+ *  @return
+ */
+#define URL_GET_HISTORY  @"user/historys/wantedmessages/"
+
+/**
+ *  DELECT 退出登录
+ *
+ *  @return
+ */
+#define URL_DELECT_QUIT  @"user/"

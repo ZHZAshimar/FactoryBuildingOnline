@@ -67,7 +67,7 @@
     
     NSDictionary *paramDic = @{@"publishNeed":requestSrt};
     
-    [HTTPREQUEST_SINGLE postRequestWithService:URL_POST_NEEDEDMESSAGE andParameters:paramDic dicIsEncode:NO success:^(RequestManager *manager, NSDictionary *response) {
+    [HTTPREQUEST_SINGLE postRequestWithService:URL_POST_NEEDEDMESSAGE andParameters:paramDic isShowActivity:YES dicIsEncode:NO success:^(RequestManager *manager, NSDictionary *response) {
         NSLog(@"需求信息发布：%@",response);
         [MBProgressHUD showSuccess:response[@"erro_msg"] ToView:nil];
         

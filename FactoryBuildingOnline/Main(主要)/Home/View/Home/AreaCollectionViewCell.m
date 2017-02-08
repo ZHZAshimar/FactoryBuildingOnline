@@ -43,4 +43,10 @@
     _areaLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:_areaLabel.font.pointSize]];
 }
 
+- (void)setModel:(BrancheModel *)model {
+    
+    self.areaLabel.text = model.name;
+    
+}
+
 @end

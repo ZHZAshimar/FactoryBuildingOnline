@@ -223,13 +223,15 @@ static AFHTTPSessionManager * instance;
  *  @param success    请求成功，block的参数为服务返回的数据
  *  @param failure    请求失败，block的参数为错误信息
  */
-- (void)postRequestWithService:(NSString *)urlStr andParameters:(NSDictionary *)params dicIsEncode:(BOOL)isEncode success:(void(^)(RequestManager *manager,NSDictionary *response))success failure:(void(^)(RequestManager *manager,NSError *error))failure {
+- (void)postRequestWithService:(NSString *)urlStr andParameters:(NSDictionary *)params isShowActivity:(BOOL)isShow dicIsEncode:(BOOL)isEncode success:(void(^)(RequestManager *manager,NSDictionary *response))success failure:(void(^)(RequestManager *manager,NSError *error))failure {
 
     urlStr = [NSString stringWithFormat:@"%@%@",URL_HOST,urlStr];
     
     __weak RequestManager *weakSelf = self;
     
-    [MBProgressHUD showAction:@"光速加载..." ToView:nil];
+    if (isShow) {
+        [MBProgressHUD showAction:@"光速加载..." ToView:nil];
+    }
     
     [RequestManager getTokenAndTime];
     
@@ -292,6 +294,7 @@ static AFHTTPSessionManager * instance;
         success(weakSelf,response,time);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@",error.debugDescription);
         // 获取 http 错误状态 当errorcode = 401 是大部分都是token的问题，当出现两端登录时，一端的token则作废，发送通知提示重新登录
         if ([error.userInfo[AFNetworkingOperationFailingURLResponseErrorKey] statusCode] == 401) {
             NSLog(@"401");
@@ -330,7 +333,7 @@ static AFHTTPSessionManager * instance;
         
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        if (isShow) [MBProgressHUD hideHUD];
+        [MBProgressHUD hideHUD];
         NSLog(@"error :%@",error.debugDescription);
         // 通过block,将错误信息
         if (failure) {
@@ -608,6 +611,41 @@ static AFHTTPSessionManager * instance;
         if (failure) {
             failure(weakSelf,error);    // 通过block,将错误信息回调
         }
+    }];
+    
+}
+/**
+ *  Delect 退出登录
+ *
+ *  @param urlStr     请求接口
+ *  @param params     向服务器请求时的参数
+ *  @param isShow     显示提示框
+ *  @param success    请求成功，block的参数为服务返回的数据
+ *  @param failure    请求失败，block的参数为错误信息
+ */
+- (void)delectWithQuitLogin:(NSString *)urlStr andParameters:(NSDictionary *)params isShowActivity:(BOOL)isShow success:(void(^)(RequestManager *manager,NSDictionary *response))success failure:(void(^)(RequestManager *manager,NSError *error))failure {
+    
+    urlStr = [NSString stringWithFormat:@"%@%@",URL_HOST,urlStr];
+    
+    __weak RequestManager *weakSelf = self;
+    
+    if (isShow) [MBProgressHUD showAction:@"正在退出..." ToView:nil];
+    
+    [RequestManager getTokenAndTime];   // 添加token 和 time
+    
+    [instance DELETE:urlStr parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        if (isShow) [MBProgressHUD hideHUD];
+        
+        NSDictionary *responseDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
+        
+
+        success(weakSelf, responseDic);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        if (isShow) [MBProgressHUD hideHUD];
+        
+        failure(weakSelf, error);
     }];
     
 }

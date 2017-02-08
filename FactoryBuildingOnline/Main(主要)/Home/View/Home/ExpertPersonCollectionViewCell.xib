@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,21 +14,21 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ExpertPersonCollectionViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="87"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="87"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YKz-gN-1UJ">
-                        <rect key="frame" x="20" y="14" width="58" height="58"/>
+                        <rect key="frame" x="20" y="15" width="50" height="50"/>
                         <color key="backgroundColor" red="0.93305837560000005" green="0.52120499789999997" blue="0.53376418979999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="YKz-gN-1UJ" secondAttribute="height" multiplier="1:1" id="OOd-rw-gxX"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="刘大大" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9Q-vO-yGp">
-                        <rect key="frame" x="88" y="14" width="160" height="29"/>
+                        <rect key="frame" x="80" y="15" width="160" height="25"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="160" id="iAh-Ez-Nrj"/>
                         </constraints>
@@ -37,7 +37,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="客户经理" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5rO-mf-Jar">
-                        <rect key="frame" x="88" y="42" width="57.5" height="30"/>
+                        <rect key="frame" x="80" y="39" width="57.5" height="26"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="108" id="L9x-Rm-mjJ"/>
                         </constraints>
@@ -46,21 +46,21 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_goldmedal" translatesAutoresizingMaskIntoConstraints="NO" id="KzC-4H-57A">
-                        <rect key="frame" x="280" y="35.5" width="20" height="16"/>
+                        <rect key="frame" x="280" y="32" width="20" height="16"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="20" id="Mij-KF-d8e"/>
                             <constraint firstAttribute="width" secondItem="KzC-4H-57A" secondAttribute="height" multiplier="31:25" id="eYd-eS-W9T"/>
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hla-aZ-jSs">
-                        <rect key="frame" x="20" y="87" width="280" height="0.0"/>
+                        <rect key="frame" x="20" y="80" width="280" height="0.0"/>
                         <color key="backgroundColor" red="0.92931067943572998" green="0.92946994304656982" blue="0.92930072546005249" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="0.5" id="EuH-hd-7d6"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大岭山分部" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnz-uO-Pg8">
-                        <rect key="frame" x="171.5" y="42" width="87" height="30"/>
+                        <rect key="frame" x="171.5" y="39" width="87" height="26"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="87" id="oao-ax-Jvt"/>
                         </constraints>
@@ -79,7 +79,7 @@
                 <constraint firstAttribute="bottom" secondItem="hla-aZ-jSs" secondAttribute="bottom" id="WId-tM-qPE"/>
                 <constraint firstAttribute="trailing" secondItem="hla-aZ-jSs" secondAttribute="trailing" constant="20" id="XZf-JU-ikB"/>
                 <constraint firstItem="YKz-gN-1UJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="Y6H-Gy-7r6"/>
-                <constraint firstItem="YKz-gN-1UJ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="14" id="eqy-2y-sOE"/>
+                <constraint firstItem="YKz-gN-1UJ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="eqy-2y-sOE"/>
                 <constraint firstItem="v9Q-vO-yGp" firstAttribute="top" secondItem="YKz-gN-1UJ" secondAttribute="top" id="gG5-G4-wWs"/>
                 <constraint firstItem="KzC-4H-57A" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="gKT-qw-XiT"/>
                 <constraint firstItem="5rO-mf-Jar" firstAttribute="top" secondItem="v9Q-vO-yGp" secondAttribute="bottom" constant="-1" id="mkl-m8-HkH"/>
@@ -90,7 +90,7 @@
                 <constraint firstItem="5rO-mf-Jar" firstAttribute="leading" secondItem="v9Q-vO-yGp" secondAttribute="leading" id="wIM-BR-I8i"/>
                 <constraint firstItem="v9Q-vO-yGp" firstAttribute="height" secondItem="YKz-gN-1UJ" secondAttribute="height" multiplier="1:2" id="wWg-hU-i1c"/>
             </constraints>
-            <size key="customSize" width="514" height="90"/>
+            <size key="customSize" width="514" height="97"/>
             <connections>
                 <outlet property="areaLabel" destination="bnz-uO-Pg8" id="oWD-9D-7Qo"/>
                 <outlet property="avatarImageView" destination="YKz-gN-1UJ" id="BpM-8s-uvA"/>
@@ -98,7 +98,7 @@
                 <outlet property="jobLabel" destination="5rO-mf-Jar" id="Gla-YH-7P4"/>
                 <outlet property="nameLabel" destination="v9Q-vO-yGp" id="k7a-OZ-c9p"/>
             </connections>
-            <point key="canvasLocation" x="-32" y="88.5"/>
+            <point key="canvasLocation" x="-32" y="92"/>
         </collectionViewCell>
     </objects>
     <resources>

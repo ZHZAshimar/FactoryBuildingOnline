@@ -480,7 +480,7 @@
     
     NSString *publishStr = [NSString dictionaryToJson:publishDic];
     
-    [HTTPREQUEST_SINGLE postRequestWithService:URL_POST_PUBLISH andParameters:@{@"publish":publishStr} dicIsEncode:NO success:^(RequestManager *manager, NSDictionary *response) {
+    [HTTPREQUEST_SINGLE postRequestWithService:URL_POST_PUBLISH andParameters:@{@"publish":publishStr} isShowActivity:YES dicIsEncode:NO success:^(RequestManager *manager, NSDictionary *response) {
         NSLog(@"发布：%@",response);
         if ([response[@"erro_code"] intValue] != 200) [MBProgressHUD showSuccess:@"发布失败" ToView:nil];
         else [MBProgressHUD showSuccess:@"发布成功" ToView:nil];

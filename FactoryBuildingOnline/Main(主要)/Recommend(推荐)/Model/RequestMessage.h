@@ -84,5 +84,10 @@ typedef void(^REQUESTDATABLOCK) (NSDictionary *response); // 用于收藏的回�
  */
 - (void) getPublisherInfomation :(NSString *)publisherID;
 
+/**
+ *  获取历史记录  path My 页面
+ *
+ */
+- (void)getHistoryData;
 
 @end

@@ -287,10 +287,10 @@
         _naviSegmentedControl.frame = CGRectMake(Screen_Width/2, 5, Screen_Width/2-26, 30);
         
         // set font's style on normal
-        _naviSegmentedControl.titleTextAttributes = @{NSForegroundColorAttributeName:GRAY_80,NSFontAttributeName:[UIFont adjustFont:[UIFont systemFontOfSize:16.0]]};
+        _naviSegmentedControl.titleTextAttributes = @{NSForegroundColorAttributeName:GRAY_80,NSFontAttributeName:[UIFont adjustFont:[UIFont systemFontOfSize:15.0]]};
         
         // set font's style on selected
-        _naviSegmentedControl.selectedTitleTextAttributes = @{NSForegroundColorAttributeName:GREEN_1ab8,NSFontAttributeName:[UIFont adjustFont:[UIFont systemFontOfSize:16.0]]};
+        _naviSegmentedControl.selectedTitleTextAttributes = @{NSForegroundColorAttributeName:GREEN_1ab8,NSFontAttributeName:[UIFont adjustFont:[UIFont systemFontOfSize:15.0]]};
 
         // set Color for the selection indicator stripe/box
         _naviSegmentedControl.selectionIndicatorColor = GREEN_1ab8;
@@ -391,7 +391,7 @@
         [_leftBarView addGestureRecognizer:tapLeftBarView]; // 添加单击事件
         
         self.leftBarAreaLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 0, Screen_Width/4-19-10, 44)];
-        self.leftBarAreaLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:16.0]];
+        self.leftBarAreaLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:15.0]];
         self.leftBarAreaLabel.text = @"正在定位";
         self.leftBarAreaLabel.textColor = BLACK_42;
         self.leftBarAreaLabel.textAlignment = NSTextAlignmentCenter;

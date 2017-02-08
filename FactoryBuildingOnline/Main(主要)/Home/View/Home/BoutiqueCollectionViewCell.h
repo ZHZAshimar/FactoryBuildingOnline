@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BoutiqueWantedModel.h"
 
 @interface BoutiqueCollectionViewCell : UICollectionViewCell
 
@@ -23,5 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *scanLabel;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+
+@property (nonatomic, strong) BoutiqueWantedModel *model;
 
 @end

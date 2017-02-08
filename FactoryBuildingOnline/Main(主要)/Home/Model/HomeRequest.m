@@ -194,6 +194,7 @@
         NSString *f_tags_str = [NSString arrayToJson:f_tags];
         
         NSInteger userid = [wmDic[@"id"] integerValue];
+        NSInteger view_count = [wmDic[@"view_count"] integerValue];
         NSInteger update_id = [wmDic[@"update_id"] integerValue];
         NSInteger delete_id = [wmDic[@"delete_id"] integerValue];
         NSString * update_time = wmDic[@"update_time"];
@@ -203,13 +204,13 @@
         NSString *created_time = wmDic[@"created_time"];
         
         
-        NSDictionary *f_dic = @{@"id":@(f_id),@"title":f_title,@"thumbnail_url":f_thumbnail_url,@"price":f_price,@"range":f_range,@"rent_type":f_rent_type,@"pre_pay":f_pre_pay,@"description_factory":f_description,@"image_urls":f_image_urls_str,@"tags":f_tags_str,@"address_overview":f_address_overview,@"geohash":f_geohash};
+        NSDictionary *f_dic = @{@"id":@(f_id), @"title":f_title,@"thumbnail_url":f_thumbnail_url,@"price":f_price,@"range":f_range,@"rent_type":f_rent_type,@"pre_pay":f_pre_pay,@"description_factory":f_description,@"image_urls":f_image_urls_str,@"tags":f_tags_str,@"address_overview":f_address_overview,@"geohash":f_geohash};
         
         HomeContacterModel *contacterModel = [[HomeContacterModel alloc] initWithDictionary:contacter];
         
         HomeFactoryModel *factoryModel = [[HomeFactoryModel alloc] initWithDictionary:f_dic];
         
-        NSDictionary *wantedDic = @{@"id":@(userid),@"update_id":@(update_id),
+        NSDictionary *wantedDic = @{@"id":@(userid),@"view_count": @(view_count),@"update_id":@(update_id),
                                     @"delete_id":@(delete_id),@"update_time":update_time,
                                     @"ctModel":contacterModel,@"owner_id":@(owner_id),
                                     @"ftModel":factoryModel,@"isCollect":@(isCollect),

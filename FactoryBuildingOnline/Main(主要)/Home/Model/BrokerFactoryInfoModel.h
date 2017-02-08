@@ -14,6 +14,8 @@
 
 @property (nonatomic, strong) NSString *next;            //
 
+@property (nonatomic, assign) NSInteger view_count;
+
 @property (nonatomic, assign) NSInteger collected_count;    // 被收藏数
 
 @property (nonatomic, strong) ProMediumFactoryModel *factoryModel;  // 厂房详情

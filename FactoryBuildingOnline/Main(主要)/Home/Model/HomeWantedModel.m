@@ -9,11 +9,12 @@
 #import "HomeWantedModel.h"
 #import <FMDB.h>
 
-#define TABLENAME @"Home_Data"
+#define TABLENAME @"Home_WantedMessage"
 #define ID @"id"
 #define UPDATE_ID @"update_id"
 #define DELETE_ID @"delete_id"
 #define UPDATE_TIME @"update_time"
+#define VIEW_COUNT @"view_count"
 #define CONTACTER_ID @"contacter_id"
 #define OWNER_ID @"owner_id"
 #define FACTORY_ID @"factory_id"
@@ -70,7 +71,7 @@
      */
     
     if ([db open]) {
-        NSString *sqlCreateTable =  [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS '%@' ('%@' INTEGER PRIMARY KEY AUTOINCREMENT, '%@' INTEGER, '%@' INTEGER, '%@' TEXT, '%@' INTEGER, '%@' INTEGER, '%@' INTEGER, '%@' INTEGER, '%@' TEXT)",TABLENAME,ID,UPDATE_ID,DELETE_ID,UPDATE_TIME,CONTACTER_ID,OWNER_ID,FACTORY_ID,ISCOLLECT,CREATED_TIME];
+        NSString *sqlCreateTable =  [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS '%@' ('%@' INTEGER PRIMARY KEY AUTOINCREMENT, '%@' INTEGER, '%@' INTEGER, '%@' INTEGER, '%@' TEXT, '%@' INTEGER, '%@' INTEGER, '%@' INTEGER, '%@' INTEGER, '%@' TEXT)",TABLENAME,ID, VIEW_COUNT, UPDATE_ID,DELETE_ID,UPDATE_TIME,CONTACTER_ID,OWNER_ID,FACTORY_ID,ISCOLLECT,CREATED_TIME];
         BOOL res = [db executeUpdate:sqlCreateTable];
         if (!res) {
             NSLog(@"error when creating db table");
@@ -82,7 +83,7 @@
      插入数据
      */
     if ([db open]) {
-        NSString *insertSQL = [NSString stringWithFormat:@"insert into '%@' ('%@','%@','%@','%@','%@','%@','%@','%@','%@')values('%ld','%ld','%ld','%@','%ld','%ld','%ld','%d','%@')",TABLENAME,ID,UPDATE_ID,DELETE_ID,UPDATE_TIME,CONTACTER_ID,OWNER_ID,FACTORY_ID,ISCOLLECT,CREATED_TIME,wantedMessageModel.id,wantedMessageModel.update_id,wantedMessageModel.delete_id,wantedMessageModel.update_time,wantedMessageModel.ctModel.id,wantedMessageModel.owner_id,wantedMessageModel.ftModel.id,wantedMessageModel.isCollect,wantedMessageModel.created_time];
+        NSString *insertSQL = [NSString stringWithFormat:@"insert into '%@' ('%@','%@','%@','%@','%@','%@','%@','%@','%@','%@')values('%ld','%ld','%ld','%ld','%@','%ld','%ld','%ld','%d','%@')",TABLENAME,ID, VIEW_COUNT, UPDATE_ID,DELETE_ID,UPDATE_TIME,CONTACTER_ID,OWNER_ID,FACTORY_ID,ISCOLLECT,CREATED_TIME,wantedMessageModel.id,wantedMessageModel.view_count, wantedMessageModel.update_id,wantedMessageModel.delete_id,wantedMessageModel.update_time,wantedMessageModel.ctModel.id,wantedMessageModel.owner_id,wantedMessageModel.ftModel.id,wantedMessageModel.isCollect,wantedMessageModel.created_time];
         
         if ([db executeUpdate:insertSQL]) {
             [db beginTransaction];
@@ -150,7 +151,7 @@
      */
     if ([db open]) {
         
-        NSString *sqlCreateTable = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS '%@' ('%@' INTEGER PRIMARY KEY AUTOINCREMENT, '%@' TEXT, '%@' INTEGER, '%@' TEXT, '%@' TEXT, '%@' INTEGER, '%@' TEXT, '%@' TEXT, '%@' INTEGER)",TABLENAME,ID,UPDATE_ID,DELETE_ID,UPDATE_TIME,CONTACTER_ID,OWNER_ID,FACTORY_ID,ISCOLLECT,CREATED_TIME];
+        NSString *sqlCreateTable =  [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS '%@' ('%@' INTEGER PRIMARY KEY AUTOINCREMENT, '%@' INTEGER, '%@' INTEGER, '%@' INTEGER, '%@' TEXT, '%@' INTEGER, '%@' INTEGER, '%@' INTEGER, '%@' INTEGER, '%@' TEXT)",TABLENAME,ID, VIEW_COUNT, UPDATE_ID,DELETE_ID,UPDATE_TIME,CONTACTER_ID,OWNER_ID,FACTORY_ID,ISCOLLECT,CREATED_TIME];
         if (![db executeUpdate:sqlCreateTable]) {
             return mArray;
         } else {
@@ -161,9 +162,9 @@
     /*
      查找
      */
-    NSString *selectSQL = [NSString stringWithFormat:@"SELECT * FROM (WantedMessage INNER JOIN Factory ON WantedMessage.factory_id=Factory.id) INNER JOIN Contacter ON WantedMessage.contacter_id=Contacter.id order by id desc LIMIT 10 OFFSET %d",(page-1)*10];
+    NSString *selectSQL = [NSString stringWithFormat:@"SELECT * FROM (Home_WantedMessage INNER JOIN Home_Factory ON Home_WantedMessage.factory_id=Home_Factory.id) INNER JOIN Home_Contacter ON Home_WantedMessage.contacter_id=Home_Contacter.id order by id desc LIMIT 10 OFFSET %d",(page-1)*10];
     if (dataCount > 0) {
-        selectSQL = [NSString stringWithFormat:@"SELECT * FROM (WantedMessage INNER JOIN Factory ON WantedMessage.factory_id=Factory.id) INNER JOIN Contacter ON WantedMessage.contacter_id=Contacter.id order by id desc LIMIT 10 OFFSET %d",dataCount];
+        selectSQL = [NSString stringWithFormat:@"SELECT * FROM (Home_WantedMessage INNER JOIN Home_Factory ON Home_WantedMessage.factory_id=Home_Factory.id) INNER JOIN Home_Contacter ON Home_WantedMessage.contacter_id=Home_Contacter.id order by id desc LIMIT 10 OFFSET %d",dataCount];
     }
     
     
@@ -195,6 +196,7 @@
         HomeWantedModel *wmModel = [[HomeWantedModel alloc] init];
         
         wmModel.id = [rs intForColumn:ID];
+        wmModel.view_count = [rs intForColumn:VIEW_COUNT];
         wmModel.update_id = [rs intForColumn:UPDATE_ID];
         wmModel.delete_id = [rs intForColumn:DELETE_ID];
         wmModel.update_time = [rs stringForColumn:UPDATE_TIME];

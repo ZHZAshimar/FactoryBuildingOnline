@@ -79,6 +79,8 @@
     
     [self setVCName:@"厂房详情" andShowSearchBar:NO andTintColor:GREEN_19b8 andBackBtnStr:nil];
     
+    [self.leftNaviButton setImage:[UIImage imageNamed:@"greenBack"] forState:0];
+    
     [self.rightImageItemButton setTintColor:[UIColor clearColor]];
 
     [self loadViewType];
@@ -87,7 +89,30 @@
     
     [self getPublishInfo];
     
+    [self postFactoryHistory];
+    
 }
+
+- (void)postFactoryHistory {
+    
+    NSString *url = [NSString stringWithFormat:@"wantedmessages/%d/view/",self.model.id];
+    
+    if ([self judgeUserLogin]) {
+        
+        [HTTPREQUEST_SINGLE postRequestWithService:url andParameters:nil isShowActivity:NO dicIsEncode:NO success:^(RequestManager *manager, NSDictionary *response) {
+            NSLog(@"统计浏览历史--登录 ：%@",response);
+        } failure:^(RequestManager *manager, NSError *error) {
+            NSLog(@"统计浏览历史--登录 ：%@",error.debugDescription);
+        }];
+    } else {
+        [HTTPREQUEST_SINGLE postRequestWithURL:url andParameters:nil andShowAction:NO success:^(RequestManager *manager, NSDictionary *response) {
+            NSLog(@"统计浏览历史-- 未登录 ：%@",response);
+        } failure:^(RequestManager *manager, NSError *error) {
+            NSLog(@"统计浏览历史-- 未登录 ：%@",error.debugDescription);
+        }];
+    }
+}
+
 #pragma mark - 获取发布人详情
 - (void)getPublishInfo {
     
@@ -104,7 +129,7 @@
         [weakSelf.myCollectionView reloadData];
         
     } failure:^(RequestManager *manager, NSError *error) {
-        
+        [MBProgressHUD hideHUD];
     }];
     
 }
@@ -491,7 +516,11 @@
 - (UICollectionViewCell *)infoCollectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     DetailOfFactoryInfoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DetailOfFactoryInfoCollectionViewCell" forIndexPath:indexPath];
-    cell.dataDic = @{@"created_time":self.model.created_time,@"rent_type":self.model.ftModel.rent_type,@"pre_pay":self.model.ftModel.pre_pay};
+    cell.dataDic = @{@"created_time":self.model.created_time,
+                    @"rent_type":self.model.ftModel.rent_type,
+                     @"pre_pay":self.model.ftModel.pre_pay,
+                     @"view_count":@(self.model.view_count),
+                     @"factory_id":@(self.model.ftModel.id)};
     return cell;
     
 }

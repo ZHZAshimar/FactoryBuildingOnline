@@ -464,7 +464,11 @@
 - (UICollectionViewCell *)infoCollectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     DetailOfFactoryInfoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DetailOfFactoryInfoCollectionViewCell" forIndexPath:indexPath];
-    cell.dataDic = @{@"created_time":self.model.created_time,@"rent_type":self.model.factoryModel.rent_type,@"pre_pay":self.model.factoryModel.pre_pay};
+    cell.dataDic = @{@"created_time":self.model.created_time,
+                     @"rent_type":self.model.factoryModel.rent_type,
+                     @"pre_pay":self.model.factoryModel.pre_pay,
+                     @"view_count":@(self.model.view_count),
+                     @"factory_id":@(self.model.factoryModel.id)};
     return cell;
     
 }

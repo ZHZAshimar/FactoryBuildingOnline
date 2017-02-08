@@ -78,7 +78,7 @@
         CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
         scaleAnimation.fromValue = [NSNumber numberWithFloat:0.0];
         scaleAnimation.toValue = [NSNumber numberWithFloat:1.0];
-        scaleAnimation.duration = 0.5;
+//        scaleAnimation.duration = 0.5;
         scaleAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
         
         CABasicAnimation *positionAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
@@ -86,7 +86,7 @@
         positionAnimation.toValue = [NSValue valueWithCGPoint:self.button.layer.position];
         
         CAAnimationGroup *animationGroup = [CAAnimationGroup animation];
-        animationGroup.duration = 0.5;
+        animationGroup.duration = 0.3;
         [animationGroup setAnimations:@[scaleAnimation,positionAnimation]];
         
         [self.button.layer addAnimation:animationGroup forKey:@"animationGroup"];
@@ -118,7 +118,7 @@
     
     // 关闭按钮的动画
     CABasicAnimation *closeAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
-    closeAnimation.duration = 0.5;
+    closeAnimation.duration = 0.3;
     closeAnimation.byValue = @(-M_PI_4);
     [closeButton.layer addAnimation:closeAnimation forKey:@"closeAnimation"];
     
@@ -132,7 +132,7 @@
     positionAnimation.toValue = [NSValue valueWithCGPoint:closeView.layer.position];
     
     CAAnimationGroup *animationGroup = [CAAnimationGroup animation];
-    animationGroup.duration = 0.5;
+    animationGroup.duration = 0.3;
     animationGroup.delegate = self;
     [animationGroup setAnimations:@[scaleAnimation,positionAnimation]];
     

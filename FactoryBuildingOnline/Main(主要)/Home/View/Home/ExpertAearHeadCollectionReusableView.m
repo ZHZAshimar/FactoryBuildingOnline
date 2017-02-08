@@ -23,13 +23,23 @@
     
     if (self) {
         
+        self.mDataArray = [NSMutableArray array];
+        
         [self addSubview:self.myCollectionView];
+        
     }
     return self;
 }
 
+- (void)setMDataArray:(NSMutableArray *)mDataArray {
+    
+    _mDataArray = mDataArray;
+    
+    [self.myCollectionView reloadData];
+}
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 10;
+    return self.mDataArray.count;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -50,15 +60,15 @@
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     AreaCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AreaCollectionViewCell" forIndexPath:indexPath];
+    cell.model = self.mDataArray[indexPath.item];
     
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    AreaCollectionViewCell *cell = (AreaCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    
-    self.areaBlock(indexPath.item, cell.areaLabel.text);
+    BrancheModel *model = self.mDataArray[indexPath.item];
+    self.areaBlock(indexPath.item, model);
 }
 
 - (UICollectionView *)myCollectionView {

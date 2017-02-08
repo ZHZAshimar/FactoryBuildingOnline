@@ -196,8 +196,20 @@
             
         default:    // 退出登录
         {
-            [FOLUserInforModel deleteAll];
-            [self.navigationController popViewControllerAnimated:YES];
+            [HTTPREQUEST_SINGLE delectWithQuitLogin:URL_DELECT_QUIT andParameters:nil isShowActivity:YES success:^(RequestManager *manager, NSDictionary *response) {
+                
+                NSLog(@"用户退出：%@",response);
+                
+                if ([response[@"erro_code"] intValue] != 200) {
+                    return ;
+                }
+                
+                [FOLUserInforModel deleteAll];
+                [self.navigationController popViewControllerAnimated:YES];
+            } failure:^(RequestManager *manager, NSError *error) {
+                NSLog(@"用户退出：%@",error);
+            }];
+            
         }
             break;
     }

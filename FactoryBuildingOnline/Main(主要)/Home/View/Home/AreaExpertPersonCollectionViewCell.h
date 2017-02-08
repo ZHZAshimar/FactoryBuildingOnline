@@ -18,4 +18,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *jobLabel;
 @property (weak, nonatomic) IBOutlet UILabel *fatoryNumLabel;
+
+@property (nonatomic, strong) NSDictionary *dic;
 @end

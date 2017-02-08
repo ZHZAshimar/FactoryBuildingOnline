@@ -35,9 +35,12 @@
         self.imageView.layer.cornerRadius = 2;
         
         self.tagView.backgroundColor = [UIColor clearColor];
+        self.nameLabel.lineBreakMode =  NSLineBreakByTruncatingHead;
+
         
         // 设置字体自适应
-        self.nameLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:self.nameLabel.font.pointSize]];
+        self.nameLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:self.nameLabel.font.pointSize] weight:0.5];
+//        self.nameLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:self.nameLabel.font.pointSize]];
         self.addressLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:self.addressLabel.font.pointSize]];
         self.moneyOfdayLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:self.moneyOfdayLabel.font.pointSize]];
         self.areaLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:self.areaLabel.font.pointSize]];
@@ -89,6 +92,8 @@
     NSString *imageURL = [SecurityUtil decodeBase64String:ftModel.thumbnail_url];
     
     [self.imageView sd_setImageWithURL:[NSURL URLWithString:imageURL] placeholderImage:PLACEHOLDER_IMAGE];
+    
+    self.scanLabel.text = [NSString stringWithFormat:@"浏览:%ld人",model.view_count];
     
     self.nameLabel.text = [NSString stringWithFormat:@"%@",ftModel.title];
     

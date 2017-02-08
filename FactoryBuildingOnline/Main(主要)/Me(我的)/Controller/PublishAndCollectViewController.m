@@ -223,7 +223,7 @@
         
         layout.minimumInteritemSpacing = 0;
         
-        _myCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, Screen_Height-64) collectionViewLayout:layout];
+        _myCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, Screen_Height-80) collectionViewLayout:layout];
         _myCollectionView.backgroundColor = [UIColor whiteColor];
         _myCollectionView.delegate = self;
         

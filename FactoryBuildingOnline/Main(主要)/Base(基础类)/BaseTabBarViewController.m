@@ -40,10 +40,10 @@
     
     [self setupViewControllers];
     
-    // 添加一条分割线
-    UIView *linecutView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, 0.5)];
-    linecutView.backgroundColor = GRAY_cc;
-    [self.tabBar addSubview:linecutView];
+//    // 添加一条分割线
+//    UIView *linecutView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, 0.5)];
+//    linecutView.backgroundColor = GRAY_cc;
+//    [self.tabBar addSubview:linecutView];
     
     self.tabBar.backgroundView.backgroundColor = [UIColor whiteColor];
     
@@ -161,10 +161,10 @@
         
         NSMutableArray *userArr = [FOLUserInforModel findAll];
         
-        if (userArr.count <= 0) {
-            [MBProgressHUD showAutoMessage:@"您还没有登录😯" ToView:nil];
-            return NO;
-        }
+//        if (userArr.count <= 0) {
+//            [MBProgressHUD showAutoMessage:@"您还没有登录😯" ToView:nil];
+//            return NO;
+//        }
         
         FOLUserInforModel *userModel = userArr[0];
         // ➕ 按钮
@@ -208,7 +208,7 @@
                 default:
                     break;
             }
-            
+        
         };
         
         return NO;

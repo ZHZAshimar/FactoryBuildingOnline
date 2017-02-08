@@ -15,7 +15,7 @@
 @property (nonatomic, strong) UIButton *barButton;
 @property (nonatomic, strong) UISearchBar *searchBarOfNavi;
 @property (nonatomic, strong) UIBarButtonItem *rightImageItemButton;    // 右边单一个图片按钮
-@property (nonatomic, strong) UIButton *leftNaviButton;
+@property (nonatomic, strong) UIButton *leftNaviButton;         // 返回按钮
 
 - (void)addLeftItem:(NSString *)itemName;   // 导航栏 左边文字按钮 一个
 

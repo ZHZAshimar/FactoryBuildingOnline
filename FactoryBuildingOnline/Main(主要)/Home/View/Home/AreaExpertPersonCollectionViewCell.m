@@ -7,6 +7,7 @@
 //
 
 #import "AreaExpertPersonCollectionViewCell.h"
+#import "SecurityUtil.h"
 
 @implementation AreaExpertPersonCollectionViewCell
 
@@ -40,6 +41,18 @@
     self.avatarImageView.layer.cornerRadius = Screen_Height * 45/284/3;
     self.avatarImageView.layer.masksToBounds = YES;
     
+}
+
+- (void)setDic:(NSDictionary *)dic {
+    
+    self.nameLabel.text = dic[@"real_name"];
+    self.jobLabel.text = [NSString stringWithFormat:@"%@年经验",dic[@"year_experience"]];
+    
+    NSString *avatarStr = [SecurityUtil decodeBase64String:dic[@"avatar"]];
+    
+    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarStr] placeholderImage:[UIImage imageNamed:@"my_default"]];
+    
+    self.fatoryNumLabel.text = @"";
 }
 
 @end

@@ -549,7 +549,7 @@
     
 
     //设置分段控件的文字大小及颜色
-    _segmentedControl.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont systemFontOfSize:[UIFont adjustFontSize:14.0f]]};
+    _segmentedControl.titleTextAttributes = @{NSForegroundColorAttributeName:BLACK_42,NSFontAttributeName:[UIFont systemFontOfSize:[UIFont adjustFontSize:14.0f]]};
     // 设置分段控件选中时 的文字大小及颜色
     _segmentedControl.selectedTitleTextAttributes = @{NSForegroundColorAttributeName:GREEN_1ab8,NSFontAttributeName:[UIFont systemFontOfSize:[UIFont adjustFontSize:14.0f]]};
     _segmentedControl.selectedSegmentIndex = index;

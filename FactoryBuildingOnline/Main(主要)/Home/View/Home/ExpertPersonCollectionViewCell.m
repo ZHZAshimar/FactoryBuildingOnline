@@ -34,7 +34,7 @@
     [super awakeFromNib];
     // Initialization code
     
-    self.avatarImageView.layer.cornerRadius = (Screen_Height * 43/284-28)/2;    // 要通过 screen_height 来计算，用 avatarImageView 的高度 拿到的一直是 58
+    self.avatarImageView.layer.cornerRadius = (Screen_Height * 10/71-30)/2;    // 要通过 screen_height 来计算，用 avatarImageView 的高度 拿到的一直是 58
     self.avatarImageView.layer.masksToBounds = YES;
     
     self.nameLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:self.nameLabel.font.pointSize]];

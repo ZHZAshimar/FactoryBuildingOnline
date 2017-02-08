@@ -8,6 +8,8 @@
 
 #import "MeFirstHeadCollectionReusableView.h"
 
+#import "SecurityUtil.h"
+
 #define self_height self.frame.size.height
 
 @implementation MeFirstHeadCollectionReusableView
@@ -82,7 +84,7 @@
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(Screen_Width/2-Screen_Width*3/40, self_height*83/110, Screen_Width*3/20, self_height*27/110);
     button.backgroundColor = [UIColor clearColor];
-    [button setImage:[UIImage imageNamed:@"share"] forState:0];
+    [button setImage:[UIImage imageNamed:@"information"] forState:0];
     [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:button];
 }
@@ -101,7 +103,7 @@
         [self.delegate tapHeadPictureAction];
     }
 }
-
+#pragma mark - 跳转到个人发布界面
 - (void)buttonAction:(UIButton *)sender {
     NSLog(@"tap hexagon ");
     if ([self.delegate respondsToSelector:@selector(tapHexagonButton)]) {
@@ -109,9 +111,30 @@
     }
 }
 
+- (void)setUserModel:(FOLUserInforModel *)userModel {
+    
+    _userModel = userModel;
+    
+    
+    NSString *userAvatar = [SecurityUtil decodeBase64String:userModel.avatar];
+    
+    
+    [self.nameBtn setTitle:[NSString stringWithFormat:@"%@",userModel.userName] forState:0];
+    if (userModel.type == 2) {
+        [self.userHeadImageView sd_setImageWithURL:[NSURL URLWithString:userAvatar] placeholderImage:[UIImage imageNamed:@"my_broker"]];
+        
+        self.hexagonShapeLayer.fillColor = BLUE_FE.CGColor;
+    } else {
+        self.hexagonShapeLayer.fillColor = GREEN_19b8.CGColor;
+        [self.userHeadImageView sd_setImageWithURL:[NSURL URLWithString:userAvatar] placeholderImage:[UIImage imageNamed:@"my_normal"]];
+        
+    }
+    
+}
+
 //- (void)setIsLogin:(BOOL)isLogin {
 //    _isLogin = isLogin;
-//    
+//
 //    [self setNeedsDisplay];    // 调用 [self setNeedsDisplay]; 系统将重写 drawRect:(CGRect)rect 方法
 //}
 
@@ -133,7 +156,7 @@
 //    }
 //    
 //}
-
+#pragma mark - lazy load
 - (UILabel *)integralLabel {
     
     if (!_integralLabel) {

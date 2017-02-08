@@ -28,6 +28,11 @@
         self = [arrayOfViews objectAtIndexCheck:0];
         self.brokerImageView.layer.masksToBounds = YES;
         self.brokerImageView.layer.cornerRadius = 30;
+        
+        // 文字自适应
+        self.brokerName.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:self.brokerName.font.pointSize]];
+        self.brokerPosition.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:self.brokerPosition.font.pointSize]];
+        self.dateEmptyedLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:self.dateEmptyedLabel.font.pointSize]];
     }
     
     return self;

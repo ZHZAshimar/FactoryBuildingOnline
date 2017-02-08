@@ -38,15 +38,14 @@
 - (void)postRequestWithService:(NSString *)urlStr andParameters:(NSDictionary *)params andRequestType:(NSInteger)requestType success:(void(^)(RequestManager *manager,NSDictionary *response,NSString *time))success failure:(void(^)(RequestManager *manager,NSError *error))failure;
 
 /**
- *  POST请求 带Token 和 time
+ *  POST请求 带token 和 TIME
  *
  *  @param urlStr     请求接口
  *  @param params     向服务器请求时的参数
- *  @param isEncode   参数是否加密
  *  @param success    请求成功，block的参数为服务返回的数据
  *  @param failure    请求失败，block的参数为错误信息
  */
-- (void)postRequestWithService:(NSString *)urlStr andParameters:(NSDictionary *)params dicIsEncode:(BOOL)isEncode success:(void(^)(RequestManager *manager,NSDictionary *response))success failure:(void(^)(RequestManager *manager,NSError *error))failure;
+- (void)postRequestWithService:(NSString *)urlStr andParameters:(NSDictionary *)params isShowActivity:(BOOL)isShow dicIsEncode:(BOOL)isEncode success:(void(^)(RequestManager *manager,NSDictionary *response))success failure:(void(^)(RequestManager *manager,NSError *error))failure;
 /**
  *  POST请求 普通
  *
@@ -141,5 +140,14 @@
  *  @param failure    请求失败，block的参数为错误信息
  */
 - (void)deleteRequestWithService:(NSString*)urlStr andParameters:(NSDictionary *)params success:(void(^)(RequestManager *manager,NSDictionary *response))success failure:(void(^)(RequestManager *manager,NSError *error))failure;
-
+/**
+ *  Delect 退出登录
+ *
+ *  @param urlStr     请求接口
+ *  @param params     向服务器请求时的参数
+ *  @param isShow     显示提示框
+ *  @param success    请求成功，block的参数为服务返回的数据
+ *  @param failure    请求失败，block的参数为错误信息
+ */
+- (void)delectWithQuitLogin:(NSString *)urlStr andParameters:(NSDictionary *)params isShowActivity:(BOOL)isShow success:(void(^)(RequestManager *manager,NSDictionary *response))success failure:(void(^)(RequestManager *manager,NSError *error))failure;
 @end

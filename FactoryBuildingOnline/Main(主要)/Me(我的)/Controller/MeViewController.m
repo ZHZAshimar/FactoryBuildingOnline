@@ -16,10 +16,11 @@
 #import "PublishAndCollectViewController.h"
 #import "SettingTableViewController.h"
 #import "UserInfomationViewController.h"
-#import "SecurityUtil.h"
 
 #import "RoleSwitchingView.h"
 #import "MeBackgroundView.h"
+#import "AppFeedbackViewController.h"
+#import "ScanHistoryViewController.h"
 
 @interface MeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,MeFirstHeadCollectionReusableViewDelegate>
 {
@@ -104,7 +105,7 @@
 //    AAViewController *aaVC = [AAViewController new];
 //    [self.navigationController pushViewController:aaVC animated:YES];
 }
-#pragma mark - MeFirstHeadCollectionReusableViewDelegate -
+#pragma mark - MeFirstHeadCollectionReusableViewDelegate
 #pragma mark - 首页的名字点击效果
 - (void)tapNameButtonAction:(UIButton *)sender {
     
@@ -125,13 +126,26 @@
 
     }
 }
-
+#pragma mark - 跳转到个人发布界面
 - (void)tapHexagonButton {
-    if (isLogin) {
-        // 跳转到已发布的界面
-    } else {
+    if (!isLogin) {
         // 跳转到登录界面
         [self goLoginVC];
+        return;
+    }
+    FOLUserInforModel *userModel = userInfoModelArr[0];
+    
+    // 身份为专家的时，跳转到我发布的厂房页面；当身份为用户时，跳转到我发布的需求页面
+    if (userModel.type == 2) {
+        // 跳转到我发布的厂房页面
+        PublishAndCollectViewController *publishVC = [PublishAndCollectViewController new];
+        
+        publishVC.datatype = MYPUBLISH_TYPE;
+        
+        [self.navigationController pushViewController:publishVC animated:YES];
+
+    } else {
+        // 跳转到我发布的需求页面
     }
 }
 
@@ -186,19 +200,10 @@
             
             FOLUserInforModel *userModel = userInfoModelArr[0];
             
-            NSString *userAvatar = [SecurityUtil decodeBase64String:userModel.avatar];
-            
-            [firstHeadReusableView.userHeadImageView sd_setImageWithURL:[NSURL URLWithString:userAvatar] placeholderImage:[UIImage imageNamed:@"my_default"]];
-           
-            [firstHeadReusableView.nameBtn setTitle:[NSString stringWithFormat:@"%@",userModel.userName] forState:0];
-            if (userModel.type == 2) {
-                firstHeadReusableView.hexagonShapeLayer.fillColor = BLUE_FE.CGColor;
-            } else {
-                firstHeadReusableView.hexagonShapeLayer.fillColor = GREEN_19b8.CGColor;
-            }
+            firstHeadReusableView.userModel = userModel;
             
         } else {    // 未登录状态
-            firstHeadReusableView.userHeadImageView.image = [UIImage imageNamed:@"my_default"];
+            firstHeadReusableView.userHeadImageView.image = [UIImage imageNamed:@"my_normal"];
             [firstHeadReusableView.nameBtn setTitle:@"未登录，请登录哦" forState:0];
         }
         
@@ -268,12 +273,16 @@
             break;
         case 2:     // 浏览记录
         {
+            ScanHistoryViewController *scanHistoryVC = [ScanHistoryViewController new];
             
+            [self.navigationController pushViewController:scanHistoryVC animated:YES];
         }
             break;
         case 3:     // 问题反馈
         {
+            AppFeedbackViewController *feedbackVC = [AppFeedbackViewController new];
             
+            [self.navigationController pushViewController:feedbackVC animated:YES];
         }
             break;
         case 4:     // 身份切换

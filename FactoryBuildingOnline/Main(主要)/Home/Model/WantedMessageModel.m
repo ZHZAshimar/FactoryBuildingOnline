@@ -12,6 +12,7 @@
 
 #define TABLENAME @"WantedMessage"
 #define ID @"id"
+#define VIEW_COUNT @"view_count"
 #define UPDATE_ID @"update_id"
 #define DELETE_ID @"delete_id"
 #define UPDATE_TIME @"update_time"
@@ -72,7 +73,7 @@
      */
     
     if ([db open]) {
-        NSString *sqlCreateTable =  [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS '%@' ('%@' INTEGER PRIMARY KEY AUTOINCREMENT, '%@' INTEGER, '%@' INTEGER, '%@' TEXT, '%@' INTEGER, '%@' INTEGER, '%@' INTEGER, '%@' INTEGER, '%@' TEXT)",TABLENAME,ID,UPDATE_ID,DELETE_ID,UPDATE_TIME,CONTACTER_ID,OWNER_ID,FACTORY_ID,ISCOLLECT,CREATED_TIME];
+        NSString *sqlCreateTable =  [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS '%@' ('%@' INTEGER PRIMARY KEY AUTOINCREMENT, '%@' INTEGER, '%@' INTEGER, '%@' INTEGER, '%@' TEXT, '%@' INTEGER, '%@' INTEGER, '%@' INTEGER, '%@' INTEGER, '%@' TEXT)",TABLENAME,ID, VIEW_COUNT, UPDATE_ID,DELETE_ID,UPDATE_TIME,CONTACTER_ID,OWNER_ID,FACTORY_ID,ISCOLLECT,CREATED_TIME];
         BOOL res = [db executeUpdate:sqlCreateTable];
         if (!res) {
             NSLog(@"error when creating db table");
@@ -84,7 +85,7 @@
      插入数据
      */
     if ([db open]) {
-        NSString *insertSQL = [NSString stringWithFormat:@"insert into '%@' ('%@','%@','%@','%@','%@','%@','%@','%@','%@')values('%ld','%ld','%ld','%@','%ld','%ld','%ld','%d','%@')",TABLENAME,ID,UPDATE_ID,DELETE_ID,UPDATE_TIME,CONTACTER_ID,OWNER_ID,FACTORY_ID,ISCOLLECT,CREATED_TIME,wantedMessageModel.id,wantedMessageModel.update_id,wantedMessageModel.delete_id,wantedMessageModel.update_time,wantedMessageModel.ctModel.id,wantedMessageModel.owner_id,wantedMessageModel.ftModel.id,wantedMessageModel.isCollect,wantedMessageModel.created_time];
+        NSString *insertSQL = [NSString stringWithFormat:@"insert into '%@' ('%@','%@','%@','%@','%@','%@','%@','%@','%@','%@')values('%ld','%ld','%ld','%ld','%@','%ld','%ld','%ld','%d','%@')",TABLENAME,ID, VIEW_COUNT, UPDATE_ID,DELETE_ID,UPDATE_TIME,CONTACTER_ID,OWNER_ID,FACTORY_ID,ISCOLLECT,CREATED_TIME,wantedMessageModel.id,wantedMessageModel.view_count, wantedMessageModel.update_id,wantedMessageModel.delete_id,wantedMessageModel.update_time,wantedMessageModel.ctModel.id,wantedMessageModel.owner_id,wantedMessageModel.ftModel.id,wantedMessageModel.isCollect,wantedMessageModel.created_time];
         
         if ([db executeUpdate:insertSQL]) {
 //            [db beginTransaction];
@@ -153,7 +154,7 @@
      */
     if ([db open]) {
         
-        NSString *sqlCreateTable = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS '%@' ('%@' INTEGER PRIMARY KEY AUTOINCREMENT, '%@' TEXT, '%@' INTEGER, '%@' TEXT, '%@' TEXT, '%@' INTEGER, '%@' TEXT, '%@' TEXT, '%@' INTEGER)",TABLENAME,ID,UPDATE_ID,DELETE_ID,UPDATE_TIME,CONTACTER_ID,OWNER_ID,FACTORY_ID,ISCOLLECT,CREATED_TIME];
+        NSString *sqlCreateTable =  [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS '%@' ('%@' INTEGER PRIMARY KEY AUTOINCREMENT, '%@' INTEGER, '%@' INTEGER, '%@' INTEGER, '%@' TEXT, '%@' INTEGER, '%@' INTEGER, '%@' INTEGER, '%@' INTEGER, '%@' TEXT)",TABLENAME,ID, VIEW_COUNT, UPDATE_ID,DELETE_ID,UPDATE_TIME,CONTACTER_ID,OWNER_ID,FACTORY_ID,ISCOLLECT,CREATED_TIME];
         if (![db executeUpdate:sqlCreateTable]) {
             return string;
         } else {
@@ -191,7 +192,7 @@
      */
     if ([db open]) {
         
-        NSString *sqlCreateTable = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS '%@' ('%@' INTEGER PRIMARY KEY AUTOINCREMENT, '%@' TEXT, '%@' INTEGER, '%@' TEXT, '%@' TEXT, '%@' INTEGER, '%@' TEXT, '%@' TEXT, '%@' INTEGER)",TABLENAME,ID,UPDATE_ID,DELETE_ID,UPDATE_TIME,CONTACTER_ID,OWNER_ID,FACTORY_ID,ISCOLLECT,CREATED_TIME];
+        NSString *sqlCreateTable =  [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS '%@' ('%@' INTEGER PRIMARY KEY AUTOINCREMENT, '%@' INTEGER, '%@' INTEGER, '%@' INTEGER, '%@' TEXT, '%@' INTEGER, '%@' INTEGER, '%@' INTEGER, '%@' INTEGER, '%@' TEXT)",TABLENAME,ID, VIEW_COUNT, UPDATE_ID,DELETE_ID,UPDATE_TIME,CONTACTER_ID,OWNER_ID,FACTORY_ID,ISCOLLECT,CREATED_TIME];
         if (![db executeUpdate:sqlCreateTable]) {
             return string;
         } else {
@@ -228,7 +229,7 @@
      */
     if ([db open]) {
         
-        NSString *sqlCreateTable = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS '%@' ('%@' INTEGER PRIMARY KEY AUTOINCREMENT, '%@' TEXT, '%@' INTEGER, '%@' TEXT, '%@' TEXT, '%@' INTEGER, '%@' TEXT, '%@' TEXT, '%@' INTEGER)",TABLENAME,ID,UPDATE_ID,DELETE_ID,UPDATE_TIME,CONTACTER_ID,OWNER_ID,FACTORY_ID,ISCOLLECT,CREATED_TIME];
+        NSString *sqlCreateTable =  [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS '%@' ('%@' INTEGER PRIMARY KEY AUTOINCREMENT, '%@' INTEGER, '%@' INTEGER, '%@' INTEGER, '%@' TEXT, '%@' INTEGER, '%@' INTEGER, '%@' INTEGER, '%@' INTEGER, '%@' TEXT)",TABLENAME,ID, VIEW_COUNT, UPDATE_ID,DELETE_ID,UPDATE_TIME,CONTACTER_ID,OWNER_ID,FACTORY_ID,ISCOLLECT,CREATED_TIME];
         if (![db executeUpdate:sqlCreateTable]) {
             return mArray;
         } else {
@@ -282,6 +283,7 @@
         wmModel.created_time = [rs stringForColumn:CREATED_TIME];
         wmModel.ftModel = fac_model;
         wmModel.ctModel = ctModel;
+        wmModel.view_count = [rs intForColumn:VIEW_COUNT];
         
         [mArray addObject:wmModel];
     }
@@ -299,7 +301,7 @@
      */
     if ([db open]) {
         
-        NSString *sqlCreateTable = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS '%@' ('%@' INTEGER PRIMARY KEY AUTOINCREMENT, '%@' TEXT, '%@' INTEGER, '%@' TEXT, '%@' TEXT, '%@' INTEGER, '%@' TEXT, '%@' TEXT, '%@' INTEGER)",TABLENAME,ID,UPDATE_ID,DELETE_ID,UPDATE_TIME,CONTACTER_ID,OWNER_ID,FACTORY_ID,ISCOLLECT,CREATED_TIME];
+        NSString *sqlCreateTable =  [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS '%@' ('%@' INTEGER PRIMARY KEY AUTOINCREMENT, '%@' INTEGER, '%@' INTEGER, '%@' INTEGER, '%@' TEXT, '%@' INTEGER, '%@' INTEGER, '%@' INTEGER, '%@' INTEGER, '%@' TEXT)",TABLENAME,ID, VIEW_COUNT, UPDATE_ID,DELETE_ID,UPDATE_TIME,CONTACTER_ID,OWNER_ID,FACTORY_ID,ISCOLLECT,CREATED_TIME];
         if (![db executeUpdate:sqlCreateTable]) {
             return mArray;
         } else {

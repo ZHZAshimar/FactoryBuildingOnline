@@ -8,6 +8,8 @@
 
 #import "ExpertHomeRequest.h"
 #import "PromediumsModel.h"     // 专家的model
+#import "BrancheModel.h"
+
 
 @implementation ExpertHomeRequest
 /**
@@ -46,6 +48,9 @@
         self.promediumsBlock(YES);
         
     } failure:^(RequestManager *manager, NSError *error) {
+    
+        [MBProgressHUD hideHUD];
+        
         NSLog(@"%@",error.debugDescription);
         self.promediumsBlock(YES);
     }];
@@ -58,10 +63,63 @@
     
     [HTTPREQUEST_SINGLE getRequestWithService:URL_GET_BRANCHES andParameters:nil isShowActivity:NO success:^(RequestManager *manager, NSDictionary *response) {
         NSLog(@"%@",response);
+        [MBProgressHUD hideHUD];
+        [self dealWithBranchData:response];
     } failure:^(RequestManager *manager, NSError *error) {
         NSLog(@"分店资源数据请求错误：%@",error.debugDescription);
+        [MBProgressHUD hideHUD];
     }];
     
+}
+
+- (void)dealWithBranchData:(NSDictionary *)response {
+    
+//    NSMutableArray *array = [NSMutableArray array];
+    
+    NSArray *tmpArr = response[@"branches"];
+    
+    for (int i = 0; i < tmpArr.count; i++) {
+        
+        NSDictionary *tmpDic = @{@"branchID":tmpArr[i][@"id"],@"name":tmpArr[i][@"name"]};
+        
+        BrancheModel *model = [[BrancheModel alloc] initWithDictionary:tmpDic];
+        
+        [BrancheModel insertWithBranchModel:model];
+        
+    }
+    
+}
+/**
+ *  获取对应分店的专家
+ */
+- (void)getBranchPromediums:(NSInteger )branchID andNextUrl:(NSString *)nextUrl{
+    
+    NSDictionary *emptyDic = [NSDictionary dictionary];
+    
+    if (nextUrl.length >= 1) {  // 当nexturl 有值时，则请求nextURL 的内容
+        
+        [HTTPREQUEST_SINGLE getRequestWithURLReturnDic:nextUrl andParameters:nil success:^(RequestManager *manager, NSDictionary *response) {
+            
+            self.bpBlock(response);
+            
+        } failure:^(RequestManager *manager, NSError *error) {
+            self.bpBlock(emptyDic);
+        }];
+        
+    } else {
+    
+        NSString *url = [NSString stringWithFormat:@"%@%ld",URL_GET_PROMEDIUMS_AREA,branchID];
+        
+        [HTTPREQUEST_SINGLE getRequestWithService:url andParameters:nil isShowActivity:YES success:^(RequestManager *manager, NSDictionary *response) {
+            
+            NSLog(@"%@",response);
+            
+            self.bpBlock(response);
+            
+        } failure:^(RequestManager *manager, NSError *error) {
+            self.bpBlock(emptyDic);
+        }];
+    }
 }
 
 @end

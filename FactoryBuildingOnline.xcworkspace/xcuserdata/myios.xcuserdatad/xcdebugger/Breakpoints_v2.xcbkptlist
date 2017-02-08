@@ -215,11 +215,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FactoryBuildingOnline/Main(&#x4e3b;&#x8981;)/Home/Model/WantedMessageModel.m"
-            timestampString = "503659726.695764"
+            timestampString = "508066396.113276"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "359"
-            endingLineNumber = "359"
+            startingLineNumber = "361"
+            endingLineNumber = "361"
             landmarkName = "+deleteDatabase"
             landmarkType = "7">
          </BreakpointContent>
@@ -359,28 +359,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FactoryBuildingOnline/Expand(&#x6269;&#x5c55;)/NetWork(&#x7f51;&#x8def;)/RequestManager.m"
-            timestampString = "507958599.961699"
+            timestampString = "508153341.853769"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "603"
-            endingLineNumber = "603"
+            startingLineNumber = "606"
+            endingLineNumber = "606"
             landmarkName = "-putRequestWithService:andParameters:isShowActivity:isEncode:success:failure:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FactoryBuildingOnline/Main(&#x4e3b;&#x8981;)/Other/LoginAndRegister/Controller/LogoViewController.m"
-            timestampString = "507959424.241409"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "287"
-            endingLineNumber = "287"
-            landmarkName = "-loginAction:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -397,54 +381,6 @@
             startingLineNumber = "205"
             endingLineNumber = "205"
             landmarkName = "-registerBtnAction:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FactoryBuildingOnline/Main(&#x4e3b;&#x8981;)/Other/LoginAndRegister/Controller/LogoViewController.m"
-            timestampString = "507960244.325384"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "303"
-            endingLineNumber = "303"
-            landmarkName = "-loginAction:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FactoryBuildingOnline/Main(&#x4e3b;&#x8981;)/Me(&#x6211;&#x7684;)/Model/FOLUserInforModel.m"
-            timestampString = "507962867.471663"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "+insertUserInfoModel:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FactoryBuildingOnline/Main(&#x4e3b;&#x8981;)/Me(&#x6211;&#x7684;)/Model/FOLUserInforModel.m"
-            timestampString = "507963288.426764"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "+insertUserInfoModel:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -551,12 +487,12 @@
                   moduleName = "FactoryBuildingOnline"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/myios/Desktop/%E5%8E%82%E6%88%BF%E5%9C%A8%E7%BA%BF%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/Project%20source/1.0.2/FactoryBuildingOnline/FactoryBuildingOnline/Main(%E4%B8%BB%E8%A6%81)/Me(%E6%88%91%E7%9A%84)/Model/MeNetRequest.m"
-                  timestampString = "508046623.251467"
+                  timestampString = "508228225.531095"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "137"
                   endingLineNumber = "137"
-                  offsetFromSymbolStart = "36">
+                  offsetFromSymbolStart = "44">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -566,7 +502,7 @@
                   moduleName = "FactoryBuildingOnline"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/myios/Desktop/%E5%8E%82%E6%88%BF%E5%9C%A8%E7%BA%BF%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/Project%20source/1.0.2/FactoryBuildingOnline/FactoryBuildingOnline/Main(%E4%B8%BB%E8%A6%81)/Me(%E6%88%91%E7%9A%84)/Model/MeNetRequest.m"
-                  timestampString = "508046623.253342"
+                  timestampString = "508228225.532433"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "139"
@@ -589,6 +525,118 @@
             startingLineNumber = "227"
             endingLineNumber = "227"
             landmarkName = "-pushPictureToQiniu:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FactoryBuildingOnline/Main(&#x4e3b;&#x8981;)/Home/Model/ExpertHomeRequest.m"
+            timestampString = "508062763.133066"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "-getPromediumsArea"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FactoryBuildingOnline/Main(&#x4e3b;&#x8981;)/Home/Controller/Broker/BrokerAreaViewController.m"
+            timestampString = "508064695.737429"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "-getBranchPromediumsData"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FactoryBuildingOnline/Main(&#x4e3b;&#x8981;)/Home/Model/HomeRequest.m"
+            timestampString = "508132160.798713"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "-getHomeInfomation"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FactoryBuildingOnline/Main(&#x4e3b;&#x8981;)/Home/Controller/Detail/FactoryDetailViewController.m"
+            timestampString = "508212361.183951"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "-postFactoryHistory"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FactoryBuildingOnline/Expand(&#x6269;&#x5c55;)/NetWork(&#x7f51;&#x8def;)/RequestManager.m"
+            timestampString = "508153341.853769"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "299"
+            endingLineNumber = "299"
+            landmarkName = "-getUserInfo:andParameters:success:failure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FactoryBuildingOnline/Main(&#x4e3b;&#x8981;)/Me(&#x6211;&#x7684;)/Controller/ScanHistoryViewController.m"
+            timestampString = "508216089.153388"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "-myCollectionView"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FactoryBuildingOnline/Main(&#x4e3b;&#x8981;)/Me(&#x6211;&#x7684;)/Controller/ScanHistoryViewController.m"
+            timestampString = "508216089.153388"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "-myCollectionView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
