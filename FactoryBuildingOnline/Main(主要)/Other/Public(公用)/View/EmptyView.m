@@ -27,18 +27,18 @@
     self = [super initWithFrame:frame];
 
     if (self) {
-        
-
         [self addSubview:self.emptyLablel];
-        
+//        self.backgroundColor  = [UIColor redColor];
     }
     return self;
 }
 
 - (void)setImage:(UIImage *)image {
     _image = image;
+    NSLog(@"图片的高度：%f",image.size.height);
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(swidth/2-image.size.width/2, sheight/2-image.size.height-30, image.size.width, image.size.height)];
     self.imageView.image = image;
+//    self.imageView.backgroundColor = [UIColor yellowColor];
     [self addSubview:self.imageView];
 }
 
@@ -52,8 +52,9 @@
 - (UILabel *)emptyLablel {
 
     if (!_emptyLablel) {
-        _emptyLablel = [[UILabel alloc] initWithFrame:CGRectMake(0, sheight/2, swidth, sheight/2)];
-        _emptyLablel.center = self.center;
+        _emptyLablel = [[UILabel alloc] initWithFrame:CGRectMake(0, sheight/2-30, swidth, 30)];
+
+//        _emptyLablel.backgroundColor = [UIColor blueColor];
         _emptyLablel.textColor = BLACK_42;
         _emptyLablel.font = [UIFont systemFontOfSize:14.0f];
         _emptyLablel.textAlignment = NSTextAlignmentCenter;

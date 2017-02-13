@@ -42,6 +42,8 @@
     
     RequestMessage *requestMessage; // 请求接口
     
+    CGFloat titleHeight;    // 标题label的高度
+    
 }
 @property (weak, nonatomic) IBOutlet UICollectionView *myCollectionView;
 @property (weak, nonatomic) IBOutlet UILabel *linkManLabel; // 联系人
@@ -69,23 +71,19 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self.rdv_tabBarController setTabBarHidden:YES];
-    self.navigationController.navigationBarHidden = YES;
+    [self.rdv_tabBarController setTabBarHidden:YES];    // 隐藏底部导航
+    self.navigationController.navigationBarHidden = YES;    // 隐藏导航栏
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    // 设置导航栏
     [self setVCName:@"厂房详情" andShowSearchBar:NO andTintColor:GREEN_19b8 andBackBtnStr:nil];
-    
+    // 设置导航栏的返回按钮的图片
     [self.leftNaviButton setImage:[UIImage imageNamed:@"greenBack"] forState:0];
-    
-    [self.rightImageItemButton setTintColor:[UIColor clearColor]];
 
-    [self loadViewType];
-    
-    [self registerCollectionView];
+    [self loadViewType];    // 加载界面
     
     [self getPublishInfo];
     
@@ -93,51 +91,10 @@
     
 }
 
-- (void)postFactoryHistory {
-    
-    NSString *url = [NSString stringWithFormat:@"wantedmessages/%d/view/",self.model.id];
-    
-    if ([self judgeUserLogin]) {
-        
-        [HTTPREQUEST_SINGLE postRequestWithService:url andParameters:nil isShowActivity:NO dicIsEncode:NO success:^(RequestManager *manager, NSDictionary *response) {
-            NSLog(@"统计浏览历史--登录 ：%@",response);
-        } failure:^(RequestManager *manager, NSError *error) {
-            NSLog(@"统计浏览历史--登录 ：%@",error.debugDescription);
-        }];
-    } else {
-        [HTTPREQUEST_SINGLE postRequestWithURL:url andParameters:nil andShowAction:NO success:^(RequestManager *manager, NSDictionary *response) {
-            NSLog(@"统计浏览历史-- 未登录 ：%@",response);
-        } failure:^(RequestManager *manager, NSError *error) {
-            NSLog(@"统计浏览历史-- 未登录 ：%@",error.debugDescription);
-        }];
-    }
-}
-
-#pragma mark - 获取发布人详情
-- (void)getPublishInfo {
-    
-    NSString *url = [NSString stringWithFormat:@"%@%@",URL_POST_REGISTER,[NSString stringWithFormat:@"%d",self.model.owner_id]];
-    
-    __weak typeof(self) weakSelf = self;
-    
-    [HTTPREQUEST_SINGLE getRequestWithService:url andParameters:nil isShowActivity:NO success:^(RequestManager *manager, NSDictionary *response) {
-        
-        NSLog( @"%@",response);
-        
-        weakSelf.contanterDic = response[@"userPublic"];
-        
-        [weakSelf.myCollectionView reloadData];
-        
-    } failure:^(RequestManager *manager, NSError *error) {
-        [MBProgressHUD hideHUD];
-    }];
-    
-}
-
 - (void)loadViewType {
     
     [self loadViewOfCollection:isLike];
-    
+    // 设置 联系人的 名称和手机号码的label 文字自适应
     self.linkManLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:self.linkManLabel.font.pointSize]];
     self.linkManTelLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:self.linkManTelLabel.font.pointSize]];
     
@@ -150,6 +107,8 @@
     
     self.linkManImageView.layer.cornerRadius = 22;
     self.linkManImageView.layer.masksToBounds = YES;
+    
+    [self registerCollectionView];  // 注册 collectionView 的 cell
 }
 // 设置collectionView
 - (void) registerCollectionView {
@@ -248,11 +207,54 @@
     }
     
 }
+// 记录浏览事件
+- (void)postFactoryHistory {
+    
+    NSString *url = [NSString stringWithFormat:@"wantedmessages/%d/view/",self.model.id];
+    
+    if ([self judgeUserLogin]) {
+        
+        [HTTPREQUEST_SINGLE postRequestWithService:url andParameters:nil isShowActivity:NO dicIsEncode:NO success:^(RequestManager *manager, NSDictionary *response) {
+            NSLog(@"统计浏览历史--登录 ：%@",response);
+        } failure:^(RequestManager *manager, NSError *error) {
+            NSLog(@"统计浏览历史--登录 ：%@",error.debugDescription);
+        }];
+    } else {
+        [HTTPREQUEST_SINGLE postRequestWithURL:url andParameters:nil andShowAction:NO success:^(RequestManager *manager, NSDictionary *response) {
+            NSLog(@"统计浏览历史-- 未登录 ：%@",response);
+        } failure:^(RequestManager *manager, NSError *error) {
+            NSLog(@"统计浏览历史-- 未登录 ：%@",error.debugDescription);
+        }];
+    }
+}
+
+#pragma mark - 获取发布人详情
+- (void)getPublishInfo {
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@",URL_POST_REGISTER,[NSString stringWithFormat:@"%d",self.model.owner_id]];
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [HTTPREQUEST_SINGLE getRequestWithService:url andParameters:nil isShowActivity:NO success:^(RequestManager *manager, NSDictionary *response) {
+        
+        NSLog( @"%@",response);
+        
+        weakSelf.contanterDic = response[@"userPublic"];
+        
+        [weakSelf.myCollectionView reloadData];
+        
+    } failure:^(RequestManager *manager, NSError *error) {
+        [MBProgressHUD hideHUD];
+    }];
+    
+}
 
 #pragma mark - 通过model 更新界面
 - (void)setModel:(WantedMessageModel *)model {
     
     _model = model;
+    
+    titleHeight = [NSString getHeightOfAttributeRectWithStr:model.ftModel.title andSize:CGSizeMake(Screen_Width-24, 20) andFontSize:[UIFont adjustFontSize:16] andLineSpace:0];     // 计算标题的高度
     
     [self.myCollectionView reloadData];
     
@@ -274,11 +276,11 @@
 
     };
     
-    NSArray *areaArray = [NSString arrayWithJsonString:model.ftModel.geohash];
+    NSArray *areaArray = [NSString arrayWithJsonString:model.ftModel.geohash];  // 字符串转数组
     NSLog(@"反 geohash----%@",areaArray);
     GeoCodeOfBaiduMap *baiduMap = [GeoCodeOfBaiduMap new];
-    [baiduMap getBaiduStaticimageWithArray:areaArray];
-    baiduMap.imageBlock = ^(UIImage *image){
+    [baiduMap getBaiduStaticimageWithArray:areaArray];  /* 通过经纬度，获取百度地图 静态图片 */
+    baiduMap.imageBlock = ^(UIImage *image){    /// block 返回图片
         weakSelf.mapImage = image;
     };
 }
@@ -354,7 +356,7 @@
     }
     return CGSizeMake(Screen_Width, 8);
 }
-
+// 头部高度
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
     switch (section) {
         case 0:case 4:
@@ -405,19 +407,20 @@
     return reusableView;
 }
 
-
-
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     return 1.0f;
 }
-
+// 每个cell 的高度
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     NSString *string = self.model.ftModel.description_factory;
     NSNumber * lineCount;          // 文本的行数
     switch (indexPath.section) {
         case 0: // picture
-            return CGSizeMake(Screen_Width, Screen_Height * 120/187);
+        {
+            CGFloat height = Screen_Width*3/4+66+24+titleHeight;
+            return CGSizeMake(Screen_Width, height);
+        }
             break;
         case 1: // infomation
             return CGSizeMake(Screen_Width, Screen_Height*45/284);
@@ -446,10 +449,10 @@
             } else {
                 showSeeAll = NO;
                 
-                introduceHeight = allHeight + lineHeight - 35;    // 减去button 的高度
+                introduceHeight = allHeight;    // 只显示文字的高度 ，不显示button 的高度
             }
             
-            return CGSizeMake(Screen_Width, 65+introduceHeight);
+            return CGSizeMake(Screen_Width, 30+introduceHeight);
             break;
         case 3: // map
             return CGSizeMake(Screen_Width, Screen_Height*183/568);

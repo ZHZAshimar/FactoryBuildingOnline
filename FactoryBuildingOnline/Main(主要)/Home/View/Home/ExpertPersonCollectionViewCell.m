@@ -52,7 +52,7 @@
     
     NSString *avatarStr = [SecurityUtil decodeBase64String:model.avatar];
     
-    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarStr] placeholderImage:[UIImage imageNamed:@"my_default"]];
+    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarStr] placeholderImage:[UIImage imageNamed:@"my_broker"]];
     self.jobLabel.text = [NSString stringWithFormat:@"%@年经验",model.workYear];
 }
 

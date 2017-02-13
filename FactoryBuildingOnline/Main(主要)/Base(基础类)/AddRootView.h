@@ -21,3 +21,4 @@ typedef void(^TAPBUTTONBLOCK) (NSInteger index);
 - (void)removeView;
 
 @end
+   

@@ -62,6 +62,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 //    [self loadNaviControl]; // 设置导航栏
+    [self.collectionView scrollsToTop];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -87,8 +88,8 @@
 
 }
 
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-////    NSLog(@"%f--%f",scrollView.contentOffset.y,Screen_Height);
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//    NSLog(@"%f--%f",scrollView.contentOffset.y,Screen_Height);
 //    if (scrollView.contentOffset.y >= Screen_Height) {
 //        // 重新设置搜索框的位置
 //        self.searchBarOfNavi.frame = CGRectMake(19, 0, Screen_Width-100, 44);
@@ -98,8 +99,8 @@
 //        self.searchBarOfNavi.frame = CGRectMake(19, 0, Screen_Width-38, 44);
 //        self.navigationItem.rightBarButtonItem.customView.hidden = YES;
 //    }
-//    
-//}
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"NAVIGATIONCHANGE" object:self userInfo:@{@"contentOffsetY":@(scrollView.contentOffset.y)}];
+}
 
 #pragma mark - 加载导航栏
 - (void)loadNaviControl {
@@ -338,7 +339,7 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(Screen_Width, (Screen_Width)*17/32);
+    return CGSizeMake(Screen_Width, Screen_Width/2);
 }
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:

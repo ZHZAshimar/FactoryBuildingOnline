@@ -4,13 +4,15 @@
 //
 //  Created by myios on 2017/2/8.
 //  Copyright © 2017年 XFZY. All rights reserved.
-//
+//  app 的意见反馈
 
 #import "AppFeedbackViewController.h"
 
 @interface AppFeedbackViewController ()<UITableViewDelegate,UITableViewDataSource,UITextViewDelegate>
 {
     UILabel *placeholdLabel;    // textView 中的提示文字
+    UITextView *textView;
+    UITextField *textField;
 }
 @property (nonatomic, strong) UITableView *myTableView;
 
@@ -39,7 +41,32 @@
 }
 #pragma mark - 完成
 - (void)rightItemButtonAction {
+    
+    if (textView.text.length > 400 && textView.text.length < 2) {
+        [MBProgressHUD showError:@"请输入2-400个字" ToView:nil];
+        return;
+    }
+    
+    NSString *linkStr = textField.text;
+    
+    if (linkStr.length <= 0) {
+        [MBProgressHUD showError:@"请输入联系方式" ToView:nil];
+        return;
+    }
+    if ([NSString validateEmail:linkStr] || [NSString validateMobile:linkStr]) {
 
+        NSDictionary *params = @{@"app_type":@"1",@"feedback_content":textView.text,@"contact_way":textField.text};
+        
+        [HTTPREQUEST_SINGLE postRequestWithURL:URL_POST_APP_FEEDBACKS andParameters:params andShowAction:YES success:^(RequestManager *manager, NSDictionary *response) {
+            NSLog(@"APP意见反馈：%@",response);
+            [MBProgressHUD showSuccess:@"反馈成功，我们将认真查看！" ToView:nil];
+        } failure:^(RequestManager *manager, NSError *error) {
+            NSLog(@"APP意见反馈：%@",error);
+            [MBProgressHUD showSuccess:@"反馈失败！" ToView:nil];
+        }];
+    }
+    
+    
 }
 
 #pragma mark - tableView datasource 
@@ -98,7 +125,7 @@
     
     if (indexPath.section == 0) {   // 问题描述
         
-        UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(13, 0, Screen_Width-26, cell.frame.size.height-20)];
+        textView = [[UITextView alloc] initWithFrame:CGRectMake(13, 0, Screen_Width-26, cell.frame.size.height-20)];
         
         textView.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:13]];
         textView.textColor = BLACK_42;
@@ -120,7 +147,7 @@
         [cell addSubview:label];
     } else {    // 联系方式
         
-        UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(13, 0, Screen_Width-26, cell.frame.size.height)];
+        textField = [[UITextField alloc] initWithFrame:CGRectMake(13, 0, Screen_Width-26, cell.frame.size.height)];
     
         textField.placeholder = @"请输入您的QQ号码/手机号/邮箱";
         textField.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:13]];

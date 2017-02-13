@@ -68,7 +68,7 @@
 //    self.moneyOfMonthLabel.text = [NSString stringWithFormat:@"%.0f元/月",priceOfMonth];
     
     self.areaLable.text = [NSString stringWithFormat:@"%@ m²",ftModel.range];
-    
+    self.contentLable.text = [NSString stringWithFormat:@"%@",ftModel.description_factory];
 //    NSArray *tagsArr = [NSString arrayWithJsonString:ftModel.tags];
     
 //    [self drawTagsLabel:tagsArr];

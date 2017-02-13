@@ -127,7 +127,6 @@
 		095A6B081DAF679B0066E076 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 095A6B041DAF679B0066E076 /* LaunchScreen.storyboard */; };
 		095A6B091DAF679B0066E076 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 095A6B061DAF679B0066E076 /* Main.storyboard */; };
 		095D9FCB1E271AC20017B3A9 /* HomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 095D9FCA1E271AC20017B3A9 /* HomeCollectionViewCell.m */; };
-		095D9FCE1E271B060017B3A9 /* HomeOfHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 095D9FCD1E271B060017B3A9 /* HomeOfHomeViewController.m */; };
 		095D9FD11E27266C0017B3A9 /* HeadOfImagePlayerCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 095D9FD01E27266C0017B3A9 /* HeadOfImagePlayerCollectionReusableView.m */; };
 		095D9FD41E272A1D0017B3A9 /* RecommendAndActionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 095D9FD31E272A1D0017B3A9 /* RecommendAndActionCollectionViewCell.m */; };
 		095D9FD81E275FC50017B3A9 /* BoutiqueHeadViewCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 095D9FD61E275FC50017B3A9 /* BoutiqueHeadViewCollectionReusableView.m */; };
@@ -272,6 +271,7 @@
 		09FDD2C21DC1EF710062E642 /* NHNetworkHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FDD2BD1DC1EF710062E642 /* NHNetworkHelper.m */; };
 		09FDD2C31DC1EF710062E642 /* NSObject+runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FDD2BF1DC1EF710062E642 /* NSObject+runtime.m */; };
 		09FDD2C61DC1F0A30062E642 /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FDD2C51DC1F0A30062E642 /* RequestManager.m */; };
+		A6ECF76F1E4C5911009E0FB6 /* HomeOfHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 095D9FCD1E271B060017B3A9 /* HomeOfHomeViewController.m */; };
 		E33B070581BB59D0E88F01DC /* libPods-FactoryBuildingOnline.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1D87FAC61F70E80126C6F43 /* libPods-FactoryBuildingOnline.a */; };
 /* End PBXBuildFile section */
 
@@ -2072,7 +2072,7 @@
 				TargetAttributes = {
 					09FCA9E31D9C9EA50062F063 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = Y637SH92KM;
+						DevelopmentTeam = QP56Y9M7W6;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
@@ -2368,7 +2368,6 @@
 				09375B071DF4F398002A6D42 /* ForgetPsdViewController.m in Sources */,
 				09588F291DD41D7C0001DAA2 /* JTSImageInfo.m in Sources */,
 				09588F221DD41D7C0001DAA2 /* JDYBrowseModel.m in Sources */,
-				095D9FCE1E271B060017B3A9 /* HomeOfHomeViewController.m in Sources */,
 				0927D89C1E2C764600FE7B27 /* ExpertAearHeadCollectionReusableView.m in Sources */,
 				09FBC6061E31A3BD005ABB36 /* AreaExpertPersonCollectionViewCell.m in Sources */,
 				09EC2D361DE2D57B00A7F6D4 /* DetailOfFactoryInfoCollectionViewCell.m in Sources */,
@@ -2388,6 +2387,7 @@
 				09D7BD941DF14CD000A405C9 /* AboutUsViewController.m in Sources */,
 				09B665A71DB9F1B70094A076 /* TZPhotoPickerController.m in Sources */,
 				093682F11DF65CF900FB31C5 /* BrokerHeaderCollectionReusableView.m in Sources */,
+				A6ECF76F1E4C5911009E0FB6 /* HomeOfHomeViewController.m in Sources */,
 				09ED286E1DF012B500E84E0A /* MapStatisticalPoiModel.m in Sources */,
 				09FDD2C21DC1EF710062E642 /* NHNetworkHelper.m in Sources */,
 				09588F2F1DD41D7C0001DAA2 /* UIImageView+CustomImageView.m in Sources */,
@@ -2571,7 +2571,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = Y637SH92KM;
+				DEVELOPMENT_TEAM = QP56Y9M7W6;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2608,7 +2608,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = Y637SH92KM;
+				DEVELOPMENT_TEAM = QP56Y9M7W6;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

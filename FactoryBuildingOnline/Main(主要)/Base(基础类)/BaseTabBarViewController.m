@@ -161,10 +161,10 @@
         
         NSMutableArray *userArr = [FOLUserInforModel findAll];
         
-//        if (userArr.count <= 0) {
-//            [MBProgressHUD showAutoMessage:@"您还没有登录😯" ToView:nil];
-//            return NO;
-//        }
+        if (userArr.count <= 0) {
+            [MBProgressHUD showAutoMessage:@"您还没有登录😯" ToView:nil];
+            return NO;
+        }
         
         FOLUserInforModel *userModel = userArr[0];
         // ➕ 按钮

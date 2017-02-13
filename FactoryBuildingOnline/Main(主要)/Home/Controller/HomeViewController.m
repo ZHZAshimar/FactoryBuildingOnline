@@ -23,16 +23,20 @@
     NSArray *fourPathTextArr;
     NSArray *fourPathSubtextArr;
     SelectCityTableViewController *selectCityVC;
+    CGFloat segmentedIndexView_width;
 }
 
 @property (nonatomic, strong) HMSegmentedControl *naviSegmentedControl;     // 导航栏上面的 segmented
+@property (nonatomic, strong) UIView *segmentedIndexView;                            // segmented 下面的指示view
 @property (nonatomic, strong) UITextField *searchTF;   // 在导航栏下面的 搜索框
-
+@property (nonatomic, strong) UIView *greenView;    // 导航栏的绿色View
+@property (nonatomic, strong) UIButton *naviSearchButton;   // 导航栏上的搜索
 
 @property (nonatomic,strong) UICollectionView *myCollectionView;
 
 @property (nonatomic, strong) UIView *leftBarView;                        // navigation  的左边的
 @property (nonatomic, strong) UILabel *leftBarAreaLabel;
+@property (nonatomic, assign) int segmentedIndex;
 
 @end
 
@@ -42,6 +46,7 @@
 {
     self.myCollectionView.delegate = nil;
     self.myCollectionView.dataSource = nil;
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"NAVIGATIONCHANGE" object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -58,14 +63,14 @@
     {
         if (string)
         {
-            
             weakSelf.leftBarAreaLabel.text = string;
         }
         
     };
     self.leftBarView.hidden = YES;          // 隐藏导航栏 左边的地理位置的 view
     self.naviSegmentedControl.hidden = YES; // 隐藏导航栏 segmentedControl
-    
+    [self.naviSearchButton removeFromSuperview];
+    [self.greenView removeFromSuperview];
     if (_geocodesearch != nil) {
         _geocodesearch = nil;
     }
@@ -74,8 +79,6 @@
     }
 
 }
-
-
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -96,7 +99,6 @@
     [self.rdv_tabBarController setTabBarHidden:NO];
 
     [self loadNavigation];
-    
     _locService.delegate = self;    // 定位代理
     _geocodesearch.delegate = self;  // 此处记得不用的时候需要置nil，否则影响内存的释放
 }
@@ -113,11 +115,93 @@
     self.myCollectionView.dataSource = self;
     
     [self locationSevice];  // 设置定位
-  
-    NSLog(@"%f--%f",Screen_Width,Screen_Height);
     
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotification:) name:@"NAVIGATIONCHANGE" object:nil];
+}
+#pragma mark - 接收 NAVIGATIONCHANGE 通知
+- (void)receiveNotification:(NSNotification *)sender {
+    
+    CGFloat contentY = [sender.userInfo[@"contentOffsetY"] floatValue];  // 拿到偏移的Y值
+    
+    if (contentY >= -20) {
+        
+        [self changeWithFloat:contentY];
+    }
 }
 
+- (void)changeWithFloat:(CGFloat)contentY {
+
+    // 将搜索框和collectionView向上移动
+    self.searchTF.frame = CGRectMake(26, -contentY, Screen_Width-52, Screen_Height*15/284);
+    
+    self.myCollectionView.frame = CGRectMake(0, Screen_Height*15/284-contentY, Screen_Width, Screen_Height-Screen_Height*15/284);
+    
+    if (contentY >= Screen_Height*15/284) {  // 当偏移量到达 Screen_Height*15/284 时，让 UICollectionView 固定在（0，0）点
+        
+        self.myCollectionView.frame = CGRectMake(0, 0, Screen_Width, Screen_Height-Screen_Height*15/284);
+    }
+    
+    CGFloat alpha = MIN(1, contentY/100);
+    
+    self.greenView.alpha = alpha;       // 设置greenView 的透明度
+    
+    NSLog(@"%f--%f",contentY,alpha);
+    
+    // 定位的View 透明度变化
+    self.leftBarView.alpha = 1 - alpha;
+    
+    // 计算 segmentedControl 的偏移及宽度的变化
+    CGFloat segmentedControl_X = Screen_Width/2-contentY;
+    if (segmentedControl_X <= Screen_Width/6) {
+        self.naviSegmentedControl.frame = CGRectMake(Screen_Width/6, 5, Screen_Width*2/3, 30);
+        
+    }else if (contentY == 0){
+        // 当 偏移为0时，恢复之前的位置
+        self.naviSegmentedControl.frame = CGRectMake(Screen_Width/2, 5, Screen_Width/2-13, 30);
+        self.naviSearchButton.frame = CGRectMake(Screen_Width, 0, 50, 44);
+        // set font's style on normal
+        _naviSegmentedControl.titleTextAttributes = @{NSForegroundColorAttributeName:GRAY_80,NSFontAttributeName:[UIFont adjustFont:[UIFont systemFontOfSize:15.0]]};
+        
+        // set font's style on selected
+        _naviSegmentedControl.selectedTitleTextAttributes = @{NSForegroundColorAttributeName:GREEN_1ab8,NSFontAttributeName:[UIFont adjustFont:[UIFont systemFontOfSize:15.0]]};
+        
+    } else {
+        // 让 naviSegmentedControl 根据 偏移Y改变 x轴上的位置 和 宽度
+        self.naviSegmentedControl.frame = CGRectMake(segmentedControl_X, 5, Screen_Width/2+contentY/2, 30);
+        
+        
+        CGFloat color = MIN(1, (128+contentY)/225.0);
+        
+        // 颜色变化
+        // set font's style on normal
+        self.naviSegmentedControl.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor colorWithRed:color green:color blue:color alpha:1.0],NSFontAttributeName:[UIFont adjustFont:[UIFont systemFontOfSize:15.0]]};
+        
+        CGFloat chooseRed = MIN(1, (26+contentY*2)/255.0);
+        CGFloat chooseGreen = MIN(1, (184+contentY*2)/255.0);
+        CGFloat chooseBlue = MIN(1, (15+contentY*2)/255.0);
+        NSLog(@"%f-%f-%f",chooseRed,chooseBlue,chooseGreen);
+        // set font's style on selected
+        self.naviSegmentedControl.selectedTitleTextAttributes = @{NSForegroundColorAttributeName:[UIColor colorWithRed:chooseRed green:chooseGreen blue:chooseBlue alpha:1.0],NSFontAttributeName:[UIFont adjustFont:[UIFont systemFontOfSize:15.0]]};
+        
+        // 指示器的颜色跟着变
+        self.segmentedIndexView.backgroundColor = [UIColor colorWithRed:chooseRed green:chooseGreen blue:chooseBlue alpha:1.0];
+        CGFloat x = self.segmentedIndex * self.naviSegmentedControl.frame.size.width/3+self.naviSegmentedControl.frame.size.width/6;
+        
+        self.segmentedIndexView.center = CGPointMake(x, self.naviSegmentedControl.frame.size.height);
+        
+        // 搜索按钮的 位置变化
+        CGFloat searchButton_X = Screen_Width - contentY/2;
+        if (contentY/2 >= 50) {
+            // 当偏移大于 50 时，让搜索的图标固定在导航栏右端
+            self.naviSearchButton.frame = CGRectMake(Screen_Width-50, 0, 50, 44);
+        } else {
+            // 让 naviSearchButton 的X轴变化
+            self.naviSearchButton.frame = CGRectMake(searchButton_X, 0, 50, 44);
+        }
+        
+    }
+    
+}
 #pragma mark - 加载 导航栏
 - (void)loadNavigation {
     // 显示 导航栏
@@ -129,9 +213,12 @@
     
     self.leftBarView.hidden = NO;
     self.naviSegmentedControl.hidden = NO;
-
+    
+    [self.navigationController.navigationBar addSubview:self.naviSearchButton];
+    
+    // 将greenView 添加到 navigationBar 的 0 位置，
+    [self.navigationController.navigationBar insertSubview:self.greenView atIndex:0];
 }
-
 
 - (void)locationSevice {        // 定位设置
     
@@ -141,8 +228,6 @@
     
     _geocodesearch = [[BMKGeoCodeSearch alloc] init];
 }
-
-
 #pragma mark - 跳转到选择城市界面
 - (void)jumpSelectCityAction: (UITapGestureRecognizer *)sender {
     
@@ -184,33 +269,27 @@
     self.leftBarAreaLabel.text = self.cityNameStr;
 }
 
-//#pragma mark - searchBar delegate
-//- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
-//{
-//    NSLog(@"跳转到搜索界面");
-//    SearchViewController *searchVC = [SearchViewController new];
-//    searchVC.hidesBottomBarWhenPushed = YES;    // 隐藏 tabbar
-//    [self.navigationController pushViewController:searchVC animated:YES];
-//    
-//    return NO;
-//}
-
 #pragma mark - scroll delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
+    self.segmentedIndex = 0;
     if (self.myCollectionView.contentOffset.x >= Screen_Width/2 && self.myCollectionView.contentOffset.x < Screen_Width*1.5) {
-        
-        [self.naviSegmentedControl setSelectedSegmentIndex: 1];
+        self.segmentedIndex = 1;
         
     } else if (self.myCollectionView.contentOffset.x >= Screen_Width*1.5 ) {
-        
-        [self.naviSegmentedControl setSelectedSegmentIndex: 2];
+        self.segmentedIndex = 2;
         
     } else {
-    
-        [self.naviSegmentedControl setSelectedSegmentIndex: 0];
+        self.segmentedIndex = 0;
     }
     
+    [self.naviSegmentedControl setSelectedSegmentIndex: self.segmentedIndex];
+    // 设置 选中的指示器的中心位置
+    CGFloat x = self.segmentedIndex*self.naviSegmentedControl.frame.size.width/3+self.naviSegmentedControl.frame.size.width/6;
+    
+    self.segmentedIndexView.center = CGPointMake(x, self.naviSegmentedControl.frame.size.height);
+    
+//    [self changeWithFloat:self.myCollectionView.contentOffset.x];
 }
 
 #pragma mark - collectionView delegate -
@@ -248,31 +327,22 @@
         // 专家
         [self addChildViewController:cell.expertOfHomeVC];
     }
-    
-    
     return cell;
 }
 
 #pragma mark - textfield
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    [self gotoSearchVC];
+    return NO;
+}
+
+- (void)gotoSearchVC {
     
     SearchViewController *searchVC = [SearchViewController new];
     searchVC.hidesBottomBarWhenPushed = YES;    // 隐藏 tabbar
     [self.navigationController pushViewController:searchVC animated:YES];
     
-    return NO;
 }
-
-#pragma mark - 判断用户是否登录
-//- (BOOL)judgeUserLogin {
-
-//    NSMutableArray *array = [FOLUserInforModel findAll];    // 从 FOLuser model 中获取用户信息
-//    if (array.count <= 0) {
-//        [MBProgressHUD showAutoMessage:@"尚未登录，请登录哦~" ToView:nil];
-//        return NO;
-//    }
-//    return YES;
-//}
 
 #pragma mark - lazy load
 // the segmentedControl in navigatorBar
@@ -284,8 +354,8 @@
         _naviSegmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@" 首页 ",@" 列表 ",@" 专家 "]];
         
         // set frame
-        _naviSegmentedControl.frame = CGRectMake(Screen_Width/2, 5, Screen_Width/2-26, 30);
-        
+        _naviSegmentedControl.frame = CGRectMake(Screen_Width/2, 5, Screen_Width/2-13, 30);
+        _naviSegmentedControl.backgroundColor = [UIColor clearColor];
         // set font's style on normal
         _naviSegmentedControl.titleTextAttributes = @{NSForegroundColorAttributeName:GRAY_80,NSFontAttributeName:[UIFont adjustFont:[UIFont systemFontOfSize:15.0]]};
         
@@ -295,23 +365,43 @@
         // set Color for the selection indicator stripe/box
         _naviSegmentedControl.selectionIndicatorColor = GREEN_1ab8;
         
-        _naviSegmentedControl.selectionIndicatorHeight = 1;
+        _naviSegmentedControl.selectionIndicatorHeight = 0;
         
         // set selectStyle for selectionStyle
-        _naviSegmentedControl.selectionStyle = HMSegmentedControlSelectionStyleTextWidthStripe;
+        _naviSegmentedControl.selectionStyle = HMSegmentedControlSelectionStyleArrow;
         
         // set location for the indicatorLocation
         _naviSegmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
+        
+        [_naviSegmentedControl addSubview:self.segmentedIndexView];
         
         __weak typeof (self) weakSelf = self;
         
         [_naviSegmentedControl setIndexChangeBlock:^(NSInteger index) {
             
             [weakSelf.myCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
+            // 设置 选中的指示器的中心位置
+            CGFloat x = index*weakSelf.naviSegmentedControl.frame.size.width/3+weakSelf.naviSegmentedControl.frame.size.width/6;
             
+            weakSelf.segmentedIndexView.center = CGPointMake(x, weakSelf.naviSegmentedControl.frame.size.height);
+            
+            weakSelf.segmentedIndex = (int)index;
         }];
     }
     return _naviSegmentedControl;
+}
+
+- (UIView *)segmentedIndexView {
+    
+    if (!_segmentedIndexView) {
+        NSString *str = @"首页";
+        segmentedIndexView_width = [NSString widthForString:str fontSize:[UIFont adjustFontSize:15] andHeight:44]-15;
+        
+        _segmentedIndexView = [[UIView alloc] initWithFrame:CGRectMake(self.naviSegmentedControl.frame.size.width*1/3/2-segmentedIndexView_width/2, self.naviSegmentedControl.frame.size.height-2, segmentedIndexView_width, 2)];
+        
+        _segmentedIndexView.backgroundColor = GREEN_19b8;
+    }
+    return _segmentedIndexView;
 }
 
 - (UITextField *)searchView {
@@ -327,7 +417,6 @@
         _searchTF.delegate = self;
         _searchTF.layer.cornerRadius = Screen_Height*15/284/2;
         _searchTF.layer.masksToBounds = YES;
-        
         
         _searchTF.font = [UIFont adjustFont:[UIFont systemFontOfSize:12]];
         
@@ -369,12 +458,6 @@
         
         [self.view addSubview:_myCollectionView];
         
-//        _myCollectionView.translatesAutoresizingMaskIntoConstraints = NO;
-        
-//        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(0)-[_myCollectionView]-(0)-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(self.searchTF,_myCollectionView)]];
-//        
-//        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_myCollectionView]-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(self.searchTF,_myCollectionView)]];
-        
         [_myCollectionView registerClass:[HomeCollectionViewCell class] forCellWithReuseIdentifier:@"HomeCollectionViewCell"];
         
     }
@@ -404,6 +487,29 @@
     
     }
     return _leftBarView;
+}
+
+- (UIButton *)naviSearchButton {
+    
+    if (!_naviSearchButton) {
+        _naviSearchButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _naviSearchButton.frame = CGRectMake(Screen_Width, 0, 50, 44);
+        [_naviSearchButton setImage:[UIImage imageNamed:@"search"] forState:UIControlStateNormal];
+        [_naviSearchButton setTintColor:[UIColor whiteColor]];
+        [_naviSearchButton addTarget:self action:@selector(gotoSearchVC) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _naviSearchButton;
+}
+
+- (UIView *)greenView {
+    
+    if (!_greenView) {
+        self.greenView = [[UIView alloc] initWithFrame:CGRectMake(0, -20, Screen_Width, 64)];
+        self.greenView.backgroundColor = GREEN_19b8;
+        self.greenView.hidden = NO;
+        self.greenView.alpha = 0;
+    }
+    return _greenView;
 }
 
 - (void)didReceiveMemoryWarning

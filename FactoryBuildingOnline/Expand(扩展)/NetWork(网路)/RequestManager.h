@@ -55,7 +55,17 @@
  *  @param failure    请求失败，block的参数为错误信息
  */
 - (void)postRequestWithURL:(NSString *)urlStr andParameters:(NSDictionary *)params andShowAction:(BOOL)isShow success:(void (^)(RequestManager *manager,NSDictionary *response))success failure:(void (^)(RequestManager *manager, NSError *error))failure;
-
+/**
+ *  PUT 请求 不带token
+ *
+ *  @param urlStr     请求接口
+ *  @param params     向服务器请求时的参数
+ *  @param phone_num  手机号码
+ *  @param isShow     显示提示框
+ *  @param success    请求成功，block的参数为服务返回的数据
+ *  @param failure    请求失败，block的参数为错误信息
+ */
+- (void)putRequestToForgetPWD:(NSString *)urlStr andParameters:(NSDictionary *)params andPhoneNum:(NSString *)phone_num isShowActivity:(BOOL)isShow success:(void(^)(RequestManager *manager,NSDictionary *response))success failure:(void(^)(RequestManager *manager,NSError *error))failure;
 /**
  *  PUT 请求 带token
  *

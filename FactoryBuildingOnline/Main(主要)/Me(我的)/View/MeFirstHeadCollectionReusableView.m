@@ -21,10 +21,10 @@
         
         // 头像
         self.userHeadImageView = [[UIImageView alloc] initWithFrame:CGRectMake(Screen_Width/2 - self.frame.size.height*19/55/2, self.frame.size.height*12/55, self.frame.size.height*19/55, self.frame.size.height*19/55)];
-        self.userHeadImageView.layer.borderColor = GRAY_94.CGColor;
-        self.userHeadImageView.layer.borderWidth = 1;
+        
         self.userHeadImageView.layer.cornerRadius = self.frame.size.height*19/55/2;
         self.userHeadImageView.layer.masksToBounds = YES;
+        
         self.userHeadImageView.userInteractionEnabled = YES;
         [self addSubview:self.userHeadImageView];
     
@@ -120,14 +120,25 @@
     
     
     [self.nameBtn setTitle:[NSString stringWithFormat:@"%@",userModel.userName] forState:0];
-    if (userModel.type == 2) {
+    
+    if (userModel.type == 2) {  // 专家的图标
         [self.userHeadImageView sd_setImageWithURL:[NSURL URLWithString:userAvatar] placeholderImage:[UIImage imageNamed:@"my_broker"]];
         
         self.hexagonShapeLayer.fillColor = BLUE_FE.CGColor;
-    } else {
+    } else {                // 普通用户的图标
         self.hexagonShapeLayer.fillColor = GREEN_19b8.CGColor;
         [self.userHeadImageView sd_setImageWithURL:[NSURL URLWithString:userAvatar] placeholderImage:[UIImage imageNamed:@"my_normal"]];
         
+    }
+    if (userModel.avatar.length > 0) {
+            
+        self.userHeadImageView.layer.borderColor = GRAY_94.CGColor;
+        self.userHeadImageView.layer.borderWidth = 1;
+        
+    } else {
+        self.userHeadImageView.layer.borderColor = [UIColor whiteColor].CGColor;
+        self.userHeadImageView.layer.borderWidth = 0;
+            
     }
     
 }

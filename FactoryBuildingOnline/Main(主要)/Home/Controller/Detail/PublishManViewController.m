@@ -64,7 +64,11 @@
 }
 
 - (void)callPhoneBtnAction:(UIButton *)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",self.contanterDic[@"phone_num"]]]];
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",self.contanterDic[@"phone_num"]]]];
+    NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"tel:%@",self.contanterDic[@"phone_num"]];
+    UIWebView *callWebview = [[UIWebView alloc] init];
+    [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
+    [self.view addSubview:callWebview];
 }
 
 #pragma mark - tableView datasource
@@ -81,7 +85,7 @@
     
     NSString *avatarURL = [SecurityUtil decodeBase64String:self.contanterDic[@"avatar"]];
     
-    [headView.publishManHeadImageView sd_setImageWithURL:[NSURL URLWithString:avatarURL] placeholderImage:[UIImage imageNamed:@"my_default"]];
+    [headView.publishManHeadImageView sd_setImageWithURL:[NSURL URLWithString:avatarURL] placeholderImage:[UIImage imageNamed:@"detail_broker"]];
     
     headView.publishNameLabel.text = self.contanterDic[@"username"];
     
@@ -141,7 +145,7 @@
     
     if (!_myTableView) {
         
-        _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, Screen_Height - 54) style:UITableViewStylePlain];
+        _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, Screen_Height - 50) style:UITableViewStylePlain];
         _myTableView.delegate = self;
         _myTableView.dataSource = self;
         _myTableView.backgroundColor = GRAY_F5;
@@ -158,7 +162,7 @@
 - (UIView *)footView {
     
     if (!_footView) {
-        _footView = [[UIView alloc] initWithFrame:CGRectMake(0, Screen_Height-50, Screen_Width, 49)];
+        _footView = [[UIView alloc] initWithFrame:CGRectMake(0, Screen_Height-50, Screen_Width, 50)];
         _footView.backgroundColor = [UIColor whiteColor];
         
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, 0.5)];

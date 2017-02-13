@@ -229,15 +229,17 @@
     
     update_value = [SecurityUtil encodeBase64String:update_value];
     
-    MeNetRequest *meNetRequest = [MeNetRequest new];
-    
-    [meNetRequest updateUserAvater:update_value andUpdateType:3 getUserInfo:NO];
-    
-    meNetRequest.psdBlock = ^(BOOL flag) {
+    NSDictionary *requestDic = @{@"update_type":@(5),@"update_value":update_value};
+    [HTTPREQUEST_SINGLE putRequestToForgetPWD:URL_POST_LOGIN andParameters:requestDic andPhoneNum: phoneTF.text isShowActivity:YES success:^(RequestManager *manager, NSDictionary *response) {
+        NSLog(@"忘记密码请求失败：%@",response);
         [MBProgressHUD showSuccess:@"成功修改" ToView:nil];
         [self.navigationController popViewControllerAnimated:YES];
-    };
-    [self.navigationController popViewControllerAnimated:YES];
+    } failure:^(RequestManager *manager, NSError *error) {
+//        [self.navigationController popViewControllerAnimated:YES];
+        NSLog(@"忘记密码请求失败：%@",error);
+    }];
+    
+    
 }
 /// 判断手机号的输入是否正确
 - (BOOL)judgePhoneNum {
@@ -269,9 +271,9 @@
         return;
     }
     
-    [HTTPREQUEST_SINGLE getRequestWithService:[NSString stringWithFormat:@"%@3",URL_GET_SMSES] andParameters:@{@"address":phoneTF.text} isShowActivity:NO success:^(RequestManager *manager, NSDictionary *response) {
+    [HTTPREQUEST_SINGLE getRequestWithService:[NSString stringWithFormat:@"%@4",URL_GET_SMSES] andParameters:@{@"address":phoneTF.text} isShowActivity:NO success:^(RequestManager *manager, NSDictionary *response) {
         
-        NSLog(@"登录发送短信验证码：%@",response);
+        NSLog(@"忘记密码发送短信验证码：%@",response);
         
         if ([response[@"erro_code"] intValue] != 200) {
             [MBProgressHUD showAutoMessage:@"您刚发送过验证码，请留意短信！" ToView:nil];
@@ -288,7 +290,7 @@
         getMsgBtn.layer.borderColor = GRAY_db.CGColor;
         
     } failure:^(RequestManager *manager, NSError *error) {
-        NSLog(@"登录发送短信验证码：error=%@",error);
+        NSLog(@"忘记密码发送短信验证码：error=%@",error);
         [MBProgressHUD showAutoMessage:@"网络有点问题，请稍后再操作！" ToView:nil];
     }];
 }

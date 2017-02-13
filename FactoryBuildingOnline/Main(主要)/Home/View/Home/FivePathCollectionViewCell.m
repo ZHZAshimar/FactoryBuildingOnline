@@ -35,7 +35,7 @@
         self.imageView.layer.cornerRadius = 2;
         
         self.tagView.backgroundColor = [UIColor clearColor];
-        self.nameLabel.lineBreakMode =  NSLineBreakByTruncatingHead;
+        self.nameLabel.lineBreakMode =  NSLineBreakByTruncatingTail;
 
         
         // 设置字体自适应
@@ -64,12 +64,12 @@
     
     self.addressLabel.text = [NSString stringWithFormat:@"%@%@",proFactoryModel.area,proFactoryModel.address];
     
-    NSString *price = [NSString stringWithFormat:@"%@元/m²/月",proFactoryModel.price];
+    NSString *price = [NSString stringWithFormat:@"%@元/m²",proFactoryModel.price];
     
     self.moneyOfdayLabel.text = price;  // 每月一平方的租金
-    CGFloat priceOfMonth = [proFactoryModel.range floatValue] * [proFactoryModel.price floatValue]; // 计算出每月的总租金
+//    CGFloat priceOfMonth = [proFactoryModel.range floatValue] * [proFactoryModel.price floatValue]; // 计算出每月的总租金
     
-    self.moneyOfMonthLabel.text = [NSString stringWithFormat:@"%.0f元/月",priceOfMonth];
+//    self.moneyOfMonthLabel.text = [NSString stringWithFormat:@"%.0f元/月",priceOfMonth];
     
     self.areaLabel.text = [NSString stringWithFormat:@"%@ m²",proFactoryModel.range];
     // 在绘制 label 之前先 将已有的Label 移除
@@ -99,7 +99,7 @@
     
     self.addressLabel.text = [NSString stringWithFormat:@"%@",ftModel.address_overview];
     
-    NSString *price = [NSString stringWithFormat:@"%@/m²",ftModel.price];
+    NSString *price = [NSString stringWithFormat:@"%@元/m²",ftModel.price];
     
     self.moneyOfdayLabel.text = price;  // 每月一平方的租金
     CGFloat priceOfMonth = [ftModel.range floatValue] * [ftModel.price floatValue]; // 计算出每月的总租金
@@ -134,7 +134,7 @@
     for (int i = 0; i < tagsArr.count; i++) {
         
         NSString *tagStr = tagsArr[i][@"name"];   // 拿到标签文字
-        CGFloat width = [NSString widthForString:tagStr fontSize:[UIFont adjustFontSize:11] andHeight:self.frame.size.height*15/170]+5;  // 获取string 的宽度
+        CGFloat width = [NSString widthForString:tagStr fontSize:[UIFont adjustFontSize:11] andHeight:self.frame.size.height*15/160]+5;  // 获取string 的宽度
         [widthArr addObject:@(width)];
 
         CGFloat lastWidth = 0.0;

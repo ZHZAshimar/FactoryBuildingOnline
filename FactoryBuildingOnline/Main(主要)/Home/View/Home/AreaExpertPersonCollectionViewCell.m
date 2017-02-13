@@ -39,7 +39,7 @@
     self.fatoryNumLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:self.jobLabel.font.pointSize]];
     
     self.avatarImageView.layer.cornerRadius = Screen_Height * 45/284/3;
-    self.avatarImageView.layer.masksToBounds = YES;
+    self.avatarImageView.layer.masksToBounds = YES ;
     
 }
 
@@ -50,7 +50,7 @@
     
     NSString *avatarStr = [SecurityUtil decodeBase64String:dic[@"avatar"]];
     
-    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarStr] placeholderImage:[UIImage imageNamed:@"my_default"]];
+    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarStr] placeholderImage:[UIImage imageNamed:@"my_broker"]];
     
     self.fatoryNumLabel.text = @"";
 }

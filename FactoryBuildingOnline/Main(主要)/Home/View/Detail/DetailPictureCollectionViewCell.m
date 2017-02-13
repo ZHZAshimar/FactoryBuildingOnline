@@ -59,7 +59,7 @@
     self.indexView.layer.masksToBounds = YES;
     // 文字适应
     self.indexLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:self.indexLabel.font.pointSize]];
-    self.headLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:self.headLabel.font.pointSize]];
+    self.headLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:self.headLabel.font.pointSize weight:0.5]];
     self.monthlyLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:self.monthlyLabel.font.pointSize]];
     self.daythlyLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:self.daythlyLabel.font.pointSize]];
     self.areaLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:self.areaLabel.font.pointSize]];

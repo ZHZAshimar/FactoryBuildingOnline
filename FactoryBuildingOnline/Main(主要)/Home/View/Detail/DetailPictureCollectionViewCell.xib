@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,6 +23,9 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UGW-Vs-0pt" customClass="ImagePlayerView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
                         <color key="backgroundColor" red="0.85872977969999997" green="0.85887759919999995" blue="0.85872042179999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="UGW-Vs-0pt" secondAttribute="height" multiplier="4:3" id="k2d-Qr-Z5M"/>
+                        </constraints>
                     </view>
                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0cH-ec-8VG">
                         <rect key="frame" x="16" y="32" width="33" height="33"/>
@@ -198,7 +201,6 @@
                 <constraint firstItem="r6M-Hw-8CZ" firstAttribute="bottom" secondItem="Gk9-sf-TIm" secondAttribute="bottom" id="6Pj-dJ-YJs"/>
                 <constraint firstItem="sjk-GK-YwQ" firstAttribute="leading" secondItem="Gk9-sf-TIm" secondAttribute="trailing" constant="16" id="7dt-gp-7tX"/>
                 <constraint firstItem="r6M-Hw-8CZ" firstAttribute="top" secondItem="Gk9-sf-TIm" secondAttribute="top" id="7eG-dt-trk"/>
-                <constraint firstItem="UGW-Vs-0pt" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="120:187" id="9J2-nr-fZX"/>
                 <constraint firstItem="d4s-KB-bSd" firstAttribute="height" secondItem="UGW-Vs-0pt" secondAttribute="height" multiplier="33:240" id="9L5-yZ-b1b"/>
                 <constraint firstAttribute="trailing" secondItem="a5X-HV-53Q" secondAttribute="trailing" constant="15" id="9qS-GP-QkY"/>
                 <constraint firstItem="UGW-Vs-0pt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="BLB-zx-3St"/>
@@ -255,7 +257,7 @@
                 <outlet property="shareBtn" destination="sjk-GK-YwQ" id="J7n-Vc-tFk"/>
                 <outlet property="shareView" destination="d4s-KB-bSd" id="RXK-bm-Eie"/>
             </connections>
-            <point key="canvasLocation" x="5" y="233.5"/>
+            <point key="canvasLocation" x="5" y="233"/>
         </collectionViewCell>
     </objects>
     <resources>

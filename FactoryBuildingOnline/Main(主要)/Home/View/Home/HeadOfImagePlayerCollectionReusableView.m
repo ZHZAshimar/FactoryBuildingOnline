@@ -10,7 +10,10 @@
 
 
 @interface HeadOfImagePlayerCollectionReusableView()<ImagePlayerViewDelegate>
-
+{
+    // 下拉刷新出现的View
+    UIView *refreshView;
+}
 @end
 
 @implementation HeadOfImagePlayerCollectionReusableView
@@ -31,19 +34,10 @@
     
     if (self = [super initWithFrame:frame]) {
         
-        NSArray *arrayOfViews = [[NSBundle mainBundle] loadNibNamed:@"ImagePlayerCollectionViewCell" owner:self options:nil];
-        if (arrayOfViews.count < 1) {
-            return nil;
-        }
-        if (![[arrayOfViews objectAtIndexCheck:0] isKindOfClass:[UICollectionViewCell class]]) {
-            return nil;
-        }
-        self = [arrayOfViews objectAtIndexCheck:0];
-        
-        self.backgroundColor = [UIColor yellowColor];
+        self.backgroundColor = [UIColor whiteColor];
         self.imageDataSource = [NSArray array];
         
-        self.imagePlayerView = [[ImagePlayerView alloc] initWithFrame:CGRectMake(14, 0, Screen_Width-28, Screen_Height*65/284)];
+        self.imagePlayerView = [[ImagePlayerView alloc] initWithFrame:CGRectMake(14, 8, Screen_Width-28, Screen_Height*65/284)];
         
         self.imagePlayerView.layer.masksToBounds = YES;
         self.imagePlayerView.layer.cornerRadius = 10;
@@ -51,9 +45,53 @@
         [self addSubview:self.imagePlayerView];
         
         [self createImagePlayerView];
-        
     }
     return self;
+}
+
+- (void)setNumDic:(NSDictionary *)numDic {
+    _numDic = numDic;
+    [self showOnlineNum];
+}
+
+- (void)showOnlineNum{
+    // 下拉刷新出现的View
+    refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, Screen_Height*15/284)];
+    refreshView.backgroundColor = [UIColor whiteColor];
+    [self addSubview:refreshView];
+    
+    // 重置头部的frame
+    self.imagePlayerView.frame = CGRectMake(14, Screen_Height*15/284, Screen_Width-28, Screen_Height*65/284);
+    
+    UILabel *onlineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, refreshView.frame.size.width/2, refreshView.frame.size.height)];
+    onlineLabel.textAlignment = NSTextAlignmentCenter;
+    onlineLabel.textColor = GRAY_99;
+    onlineLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:14.0]];
+    [refreshView addSubview:onlineLabel];
+    int onlineNum = arc4random()%1000+1;
+    onlineLabel.text = [NSString stringWithFormat:@"在线人数：%d ",onlineNum];
+    
+    // 厂房信息的Label
+    UILabel *infotmationLabel = [[UILabel alloc] initWithFrame:CGRectMake(refreshView.frame.size.width/2, 0, refreshView.frame.size.width/2, refreshView.frame.size.height)];
+    infotmationLabel.textAlignment = NSTextAlignmentCenter;
+    infotmationLabel.textColor = GRAY_99;
+    infotmationLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:14.0]];
+    [refreshView addSubview:infotmationLabel];
+    int factoryNum = arc4random()%100000+1000;
+    infotmationLabel.text = [NSString stringWithFormat:@"厂房信息：%d",factoryNum];
+    
+    [self performSelector:@selector(removeRefreshView) withObject:self afterDelay:2.0];
+}
+
+
+/// 去除掉 在线人数的 view;
+- (void)removeRefreshView {
+    [refreshView removeFromSuperview];
+    
+    // 重置头部的frame
+    self.imagePlayerView.frame = CGRectMake(14, 8, Screen_Width-28, Screen_Height*65/284);
+    
+    self.removeBlock(YES);
 }
 
 - (void)createImagePlayerView {

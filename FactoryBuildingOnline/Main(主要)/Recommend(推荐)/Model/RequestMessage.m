@@ -252,7 +252,7 @@
         }
         
     } failure:^(RequestManager *manager, NSError *error) {
-        
+        NSLog(@"收藏接口的请求：%@",error);
     }];
 }
 /**

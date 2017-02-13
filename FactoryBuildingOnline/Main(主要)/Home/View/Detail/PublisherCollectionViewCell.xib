@@ -44,7 +44,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AvD-TF-J8h">
                         <rect key="frame" x="26" y="23" width="67" height="67"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="my_broker" translatesAutoresizingMaskIntoConstraints="NO" id="gsl-E5-9vX">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detail_broker" translatesAutoresizingMaskIntoConstraints="NO" id="gsl-E5-9vX">
                                 <rect key="frame" x="3" y="3" width="61" height="61"/>
                             </imageView>
                         </subviews>
@@ -127,8 +127,8 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="detail_broker" width="62" height="62"/>
         <image name="detail_publisher_msg" width="39" height="39"/>
         <image name="detail_publisher_phone" width="39" height="39"/>
-        <image name="my_broker" width="84" height="84"/>
     </resources>
 </document>

@@ -39,6 +39,7 @@
     CGFloat lineHeight;     // 一行文本的高度
     
 //    RequestMessage *requestMessage; // 请求接口
+    CGFloat titleHeight;    // 标题的高度
 }
 @property (weak, nonatomic) IBOutlet UIImageView *brokerHeaderImageView;    // 头像
 
@@ -222,6 +223,8 @@
     
     _model = model;
     
+    titleHeight = [NSString getHeightOfAttributeRectWithStr:model.factoryModel.title andSize:CGSizeMake(Screen_Width-12, 66) andFontSize:[UIFont adjustFontSize:16] andLineSpace:0];    // 计算title 的文字高度
+    
     [self.myCollectionView reloadData];
     
     // 先判断用户是否登录
@@ -375,7 +378,11 @@
     NSNumber * lineCount;          // 文本的行数
     switch (indexPath.section) {
         case 0: // picture
-            return CGSizeMake(Screen_Width, Screen_Height * 120/187);
+        {
+            CGFloat height = Screen_Width*3/4 + 66 + 24 + titleHeight;
+            return CGSizeMake(Screen_Width, height);
+        }
+         
             break;
         case 1: // infomation
             return CGSizeMake(Screen_Width, Screen_Height*45/284);
@@ -401,13 +408,15 @@
                     introduceHeight = allHeight + lineHeight;
                 }
                 
+                return CGSizeMake(Screen_Width, 60+introduceHeight);
             } else {
                 showSeeAll = NO;
                 
-                introduceHeight = allHeight + lineHeight - 35;    // 减去button 的高度
+                introduceHeight = allHeight;    // 减去button 的高度
+                
+                return CGSizeMake(Screen_Width, 30+introduceHeight);
             }
             
-            return CGSizeMake(Screen_Width, 65+introduceHeight);
             break;
         case 3: // map
             return CGSizeMake(Screen_Width, Screen_Height*183/568);

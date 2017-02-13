@@ -75,24 +75,30 @@
         
         [self.button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
         
-        CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-        scaleAnimation.fromValue = [NSNumber numberWithFloat:0.0];
-        scaleAnimation.toValue = [NSNumber numberWithFloat:1.0];
-//        scaleAnimation.duration = 0.5;
-        scaleAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-        
-        CABasicAnimation *positionAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
-        positionAnimation.fromValue = [NSValue valueWithCGPoint:closeView.layer.position];
-        positionAnimation.toValue = [NSValue valueWithCGPoint:self.button.layer.position];
-        
-        CAAnimationGroup *animationGroup = [CAAnimationGroup animation];
-        animationGroup.duration = 0.3;
-        [animationGroup setAnimations:@[scaleAnimation,positionAnimation]];
-        
-        [self.button.layer addAnimation:animationGroup forKey:@"animationGroup"];
+        [self beginAnimation];
     }
     return self;
 }
+
+// 点击展开的动画
+- (void)beginAnimation {
+    CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    scaleAnimation.fromValue = [NSNumber numberWithFloat:0.0];
+    scaleAnimation.toValue = [NSNumber numberWithFloat:1.0];
+    //        scaleAnimation.duration = 0.5;
+    scaleAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    
+    CABasicAnimation *positionAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
+    positionAnimation.fromValue = [NSValue valueWithCGPoint:closeView.layer.position];
+    positionAnimation.toValue = [NSValue valueWithCGPoint:self.button.layer.position];
+    
+    CAAnimationGroup *animationGroup = [CAAnimationGroup animation];
+    animationGroup.duration = 0.3;
+    [animationGroup setAnimations:@[scaleAnimation,positionAnimation]];
+    
+    [self.button.layer addAnimation:animationGroup forKey:@"animationGroup"];
+}
+
 // 按钮点击回调
 - (void)buttonAction: (UIButton *)sender {
     
@@ -137,12 +143,18 @@
     [animationGroup setAnimations:@[scaleAnimation,positionAnimation]];
     
     [self.button.layer addAnimation:animationGroup forKey:@"animationGroup"];
+}
+- (void)animationDidStart:(CAAnimation *)anim {
     
+    // 做完动画之后将button的位置设置在close 按钮
+//    self.button.frame = CGRectMake(Screen_Width/2-15, Screen_Height-45, 0, 0);
 }
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
-    
+//    self.button.alpha = 0.0;
+    [self.button removeFromSuperview];
     [self removeFromSuperview];
+    
 }
 
 /*

@@ -22,8 +22,8 @@
         _homeOfHomeVC.view.translatesAutoresizingMaskIntoConstraints = NO;
         
         UIView *view = _homeOfHomeVC.view;
-        
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view]-(100)-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(self,view)]];
+        view.backgroundColor = [UIColor redColor];
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(0)-[view]-(100)-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(self,view)]];
         
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(0)-[view]-(0)-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(self,view)]];
         

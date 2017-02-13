@@ -115,12 +115,13 @@
     NSDictionary *params = @{@"center":center,@"zoom":@(18),@"markers":center,@"markerStyles":@"m,,0xff0000"};
     NSString *url = [NSString stringWithFormat:@"http://api.map.baidu.com/staticimage"];
     [HTTPREQUEST_SINGLE getRequestWithURL:url andParameters:params success:^(RequestManager *manager, id responseObject) {
-        
-        NSLog(@"%@",responseObject);    // 拿到的是图片的data ,直接赋值给image即可
+        NSLog(@"获取百度静态图片请求成功");    // 拿到的是图片的data ,直接赋值给image即可
         UIImage *image = [[UIImage alloc] initWithData:responseObject];
-        self.imageBlock(image);
-    } failure:^(RequestManager *manager, NSError *error) {
         
+        self.imageBlock(image);
+        
+    } failure:^(RequestManager *manager, NSError *error) {
+        NSLog(@"获取百度静态图片失败：%@",error);
     }];
     
 }
@@ -131,11 +132,11 @@
     
     NSString *url = [NSString stringWithFormat:@"http://api.map.baidu.com/staticimage"];
     [HTTPREQUEST_SINGLE getRequestWithURL:url andParameters:param success:^(RequestManager *manager, id responseObject) {
-        NSLog(@"%@",responseObject);    // 拿到的是图片的data ,直接赋值给image即可
+        NSLog(@"获取百度静态图片请求成功");    // 拿到的是图片的data ,直接赋值给image即可
         UIImage *image = [[UIImage alloc] initWithData:responseObject];
         self.imageBlock(image);
     } failure:^(RequestManager *manager, NSError *error) {
-        
+        NSLog(@"获取百度静态图片失败：%@",error);
     }];
     
 }

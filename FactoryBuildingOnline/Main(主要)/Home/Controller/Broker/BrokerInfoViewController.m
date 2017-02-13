@@ -82,7 +82,11 @@
 }
 
 - (void)callPhoneBtnAction:(UIButton *)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",self.infoDic[@"phone_num"]]]];
+    NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"tel:%@",self.infoDic[@"phone_num"]];
+    UIWebView *callWebview = [[UIWebView alloc] init];
+    [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
+    [self.view addSubview:callWebview];
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",self.infoDic[@"phone_num"]]]];
 }
 
 #pragma mark collectionView datasource
@@ -92,7 +96,7 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(Screen_Width, Screen_Width*17/32);
+    return CGSizeMake(Screen_Width, Screen_Width/2);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {

@@ -88,7 +88,7 @@
  *  修改用户的基本信息
  *
  *  @param value 修改的值
- *  @param updateType : 1.更新头像2.更新用户名3.更新密码
+ *  @param updateType : 1.更新头像2.更新用户名3.更新密码 
  *  @param getUserInfo 是否获取用户基本信息
  */
 - (void)updateUserAvater:(NSString *)value andUpdateType:(NSInteger)updateType getUserInfo:(BOOL)getUserInfo{

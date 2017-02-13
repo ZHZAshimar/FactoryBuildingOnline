@@ -469,17 +469,17 @@ static AFHTTPSessionManager * instance;
     
     __weak RequestManager *weakSelf = self;
     
-    [MBProgressHUD showAction:PULL_REFRESH_TEXT ToView:nil];
+//    [MBProgressHUD showAction:PULL_REFRESH_TEXT ToView:nil];
     //    [instance.requestSerializer setValue:@"7a228e88d27b64d46beb7f8a72d9831d" forHTTPHeaderField:@"apikey"];
     [instance GET:urlStr parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-        [MBProgressHUD hideHUD];
+//        [MBProgressHUD hideHUD];
         
         success(weakSelf, responseObject);
         
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [MBProgressHUD hideHUD];
+//        [MBProgressHUD hideHUD];
         NSLog(@"error :%@",error.debugDescription);
         // 通过block,将错误信息
         if (failure) {
@@ -556,6 +556,69 @@ static AFHTTPSessionManager * instance;
 }
 
 /**
+ *  PUT 请求 不带token
+ *
+ *  @param urlStr     请求接口
+ *  @param params     向服务器请求时的参数
+ *  @param phone_num  手机号码
+ *  @param isShow     显示提示框
+ *  @param success    请求成功，block的参数为服务返回的数据
+ *  @param failure    请求失败，block的参数为错误信息
+ */
+- (void)putRequestToForgetPWD:(NSString *)urlStr andParameters:(NSDictionary *)params andPhoneNum:(NSString *)phone_num isShowActivity:(BOOL)isShow success:(void(^)(RequestManager *manager,NSDictionary *response))success failure:(void(^)(RequestManager *manager,NSError *error))failure{
+
+    urlStr = [NSString stringWithFormat:@"%@%@",URL_HOST,urlStr];
+    
+    __weak RequestManager *weakSelf = self;
+    
+    if (isShow) [MBProgressHUD showAction:@"光速加载..." ToView:nil];
+    
+    // 获取time
+    NSTimeInterval time = [[NSDate date] timeIntervalSince1970] *1000;
+    
+    NSString *timeStr = [NSString stringWithFormat:@"%f",time];
+    
+    timeStr = [timeStr substringWithRange:NSMakeRange(0, 13)];  // 拿到13位的时间戳
+    
+    timeStr  = [NSString stringWithFormat:@"%@000",timeStr];    // 拿到16位的时间戳
+    
+    [instance.requestSerializer setValue:timeStr forHTTPHeaderField:@"TIME"];
+    
+    NSString *encodeStr = [NSString dictionaryToJson:params];   // 将字典转成字符串
+    
+    encodeStr = [SecurityUtil AES128Encrypt:encodeStr andKey:timeStr andIV:[timeStr stringByReversed]];
+    
+    params = [NSDictionary dictionary];
+    params = @{@"updateUser":encodeStr,@"phone_num":phone_num};
+    
+    NSLog(@"%@",params);
+    
+    [instance PUT:urlStr parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        if (isShow) [MBProgressHUD hideHUD];
+        
+        NSDictionary *responseDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
+        
+        success(weakSelf,responseDic);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        if (isShow) [MBProgressHUD hideHUD];
+        NSLog(@"error :%@",error.debugDescription);
+        // 获取 http 错误状态 当errorcode = 401 是大部分都是token的问题，当出现两端登录时，一端的token则作废，发送通知提示重新登录
+        if ([error.userInfo[AFNetworkingOperationFailingURLResponseErrorKey] statusCode] == 401) {
+            NSLog(@"401");
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"UnauthorizedRequest" object:nil];
+            return ;
+        }
+        if (failure) {
+            failure(weakSelf,error);    // 通过block,将错误信息回调
+        }
+    }];
+
+}
+
+/**
  *  PUT 请求 带token
  *
  *  @param urlStr     请求接口
@@ -582,11 +645,8 @@ static AFHTTPSessionManager * instance;
         encodeStr = [SecurityUtil AES128Encrypt:encodeStr andKey:time andIV:[time stringByReversed]];
     }
     
-    
     params = [NSDictionary dictionary];
     params = @{@"updateUser":encodeStr};
-    
-    
     
     NSLog(@"%@",params);
     

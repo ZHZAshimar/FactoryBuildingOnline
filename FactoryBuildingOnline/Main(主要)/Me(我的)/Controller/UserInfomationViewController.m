@@ -96,13 +96,26 @@
                 
                 cell.textLabel.text = @"头像";
                 [self.avatarImageView removeFromSuperview];
+                
                 self.avatarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(Screen_Width-15-29, 7.5, 29, 29)];
+                
                 NSString *avatarURL = [SecurityUtil decodeBase64String:userModel.avatar];
-                [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarURL] placeholderImage:[UIImage imageNamed:@"my_default"]];
-                self.avatarImageView.layer.borderColor = GRAY_99.CGColor;
-                self.avatarImageView.layer.borderWidth = 0.5;
-                self.avatarImageView.layer.cornerRadius = 29/2;
-                self.avatarImageView.layer.masksToBounds = YES;
+                
+                if (userModel.type == 2) {
+                    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarURL] placeholderImage:[UIImage imageNamed:@"my_broker"]];
+                } else {
+                    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarURL] placeholderImage:[UIImage imageNamed:@"my_normal"]];
+                }
+                
+                if (avatarURL.length > 0) {
+                    
+                    self.avatarImageView.layer.borderColor = GRAY_99.CGColor;
+                    self.avatarImageView.layer.borderWidth = 0.5;
+                    
+                    self.avatarImageView.layer.cornerRadius = 29/2;
+                    self.avatarImageView.layer.masksToBounds = YES;
+                }
+                
                 [cell addSubview:self.avatarImageView];
                 
             } else {

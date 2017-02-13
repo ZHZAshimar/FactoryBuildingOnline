@@ -56,7 +56,7 @@
     
     NSString *avatarStr = [SecurityUtil decodeBase64String:_dataDic[@"avatar"]];
     
-    [self.publisherHeadImageView sd_setImageWithURL:[NSURL URLWithString:avatarStr] placeholderImage:[UIImage imageNamed:@"my_broker"]];
+    [self.publisherHeadImageView sd_setImageWithURL:[NSURL URLWithString:avatarStr] placeholderImage:[UIImage imageNamed:@"detail_broker"]];
     
     NSString *userName = _dataDic[@"username"];
     
