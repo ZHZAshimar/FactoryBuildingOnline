@@ -38,7 +38,9 @@
     [self.myCollectionView reloadData];
 }
 
+#pragma mark - collection datasource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+
     return self.mDataArray.count;
 }
 
@@ -79,7 +81,7 @@
         
         layout.minimumLineSpacing = 0;
         layout.minimumInteritemSpacing = 0;
-        layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        layout.scrollDirection = UICollectionViewScrollDirectionHorizontal; // 设置滚动方向位横向滚动
         
         _myCollectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:layout];
         _myCollectionView.backgroundColor = [UIColor whiteColor];
@@ -89,6 +91,7 @@
         _myCollectionView.showsHorizontalScrollIndicator = NO;
         
         [_myCollectionView registerClass:[AreaCollectionViewCell class] forCellWithReuseIdentifier:@"AreaCollectionViewCell"];
+        
     }
     return _myCollectionView;
 }

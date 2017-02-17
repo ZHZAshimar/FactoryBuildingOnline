@@ -21,6 +21,7 @@
 #import "NSString+Judge.h"
 #import "FOLUserInforModel.h"
 #import "GeoCodeOfBaiduMap.h"
+#import "ZHZShareView.h"
 
 @interface BrokerDetailViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 {
@@ -150,50 +151,57 @@
 - (void)rightActionSecond:(UIButton *)sender {
     
     if (sender.tag == 0) {
-        // 先判断用户是否登录
-        if (![self judgeUserLogin]) {
-            return;
-        }
-        
-        isLike = !isLike;
-        if (isLike) {
-            
-            [self loadViewOfCollection:isLike];
-        
-            [self collectionBrokerRequestWithID:(int)self.model.factoryModel.id andRequestType:1];
-            
-            [UIView animateWithDuration:0.5f animations:^{
-                
-                pictureCell.likeBtn.frame = CGRectMake(Screen_Width-16*2-pictureCell.imagePlayerView.frame.size.height*33/120, 10, pictureCell.imagePlayerView.frame.size.height*33/240, pictureCell.imagePlayerView.frame.size.height*33/240);     // 做上升 动画
-                
-            } completion:^(BOOL finished) {
-                [UIView animateWithDuration:0.5f animations:^{  // 做旋转动画
-                    //                pictureCell.likeBtn.layer.transform = CATransform3DMakeRotation(M_PI, 0, 1, 0);
-                    CABasicAnimation* rotationAnimation;
-                    rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.y"];
-                    rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI ];
-                    rotationAnimation.duration = 0.5;
-                    rotationAnimation.cumulative = YES;
-                    rotationAnimation.repeatCount = 1;
-                    
-                    [pictureCell.likeBtn.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
-                    
-                } completion:^(BOOL finished) {
-                    
-                    [UIView animateWithDuration:0.5f animations:^{  // 做下降动画
-                        
-                        pictureCell.likeBtn.frame = CGRectMake(Screen_Width-16*2-pictureCell.imagePlayerView.frame.size.height*33/120, 32, pictureCell.imagePlayerView.frame.size.height*33/240, pictureCell.imagePlayerView.frame.size.height*33/240);     // 做上升 动画
-                        
-                    }];
-                }];
-            }];
-            
-        } else {
-            [self loadViewOfCollection:isLike];
-            [self collectionBrokerRequestWithID:self.model.factoryModel.id andRequestType:2];
-        }
+        NSLog(@"收藏");
+        [self like];
     } else {    // 分享
         NSLog(@"分享");
+        [self share];
+    }
+}
+
+- (void)like {
+    // 先判断用户是否登录
+    if (![self judgeUserLogin]) {
+        return;
+    }
+    
+    isLike = !isLike;
+    
+    if (isLike) {
+        
+        [self loadViewOfCollection:isLike];
+        
+        [self collectionBrokerRequestWithID:(int)self.model.factoryModel.id andRequestType:1];
+        
+        [UIView animateWithDuration:0.5f animations:^{
+            
+            pictureCell.likeBtn.frame = CGRectMake(Screen_Width-16*2-pictureCell.imagePlayerView.frame.size.height*33/120, 10, pictureCell.imagePlayerView.frame.size.height*33/240, pictureCell.imagePlayerView.frame.size.height*33/240);     // 做上升 动画
+            
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.5f animations:^{  // 做旋转动画
+                //                pictureCell.likeBtn.layer.transform = CATransform3DMakeRotation(M_PI, 0, 1, 0);
+                CABasicAnimation* rotationAnimation;
+                rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.y"];
+                rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI ];
+                rotationAnimation.duration = 0.5;
+                rotationAnimation.cumulative = YES;
+                rotationAnimation.repeatCount = 1;
+                
+                [pictureCell.likeBtn.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+                
+            } completion:^(BOOL finished) {
+                
+                [UIView animateWithDuration:0.5f animations:^{  // 做下降动画
+                    
+                    pictureCell.likeBtn.frame = CGRectMake(Screen_Width-16*2-pictureCell.imagePlayerView.frame.size.height*33/120, 32, pictureCell.imagePlayerView.frame.size.height*33/240, pictureCell.imagePlayerView.frame.size.height*33/240);     // 做上升 动画
+                    
+                }];
+            }];
+        }];
+        
+    } else {
+        [self loadViewOfCollection:isLike];
+        [self collectionBrokerRequestWithID:self.model.factoryModel.id andRequestType:2];
     }
 }
 
@@ -203,14 +211,14 @@
     if (like) { // 收藏
         //        [self addRightItemWithLogo:[UIImage imageNamed:@"detail_like"] andItemTintColor:RED_df3d]; // 设置导航栏 为收藏状态
         
-        [self addRightImageItem:@[@"detail_like",@"share"] buttonCount:2];
+        [self addRightImageItem:@[@"detail_like",@"detail_share"] buttonCount:2];
         
         [pictureCell.likeBtn setImage:[UIImage imageNamed:@"detail_like"] forState:UIControlStateNormal];  // 设置pictureCell 的收藏按钮为收藏状态
         isLike = YES;
         
     } else {    // 没收藏
         //        [self addRightItemWithLogo:[UIImage imageNamed:@"detail_unlike_white"] andItemTintColor:BLACK_1a];
-        [self addRightImageItem:@[@"detail_unlike",@"share"] buttonCount:2];
+        [self addRightImageItem:@[@"detail_unlike",@"detail_share"] buttonCount:2];
         
         [pictureCell.likeBtn setImage:[UIImage imageNamed:@"detail_unlike_white"] forState:UIControlStateNormal];    // 设置pictureCell 的收藏按钮为 未收藏状态
         isLike = NO;
@@ -249,9 +257,19 @@
 - (void)leftItemButtonAction {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+#pragma mark - 分享
+- (void)shareBtnAction:(UIButton *)sender {
+    [self share];
+}
+
+- (void)share{
+    ZHZShareView *shareView = [[ZHZShareView alloc] init];
+    [shareView show];
+}
 #pragma mark - pictureCell likeBtn 的点击事件
 - (void)likeBtnAction:(UIButton *)sender {
-    [self rightItemButtonAction];
+    [self like];
 }
 
 /**
@@ -312,7 +330,7 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
-    if (section == 4) {
+    if (section == 3) {
         return CGSizeZero;
     }
     return CGSizeMake(Screen_Width, 8);
@@ -409,7 +427,9 @@
                 }
                 
                 return CGSizeMake(Screen_Width, 60+introduceHeight);
+                
             } else {
+                
                 showSeeAll = NO;
                 
                 introduceHeight = allHeight;    // 减去button 的高度
@@ -462,9 +482,9 @@
 // 图片轮播
 - (UICollectionViewCell *)imagePlayerCollectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     pictureCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DetailPictureCollectionViewCell" forIndexPath:indexPath];
-    [pictureCell.likeBtn addTarget:self action:@selector(likeBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    [pictureCell.likeBtn addTarget:self action:@selector(likeBtnAction:) forControlEvents:UIControlEventTouchUpInside];     // 收藏
     [pictureCell.backBtn addTarget:self action:@selector(leftItemButtonAction) forControlEvents:UIControlEventTouchUpInside];
-    
+    [pictureCell.shareBtn addTarget:self action:@selector(shareBtnAction:) forControlEvents:UIControlEventTouchUpInside];      // 分享
     pictureCell.brokerFactoryModel = self.model.factoryModel;
     
     return pictureCell;

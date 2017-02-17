@@ -300,10 +300,8 @@
     } failure:^(RequestManager *manager, NSError *error) {
         [MBProgressHUD hideHUD];
         NSLog(@"历史记录：%@", error);
-        // 当请求失败时，返回一个空的数组，以判断请求失败
-        NSMutableArray *array = [NSMutableArray array];
-        
-        [self.delegate refreshView:array];
+        // 当请求失败时，返回走的方法
+        [self.delegate requestError];
     }];
     
 }

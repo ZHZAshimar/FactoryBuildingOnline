@@ -12,7 +12,7 @@
 
 
 - (void)refreshView:(NSMutableArray *)mArray;
-
+- (void)requestError;
 @end
 
 

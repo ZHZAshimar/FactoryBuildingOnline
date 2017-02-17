@@ -13,7 +13,7 @@
 
 #if IOS_DEBUG
     // 正式环境
-    #define URL_HOST @"https://api.oncom.cn/api/v1/"
+    #define URL_HOST @"http://api.oncom.cn:8000/api/v1/"
 
 //    #define URL_HOST @"http://192.168.0.143:8000/api/v1/"
 //    #define URL_HOST @"http://116.62.44.204:8000/api/v1/"  // 阿里云服务器
@@ -22,7 +22,7 @@
 #else
 
     // 测试服务器
-    #define URL_HOST @"https://api.oncom.cn/api/v1/"
+    #define URL_HOST @"http://api.oncom.cn:8000/api/v1/"
 //    #define URL_HOST @"http://192.168.0.113:8000/api/v1/"// 本地服务器
 //    #define URL_HOST @"http://45.76.69.192:8000/api/v1/"  线上服务器
 //    #define URL_HOST @"http://116.62.44.204:8000/api/v1/"  // 阿里云服务器

@@ -21,6 +21,7 @@
 #import "MeBackgroundView.h"
 #import "AppFeedbackViewController.h"
 #import "ScanHistoryViewController.h"
+#import "ScanReserveViewController.h"
 
 @interface MeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,MeFirstHeadCollectionReusableViewDelegate>
 {
@@ -93,8 +94,9 @@
     [self.view addSubview:self.myCollectionView];
     // 积分兑换按钮
     UIButton *integralButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    integralButton.frame = CGRectMake(Screen_Width - Screen_Width/4, Screen_Height*37/142, Screen_Width/4, Screen_Height*41/141);
-    [integralButton setImage:[UIImage imageNamed:@"god"] forState:0];
+    integralButton.frame = CGRectMake(Screen_Width - Screen_Width/5, Screen_Height*37/142, Screen_Width/5-10, Screen_Height*114/568);
+//    [integralButton setImage:[UIImage imageNamed:@"god"] forState:0];
+    [integralButton setBackgroundImage:[UIImage imageNamed:@"god"] forState:0];
     integralButton.imageEdgeInsets = UIEdgeInsetsMake(-Screen_Height*80/667, 0, 0, 0);
     [self.view addSubview:integralButton];
     
@@ -146,6 +148,8 @@
 
     } else {
         // 跳转到我发布的需求页面
+        ScanReserveViewController *reserveVC = [ScanReserveViewController new];
+        [self.navigationController pushViewController:reserveVC animated:YES];
     }
 }
 

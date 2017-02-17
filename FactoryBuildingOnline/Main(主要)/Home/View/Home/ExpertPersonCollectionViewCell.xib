@@ -20,9 +20,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YKz-gN-1UJ">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detail_broker" translatesAutoresizingMaskIntoConstraints="NO" id="YKz-gN-1UJ">
                         <rect key="frame" x="20" y="15" width="50" height="50"/>
-                        <color key="backgroundColor" red="0.93305837560000005" green="0.52120499789999997" blue="0.53376418979999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="YKz-gN-1UJ" secondAttribute="height" multiplier="1:1" id="OOd-rw-gxX"/>
                         </constraints>
@@ -102,6 +101,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="detail_broker" width="62" height="62"/>
         <image name="home_goldmedal" width="11" height="8"/>
     </resources>
 </document>

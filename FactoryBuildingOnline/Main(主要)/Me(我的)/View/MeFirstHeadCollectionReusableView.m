@@ -140,7 +140,7 @@
         self.userHeadImageView.layer.borderWidth = 0;
             
     }
-    
+    self.publishLabel.text = [NSString stringWithFormat:@"发布\n%d",userModel.publish_count];
 }
 
 //- (void)setIsLogin:(BOOL)isLogin {
@@ -175,7 +175,7 @@
         
         _integralLabel.numberOfLines = 2;
         
-        _integralLabel.text = @"积分\n1703";
+        _integralLabel.text = @"积分\n0";
         
         _integralLabel.textAlignment = NSTextAlignmentCenter;
         
@@ -194,7 +194,7 @@
         
         _publishLabel.numberOfLines = 2;
         
-        _publishLabel.text = @"发布\n10";
+        _publishLabel.text = @"发布\n0";
         
         _publishLabel.textAlignment = NSTextAlignmentCenter;
         

@@ -34,8 +34,6 @@
 //微信SDK头文件
 #import "WXApi.h"
 
-//新浪微博SDK头文件
-#import "WeiboSDK.h"
 //新浪微博SDK需要在项目Build Settings中的Other Linker Flags添加"-ObjC"
 
 
@@ -185,7 +183,7 @@
     [ShareSDK registerApp:@"1ab8e82fb3108"
      
           activePlatforms:@[
-                            @(SSDKPlatformTypeSinaWeibo),
+                            @(SSDKPlatformTypeSMS),
                             @(SSDKPlatformSubTypeWechatTimeline),
                             @(SSDKPlatformSubTypeWechatSession),
                             @(SSDKPlatformTypeQQ)]
@@ -199,9 +197,6 @@
              case SSDKPlatformTypeQQ:
                  [ShareSDKConnector connectQQ:[QQApiInterface class] tencentOAuthClass:[TencentOAuth class]];
                  break;
-             case SSDKPlatformTypeSinaWeibo:
-                 [ShareSDKConnector connectWeibo:[WeiboSDK class]];
-                 break;
              default:
                  break;
          }
@@ -211,13 +206,6 @@
          
          switch (platformType)
          {
-             case SSDKPlatformTypeSinaWeibo:
-                 //设置新浪微博应用信息,其中authType设置为使用SSO＋Web形式授权
-                 [appInfo SSDKSetupSinaWeiboByAppKey:weiboAppKEY
-                                           appSecret:weiboSecret
-                                         redirectUri:weiboURL
-                                            authType:SSDKAuthTypeBoth];
-                 break;
              case SSDKPlatformTypeWechat:
                  [appInfo SSDKSetupWeChatByAppId:WXAppID
                                        appSecret:WXSecret];

@@ -54,7 +54,7 @@
     
     [self.imageView sd_setImageWithURL:[NSURL URLWithString:imageURL] placeholderImage:PLACEHOLDER_IMAGE];
     
-    self.scanLabel.text = [NSString stringWithFormat:@"浏览:%d人",model.view_count];
+    self.scanLabel.text = [NSString stringWithFormat:@"浏览:%ld人",(long)model.view_count];
     
     self.titleLabel.text = [NSString stringWithFormat:@"%@",ftModel.title];
     

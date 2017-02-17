@@ -9,7 +9,7 @@
 #import "ZHZShareView.h"
 
 //新浪微博SDK头文件
-#import "WeiboSDK.h"
+//#import "WeiboSDK.h"
 
 #import <ShareSDK/ShareSDK.h>
 // 弹出分享菜单需要导入的头文件
@@ -21,7 +21,7 @@
 #define self_width self.frame.size.width
 #define self_height self.frame.size.height
 
-#define shareArray @[@{@"icon":@"sns_icon_22",@"name":@"微信",@"platform":@(22)},@{@"icon":@"sns_icon_23",@"name":@"朋友圈",@"platform":@(23)},@{@"icon":@"sns_icon_1",@"name":@"微博",@"platform":@(1)},@{@"icon":@"sns_icon_24",@"name":@"QQ",@"platform":@(24)},@{@"icon":@"sns_icon_6",@"name":@"QQ空间",@"platform":@(6)}]
+#define shareArray @[@{@"icon":@"wechat",@"name":@"微信",@"platform":@(22)},@{@"icon":@"wechat_1",@"name":@"朋友圈",@"platform":@(23)},@{@"icon":@"sms",@"name":@"短信",@"platform":@(19)},@{@"icon":@"qq",@"name":@"QQ",@"platform":@(24)},@{@"icon":@"zone",@"name":@"QQ空间",@"platform":@(6)}]
 
 @interface ZHZShareView()
 {
@@ -36,96 +36,13 @@
     
     if (self = [super init]) {
         
-//        [self setAlphaView];
-//        
-//        [self setBottomView];
+        [self setAlphaView];
+
+        [self setBottomView];
         
-        NSString *strContent = @"哈哈";
-//        
-//        NSString *strImage = nil;
-//        
-//        NSString *strUrl = @"http://www.baidu.com";
-//        
-//        NSString *strDes = @"测试一下";
         
-        NSString *strTitle = @"请忽略";
-        
-        //1、创建分享参数
-        NSArray* imageArray = @[[UIImage imageNamed:@"about_us"]];
-//        （注意：图片必须要在Xcode左边目录里面，名称必须要传正确，如果要分享网络图片，可以这样传iamge参数 images:@[@"http://mob.com/Assets/images/logo.png?v=20150320"]）
-        //    if (self.shareImage) {
-        //
-        //        shareImage = [[SSDKImage alloc] initWithImage:self.shareImage format:SSDKImageFormatPng settings:nil];
-        //
-        //    }
-        //
-        NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
-        //
-        //    if (self.shareImageFlag) {
-        //        //如果有shareImage，先覆盖。
-        //
-        //        [shareParams SSDKSetupShareParamsByText:strContent
-        //                                         images:shareImage
-        //                                            url:[NSURL URLWithString:strUrl]
-        //                                          title:strTitle
-        //                                           type:SSDKContentTypeImage];
-        //        // 把 shareImageFlag 还原
-        //        self.shareImageFlag = NO;
-        //
-        //    }else{
-        
-        //    （注意：图片必须要在Xcode左边目录里面，名称必须要传正确，如果要分享网络图片，可以这样传image参数 images:@[@"http://mob.com/Assets/images/logo.png?v=20150320"]）
-        
-        //构造分享内容
-        [shareParams SSDKSetupShareParamsByText:strContent
-                                         images:imageArray
-                                            url:[NSURL URLWithString:@"http://mob.com"]
-                                          title:strTitle
-                                           type:SSDKContentTypeAuto];
-        
-        [SSUIShareActionSheetStyle setCancelButtonLabelColor:GREEN_19b8];
-        
-        //分享
-        [ShareSDK showShareActionSheet:nil
-         //将要自定义顺序的平台传入items参数中
-                                 items:@[
-                                         @(SSDKPlatformSubTypeWechatTimeline),
-                                         @(SSDKPlatformSubTypeWechatSession),
-                                         @(SSDKPlatformTypeQQ),
-                                         @(SSDKPlatformTypeSinaWeibo)]
-                           shareParams:shareParams
-                   onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
-                       switch (state) {
-                           case SSDKResponseStateSuccess:
-                           {
-                               UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
-                                                                                   message:nil
-                                                                                  delegate:nil
-                                                                         cancelButtonTitle:@"确定"
-                                                                         otherButtonTitles:nil];
-                               [alertView show];
-                               
-                               break;
-                           }
-                           case SSDKResponseStateFail:
-                           {
-                               UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
-                                                                               message:[NSString stringWithFormat:@"%@",error]
-                                                                              delegate:nil
-                                                                     cancelButtonTitle:@"OK"
-                                                                     otherButtonTitles:nil, nil];
-                               [alert show];
-                               
-                               NSLog(@"error = %@",error);
-                               
-                               break;
-                           }
-                           default:
-                               break;
-                               
-                               
-                       }
-                   }];
+       
+       
 
     }
     return self;
@@ -169,36 +86,25 @@
     lineView.backgroundColor = GRAY_cc;
     [bottomView addSubview:lineView];
     
-    UIButton *btnWX = [self makeupButton:0];
-    UIButton *btnWXF = [self makeupButton:1];
-    UIButton *btnWB = [self makeupButton:2];
-    UIButton *btnQQ = [self makeupButton:3];
-    UIButton *btnQQF = [self makeupButton:4];
+    for (int i = 0; i < 5; i++) {
+        // 按钮
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.frame = CGRectMake(0+i*Screen_Width/5, 15, Screen_Width/5, Screen_Width/5);
+        button.tag = 100+i;
+        NSString *img = shareArray[i][@"icon"];
+        [button setImage:[UIImage imageNamed:img] forState:UIControlStateNormal];
+        
+        [button addTarget:self action:@selector(shareButton:) forControlEvents:UIControlEventTouchUpInside];
+        [bottomView addSubview:button];
+        // 文字
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0+i*Screen_Width/5, button.frame.origin.y + Screen_Width/5-10, Screen_Width/5, 30)];
+        label.text = shareArray[i][@"name"];
+        label.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:14.0f]];
+        label.textColor = BLACK_42;
+        label.textAlignment = NSTextAlignmentCenter;
+        [bottomView addSubview:label];
+    }
     
-    float width = (Screen_Width-24)/5.0f;
-    
-    [bottomView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(0)-[btnWX(witdh)]-(0)-[btnWXF(witdh)]-(0)-[btnWB(witdh)]-(0)-[btnQQ(witdh)]-(0)-[btnQQF(witdh)]-(0)-|" options:0 metrics:@{@"witdh":@(width)}  views:NSDictionaryOfVariableBindings(bottomView,btnWX,btnWXF,btnWB,btnQQ,btnQQF)]];
-    
-}
-
-- (UIButton *)makeupButton:(NSInteger)index {
-    
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    button.tag = 100+index;
-    NSString *img = shareArray[index][@"icon"];
-    [button setTitle:shareArray[index][@"name"] forState:UIControlStateNormal];
-    [button setImage:[UIImage imageNamed:img] forState:UIControlStateNormal];
-    [button setTitleColor:BLACK_42 forState:UIControlStateNormal];
-    button.titleLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:14.0f]];
-    [button addTarget:self action:@selector(shareButton:) forControlEvents:UIControlEventTouchUpInside];
-    [bottomView addSubview:button];
-    
-    button.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    [bottomView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(15)-[button]-(15)-[lineView]-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(bottomView,button,lineView)]];
-    
-    return button;
 }
 
 - (void)shareButton:(UIButton *)sender {
@@ -213,60 +119,18 @@
 
 -(void)shareIndex:(SSDKPlatformType) shareType{
     
-    
-   
-    
-    //    //以新浪微博为例子，在客户端授权时有效，网页授权无效，另外如果用户已经关注了，那么客户端授权时那个关注选项是会被隐藏掉的
-    //    [ShareSDK authorize:shareType settings: @{SSDKAuthSettingKeyScopes : @[@"follow_app_official_microblog"]} onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
-    //        // 处理回调
-    //        NSLog(@"user = %@",user);
-    //
-    //    }];
-    
     NSString *strContent = @"哈哈";
     
     NSString *strImage = nil;
     
     NSString *strUrl = @"http://www.baidu.com";
     
-    NSString *strDes = @"测试一下";
-    
     NSString *strTitle = @"请忽略";
     
     //1、创建分享参数
     SSDKImage *shareImage = [[SSDKImage alloc] initWithURL:[NSURL URLWithString:strImage]];
     
-//    if (self.shareImage) {
-//        
-//        shareImage = [[SSDKImage alloc] initWithImage:self.shareImage format:SSDKImageFormatPng settings:nil];
-//        
-//    }
-//    
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
-//    
-//    if (self.shareImageFlag) {
-//        //如果有shareImage，先覆盖。
-//        
-//        [shareParams SSDKSetupShareParamsByText:strContent
-//                                         images:shareImage
-//                                            url:[NSURL URLWithString:strUrl]
-//                                          title:strTitle
-//                                           type:SSDKContentTypeImage];
-//        // 把 shareImageFlag 还原
-//        self.shareImageFlag = NO;
-//        
-//    }else{
-    
-        //    （注意：图片必须要在Xcode左边目录里面，名称必须要传正确，如果要分享网络图片，可以这样传image参数 images:@[@"http://mob.com/Assets/images/logo.png?v=20150320"]）
-        
-        //构造分享内容
-        [shareParams SSDKSetupShareParamsByText:strContent
-                                         images:shareImage
-                                            url:[NSURL URLWithString:strUrl]
-                                          title:strTitle
-                                           type:SSDKContentTypeAuto];
-        
-//    }
     
     if (shareType == SSDKPlatformTypeSinaWeibo) {
         
@@ -314,14 +178,62 @@
             
         }];
         
-    }else{
+    } else{
+        //    （注意：图片必须要在Xcode左边目录里面，名称必须要传正确，如果要分享网络图片，可以这样传image参数 images:@[@"http://mob.com/Assets/images/logo.png?v=20150320"]）
         
         
-//        //2、分享（可以弹出我们的分享菜单和编辑界面）
-//        [ShareSDK share:shareType parameters:shareParams onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
-//            
-//            
-//        }];
+         if (shareType == SSDKPlatformTypeSMS) {
+            // 短信的分享只能分享 image 或 text 形式的
+             //构造分享内容
+             [shareParams SSDKSetupShareParamsByText:[NSString stringWithFormat:@"%@%@",strContent,strUrl]
+                                              images:nil
+                                                 url:nil
+                                               title:nil
+                                                type:SSDKContentTypeText];
+            
+         } else {
+             //构造分享内容
+             [shareParams SSDKSetupShareParamsByText:strContent
+                                              images:@[@"http://mob.com/Assets/images/logo.png?v=20150320"]
+                                                 url:[NSURL URLWithString:@"http://www.baidu.com"]
+                                               title:strTitle
+                                                type:SSDKContentTypeAuto];
+         }
+        // 分享
+        [ShareSDK share:shareType parameters:shareParams onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+            
+            switch (state) {
+                case SSDKResponseStateSuccess:
+                {
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
+                                                                        message:nil
+                                                                       delegate:nil
+                                                              cancelButtonTitle:@"确定"
+                                                              otherButtonTitles:nil];
+                    [alertView show];
+                    
+                    break;
+                }
+                case SSDKResponseStateFail:
+                {
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
+                                                                    message:[NSString stringWithFormat:@"%@",error]
+                                                                   delegate:nil
+                                                          cancelButtonTitle:@"OK"
+                                                          otherButtonTitles:nil, nil];
+                    [alert show];
+                    
+                    NSLog(@"error = %@",error);
+                    
+                    break;
+                }
+                default:
+                    break;
+                    
+                    
+            }
+        }];
+        
     }
 }
 

@@ -91,7 +91,7 @@
         // 当两个数组都为空时，显示暂无浏览历史
         emptyView = [[EmptyView alloc] initWithFrame:self.view.bounds];
         emptyView.hidden = NO;
-        emptyView.image = [UIImage imageNamed:@"erro_1"];
+        emptyView.image = [UIImage imageNamed:@"error_1"];
         emptyView.emptyStr = @"暂无浏览历史";
         [self.view addSubview:emptyView];
         return;
@@ -106,10 +106,18 @@
         }
         
     }
-    
+
     [_myCollectionView.mj_footer endRefreshing];
 }
 
+- (void)requestError {
+    emptyView = [[EmptyView alloc] initWithFrame:self.view.bounds];
+    emptyView.hidden = NO;
+    emptyView.image = [UIImage imageNamed:@"error_1"];
+    emptyView.emptyStr = @"网络出小差了！";
+    [self.view addSubview:emptyView];
+}
+#pragma mark - lazy load
 - (UICollectionView *)myCollectionView {
     
     if (!_myCollectionView) {
