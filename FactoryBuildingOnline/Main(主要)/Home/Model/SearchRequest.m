@@ -81,7 +81,7 @@
  */
 - (void)getSearchWithURL:(NSString *)url andDataType:(NSString *)dataType{
     
-    [HTTPREQUEST_SINGLE getRequestWithURLReturnDic:url andParameters:nil success:^(RequestManager *manager, NSDictionary *response) {
+    [HTTPREQUEST_SINGLE getRequestWithURLReturnDic:url andParameters:nil andShouldToken:NO success:^(RequestManager *manager, NSDictionary *response) {
         
         if ([response[@"erro_code"] intValue] != 200) {
             [MBProgressHUD showAutoMessage:response[@"erro_msg"] ToView:nil];
@@ -97,7 +97,7 @@
             resultArr = [HomeRequest dealWithHomeDatabase:mArr andNextURL:response[@"next"] isWriteDB:NO];
             
         } else {    // 专家
-            mArr = response[@"proMediumMessage"];
+//            mArr = response[@"proMediumMessage"];
             
             resultArr = [HomeRequest dealWithBrokerDatabase:response isWriteDB:NO];
         }

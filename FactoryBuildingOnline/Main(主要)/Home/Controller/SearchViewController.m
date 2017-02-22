@@ -106,6 +106,7 @@
         }
         weakSelf.searchCollectionView.dataArray = dataArray;
         weakSelf.searchCollectionView.keyStr = key;
+        
     };
     
     searchRequest.errorMsgBlock = ^(NSString *errorMsg) {

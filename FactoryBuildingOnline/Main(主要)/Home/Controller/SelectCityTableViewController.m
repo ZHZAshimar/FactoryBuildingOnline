@@ -90,46 +90,46 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        return 88.0f;
+        return Screen_Height*11/71;
     }
     return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44.0f;
+    return Screen_Height*11/142;
 }
 #pragma mark - tableView 分区表头显示的 内容
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, 88.0f)];
+    CGFloat viewHeight = Screen_Height*11/71;
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, viewHeight)];
     view.backgroundColor = [UIColor whiteColor];
     
-    UIView *greenView = [[UIView alloc] initWithFrame:CGRectMake(11, 15, 4, 14)];
+    UIView *greenView = [[UIView alloc] initWithFrame:CGRectMake(11, viewHeight/2*15/44, 4, viewHeight/2*7/22)];
     greenView.backgroundColor = GREEN_19b8;
     [view addSubview:greenView];
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, Screen_Width-44, 44)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, Screen_Width-44, viewHeight/2)];
     label.text = @"已开通服务城市";
     label.textColor = BLACK_42;
-    label.font = [UIFont systemFontOfSize:14.0];
+    label.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:14.0]];
     [view addSubview:label];
     
-    UIView *linecutView = [[UIView alloc] initWithFrame:CGRectMake(15, 43, Screen_Width, 1)];
+    UIView *linecutView = [[UIView alloc] initWithFrame:CGRectMake(15, viewHeight/2-0.5, Screen_Width, 0.5)];
     linecutView.backgroundColor = GRAY_db;
     [view addSubview:linecutView];
     
     // 显示定位的城市
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(12, 44, Screen_Width, 43);
+    button.frame = CGRectMake(12, viewHeight/2, Screen_Width, viewHeight/2-1);
     button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [button setTitleColor:GREEN_1ab8 forState:UIControlStateNormal];
-    button.titleLabel.font = [UIFont systemFontOfSize:14.0 weight:2.0f];
+    button.titleLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:14.0] weight:2.0f];
     [view addSubview:button];
     [button addTarget:self action:@selector(backHomeVC:) forControlEvents:UIControlEventTouchUpInside];
     
-    UILabel *cityLabel = [[UILabel alloc] initWithFrame:CGRectMake(Screen_Width-80, 44, 80, 44)];
+    UILabel *cityLabel = [[UILabel alloc] initWithFrame:CGRectMake(Screen_Width-80, viewHeight/2, Screen_Width/4, viewHeight/2)];
     cityLabel.textColor = GREEN_1ab8;
-    cityLabel.font = [UIFont systemFontOfSize:14.0f];
+    cityLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:14.0f]];
     cityLabel.text = @"当前定位";
     cityLabel.hidden = NO;
     [view addSubview:cityLabel];
@@ -195,7 +195,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
         
-    cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
+    cell.textLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:14.0f]];
     cell.textLabel.text = self.cityListArray[indexPath.row];
 
     return cell;

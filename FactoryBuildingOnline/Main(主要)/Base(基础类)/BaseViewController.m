@@ -115,7 +115,7 @@
 - (void)addRightItemWithString:(NSString *)itemName andItemTintColor:(UIColor *)tintColor{
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:itemName style:UIBarButtonItemStylePlain target:self action:@selector(rightItemButtonAction)];
     item.tintColor = tintColor;
-    [item setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont boldSystemFontOfSize:14],NSFontAttributeName, nil] forState:UIControlStateNormal];
+    [item setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont boldSystemFontOfSize:[UIFont adjustFontSize:14]],NSFontAttributeName, nil] forState:UIControlStateNormal];
     self.navigationItem.rightBarButtonItem = item;
 }
 #pragma mark - 右边 单个 logo 按钮
@@ -260,7 +260,7 @@
             self.leftNaviButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
             [self.leftNaviButton setTitle:backStr forState:UIControlStateNormal];
             [self.leftNaviButton setTitleColor:tintColor forState:UIControlStateNormal];
-            self.leftNaviButton.titleLabel.font = [UIFont systemFontOfSize:14.0f];
+            self.leftNaviButton.titleLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:14]];
         }
         
         self.navigationItem.leftBarButtonItem = item;

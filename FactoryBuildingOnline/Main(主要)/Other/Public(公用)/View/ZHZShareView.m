@@ -121,7 +121,7 @@
     
     NSString *strContent = @"哈哈";
     
-    NSString *strImage = nil;
+    NSString *strImage = @"http://www.baidu.com";
     
     NSString *strUrl = @"http://www.baidu.com";
     

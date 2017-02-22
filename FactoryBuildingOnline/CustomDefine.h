@@ -20,6 +20,9 @@
 #define Screen_Width [[UIScreen mainScreen] bounds].size.width
 #define Screen_Height [[UIScreen mainScreen] bounds].size.height
 
+
+#define APPID @"1193420004"
+
 #define NaviHeight 64
 #define NaviBackColor [UIColor whiteColor]  // [UIColor colorWithRed:137.0/255.0 green:217.0/255.0 blue:82.0/255.0 alpha:1.0]
 

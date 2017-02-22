@@ -81,13 +81,17 @@
     return 0.1f;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return Screen_Height*11/142;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
     cell.textLabel.textColor = BLACK_42;
     
-    cell.textLabel.font = [UIFont systemFontOfSize:14.0];
+    cell.textLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:14.0]];
     
     switch (indexPath.section) {
         case 0:
@@ -96,8 +100,8 @@
                 
                 cell.textLabel.text = @"头像";
                 [self.avatarImageView removeFromSuperview];
-                
-                self.avatarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(Screen_Width-15-29, 7.5, 29, 29)];
+                CGFloat imageHeight = (Screen_Height*11/142)*29/44;
+                self.avatarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(Screen_Width-15-29, 7.5, imageHeight, imageHeight)];
                 
                 NSString *avatarURL = [SecurityUtil decodeBase64String:userModel.avatar];
                 
@@ -112,7 +116,7 @@
                     self.avatarImageView.layer.borderColor = GRAY_99.CGColor;
                     self.avatarImageView.layer.borderWidth = 0.5;
                     
-                    self.avatarImageView.layer.cornerRadius = 29/2;
+                    self.avatarImageView.layer.cornerRadius = imageHeight/2;
                     self.avatarImageView.layer.masksToBounds = YES;
                 }
                 
@@ -125,7 +129,7 @@
                 
                 [nameLabel removeFromSuperview];
                 
-                nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(Screen_Width-30-Screen_Width/2, 0, Screen_Width/2, 44)];
+                nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(Screen_Width-30-Screen_Width/2, 0, Screen_Width/2, Screen_Height*11/142)];
                 
                 nameLabel.text = userModel.userName;
                 
@@ -133,7 +137,7 @@
                 
                 nameLabel.textAlignment = NSTextAlignmentRight;
                 
-                nameLabel.font = [UIFont systemFontOfSize:14.0];
+                nameLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:14.0]];
                 
                 [cell addSubview:nameLabel];
             }
@@ -144,12 +148,12 @@
             if (indexPath.row == 0) {
                 cell.textLabel.text = @"绑定账号";
                 
-                UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(Screen_Width-15-Screen_Width/2, 0, Screen_Width/2, 44)];
+                UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(Screen_Width-15-Screen_Width/2, 0, Screen_Width/2, Screen_Height*11/142)];
                 
                 label.text = userModel.phoneNum;
                 label.textColor = BLACK_42;
                 label.textAlignment = NSTextAlignmentRight;
-                label.font = [UIFont systemFontOfSize:14.0];
+                label.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:14.0]];
                 [cell addSubview:label];
             } else {
                 cell.textLabel.text = @"修改密码";
@@ -207,7 +211,7 @@
         }
             break;
             
-        default:    // 退出登录
+        default:  // 退出登录
         {
             [HTTPREQUEST_SINGLE delectWithQuitLogin:URL_DELECT_QUIT andParameters:nil isShowActivity:YES success:^(RequestManager *manager, NSDictionary *response) {
                 
@@ -221,6 +225,7 @@
                 [self.navigationController popViewControllerAnimated:YES];
             } failure:^(RequestManager *manager, NSError *error) {
                 NSLog(@"用户退出：%@",error);
+                
             }];
             
         }

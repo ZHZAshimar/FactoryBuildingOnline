@@ -20,25 +20,25 @@
 //        [self addSubview:self.label];
         
         
-        self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(19, 14, 20, 16)];
+        self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(19, self.frame.size.height*3/11, self.frame.size.width/20, self.frame.size.height*5/11)];
         self.imageView.contentMode = UIViewContentModeScaleAspectFit;
         [self addSubview:self.imageView];
         
-        self.typeLabel = [[UILabel alloc] initWithFrame:CGRectMake(44, 0, Screen_Width/2, 44)];
+        self.typeLabel = [[UILabel alloc] initWithFrame:CGRectMake(44, 0, Screen_Width/2, self.frame.size.height)];
         self.typeLabel.textColor = GREEN_1ab8;
-        self.typeLabel.font = [UIFont systemFontOfSize:14.0f];
+        self.typeLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:14.0f]];
         [self addSubview:self.typeLabel];
         
-        self.numLabel = [[UILabel alloc] initWithFrame:CGRectMake(Screen_Width-44, 53/4, 27, 17.5)];
+        self.numLabel = [[UILabel alloc] initWithFrame:CGRectMake(Screen_Width-44, self.frame.size.height*13/44, self.frame.size.height*27/44, self.frame.size.height*9/22)];
         self.numLabel.backgroundColor = GRAY_d2;
         self.numLabel.textColor = GRAY_80;
-        self.numLabel.font = [UIFont systemFontOfSize:13.0f];
-        self.numLabel.layer.cornerRadius = 9;
+        self.numLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:13.0f]];
+        self.numLabel.layer.cornerRadius = self.frame.size.height*9/44;
         self.numLabel.layer.masksToBounds = YES;
         self.numLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:self.numLabel];
         
-        UIView *cutlineView = [[UIView alloc] initWithFrame:CGRectMake(15, 43.5, Screen_Width, 0.5)];
+        UIView *cutlineView = [[UIView alloc] initWithFrame:CGRectMake(15, self.frame.size.height-0.5, Screen_Width, 0.5)];
         cutlineView.backgroundColor = GRAY_db;
         [self addSubview:cutlineView];
     }

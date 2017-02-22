@@ -73,6 +73,7 @@
             }
             
             [weakSelf.myCollectionView reloadData];
+        } else {
         }
         
         [weakSelf.yzActivityView stopAnimating];    // 关闭优质厂房的活动指示器
@@ -372,7 +373,7 @@
         
         
         // 上拉加载更多
-        self.myCollectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        MJRefreshBackNormalFooter *refreshFooter = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
             
             HomeWantedModel *model = weakSelf.mDataArray.lastObject;
             
@@ -381,10 +382,13 @@
                 [weakSelf.homeRequest requestNextURL:model.nextURL];    // 请求 nextURL 的内容
                 return ;
             }
+                
+                [weakSelf.myCollectionView.mj_footer endRefreshing];
+    
             
-            [weakSelf.myCollectionView.mj_footer endRefreshing];
+            
         }];
-        
+        self.myCollectionView.mj_footer = refreshFooter;
 //        [_myCollectionView addSubview:self.yzActivityView];
     }
     return _myCollectionView;

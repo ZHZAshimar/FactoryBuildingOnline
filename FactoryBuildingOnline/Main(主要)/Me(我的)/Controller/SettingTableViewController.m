@@ -68,6 +68,10 @@
     return 10.0f;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return Screen_Height *11/142;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
@@ -76,24 +80,24 @@
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-    cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
+    cell.textLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:14]];
     
     cell.textLabel.textColor = BLACK_42;
     
     if (indexPath.section == 0) {
         
-        cacheLabel = [[UILabel alloc] initWithFrame:CGRectMake(Screen_Width-130, 0, 100, 44)];;
+        cacheLabel = [[UILabel alloc] initWithFrame:CGRectMake(Screen_Width-130, 0, 100, Screen_Height *11/142)];;
         cacheLabel.textColor = GRAY_9e;
 //        cacheLabel.backgroundColor = YELLOW_bg;
         cacheLabel.textAlignment = NSTextAlignmentRight;
-        cacheLabel.font = [UIFont systemFontOfSize:12.0];
+        cacheLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:12]];
         cacheLabel.text = [NSString stringWithFormat:@"缓存：%.2fM",[self getCacheSize]];
         [cell addSubview:cacheLabel];
     }
     
     return cell;
 }
-
+#pragma mark - 计算缓存大小
 - (CGFloat)getCacheSize {
     
     NSUInteger size = [[SDImageCache sharedImageCache] getSize];    // SDWebImage里面的缓存

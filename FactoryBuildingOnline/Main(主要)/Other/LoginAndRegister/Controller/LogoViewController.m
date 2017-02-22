@@ -475,8 +475,8 @@ typedef enum{
         _mySegmentedControl.selectionStyle = HMSegmentedControlSelectionStyleTextWidthStripe;
         _mySegmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
         _mySegmentedControl.selectionIndicatorHeight = 3.0f;
-        _mySegmentedControl.titleTextAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:14.0f],NSForegroundColorAttributeName:BLACK_42};
-        _mySegmentedControl.selectedTitleTextAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:14.0f],NSForegroundColorAttributeName:GREEN_19b8};
+        _mySegmentedControl.titleTextAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:[UIFont adjustFontSize:14.0f]],NSForegroundColorAttributeName:BLACK_42};
+        _mySegmentedControl.selectedTitleTextAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:[UIFont adjustFontSize:14.0f]],NSForegroundColorAttributeName:GREEN_19b8};
         __weak typeof (self) weakSelf = self;
         
         [_mySegmentedControl setIndexChangeBlock:^(NSInteger index) {

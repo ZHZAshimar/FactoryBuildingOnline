@@ -113,10 +113,10 @@
         
         brokerHeaderView.publishNumLabel.text = [NSString stringWithFormat:@"(%ld)",self.mDataSource.count];
         
-        headerView = brokerHeaderView;
+//        headerView = brokerHeaderView;
         return brokerHeaderView;
     }
-    return nil;
+    return headerView;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {

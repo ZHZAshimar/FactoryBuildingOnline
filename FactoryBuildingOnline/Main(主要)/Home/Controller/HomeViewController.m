@@ -10,7 +10,7 @@
 
 #import "HMSegmentedControl.h"
 #import "HomeCollectionViewCell.h"
-
+#import "GetVersion.h"
 #import "SearchViewController.h"
 #import "SelectCityTableViewController.h"
 #import "FactoryDetailViewController.h"
@@ -77,7 +77,7 @@
     if (_locService != nil) {
         _locService = nil;
     }
-
+   
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -115,8 +115,13 @@
     self.myCollectionView.dataSource = self;
     
     [self locationSevice];  // 设置定位
-    
+//     NSLog(@"********%f",Screen_Width);
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotification:) name:@"NAVIGATIONCHANGE" object:nil];
+    GetVersion *getVersion = [GetVersion new];
+    [getVersion appStoreUpdateVersion];
+    getVersion.block = ^(NSDictionary *dic){
+        [self showVersionUpdate:dic];
+    };
 }
 #pragma mark - 接收 NAVIGATIONCHANGE 通知
 - (void)receiveNotification:(NSNotification *)sender {
@@ -265,6 +270,11 @@
 
 -(void) onGetReverseGeoCodeResult:(BMKGeoCodeSearch *)searcher result:(BMKReverseGeoCodeResult *)result errorCode:(BMKSearchErrorCode)error
 {
+    NSLog(@"定位结果：%u",error);
+    if (error == 9) {
+        self.leftBarAreaLabel.text = @"网络超时";
+        return;
+    }
     self.cityNameStr = result.addressDetail.city; // 拿到当前城市
     self.leftBarAreaLabel.text = self.cityNameStr;
 }
@@ -342,6 +352,33 @@
     searchVC.hidesBottomBarWhenPushed = YES;    // 隐藏 tabbar
     [self.navigationController pushViewController:searchVC animated:YES];
     
+}
+
+- (void)showVersionUpdate:(NSDictionary*)dic {
+    
+    NSString *string =[NSString stringWithFormat:@"检测到新版本:%@",dic[@"version"]];
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:string message:dic[@"releaseNotes"] preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *ignoreAction = [UIAlertAction actionWithTitle:@"下次再提醒" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    UIAlertAction *updateAction = [UIAlertAction actionWithTitle:@"立即更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        // 推送到AppStore  “id” 字符不能缺少
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%@",APPID]]];
+    }];
+    
+//    UITextView *textView = [UITextView new];
+//    [alertController]
+//    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+//        
+//    }];
+    
+    [alertController addAction:ignoreAction];
+    [alertController addAction:updateAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 #pragma mark - lazy load
@@ -473,7 +510,7 @@
         UITapGestureRecognizer *tapLeftBarView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(jumpSelectCityAction:)];  // 初始化单击事件
         [_leftBarView addGestureRecognizer:tapLeftBarView]; // 添加单击事件
         
-        self.leftBarAreaLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 0, Screen_Width/4-19-10, 44)];
+        self.leftBarAreaLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 0, Screen_Width/4-8-10, 44)];
         self.leftBarAreaLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:15.0]];
         self.leftBarAreaLabel.text = @"正在定位";
         self.leftBarAreaLabel.textColor = BLACK_42;

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,22 +27,19 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入手机号码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ZjM-Fb-Q0u">
-                    <rect key="frame" x="40" y="40" width="334" height="44"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="pwl-1R-f0l"/>
-                    </constraints>
+                    <rect key="frame" x="40" y="40" width="334" height="57"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                    <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pKB-Qy-FnD">
-                    <rect key="frame" x="40" y="104" width="334" height="44"/>
+                    <rect key="frame" x="40" y="117" width="334" height="57"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                    <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBp-eo-YFr">
-                    <rect key="frame" x="282" y="113" width="78" height="26"/>
+                    <rect key="frame" x="282" y="132.66666666666666" width="78" height="26"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="78" id="og4-Dv-Nw4"/>
@@ -56,13 +53,13 @@
                     </connections>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9aC-cU-60a">
-                    <rect key="frame" x="40" y="168" width="334" height="44"/>
+                    <rect key="frame" x="40" y="194" width="334" height="57"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wf3-NX-omX">
-                    <rect key="frame" x="324" y="168" width="50" height="44"/>
+                    <rect key="frame" x="324" y="194" width="50" height="57"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="oPu-LU-zSL"/>
                     </constraints>
@@ -72,12 +69,9 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PgH-7R-F6C">
-                    <rect key="frame" x="40" y="232" width="334" height="44"/>
+                    <rect key="frame" x="40" y="271" width="334" height="57"/>
                     <color key="backgroundColor" red="0.10349417477846146" green="0.7246362566947937" blue="0.06188463419675827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="53w-Ga-B0O"/>
-                    </constraints>
-                    <state key="normal" title="注册">
+                    <state key="normal" title="注 册">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -107,8 +101,10 @@
                 <constraint firstAttribute="trailing" secondItem="ZjM-Fb-Q0u" secondAttribute="trailing" constant="40" id="RY3-1e-JG9"/>
                 <constraint firstItem="PgH-7R-F6C" firstAttribute="leading" secondItem="9aC-cU-60a" secondAttribute="leading" id="SUT-3G-Obz"/>
                 <constraint firstItem="pKB-Qy-FnD" firstAttribute="trailing" secondItem="ZjM-Fb-Q0u" secondAttribute="trailing" id="SvK-kZ-99G"/>
+                <constraint firstItem="ZjM-Fb-Q0u" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="11:142" id="Xex-Su-8Ts"/>
                 <constraint firstItem="Wf3-NX-omX" firstAttribute="top" secondItem="9aC-cU-60a" secondAttribute="top" id="Xgp-7Z-SC4"/>
                 <constraint firstItem="PgH-7R-F6C" firstAttribute="top" secondItem="9aC-cU-60a" secondAttribute="bottom" constant="20" id="buo-M0-ifU"/>
+                <constraint firstItem="PgH-7R-F6C" firstAttribute="height" secondItem="9aC-cU-60a" secondAttribute="height" id="c0u-kc-pzM"/>
                 <constraint firstItem="pKB-Qy-FnD" firstAttribute="height" secondItem="ZjM-Fb-Q0u" secondAttribute="height" id="eY7-ce-vm9"/>
                 <constraint firstItem="pKB-Qy-FnD" firstAttribute="leading" secondItem="ZjM-Fb-Q0u" secondAttribute="leading" id="non-kk-Auq"/>
                 <constraint firstItem="ZjM-Fb-Q0u" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="40" id="qzg-yf-sml"/>

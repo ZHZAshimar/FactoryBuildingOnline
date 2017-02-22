@@ -53,28 +53,30 @@
 
 - (void)setTextFieldStyle {
     
-    self.phoneNumTF.layer.cornerRadius = 22;
+    self.phoneNumTF.layer.cornerRadius = Screen_Height*11/142/2;
     //    self.phoneNumTF.layer.masksToBounds = YES;
     self.phoneNumTF.layer.borderColor = GRAY_cc.CGColor;
     self.phoneNumTF.layer.borderWidth = 0.5;
+    self.phoneNumTF.font = [UIFont adjustFont:[UIFont systemFontOfSize:14]];
     
-    
-    self.msgNumTF.layer.cornerRadius = 22;
+    self.msgNumTF.layer.cornerRadius = Screen_Height*11/142/2;
     //    self.msgNumTF.layer.masksToBounds = YES;
     self.msgNumTF.layer.borderColor = GRAY_cc.CGColor;
     self.msgNumTF.layer.borderWidth = 0.5;
+    self.msgNumTF.font = [UIFont adjustFont:[UIFont systemFontOfSize:14]];
     
-    
-    self.pswTF.layer.cornerRadius = 22;
+    self.pswTF.layer.cornerRadius = Screen_Height*11/142/2;
     //    self.pswTF.layer.masksToBounds = YES;
     self.pswTF.layer.borderColor = GRAY_cc.CGColor;
     self.pswTF.layer.borderWidth = 0.5;
+    self.pswTF.font = [UIFont adjustFont:[UIFont systemFontOfSize:14]];
+    
     NSArray *imageArr = @[[UIImage imageNamed:@"phone"],[UIImage imageNamed:@"login_safe"],[UIImage imageNamed:@"clock"]];
     NSArray *textArr = @[@"请输入手机号",@"输入短信验证码",@"请输入登录密码"];
     for (int i = 0; i < 3; i ++) {
         // 添加左边的logo
-        UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 46, 44)];
-        UIImageView *pHimageView = [[UIImageView alloc] initWithFrame:CGRectMake(19, 11, 11, 22)];
+        UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 46, Screen_Height*11/142)];
+        UIImageView *pHimageView = [[UIImageView alloc] initWithFrame:CGRectMake(19, Screen_Height*11/568, Screen_Height*11/568, Screen_Height*11/284)];
         pHimageView.contentMode = UIViewContentModeScaleAspectFit;
         pHimageView.image = imageArr[i];
         [leftView addSubview:pHimageView];
@@ -82,7 +84,8 @@
         // 设置 提示文字的大小
         NSString *holderText = textArr[i];
         NSMutableAttributedString *placeHolder = [[NSMutableAttributedString alloc] initWithString:holderText];
-        [placeHolder addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:13.0] range:NSMakeRange(0,holderText.length)];
+        [placeHolder addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:[UIFont adjustFontSize:13.0]] range:NSMakeRange(0,holderText.length)];
+        
         if (i == 0) {
             self.phoneNumTF.leftView = leftView;
             self.phoneNumTF.leftViewMode = UITextFieldViewModeAlways;
@@ -105,6 +108,7 @@
     
     self.registerBtn.layer.masksToBounds = YES;
     self.registerBtn.layer.cornerRadius = 22;
+    self.registerBtn.titleLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:14.0]];
     
     self.phoneNumTF.delegate = self;
     self.msgNumTF.delegate = self;

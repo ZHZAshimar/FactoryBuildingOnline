@@ -53,11 +53,11 @@
         _userTF.layer.cornerRadius = height*4/45;
         _userTF.borderStyle = UITextBorderStyleNone;
         _userTF.clearButtonMode = UITextFieldViewModeWhileEditing;
-        _userTF.font = [UIFont systemFontOfSize:14.0f];
+        _userTF.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:14.0f]];
         
         // 设置提示文字的大小
         NSString *holderText = @"请输入手机号码";
-        NSMutableAttributedString *placeHolder = [[NSMutableAttributedString alloc] initWithString:holderText attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13.0f]}];
+        NSMutableAttributedString *placeHolder = [[NSMutableAttributedString alloc] initWithString:holderText attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:[UIFont adjustFontSize:13.0f]]}];
         _userTF.attributedPlaceholder = placeHolder;
         
         // 设置 左边的logo
@@ -82,11 +82,11 @@
         _pswTF.layer.cornerRadius = height*4/45;
         _pswTF.borderStyle = UITextBorderStyleNone;
         _pswTF.secureTextEntry = YES;
-        _pswTF.font = [UIFont systemFontOfSize:14.0f];
+        _pswTF.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:14.0f]];
 //        _pswTF.clearButtonMode = UITextFieldViewModeWhileEditing;
         // 设置提示文字的大小
         NSString *holderText = @"请输入登录密码";
-        NSMutableAttributedString *placeHolder = [[NSMutableAttributedString alloc] initWithString:holderText attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13.0f]}];
+        NSMutableAttributedString *placeHolder = [[NSMutableAttributedString alloc] initWithString:holderText attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:[UIFont adjustFontSize:13.0f]]}];
         _pswTF.attributedPlaceholder = placeHolder;
         
         // 设置 左边的logo
@@ -122,7 +122,7 @@
         _loginButton.backgroundColor = GREEN_19b8;
         [_loginButton setTitle:@"登 录" forState:0];
         [_loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        _loginButton.titleLabel.font = [UIFont systemFontOfSize:16.0];
+        _loginButton.titleLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:16.0]];
         _loginButton.layer.cornerRadius = height*4/45;
     }
     return _loginButton;
@@ -135,7 +135,7 @@
         _registerButton.frame = CGRectMake(40, height*5/31+height*24/45+height*2/13, 80, height-(height*5/31+height*24/45+height*2/13));
         [_registerButton setTitleColor:GREEN_19b8 forState:UIControlStateNormal];
         [_registerButton setTitle:@"注册账号" forState:UIControlStateNormal];
-        _registerButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
+        _registerButton.titleLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:12.0]];
         _registerButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     }
     return _registerButton;
@@ -148,7 +148,7 @@
         _forgotPswButton.frame = CGRectMake(width-40-80, height*5/31+height*24/45+height*2/13, 80, height-(height*5/31+height*24/45+height*2/13));
         [_forgotPswButton setTitleColor:GREEN_19b8 forState:UIControlStateNormal];
         [_forgotPswButton setTitle:@"忘记密码" forState:UIControlStateNormal];
-        _forgotPswButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
+        _forgotPswButton.titleLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:12.0]];
         _forgotPswButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     }
     return _forgotPswButton;

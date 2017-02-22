@@ -277,6 +277,12 @@
             break;
         case 2:     // 浏览记录
         {
+            if (!isLogin) {
+                
+                // 跳转到登录界面
+                [self goLoginVC];
+                return;
+            }
             ScanHistoryViewController *scanHistoryVC = [ScanHistoryViewController new];
             
             [self.navigationController pushViewController:scanHistoryVC animated:YES];

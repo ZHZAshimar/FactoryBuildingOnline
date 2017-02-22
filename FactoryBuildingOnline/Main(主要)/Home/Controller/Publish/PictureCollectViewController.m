@@ -101,9 +101,9 @@
 - (void) setLittleBtnPhotos:(NSArray<UIImage *> *)littleBtnPhotos {
     
     _littleBtnPhotos = littleBtnPhotos;
-    
-    [self pushPictureToQiniu:littleBtnPhotos];
-
+    if (_littleBtnPhotos.count > 0) {
+         [self pushPictureToQiniu:littleBtnPhotos];
+    }
 }
 
 - (void) setImageKeyArr:(NSMutableArray *)imageKeyArr {
@@ -262,14 +262,13 @@
                           
                       }
                               
-                              
+                      [MBProgressHUD hideHUD];
                   } option:uploadOption];
                 
             }
             
         });
         
-        [MBProgressHUD hideHUD];
         
     } failure:^(RequestManager *manager, NSError *error) {
         NSLog(@"%@",error.debugDescription);

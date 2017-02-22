@@ -98,7 +98,7 @@
     
     if (nextUrl.length >= 1) {  // 当nexturl 有值时，则请求nextURL 的内容
         
-        [HTTPREQUEST_SINGLE getRequestWithURLReturnDic:nextUrl andParameters:nil success:^(RequestManager *manager, NSDictionary *response) {
+        [HTTPREQUEST_SINGLE getRequestWithURLReturnDic:nextUrl andParameters:nil andShouldToken:NO success:^(RequestManager *manager, NSDictionary *response) {
             
             self.bpBlock(response);
             

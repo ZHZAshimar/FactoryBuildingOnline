@@ -13,12 +13,13 @@
 @interface ScanReserveViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 {
     CGFloat oneLineHeight;  // 一行文字的高度
+    EmptyView *emptyView;
 }
 @property (nonatomic, strong) UICollectionView *myCollectionView;
 @property (nonatomic, strong) NSMutableArray *mArray;
 @property (nonatomic, strong) NSMutableArray *heightmArray;
 @property (nonatomic, strong) NSMutableArray *selectmArray;
-
+@property (nonatomic, strong) NSString *nextURL;
 @end
 
 @implementation ScanReserveViewController
@@ -38,25 +39,61 @@
     self.mArray = [NSMutableArray array];
     self.heightmArray = [NSMutableArray array];
     self.selectmArray = [NSMutableArray array];
-    for (int i = 0; i < 9; i++) {
-        [self.selectmArray addObject:@(0)];
-        
-    }
-    NSLog(@"%@",self.selectmArray);
-    [self.mArray addObject:@{@"content":@"你好！",@"type":@(0)}];
-    [self.mArray addObject:@{@"content":@"奥你干撒离开家送到家分开了十几分南斯拉夫就考试地方沃尔夫两节课撒女匡山街道弗雷斯科佛问哦i教父i额！奥你干撒离开家送到家分开了十几分南斯拉夫就考试地方沃尔夫两节课撒女匡山街道弗雷斯科佛问哦i教父i额！奥你干撒离开家送到家分开了十几分南斯拉夫就考试地方沃尔夫两节课撒女匡山街道弗雷斯科佛问哦i教父i额！奥你干撒离开家送到家分开了十几分南斯拉夫就考试地方沃尔夫两节课撒女匡山街道弗雷斯科佛问哦i教父i额！奥你干撒离开家送到家分开了十几分南斯拉夫就考试地方沃尔夫两节课撒女匡山街道弗雷斯科佛问哦i教父i额！奥你干撒离开家送到家分开了十几分南斯拉夫就考试地方沃尔夫两节课撒女匡山街道弗雷斯科佛问哦i教父i额！奥你干撒离开家送到家分开了十几分南斯拉夫就考试地方沃尔夫两节课撒女匡山街道弗雷斯科佛问哦i教父i额！奥你干撒离开家送到家分开了十几分南斯拉夫就考试地方沃尔夫两节课撒女匡山街道弗雷斯科佛问哦i教父i额！",@"type":@(0)}];
-
-    [self.mArray addObject:@{@"content":@"拗口给哪了；放假哦潍坊万法皆空；晚来风急欧文i二纺机问佛为哦弄！",@"type":@(0)}];
     
-    [self.mArray addObject:@{@"content":@"你好！",@"type":@(0)}];
-    [self.mArray addObject:@{@"content":@"奥你干撒离开家送到家分开了十几分南斯拉夫就考试地方沃尔夫两节课撒女匡山街道弗雷斯科佛问哦i教父i额！",@"type":@(0)}];
-    [self.mArray addObject:@{@"content":@"拗口给哪了；放假哦潍坊万法皆空；晚来风急欧文i二纺机问佛为哦弄！",@"type":@(0)}];
-    
-    [self.mArray addObject:@{@"content":@"你好！",@"type":@(1)}];
-    [self.mArray addObject:@{@"content":@"奥你干撒离开家送到家分开了十几分南斯拉夫就考试地方沃尔夫两节课撒女匡山街道弗雷斯科佛问哦i教父i额！",@"type":@(1)}];
-    [self.mArray addObject:@{@"content":@"拗口给哪了；放假哦潍坊万法皆空；晚来风急欧文i二纺机问佛为哦弄！",@"type":@(1)}];
     
     [self.view addSubview:self.myCollectionView];
+    
+    [self getData];
+}
+
+- (void)getData {
+    
+    emptyView = [[EmptyView alloc] initWithFrame:self.view.bounds];
+    emptyView.image = [UIImage imageNamed:@"error_1"];
+    
+    
+    [HTTPREQUEST_SINGLE getUserInfo:@"user/publications/needs/" andParameters:nil success:^(RequestManager *manager, NSDictionary *response, NSString *time) {
+       
+        NSLog(@"%@",response);
+        if ([response[@"erro_code"] intValue] != 200) {
+            
+            emptyView.emptyStr = [NSString stringWithFormat:@"%@",response[@"erro_msg"]];
+            [self.view addSubview:emptyView];
+            
+            return ;
+        }
+        
+        NSArray *neededArray = response[@"neededMessage"];
+        self.nextURL = response[@"next"];
+        for (NSDictionary *dic in neededArray) {
+            [self.mArray addObject:dic];
+        }
+        
+        for (int i = 0; i < self.mArray.count; i++) {
+            [self.selectmArray addObject:@(0)];
+        }
+        [self.myCollectionView reloadData];
+        
+        
+    } failure:^(RequestManager *manager, NSError *error) {
+        NSLog(@"%@",error.description);
+    }];
+    
+}
+
+- (void)getNextURLData{
+    
+    [HTTPREQUEST_SINGLE getRequestWithURLReturnDic:self.nextURL andParameters:nil andShouldToken:YES success:^(RequestManager *manager, NSDictionary *response) {
+        [self.myCollectionView.mj_footer endRefreshing];
+        for (NSDictionary *dic in response[@"neededMessage"]) {
+            [self.mArray addObject:dic];
+        }
+        self.nextURL = response[@"next"];
+        [self.myCollectionView reloadData];
+        
+    } failure:^(RequestManager *manager, NSError *error) {
+        [self.myCollectionView.mj_footer endRefreshing];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,7 +106,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    CGFloat contentHeight = [NSString getHeightOfAttributeRectWithStr:self.mArray[indexPath.item][@"content"] andSize:CGSizeMake(Screen_Width-33, 2000) andFontSize:[UIFont adjustFontSize:14] andLineSpace:10];
+    CGFloat contentHeight = [NSString getHeightOfAttributeRectWithStr:self.mArray[indexPath.item][@"need"][@"content"] andSize:CGSizeMake(Screen_Width-33, 2000) andFontSize:[UIFont adjustFontSize:14] andLineSpace:10];
     
     // 将拿到高度添加到 高度数组中
     [self.heightmArray addObject:@(contentHeight)];
@@ -117,16 +154,16 @@
         } else {
             cell.myImageView.image = [UIImage imageNamed:@"reserve_down"];
         }
-        cell.contentLabel.attributedText = [NSString attributedString:dic[@"content"] andTextWidth:5000 andLineSpace:10];
+        cell.contentLabel.attributedText = [NSString attributedString:dic[@"need"][@"content"] andTextWidth:5000 andLineSpace:10];
     } else if (lineNum > 1 && lineNum <= 2 ){
        
         cell.contentLabelBttom.constant = 8;
         
-        cell.contentLabel.attributedText = [NSString attributedString:dic[@"content"] andTextWidth:100 andLineSpace:10];
+        cell.contentLabel.attributedText = [NSString attributedString:dic[@"need"][@"content"] andTextWidth:100 andLineSpace:10];
     } else {
         cell.contentLabelBttom.constant = 8;
         
-        cell.contentLabel.text = dic[@"content"];
+        cell.contentLabel.text = dic[@"need"][@"content"];
     }
     
     
@@ -162,6 +199,14 @@
         _myCollectionView.backgroundColor = GRAY_F5;
         _myCollectionView.showsVerticalScrollIndicator = NO;
         [_myCollectionView registerClass:[MyReserveCollectionViewCell class] forCellWithReuseIdentifier:@"MyReserveCollectionViewCell"];
+        
+        _myCollectionView.mj_footer = [MJRefreshBackStateFooter footerWithRefreshingBlock:^{
+            if (![self.nextURL isEqual:[NSNull null] ]) {
+                [self getNextURLData];
+                return ;
+            }
+            [_myCollectionView.mj_footer endRefreshing];
+        }];
     }
     return _myCollectionView;
 }

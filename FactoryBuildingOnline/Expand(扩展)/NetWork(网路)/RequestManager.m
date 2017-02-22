@@ -61,7 +61,7 @@ static AFHTTPSessionManager * instance;
         
         manager.requestSerializer.HTTPShouldHandleCookies = YES;
         
-        manager.requestSerializer.timeoutInterval = 8.0f;
+        manager.requestSerializer.timeoutInterval = 10.0f;
         
         instance = manager;
         
@@ -496,17 +496,23 @@ static AFHTTPSessionManager * instance;
  *  @param success    请求成功，block的参数为服务返回的数据
  *  @param failure    请求失败，block的参数为错误信息
  */
-- (void)getRequestWithURLReturnDic:(NSString *)urlStr andParameters:(NSDictionary *)params success:(void(^)(RequestManager *manager,NSDictionary *response))success failure:(void(^)(RequestManager *manager,NSError *error))failure {
+- (void)getRequestWithURLReturnDic:(NSString *)urlStr andParameters:(NSDictionary *)params andShouldToken:(BOOL)token success:(void(^)(RequestManager *manager,NSDictionary *response))success failure:(void(^)(RequestManager *manager,NSError *error))failure {
     
     __weak RequestManager *weakSelf = self;
     
     [MBProgressHUD showAction:PULL_REFRESH_TEXT ToView:nil];
     //    [instance.requestSerializer setValue:@"7a228e88d27b64d46beb7f8a72d9831d" forHTTPHeaderField:@"apikey"];
+    
+    if (token) {
+        [RequestManager getTokenAndTime];
+    }
+    
     [instance GET:urlStr parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         [MBProgressHUD hideHUD];
         
-        NSDictionary *response = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];   // 将返回的数据转成json 数据格式
+        NSDictionary *response = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error
+                                                                        :nil];   // 将返回的数据转成json 数据格式
         
         success(weakSelf,response);
         
@@ -702,7 +708,13 @@ static AFHTTPSessionManager * instance;
 
         success(weakSelf, responseDic);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
+        // 获取 http 错误状态 当errorcode = 401 是大部分都是token的问题，当出现两端登录时，一端的token则作废，发送通知提示重新登录
+        if ([error.userInfo[AFNetworkingOperationFailingURLResponseErrorKey] statusCode] == 401) {
+            NSLog(@"401");
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"UnauthorizedRequest" object:nil];
+            return ;
+        }
+
         if (isShow) [MBProgressHUD hideHUD];
         
         failure(weakSelf, error);

@@ -2,9 +2,9 @@
 //  TextCollectionViewCell.m
 //  FactoryBuildingOnline
 //
-//  Created by myios on 2016/11/16.
-//  Copyright © 2016年 XFZY. All rights reserved.
-//  Developer :Ashimar_ZHZ
+//  Created by 郑惠珠 on 2017/2/22.
+//  Copyright © 2017年 XFZY. All rights reserved.
+//
 
 #import "TextCollectionViewCell.h"
 
@@ -16,29 +16,32 @@
     
     if (self) {
         
-        self.label = [[UILabel alloc] initWithFrame:self.bounds];
-        
-        self.label.backgroundColor = [UIColor clearColor];
-        
-        self.label.textAlignment = NSTextAlignmentCenter;
-        
-        self.label.textColor = BLACK_42;
-        
-        self.label.font = [UIFont systemFontOfSize:12.0f];
-        
-        [self addSubview:self.label];
-        
-        // 绘制边框， 圆角为4
-        self.layer.borderColor = GRAY_db.CGColor;
-        
-        self.layer.borderWidth = 0.5;
-        
-        self.layer.cornerRadius = 4;
-        
-        self.layer.masksToBounds = YES;
-        
+        NSArray *arrayOfViews = [[NSBundle mainBundle] loadNibNamed:@"TextCollectionViewCell" owner:self options:nil];
+        if (arrayOfViews.count <= 0) {
+            return nil;
+        }
+        if (![arrayOfViews[0] isKindOfClass:[UICollectionViewCell class]]) {
+            return nil;
+        }
+        self = arrayOfViews[0];
     }
     return self;
+}
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    // Initialization code
+    
+    // 绘制边框， 圆角为4
+    self.layer.borderColor = GRAY_db.CGColor;
+    
+    self.layer.borderWidth = 0.5;
+    
+    self.layer.cornerRadius = 4;
+    
+    self.layer.masksToBounds = YES;
+    
+    self.label.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:12.0f]];
 }
 
 @end

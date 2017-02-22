@@ -262,9 +262,15 @@
     
     if (!_myCollectionView) {
         _mySegmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"业主",@"专家"]];
-        _mySegmentedControl.frame = CGRectMake(Screen_Width/2-60, 10, 120, 24);
+        _mySegmentedControl.frame = CGRectMake(Screen_Width/2-60, 10, 120, 26);
+//        _mySegmentedControl.
         _mySegmentedControl.tintColor = GREEN_1ab8;
         _mySegmentedControl.selectedSegmentIndex = 0;
+        // 设置字体大小
+        NSDictionary *fontDic = @{NSFontAttributeName:[UIFont systemFontOfSize:[UIFont adjustFontSize:14]]};
+        [_mySegmentedControl setTitleTextAttributes:fontDic forState:UIControlStateSelected];
+        [_mySegmentedControl setTitleTextAttributes:fontDic forState:UIControlStateNormal];
+        
         [_mySegmentedControl addTarget:self action:@selector(segmentedValueChangeAction:) forControlEvents:UIControlEventValueChanged];
     }
     return _mySegmentedControl;

@@ -122,9 +122,9 @@
         // 设置item的高度
         item.itemHeight = NaviHeight;
         
-        item.unselectedTitleAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:9.0f],NSForegroundColorAttributeName:[UIColor colorWithWhite:0.549 alpha:1.000]};
+        item.unselectedTitleAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:[UIFont adjustFontSize:10]],NSForegroundColorAttributeName:[UIColor colorWithWhite:0.549 alpha:1.000]};
         
-        item.selectedTitleAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:11.0f],NSForegroundColorAttributeName:GREEN_1ab8};
+        item.selectedTitleAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:[UIFont adjustFontSize:10]],NSForegroundColorAttributeName:GREEN_1ab8};
         
         item.titlePositionAdjustment = UIOffsetMake(0, 8);
         

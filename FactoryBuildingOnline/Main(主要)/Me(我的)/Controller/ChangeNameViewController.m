@@ -50,18 +50,22 @@
     return 10.0f;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return Screen_Height*11/142;
+}
+
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
     
-    self.myTextField = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, Screen_Width-10, 44)];
+    self.myTextField = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, Screen_Width-10, Screen_Height*11/142)];
     
     self.myTextField.text = self.userName;
     
     self.myTextField.clearButtonMode = UITextFieldViewModeAlways;
     
-    self.myTextField.font = [UIFont systemFontOfSize:14.0];
+    self.myTextField.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:14.0]];
     
     self.myTextField.textColor = BLACK_42;
     

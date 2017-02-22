@@ -356,7 +356,7 @@
     }
     return CGSizeMake(Screen_Width, 8);
 }
-// 头部高度
+#pragma mark-  头部高度
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
     switch (section) {
         case 0:case 4:
@@ -410,7 +410,7 @@
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     return 1.0f;
 }
-// 每个cell 的高度
+#pragma mark-  每个cell 的高度
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     NSString *string = self.model.ftModel.description_factory;
@@ -503,7 +503,7 @@
     
     return cell;
 }
-// 图片轮播
+#pragma mark-  图片轮播
 - (UICollectionViewCell *)imagePlayerCollectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     pictureCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DetailPictureCollectionViewCell" forIndexPath:indexPath];
     [pictureCell.likeBtn addTarget:self action:@selector(likeBtnAction:) forControlEvents:UIControlEventTouchUpInside]; // 收藏
@@ -515,7 +515,7 @@
     
     return pictureCell;
 }
-// 信息
+#pragma mark-  信息
 - (UICollectionViewCell *)infoCollectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     DetailOfFactoryInfoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DetailOfFactoryInfoCollectionViewCell" forIndexPath:indexPath];
@@ -527,7 +527,7 @@
     return cell;
     
 }
-// 介绍
+#pragma mark-  介绍
 - (UICollectionViewCell *)introduceCollectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     introduceCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DetailFactoryIntroduceCollectionViewCell" forIndexPath:indexPath];
@@ -547,7 +547,7 @@
     return introduceCell;
     
 }
-// 地图
+#pragma mark-  地图
 - (UICollectionViewCell *)mapCollectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     DetailMapCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DetailMapCollectionViewCell" forIndexPath:indexPath];
@@ -559,7 +559,7 @@
     return cell;
     
 }
-// 发布人
+#pragma mark-  发布人
 - (UICollectionViewCell *)publisherCollectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     PublisherCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PublisherCollectionViewCell" forIndexPath:indexPath];
@@ -572,11 +572,11 @@
     return cell;
 }
 #pragma mark - PublisherCollectionViewCellDelegate -
-// 发布人发送短信
+#pragma mark-  发布人发送短信
 - (void)sendMessage {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"sms://%@",self.contanterDic[@"phone_num"]]]];
 }
-// 发布人打电话
+#pragma mark-  发布人打电话
 - (void)callPhone {
 //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",self.contanterDic[@"phone_num"]]]];
     NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"tel:%@",self.contanterDic[@"phone_num"]];
@@ -584,17 +584,17 @@
     [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
     [self.view addSubview:callWebview];
 }
-// 跳转发布人界面
+#pragma mark-  跳转发布人界面
 - (void)pushPublisherVC {
     
-    PublishManViewController *publishManVC = [[PublishManViewController alloc] init];
-    
-    publishManVC.contanterDic = self.contanterDic;
-    
-    [self.navigationController pushViewController:publishManVC animated:YES];
+//    PublishManViewController *publishManVC = [[PublishManViewController alloc] init];
+//    
+//    publishManVC.contanterDic = self.contanterDic;
+//    
+//    [self.navigationController pushViewController:publishManVC animated:YES];
     
 }
-// 跳转举报界面
+#pragma mark-  跳转举报界面
 - (void)pushResportVC {
     
     ReportViewController *reportVC = [ReportViewController new];

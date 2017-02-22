@@ -39,11 +39,11 @@
         _phoneTF.layer.cornerRadius = height*4/45;
         _phoneTF.borderStyle = UITextBorderStyleNone;
         _phoneTF.clearButtonMode = UITextFieldViewModeWhileEditing;
-        _phoneTF.font = [UIFont systemFontOfSize:14.0f];
+        _phoneTF.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:14.0f]];
         
         // 设置提示文字的大小
         NSString *holderText = @"请输入手机号码";
-        NSMutableAttributedString *placeHolder = [[NSMutableAttributedString alloc] initWithString:holderText attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13.0f]}];
+        NSMutableAttributedString *placeHolder = [[NSMutableAttributedString alloc] initWithString:holderText attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:[UIFont adjustFontSize:13.0f]]}];
         _phoneTF.attributedPlaceholder = placeHolder;
         
         // 设置 左边的logo
@@ -68,11 +68,11 @@
         _messageTF.layer.borderColor = GRAY_cc.CGColor;
         _messageTF.layer.cornerRadius = height*4/45;
         _messageTF.borderStyle = UITextBorderStyleNone;
-        _messageTF.font = [UIFont systemFontOfSize:14.0f];
+        _messageTF.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:14.0f]];
         
         // 设置提示文字的大小
         NSString *holderText = @"请输入登录密码";
-        NSMutableAttributedString *placeHolder = [[NSMutableAttributedString alloc] initWithString:holderText attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13.0f]}];
+        NSMutableAttributedString *placeHolder = [[NSMutableAttributedString alloc] initWithString:holderText attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:[UIFont adjustFontSize:13.0f]]}];
         _messageTF.attributedPlaceholder = placeHolder;
         
         // 设置 左边的logo
@@ -91,10 +91,13 @@
     
     if (!_sendMsgBtn) {
         _sendMsgBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _sendMsgBtn.frame = CGRectMake(width-40-80, height*5/31+height*8/45+height/13+(height*8/45-height/9)/2, 70, height/9);
+        
+        CGFloat strLong = [NSString widthForString:@"获取验证码" fontSize:[UIFont adjustFontSize:11.0] andHeight:height/9]+10;
+        
+        _sendMsgBtn.frame = CGRectMake(width-40-strLong-10, height*5/31+height*8/45+height/13+(height*8/45-height/9)/2, strLong, height/9);
         _sendMsgBtn.backgroundColor = [UIColor clearColor];
         [_sendMsgBtn setTitle:@"获取验证码" forState:0];
-        _sendMsgBtn.titleLabel.font = [UIFont systemFontOfSize:11.0];
+        _sendMsgBtn.titleLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:11.0]];
         [_sendMsgBtn setTitleColor:GREEN_19b8 forState:0];
         _sendMsgBtn.layer.borderColor = GREEN_19b8.CGColor;
         _sendMsgBtn.layer.borderWidth = 0.5;
@@ -112,7 +115,7 @@
         _loginButton.backgroundColor = GREEN_19b8;
         [_loginButton setTitle:@"登 录" forState:0];
         [_loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        _loginButton.titleLabel.font = [UIFont systemFontOfSize:16.0];
+        _loginButton.titleLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:16.0]];
         _loginButton.layer.cornerRadius = height*4/45;
     }
     return _loginButton;

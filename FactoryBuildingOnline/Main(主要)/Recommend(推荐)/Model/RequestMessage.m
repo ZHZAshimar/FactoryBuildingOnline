@@ -204,7 +204,7 @@
  */
 - (void)requestNestURL:(NSString *)url {
     
-    [HTTPREQUEST_SINGLE getRequestWithURLReturnDic:url andParameters:nil success:^(RequestManager *manager, NSDictionary *response) {
+    [HTTPREQUEST_SINGLE getRequestWithURLReturnDic:url andParameters:nil andShouldToken:NO success:^(RequestManager *manager, NSDictionary *response) {
         
         if ([response[@"erro_code"] intValue] != 200) {
             NSLog(@"筛选请求失败 = %@",response[@"erro_msg"]);

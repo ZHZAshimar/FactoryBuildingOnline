@@ -78,7 +78,7 @@
     [self reloadData];
 }
 
-// 清除搜索记录
+#pragma mark- 清除搜索记录
 - (void)cleanHistoryTag:(UIButton *)sender {
     
     self.deleteFile(YES);
@@ -92,8 +92,8 @@
     if (self.dataArray.count > 0) {
         return CGSizeZero;
     }
-    
-    return CGSizeMake(Screen_Width, 41);
+#pragma mark - one defferent
+    return CGSizeMake(Screen_Width, Screen_Height*41/568);
     
 }
 
@@ -133,7 +133,7 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
     if (self.dataArray.count > 0) {
-        
+//        NSLog(@"%d",self.dataArray.count);
         return self.dataArray.count;
         
     } else {
@@ -147,14 +147,15 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     if (self.dataArray.count > 0) {
-        
+//        CGFloat height = Screen_Height*44/568;
+#pragma warning(error:There have a problem that Only show one cell when I used "return CGSizeMake(Screen_Width, height);")
         return CGSizeMake(Screen_Width, 44);
         
     } else {
         
-        cellWidth = [NSString widthForString:self.historyArray[indexPath.item] fontSize:12.0f andHeight:20] + 20;
-        
-        return CGSizeMake(cellWidth, 25);
+        cellWidth = [NSString widthForString:self.historyArray[indexPath.item] fontSize:[UIFont adjustFontSize:12.0f] andHeight:20] + 20;
+        NSLog(@"cell is width %f",cellWidth);
+        return CGSizeMake(cellWidth, Screen_Height*25/568);
         
     }
     
@@ -189,7 +190,6 @@
         return 0;
     }
     return 5.0f;
-    
     
 }
 
@@ -226,7 +226,7 @@
     TextCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TextCollectionViewCell" forIndexPath:indexPath];
     
     cell.label.text = self.historyArray[indexPath.item];
-    
+
     return cell;
 }
 

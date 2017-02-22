@@ -16,7 +16,7 @@
     UITextField *msgTF;
     UITextField *newPwdTF;
     UITextField *againNewPwdTF;
-    UILabel *errorLabel;
+//    UILabel *errorLabel;
     UIButton *getMsgBtn;
     int time;
     NSTimer *timer;
@@ -48,16 +48,8 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    // 显示错误的label
-    
-    errorLabel = [[UILabel alloc] init];
-    errorLabel.textColor = RED_df3d;
-    errorLabel.font = [UIFont systemFontOfSize:9.0];
-    errorLabel.hidden = YES;
-    [self.view addSubview:errorLabel];
-    
     // 手机号码 TF
-    phoneTF = [[UITextField alloc] initWithFrame:CGRectMake(40, 0, Screen_Width-80, 44)];
+    phoneTF = [UITextField new];
     phoneTF.placeholder = @"请输入手机号";
     phoneTF.textColor = BLACK_42;
     phoneTF.font = [UIFont systemFontOfSize:14.0];
@@ -65,13 +57,8 @@
     phoneTF.clearButtonMode = UITextFieldViewModeWhileEditing;
     [self.view addSubview:phoneTF];
     
-    // 第一条华丽的分割线
-    UIView *cutinglineView1 = [[UIView alloc] initWithFrame:CGRectMake(40, 44, Screen_Width-80, 0.5)];
-    cutinglineView1.backgroundColor = GRAY_cc;
-    [self.view addSubview:cutinglineView1];
-    
     // 验证码
-    msgTF = [[UITextField alloc] initWithFrame:CGRectMake(40, 44+1, Screen_Width-80-75, 44)];
+    msgTF = [UITextField new];
     msgTF.placeholder = @"输入短信验证码";
     msgTF.textColor = BLACK_42;
     msgTF.font = [UIFont systemFontOfSize:14.0];
@@ -91,13 +78,8 @@
     [getMsgBtn addTarget:self action:@selector(getMessageAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:getMsgBtn];
     
-    // 第二条华丽的分割线
-    UIView *cutinglineView2 = [[UIView alloc] initWithFrame:CGRectMake(40, 44*2+1, Screen_Width-80-75, 0.5)];
-    cutinglineView2.backgroundColor = GRAY_cc;
-    [self.view addSubview:cutinglineView2];
-    
     // 新密码
-    newPwdTF = [[UITextField alloc] initWithFrame:CGRectMake(40, 44*2+2, Screen_Width-80, 44)];
+    newPwdTF = [UITextField new];
     newPwdTF.placeholder = @"请输入新密码";
     newPwdTF.textColor = BLACK_42;
     newPwdTF.font = [UIFont systemFontOfSize:14.0];
@@ -106,13 +88,8 @@
     newPwdTF.secureTextEntry = YES;
     [self.view addSubview:newPwdTF];
     
-    // 第三条华丽的分割线
-    UIView *cutinglineView3 = [[UIView alloc] initWithFrame:CGRectMake(40, 44*3+2, Screen_Width-80, 0.5)];
-    cutinglineView3.backgroundColor = GRAY_cc;
-    [self.view addSubview:cutinglineView3];
-    
     // 新新密码
-    againNewPwdTF = [[UITextField alloc] initWithFrame:CGRectMake(40, 44*3+3, Screen_Width-80-34, 44)];
+    againNewPwdTF = [UITextField new];
     againNewPwdTF.placeholder = @"请确定新密码";
     againNewPwdTF.textColor = BLACK_42;
     againNewPwdTF.font = [UIFont systemFontOfSize:14.0];
@@ -129,10 +106,28 @@
     [seePwdBtn addTarget:self action:@selector(seePwdBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:seePwdBtn];
     
-    // 第四条华丽的分割线
-    UIView *cutinglineView4 = [[UIView alloc] initWithFrame:CGRectMake(40, 44*4+3, Screen_Width-80, 0.5)];
-    cutinglineView4.backgroundColor = GRAY_cc;
-    [self.view addSubview:cutinglineView4];
+    phoneTF.translatesAutoresizingMaskIntoConstraints = NO;
+    msgTF.translatesAutoresizingMaskIntoConstraints = NO;
+    newPwdTF.translatesAutoresizingMaskIntoConstraints = NO;
+    againNewPwdTF.translatesAutoresizingMaskIntoConstraints = NO;
+    getMsgBtn.translatesAutoresizingMaskIntoConstraints = NO;
+    seePwdBtn.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    CGFloat cellHeight = Screen_Height*11/142;
+    // 添加约束
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(0)-[phoneTF(cellHeight)]-(0)-[msgTF(cellHeight)]-(0)-[newPwdTF(cellHeight)]-(0)-[againNewPwdTF(cellHeight)]" options:0 metrics:@{@"cellHeight":@(cellHeight)} views:NSDictionaryOfVariableBindings(phoneTF,self.view,msgTF,newPwdTF,againNewPwdTF)]];
+    
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(msgBtnHeight)-[getMsgBtn]" options:0 metrics:@{@"msgBtnHeight":@(cellHeight+cellHeight*5/22)} views:NSDictionaryOfVariableBindings(self.view,getMsgBtn)]];
+    
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(topHeight)-[seePwdBtn(cellHeight)]" options:0 metrics:@{@"topHeight":@(3*cellHeight),@"cellHeight":@(cellHeight)} views:NSDictionaryOfVariableBindings(self.view,seePwdBtn)]];
+     
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(40)-[phoneTF]-(40)-|" options:1 metrics:nil views:NSDictionaryOfVariableBindings(self.view,phoneTF)]];
+    
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(40)-[msgTF]-(5)-[getMsgBtn(getMsgBtnWidth)]-(40)-|" options:0 metrics:@{@"getMsgBtnWidth":@(Screen_Width*7/32)} views:NSDictionaryOfVariableBindings(self.view,msgTF,getMsgBtn)]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(40)-[newPwdTF]-(40)-|" options:1 metrics:nil views:NSDictionaryOfVariableBindings(self.view,newPwdTF)]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(40)-[againNewPwdTF]-(5)-[seePwdBtn(34)]-(40)-|" options:1 metrics:nil views:NSDictionaryOfVariableBindings(self.view,againNewPwdTF,seePwdBtn)]];
+    
+    
     
     NSArray *imageArray = @[[UIImage imageNamed:@"phone"],[UIImage imageNamed:@"login_safe"],[UIImage imageNamed:@"unclock"],[UIImage imageNamed:@"key"]];
     
@@ -144,29 +139,47 @@
         logoImageView.contentMode = UIViewContentModeScaleAspectFit;
         [leftView addSubview:logoImageView];
         
+        
+        
+        // 第一条华丽的分割线
+        UIView *cutinglineView = [UIView new];
+        cutinglineView.backgroundColor = GRAY_cc;
+        
         switch (i) {
             case 0:
             {
                 phoneTF.leftView = leftView;
                 phoneTF.leftViewMode = UITextFieldViewModeAlways;
+                
+                cutinglineView.frame = CGRectMake(0, cellHeight-0.5, Screen_Width-80, 0.5);
+                [phoneTF addSubview:cutinglineView];
             }
                 break;
             case 1:
             {
                 msgTF.leftView = leftView;
                 msgTF.leftViewMode = UITextFieldViewModeAlways;
+                
+                cutinglineView.frame = CGRectMake(0, cellHeight-0.5, Screen_Width-80-75, 0.5);
+                [msgTF addSubview:cutinglineView];
             }
                 break;
             case 2:
             {
                 newPwdTF.leftView = leftView;
                 newPwdTF.leftViewMode = UITextFieldViewModeAlways;
+                
+                cutinglineView.frame = CGRectMake(0, cellHeight-0.5, Screen_Width-80, 0.5);
+                [newPwdTF addSubview:cutinglineView];
             }
                 break;
             case 3:
             {
                 againNewPwdTF.leftView = leftView;
                 againNewPwdTF.leftViewMode = UITextFieldViewModeAlways;
+                
+                cutinglineView.frame = CGRectMake(0, cellHeight-0.5, Screen_Width-80, 0.5);
+                [againNewPwdTF addSubview:cutinglineView];
             }
                 break;
             default:
@@ -195,32 +208,20 @@
 }
 #pragma mark - 提交
 - (void)rightItemButtonAction {
-    
-    errorLabel.hidden = YES;
-//    
-//    if (![self judgePhoneNum]) {
-//        return;
-//    }
+    [self judgePhoneNum];   // 判断手机号
     
     if (msgTF.text.length <= 0) {
-        [self shakeAnimationForView:msgTF];
+        [MBProgressHUD showError:@"请输入验证码" ToView:nil];
         return;
     }
     
     if (newPwdTF.text.length <= 0) {
-        
-        [self shakeAnimationForView:newPwdTF];
-        errorLabel.frame = CGRectMake(Screen_Width-170, 44*2+2, 100, 44);
-        errorLabel.text = @"请输入长度≥6位密码";
-        errorLabel.hidden = NO;
+        [MBProgressHUD showError:@"请输入长度≥6位密码" ToView:nil];
         return;
     }
     
     if (![againNewPwdTF.text isEqualToString:newPwdTF.text]) {
-        [self shakeAnimationForView:againNewPwdTF];
-        errorLabel.frame = CGRectMake(Screen_Width-220, 44*4-10, 100, 44);
-        errorLabel.text = @"前后密码不一致";
-        errorLabel.hidden = NO;
+        [MBProgressHUD showError:@"前后密码不一致" ToView:nil];
         return;
     }
     
@@ -245,22 +246,14 @@
 - (BOOL)judgePhoneNum {
     
     if (phoneTF.text.length <= 0) {
-        [self shakeAnimationForView:phoneTF];
-        errorLabel.frame = CGRectMake(Screen_Width-140, 0, 90, 44);
-        errorLabel.text = @"输入11位手机号码";
-        errorLabel.hidden = NO;
+        [MBProgressHUD showError:@"输入11位手机号码" ToView:nil];
         return NO;
     }
     
     if (![NSString validateMobile:phoneTF.text]) {
-        
-        [self shakeAnimationForView:phoneTF];
-        errorLabel.frame = CGRectMake(Screen_Width-120, 0, 50, 44);
-        errorLabel.text = @"手机号有误";
-        errorLabel.hidden = NO;
+        [MBProgressHUD showError:@"手机号有误" ToView:nil];
         return NO;
     }
-    errorLabel.hidden = YES;
     return YES;
 }
 
@@ -316,13 +309,9 @@
         
         if (textField.text.length < 6) {
             
-            [self shakeAnimationForView:newPwdTF];
-            errorLabel.frame = CGRectMake(Screen_Width-170, 44*2+2, 100, 44);
-            errorLabel.text = @"请输入长度≥6位密码";
-            errorLabel.hidden = NO;
+            [MBProgressHUD showError:@"请输入长度≥6位密码" ToView:nil];
             [newPwdTF becomeFirstResponder];
         }
-        errorLabel.hidden = YES;
         
     } else if (textField == phoneTF) {  // 判断手机号输入是否正确
         

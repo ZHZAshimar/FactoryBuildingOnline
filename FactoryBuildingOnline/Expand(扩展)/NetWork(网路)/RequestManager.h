@@ -118,7 +118,7 @@
  *  @param success    请求成功，block的参数为服务返回的数据
  *  @param failure    请求失败，block的参数为错误信息
  */
-- (void)getRequestWithURLReturnDic:(NSString *)urlStr andParameters:(NSDictionary *)params success:(void(^)(RequestManager *manager,NSDictionary *response))success failure:(void(^)(RequestManager *manager,NSError *error))failure;
+- (void)getRequestWithURLReturnDic:(NSString *)urlStr andParameters:(NSDictionary *)params andShouldToken:(BOOL)token success:(void(^)(RequestManager *manager,NSDictionary *response))success failure:(void(^)(RequestManager *manager,NSError *error))failure;
 
 /**
  *  get请求 带header:token 收藏 取消收藏，查看收藏状态
