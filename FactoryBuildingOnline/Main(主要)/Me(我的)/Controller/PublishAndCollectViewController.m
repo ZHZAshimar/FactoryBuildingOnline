@@ -171,7 +171,12 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(Screen_Width, Screen_Width/2);
+    
+    if (self.datatype == MYCOLLECT_BROKER_TYPE) {
+        return CGSizeMake(Screen_Width, Screen_Width/2-28);
+    } else {
+        return CGSizeMake(Screen_Width, Screen_Width/2);
+    }
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {

@@ -127,19 +127,6 @@
 		<key>thumbImage</key>
 		<string>thumb_image</string>
 	</dict>
-	<key>SinaWeibo</key>
-	<dict>
-		<key>PlatformID</key>
-		<integer>1</integer>
-		<key>AuthType</key>
-		<string>auth_type</string>
-		<key>RedirectUrl</key>
-		<string>redirect_uri</string>
-		<key>AppSecret</key>
-		<string>app_secret</string>
-		<key>AppKey</key>
-		<string>app_key</string>
-	</dict>
 	<key>TencentWeibo</key>
 	<dict>
 		<key>PlatformID</key>

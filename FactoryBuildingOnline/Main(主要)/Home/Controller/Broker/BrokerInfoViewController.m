@@ -96,7 +96,7 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(Screen_Width, Screen_Width/2);
+    return CGSizeMake(Screen_Width, Screen_Width/2-30);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
@@ -105,7 +105,7 @@
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     
-    UICollectionReusableView *headerView;
+    UICollectionReusableView *headerView = [UICollectionReusableView new];
     
     if (kind == UICollectionElementKindSectionHeader) {
         BrokerHeaderCollectionReusableView *brokerHeaderView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header" forIndexPath:indexPath];

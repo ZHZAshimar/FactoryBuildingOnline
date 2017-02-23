@@ -192,7 +192,7 @@
         self.segmentedIndexView.backgroundColor = [UIColor colorWithRed:chooseRed green:chooseGreen blue:chooseBlue alpha:1.0];
         CGFloat x = self.segmentedIndex * self.naviSegmentedControl.frame.size.width/3+self.naviSegmentedControl.frame.size.width/6;
         
-        self.segmentedIndexView.center = CGPointMake(x, self.naviSegmentedControl.frame.size.height);
+        self.segmentedIndexView.center = CGPointMake(x+3, self.naviSegmentedControl.frame.size.height);
         
         // 搜索按钮的 位置变化
         CGFloat searchButton_X = Screen_Width - contentY/2;
@@ -297,7 +297,7 @@
     // 设置 选中的指示器的中心位置
     CGFloat x = self.segmentedIndex*self.naviSegmentedControl.frame.size.width/3+self.naviSegmentedControl.frame.size.width/6;
     
-    self.segmentedIndexView.center = CGPointMake(x, self.naviSegmentedControl.frame.size.height);
+    self.segmentedIndexView.center = CGPointMake(x+3, self.naviSegmentedControl.frame.size.height);
     
 //    [self changeWithFloat:self.myCollectionView.contentOffset.x];
 }

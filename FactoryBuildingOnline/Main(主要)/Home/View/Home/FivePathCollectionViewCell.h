@@ -13,6 +13,9 @@
 
 @interface FivePathCollectionViewCell : UICollectionViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *eyeImageView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomHeight;
+
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;    // 图片
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;    // 名称

@@ -229,7 +229,7 @@ typedef enum{
 #pragma mark - 登录
 - (void)loginAction:(UIButton *)sender {
     
-    NSDictionary *dic = [NSDictionary dictionary];
+    NSDictionary *dic;
     
     if (self.login_type == 1) {
         if (self.loginOfUserView.userTF.text.length <= 0) {

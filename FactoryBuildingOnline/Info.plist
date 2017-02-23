@@ -36,14 +36,6 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>wb769036763</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
 				<string>QQ41EB544E</string>
 			</array>
 		</dict>
@@ -53,10 +45,6 @@
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>baidumap</string>
-		<string>sinaweibo</string>
-		<string>sinaweibohd</string>
-		<string>sinaweibosso</string>
-		<string>sinaweibohdsso</string>
 		<string>weibosdk</string>
 		<string>weibosdk2.5</string>
 		<string>wechat</string>

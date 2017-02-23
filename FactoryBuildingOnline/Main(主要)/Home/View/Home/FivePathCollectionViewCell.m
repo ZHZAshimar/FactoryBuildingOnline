@@ -81,6 +81,11 @@
             
         }
     }
+    
+    [self.scanLabel removeFromSuperview];
+    [self.eyeImageView removeFromSuperview];
+    
+    self.bottomHeight.constant = 20;
 }
 
 - (void)setModel:(WantedMessageModel *)model {

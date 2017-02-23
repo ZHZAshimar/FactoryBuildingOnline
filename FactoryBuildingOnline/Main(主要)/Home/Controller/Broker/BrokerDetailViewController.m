@@ -403,7 +403,7 @@
          
             break;
         case 1: // infomation
-            return CGSizeMake(Screen_Width, Screen_Height*45/284);
+            return CGSizeMake(Screen_Width, Screen_Height*31/284);
             break;
         case 2: // introduce
             
@@ -450,7 +450,7 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    UICollectionViewCell *cell;
+    UICollectionViewCell *cell = [UICollectionViewCell new];
     
     switch (indexPath.section) {
         case 0:
@@ -497,7 +497,8 @@
                      @"rent_type":self.model.factoryModel.rent_type,
                      @"pre_pay":self.model.factoryModel.pre_pay,
                      @"view_count":@(self.model.view_count),
-                     @"factory_id":@(self.model.factoryModel.id)};
+                     @"factory_id":@(self.model.factoryModel.id),
+                     @"data_type":@(2)};
     return cell;
     
 }

@@ -99,7 +99,7 @@
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     
-    UICollectionReusableView *reuseableView;
+    UICollectionReusableView *reuseableView = [UICollectionReusableView new];
     
     if (kind == UICollectionElementKindSectionHeader) {
         

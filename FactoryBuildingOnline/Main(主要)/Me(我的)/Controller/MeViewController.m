@@ -192,6 +192,7 @@
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    UICollectionReusableView *headView =  [UICollectionReusableView new];
     
     if (kind == UICollectionElementKindSectionHeader) {
         firstHeadReusableView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"MeFirstHeadCollectionReusableView" forIndexPath:indexPath];
@@ -213,7 +214,7 @@
         
         return firstHeadReusableView;
     }
-    return nil;
+    return headView;
 }
 //
 //- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {

@@ -63,6 +63,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detail_like" translatesAutoresizingMaskIntoConstraints="NO" id="gVo-b0-12v">
                                 <rect key="frame" x="0.0" y="0.0" width="125.5" height="92"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="92" id="QST-Sc-5yT"/>
                                     <constraint firstAttribute="width" secondItem="gVo-b0-12v" secondAttribute="height" multiplier="64:47" id="fbZ-8T-fOP"/>
                                 </constraints>
                             </imageView>
@@ -123,12 +124,15 @@
                 <constraint firstItem="aIK-e2-pzp" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="3:4" id="ZRH-Tp-TWX"/>
                 <constraint firstItem="aIK-e2-pzp" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="29:32" id="gvn-Ai-Yvh"/>
                 <constraint firstItem="aIK-e2-pzp" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="pQQ-SZ-Ukh"/>
+                <constraint firstAttribute="bottom" secondItem="gVo-b0-12v" secondAttribute="bottom" constant="48" id="u6a-oy-9h7"/>
                 <constraint firstAttribute="trailing" secondItem="1KI-yf-fqJ" secondAttribute="trailing" constant="14" id="yaq-eb-jrF"/>
             </constraints>
             <size key="customSize" width="261" height="116.5"/>
             <connections>
                 <outlet property="addressLabel" destination="X3M-hp-M6z" id="iMR-7I-tlC"/>
                 <outlet property="areaLabel" destination="ieZ-el-plH" id="21J-fO-LNq"/>
+                <outlet property="bottomHeight" destination="u6a-oy-9h7" id="8en-YT-9Lr"/>
+                <outlet property="eyeImageView" destination="GAI-V6-h74" id="4UI-Cf-2Sx"/>
                 <outlet property="imageView" destination="gVo-b0-12v" id="ADJ-Fz-mun"/>
                 <outlet property="moneyOfdayLabel" destination="l9d-xv-EbZ" id="b6z-3H-npd"/>
                 <outlet property="nameLabel" destination="VSD-7n-Ilo" id="LJL-z0-fJ2"/>

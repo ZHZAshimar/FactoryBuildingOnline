@@ -11,10 +11,9 @@
 
 @implementation PublisherCollectionViewCell
 
-- (id) initWithFrame:(CGRect)frame {
+- (instancetype) initWithFrame:(CGRect)frame {
     
-    self = [super initWithFrame:frame];
-    if (self) {
+    if (self = [super initWithFrame:frame]) {
         
         NSArray *arrayOfViews = [[NSBundle mainBundle] loadNibNamed:@"PublisherCollectionViewCell" owner:self options:nil];
         

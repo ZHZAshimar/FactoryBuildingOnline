@@ -51,10 +51,20 @@
     
     NSString *time = [NSString getTimeFormatter:dataDic[@"created_time"]];
     self.publishTimeLabel.text = time;
-    self.scanCountLabel.text = [NSString stringWithFormat:@"%d",[dataDic[@"view_count"] integerValue]];
     self.rentTypeLabel.text = dataDic[@"rent_type"];
     self.cashpledgeLabel.text = dataDic[@"pre_pay"];
     self.numberLabel.text = [NSString stringWithFormat:@"%@",dataDic[@"factory_id"]];
+    
+    self.scanCountLabel.text = [NSString stringWithFormat:@"%ld",[dataDic[@"view_count"] integerValue]];
+
+    if ([dataDic[@"data_type"] intValue] == 2) {
+        self.sLabel.text = @"编号:";
+        self.scanCountLabel.text = [NSString stringWithFormat:@"%@",dataDic[@"factory_id"]];
+        [self.numberLabel removeFromSuperview];
+        [self.nLabel removeFromSuperview];
+        self.cellHeight.constant = self.frame.size.height/2;
+    }
+    
 }
 
 - (void)awakeFromNib {

@@ -167,7 +167,7 @@
 //}
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    UICollectionReusableView *reusableView ;
+    UICollectionReusableView *reusableView = [UICollectionReusableView new];
     
     if (kind == UICollectionElementKindSectionHeader) {
         switch (indexPath.section) {
@@ -217,7 +217,7 @@
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    UICollectionViewCell *cell;
+    UICollectionViewCell *cell = [UICollectionViewCell new];
     
     switch (indexPath.section) {
         case 0:

@@ -79,7 +79,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:RightTableViewCellID forIndexPath:indexPath];
     cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.text = _rightListArray[indexPath.row];
-    cell.textLabel.font = [UIFont systemFontOfSize:13];
+    cell.textLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:13]];
     
     // 判断是否为选中状态  1 表示 选中
     if ([marrayOfindex[indexPath.row] intValue] == 1) {

@@ -70,7 +70,7 @@
     }
     cell.textLabel.text = self.dataArray[indexPath.row];
     cell.textLabel.textColor = BLACK_4c;
-    cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
+    cell.textLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:14.0f]];
     
     if (self.selectIndex == indexPath.row) {
         cell.textLabel.textColor = GREEN_1ab8;
@@ -221,7 +221,7 @@
         _lowPriceTF.backgroundColor = GRAY_LIGHT;
         _lowPriceTF.textAlignment = NSTextAlignmentCenter;
         _lowPriceTF.placeholder = @"最低价格";
-        _lowPriceTF.font = [UIFont systemFontOfSize:13.0f];
+        _lowPriceTF.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:13.0f]];
         _lowPriceTF.layer.masksToBounds = YES;
         _lowPriceTF.layer.cornerRadius = 5;
         _lowPriceTF.delegate = self;
@@ -237,7 +237,7 @@
         _hightPriceTF.backgroundColor = GRAY_LIGHT;
         _hightPriceTF.placeholder = @"最高价格";
         _hightPriceTF.textAlignment = NSTextAlignmentCenter;
-        _hightPriceTF.font = [UIFont systemFontOfSize:13.0f];
+        _hightPriceTF.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:13.0f]];
         _hightPriceTF.layer.masksToBounds = YES;
         _hightPriceTF.layer.cornerRadius = 5;
         _hightPriceTF.delegate = self;
@@ -247,7 +247,7 @@
         button.frame = CGRectMake(Screen_Width/2+18+6, 8, Screen_Width*2/5, 30);
         [button setTitle:@"确定" forState:0];
         [button setTitleColor:GREEN_1ab8 forState:UIControlStateNormal];
-        button.titleLabel.font = [UIFont systemFontOfSize:13.0f];
+        button.titleLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:13.0f]];
         button.layer.borderColor = GREEN_1ab8.CGColor;
         button.layer.borderWidth = 0.5;
         button.layer.masksToBounds = YES;

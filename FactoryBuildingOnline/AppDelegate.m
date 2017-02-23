@@ -63,7 +63,7 @@
 //    [NSThread sleepForTimeInterval:0.5];
     // 1.创建窗口
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.backgroundColor = [UIColor redColor];
+    self.window.backgroundColor = [UIColor whiteColor];
     
     // 2.创建窗口的根控制器
     tabBarVC = [[BaseTabBarViewController alloc] init];
@@ -163,7 +163,7 @@
     NSString *build = [infoDictionary objectForKey:@"CFBundleVersion"];//app的build号
     [MobClick setAppVersion:build]; //参数为NSString * 类型,自定义app版本信息，如果不设置，默认从CFBundleVersion里取
     [MobClick setCrashReportEnabled:YES];  // 自行关闭或开启错误报告功能（默认开启）
-    [MobClick setLogEnabled:YES];   // 上架的时候就要关掉
+//    [MobClick setLogEnabled:YES];   // 上架的时候就要关掉
     UMConfigInstance.appKey = @"584e4ca699f0c7382000025d";
     UMConfigInstance.channelId = @"App Store";
     

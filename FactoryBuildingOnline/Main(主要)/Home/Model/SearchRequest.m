@@ -52,12 +52,11 @@
             [MBProgressHUD showAutoMessage:response[@"erro_msg"] ToView:nil];
             return;
         }
-        NSMutableArray *mArr = [NSMutableArray array];
         
         NSMutableArray *resultArr = [NSMutableArray array];
         if ([searchResultDic[@"type"] intValue] == 1) {   // 业主
             
-            mArr = response[@"wantedMessage"];
+            NSMutableArray *mArr = response[@"wantedMessage"];
             
             resultArr = [HomeRequest dealWithHomeDatabase:mArr andNextURL:response[@"next"] isWriteDB:NO];
             
@@ -87,17 +86,15 @@
             [MBProgressHUD showAutoMessage:response[@"erro_msg"] ToView:nil];
             return;
         }
-        NSMutableArray *mArr = [NSMutableArray array];
         
         NSMutableArray *resultArr = [NSMutableArray array];
         if ([dataType intValue] == 1) {   // 业主
             
-            mArr = response[@"wantedMessage"];
+            NSMutableArray *mArr = response[@"wantedMessage"];
             
             resultArr = [HomeRequest dealWithHomeDatabase:mArr andNextURL:response[@"next"] isWriteDB:NO];
             
         } else {    // 专家
-//            mArr = response[@"proMediumMessage"];
             
             resultArr = [HomeRequest dealWithBrokerDatabase:response isWriteDB:NO];
         }

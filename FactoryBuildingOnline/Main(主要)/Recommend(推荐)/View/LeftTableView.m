@@ -84,7 +84,7 @@
     
     cell.textLabel.text = _leftListArray[indexPath.row];
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
-    cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
+    cell.textLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:14.0f]];
     
     
 //    NSInteger num = 10;

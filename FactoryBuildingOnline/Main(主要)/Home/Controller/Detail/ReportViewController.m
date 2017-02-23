@@ -4,7 +4,7 @@
 //
 //  Created by myios on 2016/11/12.
 //  Copyright © 2016年 XFZY. All rights reserved.
-//
+//  举报页面
 
 #import "ReportViewController.h"
 
@@ -13,6 +13,7 @@
     UILabel *placeholderLabel;
     UILabel *fontNumLabel;
     NSIndexPath *lastSelectIndexPath;
+    NSString *contentStr;
 }
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) UITextView *myTextView;
@@ -64,9 +65,12 @@
     self.dataSource = @[@"厂房位置有误",@"房源价格不符",@"发布人电话有误",@"图片或面积有误",@"其他"];
     
     self.indexArr = [NSMutableArray array];
-    
+    contentStr = [NSString string];
     for (int i = 0; i < 5; i++) {
         [self.indexArr addObject:@0];
+        if (i == 0) {
+            [self.indexArr replaceObjectAtIndex:0 withObject:@1];
+        }
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -76,13 +80,13 @@
 
 #pragma mark - 举报
 - (void)rightItemButtonAction {
-    
-    if (self.myTextView.text.length <= 0 && self.myTextView.text.length > 200) {
-        [MBProgressHUD showError:@"请输入吐槽内容" ToView:nil];
+    NSLog(@"----%@",contentStr);
+    if (self.myTextView.text.length < 1 || self.myTextView.text.length > 200) {
+        [MBProgressHUD showError:@"请输入吐槽内容200字以内" ToView:nil];
         
         return;
     }
-    
+    [self.myTextView resignFirstResponder];
     NSString *urlStr = [NSString stringWithFormat:@"%@%@/",URL_POST_FEEDBACKS_WANTEDMESSAGE,[NSString stringWithFormat:@"%d",self.model.id]];
     NSString *content = self.dataSource[lastSelectIndexPath.row];
     NSDictionary *requestDic = @{@"content":content,@"remark":self.myTextView.text};
@@ -109,7 +113,7 @@
     NSValue *rectValue = sender.userInfo[UIKeyboardFrameEndUserInfoKey];
     CGFloat keyboardHeight = [rectValue CGRectValue].size.height;
     CGFloat result = Screen_Height - keyboardHeight;
-    CGFloat textFieldY = 511;
+    CGFloat textFieldY = Screen_Height - 64;
     if (result < textFieldY) {
         self.view.frame = CGRectMake(0, result - textFieldY, Screen_Width, Screen_Height);
     }
@@ -133,22 +137,22 @@
 
 // 头部
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 34;
+    return Screen_Height * 17 / 248;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
-    UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, 34)];
+    UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, Screen_Height * 17 / 248)];
     headView.backgroundColor = GRAY_F5;
     
     for (int i = 0; i < 2; i++) {
-        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, i*33.5, Screen_Width, 0.5)];
+        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, headView.frame.size.height-0.5, Screen_Width, 0.5)];
         lineView.backgroundColor = GRAY_db;
         [headView addSubview:lineView];
     }
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(12, 1, Screen_Width-24, 32)];
-    label.font = [UIFont systemFontOfSize:13];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(12, 1, Screen_Width-24, Screen_Height * 17 / 248)];
+    label.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:13]];
     label.textColor = BLACK_80;
     [headView addSubview:label];
     
@@ -174,13 +178,13 @@
     
     switch (section) {
         case 0:
-            return 59;
+            return Screen_Height* 59/568;
             break;
         case 1:
             return 0;
             break;
         case 2:
-            return 100;
+            return Screen_Height* 25/142;
             break;
         default:
             break;
@@ -193,19 +197,19 @@
     
     if (section == 0) {
         
-        footView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, 59)];
+        footView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, Screen_Height* 59/568)];
         footView.backgroundColor = [UIColor whiteColor];
         
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(12, 0, Screen_Width-24, 59)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(12, 0, Screen_Width-24, Screen_Height* 59/568)];
         label.numberOfLines = 2;
-        label.font = [UIFont systemFontOfSize:14.0f];
+        label.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:14.0f]];
         label.textColor = BLACK_42;
         [footView addSubview:label];
         
         label.text = self.model.ftModel.title;
     } else {
         
-        footView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, 100)];
+        footView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, Screen_Height* 25/142)];
         footView.backgroundColor = [UIColor whiteColor];
         
         [footView addSubview:self.myTextView];
@@ -222,6 +226,10 @@
     return 0;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return Screen_Height*11/142;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
@@ -235,13 +243,14 @@
     if (index) {
         
         cell.imageView.image = [UIImage imageNamed:@"choose"];
+        lastSelectIndexPath = indexPath;
     } else {
         
         cell.imageView.image = [UIImage imageNamed:@"uncheck"];
     }
     
     cell.textLabel.text = self.dataSource[indexPath.row];
-    cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
+    cell.textLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:14.0f]];
     cell.textLabel.textColor = BLACK_42;
     
     return cell;
@@ -252,6 +261,15 @@
     
     if (lastSelectIndexPath && indexPath != lastSelectIndexPath) {
         
+        UITableViewCell *lastCell = [tableView cellForRowAtIndexPath:lastSelectIndexPath];
+        
+        lastCell.imageView.image = [UIImage imageNamed:@"uncheck"];
+        
+        self.indexArr[lastSelectIndexPath.row] = @0;
+        
+        [tableView reloadRowsAtIndexPaths:@[lastSelectIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+
+        
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         
         cell.imageView.image = [UIImage imageNamed:@"choose"];
@@ -260,13 +278,6 @@
         
         [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 
-        UITableViewCell *lastCell = [tableView cellForRowAtIndexPath:lastSelectIndexPath];
-       
-        lastCell.imageView.image = [UIImage imageNamed:@"uncheck"];
-        
-        self.indexArr[lastSelectIndexPath.row] = @0;
-        
-        [tableView reloadRowsAtIndexPaths:@[lastSelectIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         
     } else {
         
@@ -317,9 +328,6 @@
         
         [_myTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
         
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
-        _myTextView.userInteractionEnabled = YES;
-        [_myTextView addGestureRecognizer:tap];
     }
     return _myTableView;
 }
@@ -328,7 +336,7 @@
     
     if (!_myTextView) {
         
-        _myTextView = [[UITextView alloc] initWithFrame:CGRectMake(12, 12, Screen_Width-24, 89)];
+        _myTextView = [[UITextView alloc] initWithFrame:CGRectMake(12, 12, Screen_Width-24, Screen_Height* 25/142-34)];
         _myTextView.backgroundColor = GRAY_F5;
         _myTextView.textColor = BLACK_42;
         _myTextView.delegate = self;

@@ -1809,8 +1809,8 @@
 			isa = PBXGroup;
 			children = (
 				093587851D9CACC70035AAF6 /* Main(主要) */,
-				0935879A1D9CACC70035AAF6 /* Other(其他) */,
 				0935877F1D9CACC70035AAF6 /* Expand(扩展) */,
+				0935879A1D9CACC70035AAF6 /* Other(其他) */,
 				093587A21D9CACC70035AAF6 /* Vender(第三方) */,
 				0935879F1D9CACC70035AAF6 /* Resource(资源) */,
 				09C83BF81D9DFCFE00DE3F9D /* AppDelegate.h */,
@@ -2560,7 +2560,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = QP56Y9M7W6;
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FactoryBuildingOnline/Vender(第三方)/BaiduMapSDK",
@@ -2598,7 +2598,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = QP56Y9M7W6;
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FactoryBuildingOnline/Vender(第三方)/BaiduMapSDK",

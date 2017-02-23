@@ -87,7 +87,11 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(Screen_Width, Screen_Width/2);
+    if ([self.dic[@"type"] intValue] == 1) {
+        return CGSizeMake(Screen_Width, Screen_Width/2);    // 业主
+    } else {
+        return CGSizeMake(Screen_Width, Screen_Width/2-28);    // 专家
+    }
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {

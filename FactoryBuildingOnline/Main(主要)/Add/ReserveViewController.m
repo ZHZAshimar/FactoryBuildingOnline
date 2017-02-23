@@ -52,12 +52,14 @@
     }
     if (myTextView.text.length > 400) {
         [MBProgressHUD showError:[NSString stringWithFormat:@"您超过了%lu个数字",myTextView.text.length - 400] ToView:nil];
+        [tmpTextField becomeFirstResponder];
         return;
     }
     
     CGFloat callBackDay = [tmpTextField.text floatValue];
     
-    if (callBackDay < 0) {
+    if (callBackDay < 0 || callBackDay >180) {
+        [MBProgressHUD showError:@"请输入1~180天内回复" ToView:nil];
         return;
     }
     
@@ -68,8 +70,12 @@
     NSDictionary *paramDic = @{@"publishNeed":requestSrt};
     
     [HTTPREQUEST_SINGLE postRequestWithService:URL_POST_NEEDEDMESSAGE andParameters:paramDic isShowActivity:YES dicIsEncode:NO success:^(RequestManager *manager, NSDictionary *response) {
+        
         NSLog(@"需求信息发布：%@",response);
+        
         [MBProgressHUD showSuccess:response[@"erro_msg"] ToView:nil];
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
         
     } failure:^(RequestManager *manager, NSError *error) {
         NSLog(@"%@",error.debugDescription);

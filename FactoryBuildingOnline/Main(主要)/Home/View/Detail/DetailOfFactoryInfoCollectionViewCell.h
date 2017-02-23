@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface DetailOfFactoryInfoCollectionViewCell : UICollectionViewCell
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *cellHeight;
 @property (weak, nonatomic) IBOutlet UILabel *pLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rLabel;

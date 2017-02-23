@@ -469,7 +469,7 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    UICollectionViewCell *cell;
+    UICollectionViewCell *cell = [UICollectionViewCell new];
     
     switch (indexPath.section) {
         case 0:
@@ -523,7 +523,8 @@
                     @"rent_type":self.model.ftModel.rent_type,
                      @"pre_pay":self.model.ftModel.pre_pay,
                      @"view_count":@(self.model.view_count),
-                     @"factory_id":@(self.model.ftModel.id)};
+                     @"factory_id":@(self.model.ftModel.id),
+                     @"data_type":@(1)};
     return cell;
     
 }

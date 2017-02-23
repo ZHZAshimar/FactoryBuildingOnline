@@ -594,12 +594,12 @@ static AFHTTPSessionManager * instance;
     
     encodeStr = [SecurityUtil AES128Encrypt:encodeStr andKey:timeStr andIV:[timeStr stringByReversed]];
     
-    params = [NSDictionary dictionary];
-    params = @{@"updateUser":encodeStr,@"phone_num":phone_num};
     
-    NSLog(@"%@",params);
+    NSDictionary *paramsDic = @{@"updateUser":encodeStr,@"phone_num":phone_num};
     
-    [instance PUT:urlStr parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    NSLog(@"%@",paramsDic);
+    
+    [instance PUT:urlStr parameters:paramsDic success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         if (isShow) [MBProgressHUD hideHUD];
         
@@ -651,12 +651,11 @@ static AFHTTPSessionManager * instance;
         encodeStr = [SecurityUtil AES128Encrypt:encodeStr andKey:time andIV:[time stringByReversed]];
     }
     
-    params = [NSDictionary dictionary];
-    params = @{@"updateUser":encodeStr};
+    NSDictionary *paramsDic = @{@"updateUser":encodeStr};
     
-    NSLog(@"%@",params);
+    NSLog(@"%@",paramsDic);
     
-    [instance PUT:urlStr parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [instance PUT:urlStr parameters:paramsDic success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         if (isShow) [MBProgressHUD hideHUD];
         
