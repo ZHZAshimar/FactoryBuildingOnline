@@ -132,7 +132,7 @@
         
     } failure:^(RequestManager *manager, NSError *error) {
         NSLog(@"%@",error.debugDescription);
-        [MBProgressHUD showError:@"网络出小差了，请稍后再修改💔" ToView:nil];
+        [MBProgressHUD showError:@"网络出小差了，请稍后再修改" ToView:nil];
     }];
 }
 

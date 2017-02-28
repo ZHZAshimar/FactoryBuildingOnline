@@ -472,6 +472,8 @@ typedef enum{
         _mySegmentedControl.frame = CGRectMake(0, 0, Screen_Width-88, 44);
         _mySegmentedControl.backgroundColor = [UIColor clearColor];
         _mySegmentedControl.selectionIndicatorColor = GREEN_19b8;
+        _mySegmentedControl.selectionIndicatorStripLayer.cornerRadius = 1.5f;
+        _mySegmentedControl.selectionIndicatorStripLayer.masksToBounds = YES;
         _mySegmentedControl.selectionStyle = HMSegmentedControlSelectionStyleTextWidthStripe;
         _mySegmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
         _mySegmentedControl.selectionIndicatorHeight = 3.0f;

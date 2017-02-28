@@ -53,7 +53,7 @@
     _numDic = numDic;
     [self showOnlineNum];
 }
-
+#pragma mark - 显示View
 - (void)showOnlineNum{
     // 下拉刷新出现的View
     refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, Screen_Height*15/284)];
@@ -61,14 +61,14 @@
     [self addSubview:refreshView];
     
     // 重置头部的frame
-    self.imagePlayerView.frame = CGRectMake(14, Screen_Height*15/284, Screen_Width-28, Screen_Height*65/284);
+    self.imagePlayerView.frame = CGRectMake(14, Screen_Height*15/284, Screen_Width-28, self.frame.size.height - refreshView.frame.size.height);
     
     UILabel *onlineLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, refreshView.frame.size.width/2, refreshView.frame.size.height)];
     onlineLabel.textAlignment = NSTextAlignmentCenter;
     onlineLabel.textColor = GRAY_99;
     onlineLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:14.0]];
     [refreshView addSubview:onlineLabel];
-    int onlineNum = arc4random()%1000+1;
+    int onlineNum = arc4random()%1000+100;
     onlineLabel.text = [NSString stringWithFormat:@"在线人数：%d ",onlineNum];
     
     // 厂房信息的Label
@@ -77,7 +77,7 @@
     infotmationLabel.textColor = GRAY_99;
     infotmationLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:14.0]];
     [refreshView addSubview:infotmationLabel];
-    int factoryNum = arc4random()%100000+1000;
+    int factoryNum = arc4random()%10000+1000;
     infotmationLabel.text = [NSString stringWithFormat:@"厂房信息：%d",factoryNum];
     
     [self performSelector:@selector(removeRefreshView) withObject:self afterDelay:2.0];
@@ -89,7 +89,7 @@
     [refreshView removeFromSuperview];
     
     // 重置头部的frame
-    self.imagePlayerView.frame = CGRectMake(14, 8, Screen_Width-28, Screen_Height*65/284);
+    self.imagePlayerView.frame = CGRectMake(14, 8, Screen_Width-28, self.frame.size.height);
     
     self.removeBlock(YES);
 }

@@ -18,6 +18,9 @@
 #import <ShareSDKUI/SSUIShareActionSheetStyle.h>
 // 自定义分享编辑界面所需要导入的头文件
 #import <ShareSDKUI/SSUIEditorViewStyle.h>
+
+#import "SecurityUtil.h"
+
 #define self_width self.frame.size.width
 #define self_height self.frame.size.height
 
@@ -40,9 +43,6 @@
 
         [self setBottomView];
         
-        
-       
-       
 
     }
     return self;
@@ -117,15 +117,19 @@
     
 }
 
+- (void)setShareDic:(NSDictionary *)shareDic {
+    _shareDic = shareDic;
+}
+// @{@"linkerName":self.model.ctModel.name,@"phoneNum":self.model.ctModel.phone_num,@"title":self.model.ftModel.title,@"image":self.model.ftModel.thumbnail_url};
 -(void)shareIndex:(SSDKPlatformType) shareType{
     
-    NSString *strContent = @"哈哈";
+    NSString *strImage = [SecurityUtil decodeBase64String:self.shareDic[@"image"]];
     
-    NSString *strImage = @"http://www.baidu.com";
+    NSString *strContent = [NSString stringWithFormat:@"%@",self.shareDic[@"content"]];
     
-    NSString *strUrl = @"http://www.baidu.com";
+    NSString *strUrl = @"http://apps.oncom.cn";
     
-    NSString *strTitle = @"请忽略";
+    NSString *strTitle = self.shareDic[@"title"];
     
     //1、创建分享参数
     SSDKImage *shareImage = [[SSDKImage alloc] initWithURL:[NSURL URLWithString:strImage]];
@@ -180,25 +184,46 @@
         
     } else{
         //    （注意：图片必须要在Xcode左边目录里面，名称必须要传正确，如果要分享网络图片，可以这样传image参数 images:@[@"http://mob.com/Assets/images/logo.png?v=20150320"]）
-        
-        
-         if (shareType == SSDKPlatformTypeSMS) {
-            // 短信的分享只能分享 image 或 text 形式的
-             //构造分享内容
-             [shareParams SSDKSetupShareParamsByText:[NSString stringWithFormat:@"%@%@",strContent,strUrl]
-                                              images:nil
-                                                 url:nil
-                                               title:nil
-                                                type:SSDKContentTypeText];
+        if (shareType == SSDKPlatformTypeSMS){
+            strContent = [NSString stringWithFormat:@"您的好友向您推荐《找厂房》App,点击连接下载%@",@"http://apps.oncom.cn"];
+            //构造分享内容
+            [shareParams SSDKSetupShareParamsByText:strContent
+                                             images:nil
+                                                url:nil
+                                              title:nil
+                                               type:SSDKContentTypeText];
+        } else {
             
-         } else {
              //构造分享内容
              [shareParams SSDKSetupShareParamsByText:strContent
-                                              images:@[@"http://mob.com/Assets/images/logo.png?v=20150320"]
-                                                 url:[NSURL URLWithString:@"http://www.baidu.com"]
+                                              images:@[strImage]
+                                                 url:[NSURL URLWithString:strUrl]
                                                title:strTitle
                                                 type:SSDKContentTypeAuto];
-         }
+        }
+        
+//         if (shareType == SSDKPlatformSubTypeQZone) {
+//            // 短信的分享只能分享 image 或 text 形式的
+//             
+//             strContent = [NSString stringWithFormat:@"厂房标题：%@\n联系人：%@\n联系方式：%@\n图片查看：%@",self.shareDic[@"title"],self.shareDic[@"linkerName"],self.shareDic[@"phoneNum"],strImage];
+//             //构造分享内容
+//             [shareParams SSDKSetupShareParamsByText:strContent
+//                                              images:nil
+//                                                 url:nil
+//                                               title:nil
+//                                                type:SSDKContentTypeText];
+//            
+//         } else {
+//             
+//             strContent = [NSString stringWithFormat:@"联系人：%@\n联系方式：%@",self.shareDic[@"linkerName"],self.shareDic[@"phoneNum"]];
+//             //构造分享内容
+//             [shareParams SSDKSetupShareParamsByText:strContent
+//                                              images:@[strImage]
+//                                                 url:nil
+//                                               title:strTitle
+//                                                type:SSDKContentTypeAuto];
+//             
+//         }
         // 分享
         [ShareSDK share:shareType parameters:shareParams onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
             

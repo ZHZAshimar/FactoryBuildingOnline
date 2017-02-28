@@ -35,7 +35,7 @@
         self.dataBlock(mArr);
         
     } failure:^(RequestManager *manager, NSError *error) {
-        [MBProgressHUD showError:@"网络出现点小问题💔" ToView:nil];
+        [MBProgressHUD showError:@"网络出现点小问题" ToView:nil];
     }];
     
 }

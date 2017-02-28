@@ -95,7 +95,7 @@
         // 2. 恢复默认
         [filter setDefaults];
         // 3. 给过滤器添加数据（）
-        NSString *dataString = @"http://www.baidu.com";
+        NSString *dataString = @"http://apps.oncom.cn";
         NSData *data = [dataString dataUsingEncoding:NSUTF8StringEncoding];
         [filter setValue:data forKeyPath:@"inputMessage"];
         // 4. 获取输出的二维码

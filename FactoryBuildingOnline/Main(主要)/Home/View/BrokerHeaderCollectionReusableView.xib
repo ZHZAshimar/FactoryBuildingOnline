@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -38,7 +38,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="客户经理" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eca-j6-GIi">
-                            <rect key="frame" x="95" y="51" width="57.5" height="17"/>
+                            <rect key="frame" x="95" y="51" width="58" height="17"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="120" id="nFl-u7-XFp"/>
                             </constraints>
@@ -47,7 +47,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="入职1年" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YDa-5G-Kyr">
-                            <rect key="frame" x="163" y="51" width="50" height="17"/>
+                            <rect key="frame" x="164" y="51" width="50" height="17"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="Ny9-6C-twN"/>
                             </constraints>
@@ -69,7 +69,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="发布厂房" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vru-RQ-kk2">
-                    <rect key="frame" x="16" y="92" width="57.5" height="35"/>
+                    <rect key="frame" x="16" y="92" width="58" height="35"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="35" id="pqe-9e-WCq"/>
                     </constraints>
@@ -78,7 +78,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(12)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jS4-V0-aJx">
-                    <rect key="frame" x="81" y="92" width="52" height="35"/>
+                    <rect key="frame" x="82" y="92" width="52" height="35"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="52" id="aaA-DW-6h4"/>
                     </constraints>

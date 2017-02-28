@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ZHZShareView : UIView
-
+@property (nonatomic, strong) NSDictionary *shareDic;
 /*
  * 显示
  */

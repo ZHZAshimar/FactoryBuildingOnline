@@ -147,7 +147,7 @@
         
     } failure:^(RequestManager *manager, NSError *error) {
         NSLog(@"获取发布人厂房：%@",error);
-        [MBProgressHUD showError:@"网络出了小差💔，请稍后再试！" ToView:nil];
+        [MBProgressHUD showError:@"网络出了小差，请稍后再试！" ToView:nil];
     }];
     
 }

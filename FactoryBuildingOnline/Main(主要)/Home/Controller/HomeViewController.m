@@ -434,9 +434,10 @@
         NSString *str = @"首页";
         segmentedIndexView_width = [NSString widthForString:str fontSize:[UIFont adjustFontSize:15] andHeight:44]-15;
         
-        _segmentedIndexView = [[UIView alloc] initWithFrame:CGRectMake(self.naviSegmentedControl.frame.size.width*1/3/2-segmentedIndexView_width/2, self.naviSegmentedControl.frame.size.height-2, segmentedIndexView_width, 2)];
+        _segmentedIndexView = [[UIView alloc] initWithFrame:CGRectMake(self.naviSegmentedControl.frame.size.width*1/3/2-segmentedIndexView_width/2+3, self.naviSegmentedControl.frame.size.height, segmentedIndexView_width, 2)];
         
         _segmentedIndexView.backgroundColor = GREEN_19b8;
+        _segmentedIndexView.layer.cornerRadius = 1;
     }
     return _segmentedIndexView;
 }

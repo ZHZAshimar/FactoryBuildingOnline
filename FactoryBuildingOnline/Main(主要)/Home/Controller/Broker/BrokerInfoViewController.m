@@ -9,7 +9,7 @@
 #import "BrokerInfoViewController.h"
 
 #import "BrokerDetailViewController.h"
-#import "FivePathCollectionViewCell.h"
+#import "BrokerIntroCollectionViewCell.h"
 #import "BrokerHeaderCollectionReusableView.h"
 #import "FactoryDetailViewController.h"
 #import "HomeRequest.h"
@@ -121,7 +121,7 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    FivePathCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"fivecell" forIndexPath:indexPath];
+    BrokerIntroCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BrokerIntroCell" forIndexPath:indexPath];
 //    cell.model = self.mDataSource[indexPath.item];
     cell.brokerModel = self.mDataSource[indexPath.item];
     
@@ -159,7 +159,7 @@
         
         _myCollectionView.dataSource = self;
         
-        [_myCollectionView registerClass:[FivePathCollectionViewCell class] forCellWithReuseIdentifier:@"fivecell"];
+        [_myCollectionView registerClass:[BrokerIntroCollectionViewCell class] forCellWithReuseIdentifier:@"BrokerIntroCell"];
         
         [_myCollectionView registerClass:[BrokerHeaderCollectionReusableView class]  forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
         __weak typeof (self) weakSelf = self;

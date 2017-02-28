@@ -300,6 +300,7 @@
 
 - (void)share{
     ZHZShareView *shareView = [[ZHZShareView alloc] init];
+    shareView.shareDic = @{@"content":self.model.ftModel.description_factory,@"title":self.model.ftModel.title,@"image":self.model.ftModel.thumbnail_url};
     [shareView show];
 }
 

@@ -81,12 +81,12 @@
     [hexagonView.layer addSublayer:self.hexagonShapeLayer];
     
     // 创建button
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(Screen_Width/2-Screen_Width*3/40, self_height*83/110, Screen_Width*3/20, self_height*27/110);
-    button.backgroundColor = [UIColor clearColor];
-    [button setImage:[UIImage imageNamed:@"information"] forState:0];
-    [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:button];
+    self.hexagonButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.hexagonButton.frame = CGRectMake(Screen_Width/2-Screen_Width*3/40, self_height*83/110, Screen_Width*3/20, self_height*27/110);
+    self.hexagonButton.backgroundColor = [UIColor clearColor];
+    [self.hexagonButton setImage:[UIImage imageNamed:@"information"] forState:0];
+    [self.hexagonButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:self.hexagonButton];
 }
 
 #pragma mark - 文字按钮 点击事件
@@ -123,10 +123,11 @@
     
     if (userModel.type == 2) {  // 专家的图标
         [self.userHeadImageView sd_setImageWithURL:[NSURL URLWithString:userAvatar] placeholderImage:[UIImage imageNamed:@"my_broker"]];
-        
+        [self.hexagonButton setImage:[UIImage imageNamed:@"information"] forState:0];
         self.hexagonShapeLayer.fillColor = BLUE_FE.CGColor;
     } else {                // 普通用户的图标
         self.hexagonShapeLayer.fillColor = GREEN_19b8.CGColor;
+        [self.hexagonButton setImage:[UIImage imageNamed:@"my_reserve"] forState:0];
         [self.userHeadImageView sd_setImageWithURL:[NSURL URLWithString:userAvatar] placeholderImage:[UIImage imageNamed:@"my_normal"]];
         
     }

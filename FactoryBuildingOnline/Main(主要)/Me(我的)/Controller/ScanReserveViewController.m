@@ -50,11 +50,12 @@
     
     emptyView = [[EmptyView alloc] initWithFrame:self.view.bounds];
     emptyView.image = [UIImage imageNamed:@"error_1"];
-    
+    [MBProgressHUD showAction:@"" ToView:nil];
     
     [HTTPREQUEST_SINGLE getUserInfo:@"user/publications/needs/" andParameters:nil success:^(RequestManager *manager, NSDictionary *response, NSString *time) {
-       
+        [MBProgressHUD hideHUD];
         NSLog(@"%@",response);
+        // 服务器的其他业务逻辑错误
         if ([response[@"erro_code"] intValue] != 200) {
             
             emptyView.emptyStr = [NSString stringWithFormat:@"%@",response[@"erro_msg"]];
@@ -64,12 +65,22 @@
         }
         
         NSArray *neededArray = response[@"neededMessage"];
+        
+        // 暂无预约内容
+        if (neededArray.count < 1) {
+            emptyView.emptyStr = @"暂无预约内容";
+            [self.view addSubview:emptyView];
+            return;
+        }
         self.nextURL = response[@"next"];
         for (NSDictionary *dic in neededArray) {
             [self.mArray addObject:dic];
-        }
-        
-        for (int i = 0; i < self.mArray.count; i++) {
+            NSString *content = dic[@"need"][@"content"];
+            CGFloat contentHeight = [NSString getHeightOfAttributeRectWithStr:content andSize:CGSizeMake(Screen_Width-33, 10000) andFontSize:[UIFont adjustFontSize:14] andLineSpace:10];
+            
+            // 将拿到高度添加到 高度数组中
+            [self.heightmArray addObject:@(contentHeight)];
+            
             [self.selectmArray addObject:@(0)];
         }
         [self.myCollectionView reloadData];
@@ -77,6 +88,9 @@
         
     } failure:^(RequestManager *manager, NSError *error) {
         NSLog(@"%@",error.description);
+        [MBProgressHUD hideHUD];
+        emptyView.emptyStr = @"连接网络超时";
+        [self.view addSubview:emptyView];
     }];
     
 }
@@ -87,7 +101,14 @@
         [self.myCollectionView.mj_footer endRefreshing];
         for (NSDictionary *dic in response[@"neededMessage"]) {
             [self.mArray addObject:dic];
+            NSString *content = dic[@"need"][@"content"];
+            CGFloat contentHeight = [NSString getHeightOfAttributeRectWithStr:content andSize:CGSizeMake(Screen_Width-33, 10000) andFontSize:[UIFont adjustFontSize:14] andLineSpace:10];
+            
+            // 将拿到高度添加到 高度数组中
+            [self.heightmArray addObject:@(contentHeight)];
+            [self.selectmArray addObject:@(0)];
         }
+        NSLog(@"%@",self.selectmArray);
         self.nextURL = response[@"next"];
         [self.myCollectionView reloadData];
         
@@ -106,15 +127,12 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    CGFloat contentHeight = [NSString getHeightOfAttributeRectWithStr:self.mArray[indexPath.item][@"need"][@"content"] andSize:CGSizeMake(Screen_Width-33, 2000) andFontSize:[UIFont adjustFontSize:14] andLineSpace:10];
-    
-    // 将拿到高度添加到 高度数组中
-    [self.heightmArray addObject:@(contentHeight)];
+    CGFloat contentHeight = [self.heightmArray[indexPath.item] floatValue];
     
     oneLineHeight = [NSString getHeightOfAttributeRectWithStr:@"计算单一行文字的高度" andSize:CGSizeMake(Screen_Width-33, 20000) andFontSize:[UIFont adjustFontSize:14] andLineSpace:10];
     // 计算行数
     CGFloat lineNum = contentHeight/oneLineHeight;
-    
+    NSLog(@"%f--%f",oneLineHeight,lineNum);
     if (lineNum > 2) {  // 当行数大于二的时候
         
         BOOL  isShow= [self.selectmArray[indexPath.item] boolValue];
@@ -143,7 +161,7 @@
     NSDictionary *dic = self.mArray[indexPath.item];
     
     CGFloat lineNum = [self.heightmArray[indexPath.item] floatValue]/oneLineHeight;
-    
+    NSLog(@"%f",[self.heightmArray[indexPath.item] floatValue]);
     if (lineNum > 2) {
 
         cell.contentLabelBttom.constant = 23.5;

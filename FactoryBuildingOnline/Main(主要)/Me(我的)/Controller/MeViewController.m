@@ -209,7 +209,10 @@
             
         } else {    // 未登录状态
             firstHeadReusableView.userHeadImageView.image = [UIImage imageNamed:@"my_normal"];
-            [firstHeadReusableView.nameBtn setTitle:@"未登录，请登录哦" forState:0];
+            [firstHeadReusableView.nameBtn setTitle:@"未登录，请登录 >" forState:0];
+            [firstHeadReusableView.hexagonButton setImage:[UIImage imageNamed:@"my_reserve"] forState:0];
+            firstHeadReusableView.hexagonShapeLayer.fillColor = GREEN_19b8.CGColor;
+            firstHeadReusableView.publishLabel.text = @"发布\n0";
         }
         
         return firstHeadReusableView;
@@ -281,7 +284,8 @@
             if (!isLogin) {
                 
                 // 跳转到登录界面
-                [self goLoginVC];
+//                [self goLoginVC];
+                [MBProgressHUD showError:@"请登录后查看！" ToView:nil];
                 return;
             }
             ScanHistoryViewController *scanHistoryVC = [ScanHistoryViewController new];
@@ -301,8 +305,8 @@
             if (!isLogin) {
                 
                 // 跳转到登录界面
-                [self goLoginVC];
-                
+//                [self goLoginVC];
+                [MBProgressHUD showError:@"请登录后查看！" ToView:nil];
             } else {
                 
                 AppDelegate *appdelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -313,8 +317,14 @@
                 // 选择回调
                 self.roleSwitchView.selectSwitchingBlock = ^(NSInteger index) {
                     NSLog(@"点中了%ld",index);
+                    int tag = 0;
+                    if (index == 100) {
+                        tag = 2;
+                    } else {
+                        tag = 1;
+                    }
                     
-                    NSDictionary *requestDic = @{@"update_type":@(4),@"update_value":[NSString stringWithFormat:@"%ld",index-100+1]};
+                    NSDictionary *requestDic = @{@"update_type":@(4),@"update_value":[NSString stringWithFormat:@"%d",tag]};
                     
                     [HTTPREQUEST_SINGLE putRequestWithService:URL_POST_LOGIN andParameters:requestDic isShowActivity:YES isEncode:YES success:^(RequestManager *manager, NSDictionary *response) {
                         NSLog(@"身份切换：%@",response[@"erro_msg"]);
@@ -324,7 +334,7 @@
                             
                             FOLUserInforModel *userModel = [FOLUserInforModel findAll][0];
                             // 修改数据库中 userInfo 表中的type 的值
-                            [FOLUserInforModel updateUserInfo:@"type" andupdateValue:[NSString stringWithFormat:@"%ld",index-100+1] andUserID:userModel.userID];
+                            [FOLUserInforModel updateUserInfo:@"type" andupdateValue:[NSString stringWithFormat:@"%d",tag] andUserID:userModel.userID];
                             [weakSelf.myCollectionView reloadData];
                         }
                         

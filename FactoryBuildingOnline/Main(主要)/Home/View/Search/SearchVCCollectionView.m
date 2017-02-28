@@ -222,11 +222,11 @@
 
 /// 历史记录的cell
 - (UICollectionViewCell*)historyCollectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
- 
+    
     TextCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TextCollectionViewCell" forIndexPath:indexPath];
     
     cell.label.text = self.historyArray[indexPath.item];
-
+    
     return cell;
 }
 

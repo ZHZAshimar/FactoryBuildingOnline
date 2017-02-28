@@ -265,6 +265,7 @@
 
 - (void)share{
     ZHZShareView *shareView = [[ZHZShareView alloc] init];
+    shareView.shareDic = @{@"content":self.model.factoryModel.description_pro,@"title":self.model.factoryModel.title,@"image":self.model.factoryModel.thumbnail_url};
     [shareView show];
 }
 #pragma mark - pictureCell likeBtn 的点击事件

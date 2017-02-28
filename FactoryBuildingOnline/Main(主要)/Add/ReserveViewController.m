@@ -58,7 +58,7 @@
     
     CGFloat callBackDay = [tmpTextField.text floatValue];
     
-    if (callBackDay < 0 || callBackDay >180) {
+    if (callBackDay <= 0 || callBackDay >180) {
         [MBProgressHUD showError:@"请输入1~180天内回复" ToView:nil];
         return;
     }

@@ -24,6 +24,7 @@
 #import "SecurityUtil.h"
 #import "FOLUserInforModel.h"
 
+
 #define self_width self.view.frame.size.width
 #define self_height self.view.frame.size.height
 

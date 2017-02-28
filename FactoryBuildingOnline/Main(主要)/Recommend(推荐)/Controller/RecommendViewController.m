@@ -50,10 +50,6 @@
 @implementation RecommendViewController
 
 - (void)dealloc {
-//    
-//    self.collectionView.delegate = nil;
-//    self.collectionView.dataSource = nil;
-    
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SELECTSURE" object:nil];   // 移除 监听
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];  // 移除键盘监听
@@ -132,14 +128,14 @@
     
     self.mDataSource = [NSMutableArray array];
     
-    emptyView = [[EmptyView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, Screen_Height)];  // 当数据为空的时显示的
+    emptyView = [[EmptyView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, Screen_Height)];  // 当数据为空的时显示的View
     emptyView.hidden = YES;
     [self.view addSubview:emptyView];
     
     requestMessage = [RequestMessage new];  // 数据请求 初始化
     requestMessage.delegate = self;
     
-    self.collectionView.delegate = self;
+    self.collectionView.delegate = self;    // 设置 collectionView
     self.collectionView.dataSource = self;
     
     [self.collectionView registerClass:[FivePathCollectionViewCell class] forCellWithReuseIdentifier:@"FivePathCollectionViewCell"];
@@ -215,7 +211,7 @@
     // 将选择的 view 从视图中移除
     [self.selectBgView removeFromSuperview];
     
-    if (sender.userInfo[@"isCellTag"] == 0){
+    if ([sender.userInfo[@"isCellTag"] intValue]== 0){
         
         if ([sender.userInfo[@"segmentType"] intValue] == 0) {  // 价格
             
@@ -224,16 +220,15 @@
             self.priceSelectIndex = 0;
             self.leftSelectIndex = 0;
             self.rightSelectIndex = 0;
+            self.segmentedTitleArray = @[self.segmentedZoneStr,self.segmentedPriceStr,self.segmentedAreaStr];
             [self segmentedControl:1];
         } else {    // 面积
             self.segmentedAreaStr = [NSString stringWithFormat:@"%@-%@",sender.userInfo[@"low"],sender.userInfo[@"hight"]];
-            self.areaSelectIndex = 0;
             self.leftSelectIndex = 0;
             self.rightSelectIndex = 0;
+            self.segmentedTitleArray = @[self.segmentedZoneStr,self.segmentedPriceStr,self.segmentedAreaStr];
             [self segmentedControl:2];
         }
-        
-        self.segmentedTitleArray = @[self.segmentedZoneStr,self.segmentedPriceStr,self.segmentedAreaStr];
     }
     if (![self.requestTypeArr containsObject:@(type)]) {
         [self.requestTypeArr addObject:@(type)];
@@ -380,7 +375,9 @@
     for (NSDictionary *townDic in self.cityDic[@"child"]) {
         [tmpArr addObject:townDic[@"name"]];
     }
-    self.rightTableViewAllArray = @[tmpArr];
+    [tmpArr insertObject:@"不限" atIndex:0];  // 增加不限的选项
+    
+    self.rightTableViewAllArray = @[tmpArr];    // 将地址数组赋值给
     
     [_selectBgView removeFromSuperview];        // 移除背景view
     
@@ -430,7 +427,7 @@
     [self.selectBgView.rightTableView setRightTableViewSelectIndex:^(NSIndexPath *indexPath) {
         
         weakSelf.request_type = REQUEST_FILTER; // 将请求类型改为筛选类型
-        
+
 //        if (indexPath.row == 0) {
 //            
 //            selectStr = [NSString stringWithFormat:@"%@",weakSelf.leftTableViewArray[weakSelf.leftSelectIndex]];
@@ -445,39 +442,50 @@
 //            weakSelf.segmentedTitleArray = @[weakSelf.segmentedZoneStr,weakSelf.segmentedPriceStr,weakSelf.segmentedAreaStr];
 ////            weakSelf.rightSelectIndex = 0;
 //        } else {
-            selectStr = [NSString stringWithFormat:@"%@",weakSelf.rightTableViewAllArray[weakSelf.leftSelectIndex][indexPath.row]];
-            
-            // 判断文字长度，超过显示 ...
-            if (selectStr.length > 4) {
-                selectStr = [selectStr substringWithRange:NSMakeRange(0, 4)];
-                selectStr = [NSString stringWithFormat:@"%@...",selectStr];
-            }
-            
-            weakSelf.segmentedZoneStr = selectStr;
-            if (selectStr.length <= 2) {
-                weakSelf.segmentedZoneStr = [NSString stringWithFormat:@"  %@  ",selectStr];
-            }
-            weakSelf.rightSelectIndex = indexPath.row;
-            weakSelf.segmentedTitleArray = @[weakSelf.segmentedZoneStr,weakSelf.segmentedPriceStr,weakSelf.segmentedAreaStr];
-//        }
+       
+        // 拿到区域名
+        selectStr = [NSString stringWithFormat:@"%@",weakSelf.rightTableViewAllArray[weakSelf.leftSelectIndex][indexPath.row]];
+        
+        // 判断文字长度，超过显示 ...
+        if (selectStr.length > 4) {
+            selectStr = [selectStr substringWithRange:NSMakeRange(0, 4)];
+            selectStr = [NSString stringWithFormat:@"%@...",selectStr];
+        }
+        
+        weakSelf.segmentedZoneStr = selectStr;
+        if (selectStr.length <= 2) {
+            weakSelf.segmentedZoneStr = [NSString stringWithFormat:@"  %@  ",selectStr];
+        }
+        weakSelf.rightSelectIndex = indexPath.row;
+        weakSelf.segmentedTitleArray = @[weakSelf.segmentedZoneStr,weakSelf.segmentedPriceStr,weakSelf.segmentedAreaStr];
+
         [weakSelf segmentedControl:index];
         NSLog(@"%@",weakSelf.segmentedZoneStr);
         [weakSelf.selectBgView.alphaView removeFromSuperview];
         [weakSelf.selectBgView removeFromSuperview];
         
         // 另外两个 selectindex 赋值为0;
-        weakSelf.areaSelectIndex = 0;
-        weakSelf.priceSelectIndex = 0;
-        
-        int townID = [weakSelf.cityDic[@"child"][indexPath.row][@"id"]  intValue];
+//        weakSelf.areaSelectIndex = 0;
+//        weakSelf.priceSelectIndex = 0;
+        if (indexPath.row == 0) {   // 当选中不限， 则不需要传area_id 这个字段
+            
+            [weakSelf.requestDic removeObjectForKey:@"area_id"];
+            
+        } else {
+            // 当选中区域，计算拿到对应的 area_id
+            int townID = [weakSelf.cityDic[@"child"][indexPath.row][@"id"]  intValue] - 1;
+            
+            [weakSelf.requestDic setValue:@(townID) forKey:@"area_id"];
+            
+        }
         if (![weakSelf.requestTypeArr containsObject:@(1)]) {   // 判断数组中是否包含此 元素
             
             [weakSelf.requestTypeArr addObject:@(1)];
         }
-        [weakSelf.requestDic setValue:[NSString arrayToJson:weakSelf.requestTypeArr] forKey:@"filtertype"];
-        [weakSelf.requestDic setValue:@(townID) forKey:@"area_id"];
         
-        [weakSelf requestDataWithDic];
+        [weakSelf.requestDic setValue:[NSString arrayToJson:weakSelf.requestTypeArr] forKey:@"filtertype"]; // 请假请求参数
+        
+        [weakSelf requestDataWithDic];  // 进行请求
     }];
     
     // 价格 and 面积 block
@@ -548,7 +556,6 @@
     _segmentedControl.verticalDividerColor = GRAY_eb;
     _segmentedControl.verticalDividerEnabled = YES;
     
-
     //设置分段控件的文字大小及颜色
     _segmentedControl.titleTextAttributes = @{NSForegroundColorAttributeName:BLACK_42,NSFontAttributeName:[UIFont systemFontOfSize:[UIFont adjustFontSize:14.0f]]};
     // 设置分段控件选中时 的文字大小及颜色

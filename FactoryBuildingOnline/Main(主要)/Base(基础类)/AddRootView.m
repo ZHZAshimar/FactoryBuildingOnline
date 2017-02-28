@@ -48,7 +48,7 @@
         CABasicAnimation *animation = [CABasicAnimation animation];
         animation.keyPath = @"transform.rotation";  // 中心旋转45度
         animation.duration = 0.5;
-        animation.byValue = @(M_PI_4);
+        animation.byValue = @(M_PI_4/2);
         [closeButton.layer addAnimation:animation forKey:@"rotateAnimation"];
         
         // 按钮
@@ -125,7 +125,7 @@
     // 关闭按钮的动画
     CABasicAnimation *closeAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
     closeAnimation.duration = 0.3;
-    closeAnimation.byValue = @(-M_PI_4);
+    closeAnimation.byValue = @(-M_PI_4/2);
     [closeButton.layer addAnimation:closeAnimation forKey:@"closeAnimation"];
     
     CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];

@@ -39,4 +39,6 @@
 
 @property (nonatomic, strong) FOLUserInforModel *userModel;
 
+@property (nonatomic, strong) UIButton * hexagonButton;
+
 @end

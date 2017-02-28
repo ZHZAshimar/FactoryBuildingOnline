@@ -8,6 +8,7 @@
 
 #import "SearchResultViewController.h"
 #import "FivePathCollectionViewCell.h"
+#import "BrokerIntroCollectionViewCell.h"
 #import "SearchRequest.h"
 #import "BrokerDetailViewController.h"
 #import "FactoryDetailViewController.h"
@@ -96,18 +97,17 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    FivePathCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier: @"cell" forIndexPath:indexPath];
-    
     if ([self.dic[@"type"] intValue] == 1) {            // 业主
-        
+        FivePathCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier: @"cell" forIndexPath:indexPath];
         cell.model = self.mDataSource[indexPath.item];
+        return cell;
         
     } else {                                            // 专家
-        
+        BrokerIntroCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BrokerIntroCollectionViewCell" forIndexPath:indexPath];
         cell.brokerModel = self.mDataSource[indexPath.item];
+        return cell;
     }
     
-    return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -160,6 +160,7 @@
         _myCollectionView.dataSource = self;
         
         [_myCollectionView registerClass:[FivePathCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+        [_myCollectionView registerClass:[BrokerIntroCollectionViewCell class] forCellWithReuseIdentifier:@"BrokerIntroCollectionViewCell"];
         
         _myCollectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
             if ([self.dic[@"type"] intValue] == 1) {            // 业主

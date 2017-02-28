@@ -7,7 +7,8 @@
 //
 
 #import "PublishAndCollectViewController.h"
-#import "FivePathCollectionViewCell.h"
+#import "FivePathCollectionViewCell.h"          // 业主
+#import "BrokerIntroCollectionViewCell.h"       // 专家
 #import "RequestMessage.h"
 #import "FactoryDetailViewController.h"
 #import "BrokerDetailViewController.h"
@@ -142,7 +143,7 @@
         
     } failure:^(RequestManager *manager, NSError *error) {
         
-        emptyView.emptyStr = @"💔网络异常，请稍后请求";
+        emptyView.emptyStr = @"网络异常，请稍后请求";
         emptyView.hidden = NO;
     }];
 }
@@ -181,13 +182,17 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    FivePathCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FivePathCollectionViewCell" forIndexPath:indexPath];
     if (self.datatype == MYCOLLECT_BROKER_TYPE) {
+        BrokerIntroCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BrokerIntroCollectionViewCell" forIndexPath:indexPath];
         cell.brokerModel = self.mDataSource[indexPath.item];
+        return cell;
     } else {
+        
+        FivePathCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FivePathCollectionViewCell" forIndexPath:indexPath];
         cell.model = self.mDataSource[indexPath.item];
+        
+        return cell;
     }
-    return cell;
 }
 #pragma mark - collectionView delegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -235,6 +240,7 @@
         _myCollectionView.dataSource = self;
         
         [_myCollectionView registerClass:[FivePathCollectionViewCell class] forCellWithReuseIdentifier:@"FivePathCollectionViewCell"];
+        [_myCollectionView registerClass:[BrokerIntroCollectionViewCell class] forCellWithReuseIdentifier:@"BrokerIntroCollectionViewCell"];
         
         __weak typeof (self) weakSelf = self;
         

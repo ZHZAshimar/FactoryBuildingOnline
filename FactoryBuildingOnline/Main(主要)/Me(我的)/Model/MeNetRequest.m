@@ -43,7 +43,7 @@
         });
     } failure:^(RequestManager *manager, NSError *error) {
         [MBProgressHUD hideHUD];
-        [MBProgressHUD showError:@"网络出小差了，请稍后再修改💔" ToView:nil];
+        [MBProgressHUD showError:@"网络出小差了，请稍后再修改" ToView:nil];
     }];
 
 }
@@ -121,7 +121,7 @@
         }
        
     } failure:^(RequestManager *manager, NSError *error) {
-        [MBProgressHUD showError:@"网络出小差了，请稍后再修改💔" ToView:nil];
+        [MBProgressHUD showError:@"网络出小差了，请稍后再修改" ToView:nil];
     }];
     
 }
@@ -171,7 +171,7 @@
                 break;
         }
     } failure:^(RequestManager *manager, NSError *error) {
-        [MBProgressHUD showError:@"网络出小差了，请稍后再修改💔" ToView:nil];
+        [MBProgressHUD showError:@"网络出小差了，请稍后再修改" ToView:nil];
     }];
     
 }

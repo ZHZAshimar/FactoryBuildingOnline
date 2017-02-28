@@ -252,6 +252,8 @@
 		09FDD2C31DC1EF710062E642 /* NSObject+runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FDD2BF1DC1EF710062E642 /* NSObject+runtime.m */; };
 		09FDD2C61DC1F0A30062E642 /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FDD2C51DC1F0A30062E642 /* RequestManager.m */; };
 		A60129211E5D255400A9F45D /* GetVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = A60129201E5D255400A9F45D /* GetVersion.m */; };
+		A60BEA0B1E63F5E0000F14CE /* BrokerIntroCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A60BEA091E63F5E0000F14CE /* BrokerIntroCollectionViewCell.m */; };
+		A60BEA0C1E63F5E0000F14CE /* BrokerIntroCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A60BEA0A1E63F5E0000F14CE /* BrokerIntroCollectionViewCell.xib */; };
 		A66E7E251E5D8B2D00F571B2 /* TextCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A66E7E231E5D8B2D00F571B2 /* TextCollectionViewCell.m */; };
 		A66E7E261E5D8B2D00F571B2 /* TextCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A66E7E241E5D8B2D00F571B2 /* TextCollectionViewCell.xib */; };
 		A69EA3A01E56955F0048D220 /* MyReserveCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A69EA39E1E56955F0048D220 /* MyReserveCollectionViewCell.m */; };
@@ -729,6 +731,9 @@
 		A1D87FAC61F70E80126C6F43 /* libPods-FactoryBuildingOnline.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FactoryBuildingOnline.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A601291F1E5D255400A9F45D /* GetVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetVersion.h; sourceTree = "<group>"; };
 		A60129201E5D255400A9F45D /* GetVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetVersion.m; sourceTree = "<group>"; };
+		A60BEA081E63F5E0000F14CE /* BrokerIntroCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrokerIntroCollectionViewCell.h; sourceTree = "<group>"; };
+		A60BEA091E63F5E0000F14CE /* BrokerIntroCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrokerIntroCollectionViewCell.m; sourceTree = "<group>"; };
+		A60BEA0A1E63F5E0000F14CE /* BrokerIntroCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrokerIntroCollectionViewCell.xib; sourceTree = "<group>"; };
 		A66E7E221E5D8B2D00F571B2 /* TextCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextCollectionViewCell.h; sourceTree = "<group>"; };
 		A66E7E231E5D8B2D00F571B2 /* TextCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextCollectionViewCell.m; sourceTree = "<group>"; };
 		A66E7E241E5D8B2D00F571B2 /* TextCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -1589,11 +1594,11 @@
 				0963E0911E2778E6002E577F /* BoutiqueViewController.m */,
 				091D81C01DFA8CA9003DB151 /* Broker */,
 				093682F31DF66E6C00FB31C5 /* Detail */,
-				09EC2C941DE2D57A00A7F6D4 /* Publish */,
 				09EC2C8F1DE2D57A00A7F6D4 /* MapViewController.h */,
 				09EC2C901DE2D57A00A7F6D4 /* MapViewController.m */,
 				09EC2C911DE2D57A00A7F6D4 /* MapViewController.xib */,
 				09EC2CA71DE2D57A00A7F6D4 /* SearchViewController.h */,
+				09EC2C941DE2D57A00A7F6D4 /* Publish */,
 				09EC2CA81DE2D57A00A7F6D4 /* SearchViewController.m */,
 				092BBB6A1DFE9AAF00856691 /* SearchResultViewController.h */,
 				092BBB6B1DFE9AAF00856691 /* SearchResultViewController.m */,
@@ -1686,6 +1691,9 @@
 				093682EE1DF65CF900FB31C5 /* BrokerHeaderCollectionReusableView.h */,
 				093682EF1DF65CF900FB31C5 /* BrokerHeaderCollectionReusableView.m */,
 				093682F01DF65CF900FB31C5 /* BrokerHeaderCollectionReusableView.xib */,
+				A60BEA081E63F5E0000F14CE /* BrokerIntroCollectionViewCell.h */,
+				A60BEA091E63F5E0000F14CE /* BrokerIntroCollectionViewCell.m */,
+				A60BEA0A1E63F5E0000F14CE /* BrokerIntroCollectionViewCell.xib */,
 				09EC2D051DE2D57A00A7F6D4 /* Search */,
 				09EC2D0E1DE2D57A00A7F6D4 /* SecondPage(二级页面) */,
 				09EC2D0F1DE2D57A00A7F6D4 /* StatusBarWindow.h */,
@@ -2056,8 +2064,7 @@
 				TargetAttributes = {
 					09FCA9E31D9C9EA50062F063 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = QP56Y9M7W6;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
 								enabled = 0;
@@ -2115,6 +2122,7 @@
 				09EC2D391DE2D57B00A7F6D4 /* DetailPictureCollectionViewCell.xib in Resources */,
 				09588F1D1DD41D7C0001DAA2 /* jdy_browseLoading@3x.png in Resources */,
 				09C83C0D1D9E030C00DE3F9D /* RecommendViewController.xib in Resources */,
+				A60BEA0C1E63F5E0000F14CE /* BrokerIntroCollectionViewCell.xib in Resources */,
 				0927D9551E2CAB5D00FE7B27 /* AreaCollectionViewCell.xib in Resources */,
 				09EC2D241DE2D57A00A7F6D4 /* SelectCityTableViewController.xib in Resources */,
 				09EC2D331DE2D57A00A7F6D4 /* DetailHeadCollectionReusableView.xib in Resources */,
@@ -2326,6 +2334,7 @@
 				09EC2D571DE2D57B00A7F6D4 /* SearchHeadReusableViewCollectionReusableView.m in Sources */,
 				09EC2D341DE2D57A00A7F6D4 /* DetailMapCollectionViewCell.m in Sources */,
 				09FCA9E91D9C9EA80062F063 /* main.m in Sources */,
+				A60BEA0B1E63F5E0000F14CE /* BrokerIntroCollectionViewCell.m in Sources */,
 				093C0EFC1DB45609009C6D04 /* MeFirstHeadCollectionReusableView.m in Sources */,
 				09AF0F0A1D9E4D3300077B35 /* HMSegmentedControl.m in Sources */,
 				093682FF1DF66E6C00FB31C5 /* PublishManViewController.m in Sources */,
@@ -2557,9 +2566,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = QP56Y9M7W6;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Factory Online (QP56Y9M7W6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Factory Online (QP56Y9M7W6)";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2584,7 +2593,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fol.FactoryBuildingOnline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "d418960e-f499-4cdd-a202-4032dd6f83ad";
+				PROVISIONING_PROFILE_SPECIFIER = FindFactoryAppStore;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2595,9 +2605,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = QP56Y9M7W6;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Factory Online (QP56Y9M7W6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Factory Online (QP56Y9M7W6)";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2623,7 +2633,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fol.FactoryBuildingOnline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "d418960e-f499-4cdd-a202-4032dd6f83ad";
+				PROVISIONING_PROFILE_SPECIFIER = FindFactoryAppStore;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

@@ -110,44 +110,44 @@
 #pragma mark - tableView delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (firstLoad) {
-        // 现在点击的cell
-        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        
-        cell.textLabel.textColor = GREEN_1ab8;
-        cell.backgroundColor = [UIColor whiteColor];
-        // 上一个点击的cell
-        
-        UITableViewCell *preCell = [tableView cellForRowAtIndexPath:preIndexPath];
-        preCell.textLabel.textColor = BLACK_42;
-        preCell.backgroundColor = GRAY_235;
-        
-        firstLoad = NO;
-    } else if ( indexPath != preIndexPath ) {
-        // 现在点击的cell
-        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        
-        cell.textLabel.textColor = GREEN_1ab8;
-        cell.backgroundColor = [UIColor whiteColor];
-        // 上一个点击的cell
-        UITableViewCell *preCell = [tableView cellForRowAtIndexPath:preIndexPath];
-        
-        preCell.textLabel.textColor = BLACK_42;
-        preCell.backgroundColor = GRAY_235;
-    }
-    
-    [marrayOfindex replaceObjectAtIndex:indexPath.row withObject:@1];
-    [marrayOfindex replaceObjectAtIndex:preIndexPath.row withObject:@0];
-    // 将 此次点击的 indexPath 赋值给 preIndexPath;
-    preIndexPath = indexPath;
-    // 消除点击的痕迹
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    [tableView setSectionIndexBackgroundColor:[UIColor whiteColor]];
- 
-    // 回调
-    if (self.leftTableViewSelectIndex) {
-        self.leftTableViewSelectIndex(indexPath);
-    }
+//    if (firstLoad) {
+//        // 现在点击的cell
+//        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//        
+//        cell.textLabel.textColor = GREEN_1ab8;
+//        cell.backgroundColor = [UIColor whiteColor];
+//        // 上一个点击的cell
+//        
+//        UITableViewCell *preCell = [tableView cellForRowAtIndexPath:preIndexPath];
+//        preCell.textLabel.textColor = BLACK_42;
+//        preCell.backgroundColor = GRAY_235;
+//        
+//        firstLoad = NO;
+//    } else if ( indexPath != preIndexPath ) {
+//        // 现在点击的cell
+//        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//        
+//        cell.textLabel.textColor = GREEN_1ab8;
+//        cell.backgroundColor = [UIColor whiteColor];
+//        // 上一个点击的cell
+//        UITableViewCell *preCell = [tableView cellForRowAtIndexPath:preIndexPath];
+//        
+//        preCell.textLabel.textColor = BLACK_42;
+//        preCell.backgroundColor = GRAY_235;
+//    }
+//    
+//    [marrayOfindex replaceObjectAtIndex:indexPath.row withObject:@1];
+//    [marrayOfindex replaceObjectAtIndex:preIndexPath.row withObject:@0];
+//    // 将 此次点击的 indexPath 赋值给 preIndexPath;
+//    preIndexPath = indexPath;
+//    // 消除点击的痕迹
+////    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+////    [tableView setSectionIndexBackgroundColor:[UIColor whiteColor]];
+// 
+//    // 回调
+//    if (self.leftTableViewSelectIndex) {
+//        self.leftTableViewSelectIndex(indexPath);
+//    }
     
 }
 

@@ -302,7 +302,7 @@
     [MBProgressHUD hideHUD];
     
     [self.navigationController popToRootViewControllerAnimated:YES];
-    UIAlertController *alertControl = [UIAlertController alertControllerWithTitle:@"提示" message:@"账号登录过期，请重新登录😭" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertControl = [UIAlertController alertControllerWithTitle:@"提示" message:@"账号登录过期，请重新登录" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *exitLoginAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [FOLUserInforModel deleteAll];
 //        self.rdv_tabBarController.selectedIndex = 2; // 跳转到我的界面

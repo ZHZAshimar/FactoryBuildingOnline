@@ -38,7 +38,7 @@
     
     self.fatoryNumLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:self.jobLabel.font.pointSize]];
     
-    self.avatarImageView.layer.cornerRadius = Screen_Height * 45/284/3;
+    self.avatarImageView.layer.cornerRadius = (Screen_Height * 10/71-30)/2;
     self.avatarImageView.layer.masksToBounds = YES ;
     
 }
