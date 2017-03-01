@@ -14,7 +14,10 @@
 #import "BoutiqueRequest.h"
 
 @interface BoutiqueViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
-
+{
+    NSInteger scrollIndex;  // 滚动到第几个item
+    CGFloat lastContentOffSetX; // 偏移的位置 x轴
+}
 @property (nonatomic, strong) UICollectionView *myCollectionView;
 @property (nonatomic, strong) NSArray *dataArray;
 @end
@@ -25,6 +28,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.dataArray = [NSArray array];
+    
+    scrollIndex = 0;
     
     self.myCollectionView.delegate = self;
     
@@ -43,26 +48,29 @@
     request.dataBlock = ^(NSMutableArray *mArr) {
         
         weakSelf.dataArray = mArr;
+        
         [weakSelf.myCollectionView reloadData];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"BoutiqueFactoryCount" object:self userInfo:@{@"count":@(mArr.count)}];
     };
 }
 
 #pragma mark - scrollView delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    NSLog(@"精品厂房的 collectionView ：%f",self.myCollectionView.contentOffset.x);
-    NSInteger index = 0;
-    
-    CGFloat contentOffSetX = self.myCollectionView.contentOffset.x;
-    
-    if (contentOffSetX >= Screen_Width*0.5 && contentOffSetX < Screen_Width*1.5) {
-        index = 1;
+
+    CGFloat contentOffSetX = self.myCollectionView.contentOffset.x; // 拿到偏移的位置
+//    判断滚动到了哪一个item
+    if (lastContentOffSetX > contentOffSetX) {
         
-    } else if (contentOffSetX >= Screen_Width*1.5) {
-        index = 2;
+        scrollIndex = (NSInteger)(contentOffSetX+16*scrollIndex)/Screen_Width;
+        
+    } else {
+    
+        scrollIndex = (NSInteger)(contentOffSetX+16*(scrollIndex+1))/Screen_Width;
     }
     
+    [self sendNotification:scrollIndex];
     
-    [self sendNotification:index];
+    lastContentOffSetX = contentOffSetX;
 }
 
 - (void)sendNotification:(NSInteger) index {

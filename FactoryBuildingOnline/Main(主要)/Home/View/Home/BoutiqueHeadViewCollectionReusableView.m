@@ -19,7 +19,7 @@
 - (void)dealloc {
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"BOUTIQUEFACTORYINDEX" object:nil];
-    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"BoutiqueFactoryCount" object:nil];
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -38,7 +38,7 @@
         self = arrayOfViews[0];
         // 创建观察者 接收通知
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeIndex:) name:@"BOUTIQUEFACTORYINDEX" object:nil];
-        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(indexCount:) name:@"BoutiqueFactoryCount" object:nil];
         self.titleLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:self.titleLabel.font.pointSize]];
     }
 
@@ -49,9 +49,12 @@
     
     NSDictionary *userInfo = sender.userInfo;
     
-    
-    
     self.pageControl.currentPage = [userInfo[@"index"] integerValue];
+    
+}
+- (void)indexCount:(NSNotification *)sender {
+    NSDictionary *userInfo = sender.userInfo;
+    self.pageControl.numberOfPages = [userInfo[@"count"] integerValue];
     
 }
 - (void)awakeFromNib {

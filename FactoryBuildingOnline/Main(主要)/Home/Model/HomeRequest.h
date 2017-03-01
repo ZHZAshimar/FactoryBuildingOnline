@@ -14,6 +14,8 @@ typedef void(^PROMEDIUMS) (NSDictionary *response);       // 经纪人回调
 
 typedef void (^BROKERPUBLISHBLOCK)(NSMutableArray *mArr);   // 经纪人发布的厂房数组回调
 
+typedef void (^ONLINENUMBLOCK) (NSDictionary *onlineNumDic);    // 在线人数和厂房数量的回调
+
 @interface HomeRequest : NSObject
 
 @property (nonatomic, copy) HomeRequestBlock homeBlock;
@@ -22,6 +24,7 @@ typedef void (^BROKERPUBLISHBLOCK)(NSMutableArray *mArr);   // 经纪人发布�
 
 @property (nonatomic, copy) BROKERPUBLISHBLOCK publishBlock;
 
+@property (nonatomic, copy) ONLINENUMBLOCK onlineNumBlock;
 /**
  *  获取首页优质厂房
  */
@@ -68,4 +71,7 @@ typedef void (^BROKERPUBLISHBLOCK)(NSMutableArray *mArr);   // 经纪人发布�
  */
 + (NSMutableArray *) dealWithBrokerDatabase:(NSDictionary*)response isWriteDB:(BOOL)isWriteDB;
 
+
+/// 获取在线人数
+- (void)getOnlineNum;
 @end

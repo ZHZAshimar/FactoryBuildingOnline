@@ -24,7 +24,6 @@
 #import "SecurityUtil.h"
 #import "FOLUserInforModel.h"
 
-
 #define self_width self.view.frame.size.width
 #define self_height self.view.frame.size.height
 
@@ -37,7 +36,7 @@
 @property (nonatomic, strong) NSMutableArray *mDataArray;                 // 数据源 优质厂房
 @property (nonatomic, strong) HomeRequest *homeRequest;
 @property (nonatomic, assign) BOOL isShowRefreshView;                     // 是否显示下拉刷新出来的数据的View
-
+@property (nonatomic, strong) NSDictionary *onlineDic;  /// 在线人数及厂房数量的字典
 @end
 
 @implementation HomeOfHomeViewController
@@ -49,6 +48,7 @@
     self.myCollectionView.dataSource = self;
     self.isShowRefreshView = NO;
     self.mDataArray = [NSMutableArray array];
+    self.onlineDic = [NSDictionary dictionary];
     [self gethomeData];
     
 }
@@ -81,15 +81,6 @@
         //        weakSelf.yzActivityView.hidden = YES;
         [weakSelf.myCollectionView.mj_footer endRefreshing];
     };
-    
-//    // 获取经纪人
-//    [self.homeRequest getPromeDiums];
-//    
-//    self.homeRequest.promediusBlock = ^(NSDictionary *response){
-//        
-//        weakSelf.promediusDic = response;
-//        [weakSelf.myCollectionView reloadData];
-//    };
     
 }
 
@@ -158,14 +149,6 @@
     }
     return UIEdgeInsetsZero;
 }
-//
-//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-//    return 16;
-//}
-//
-//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-//    return 16;
-//}
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     UICollectionReusableView *reusableView = [UICollectionReusableView new];
@@ -179,8 +162,7 @@
                 
                 if (self.isShowRefreshView) {
                     
-                    NSDictionary *dic = @{@"online":@"765",@"information":@"23454"};
-                    imagedPlayer.numDic = dic;
+                    imagedPlayer.numDic = self.onlineDic;
 
                 }
                 
@@ -355,11 +337,18 @@
         MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingBlock:^{
             [imagedPlayer removeRefreshView];   // 下啦的时候先移除掉refresh View
             
+            [weakSelf.homeRequest getOnlineNum];
+            weakSelf.homeRequest.onlineNumBlock = ^(NSDictionary *dic){
+                
+                if (dic.count > 0) {
+                    weakSelf.onlineDic = dic;
+                    weakSelf.isShowRefreshView = YES;   // 将 isShowRefreshView
+                    [weakSelf.myCollectionView reloadData];     // 刷新界面
+                }
+                [weakSelf.myCollectionView.mj_header endRefreshing];    // 停止刷新
+            };
             // 这里需要请求后台
             
-            weakSelf.isShowRefreshView = YES;   // 将 isShowRefreshView
-            [weakSelf.myCollectionView.mj_header endRefreshing];    // 停止刷新
-            [weakSelf.myCollectionView reloadData];     // 刷新界面
         }];
         
         [header setImages:@[[UIImage imageNamed:@"refresh_4"]] forState:MJRefreshStateIdle]; // 设置 普通闲置状态下的 动画的图片
@@ -383,11 +372,8 @@
                 [weakSelf.homeRequest requestNextURL:model.nextURL];    // 请求 nextURL 的内容
                 return ;
             }
-                
                 [weakSelf.myCollectionView.mj_footer endRefreshing];
     
-            
-            
         }];
         self.myCollectionView.mj_footer = refreshFooter;
 //        [_myCollectionView addSubview:self.yzActivityView];

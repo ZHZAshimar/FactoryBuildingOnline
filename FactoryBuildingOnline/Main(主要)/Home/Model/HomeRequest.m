@@ -305,6 +305,20 @@
     }
     return viewArray;
 }
-
-
+/// 获取在线人数
+- (void)getOnlineNum{
+    
+    [HTTPREQUEST_SINGLE getRequestWithService:URL_GET_BRANCHES andParameters:nil isShowActivity:NO success:^(RequestManager *manager, NSDictionary *response) {
+        
+        // 目前是假连接
+        int onlineNum = arc4random()%1000+100;
+        int factoryNum = arc4random()%10000+1000;
+        NSDictionary*responseDic = @{@"onlineNum":@(onlineNum),@"factoryNum":@(factoryNum)};
+        self.onlineNumBlock(responseDic);
+    } failure:^(RequestManager *manager, NSError *error) {
+        NSLog(@"获取在线人数 ERROR：%@",error);
+        NSDictionary *responseDic = [NSDictionary dictionary];
+        self.onlineNumBlock(responseDic);
+    }];
+}
 @end

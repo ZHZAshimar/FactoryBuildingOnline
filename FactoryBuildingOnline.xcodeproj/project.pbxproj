@@ -2064,6 +2064,7 @@
 				TargetAttributes = {
 					09FCA9E31D9C9EA50062F063 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = QP56Y9M7W6;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
@@ -2568,7 +2569,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Factory Online (QP56Y9M7W6)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Factory Online (QP56Y9M7W6)";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = QP56Y9M7W6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2607,7 +2608,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Factory Online (QP56Y9M7W6)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Factory Online (QP56Y9M7W6)";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = QP56Y9M7W6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
