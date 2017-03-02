@@ -13,13 +13,13 @@
 
 #if IOS_DEBUG
     // 正式环境
-    #define URL_HOST @"http://api.oncom.cn:8000/api/v1/"
-//    #define URL_HOST @"http://oncom.cn:8000/api/v1/"     // 开发环境
+//    #define URL_HOST @"http://api.oncom.cn:8000/api/v1/"
+    #define URL_HOST @"http://oncom.cn:8000/api/v1/"     // 开发环境
 #else
 
     // 测试服务器
-    #define URL_HOST @"http://api.oncom.cn:8000/api/v1/"    // 上架 服务器
-//#define URL_HOST @"http://oncom.cn:8000/api/v1/"     // 开发环境
+//    #define URL_HOST @"http://api.oncom.cn:8000/api/v1/"    // 上架 服务器
+#define URL_HOST @"http://oncom.cn:8000/api/v1/"     // 开发环境
 
 #endif /* CustomURL_h */
 

@@ -14,6 +14,8 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - BCUserTrack (5.1.0.9):
+    - UTDID
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
@@ -26,24 +28,43 @@ PODS:
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
+  - UTDID (1.0.0)
+  - wax (1.0.0)
+  - ZipArchive (1.4.0)
 
 DEPENDENCIES:
   - AFNetworking
+  - BCUserTrack
   - FMDB
   - MJRefresh
   - Qiniu (~> 7.1)
   - RDVTabBarController
   - SDWebImage
+  - wax (from `https://github.com/alibaba/wax.git`)
+  - ZipArchive
+
+EXTERNAL SOURCES:
+  wax:
+    :git: https://github.com/alibaba/wax.git
+
+CHECKOUT OPTIONS:
+  wax:
+    :commit: 5d4844bddf1763001d28df7edfd1b5ca131404c2
+    :git: https://github.com/alibaba/wax.git
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  BCUserTrack: 684f468b8143be7a2ed10a8c449fd959b2a3a099
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   HappyDNS: 06a9fed2796663fd87626dbf02552933265bf059
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   Qiniu: 5e5d7d759d22393bb4b87cdfacf8fab951260f3e
   RDVTabBarController: 67794f7a7a37f8e32f046f85ac67d06ab92d624a
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  UTDID: 05c4737c8cf5c210e86d0235570816ed00e023e8
+  wax: 336660568444d2d060dd69f0c493dc43b48505c5
+  ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: e78c89ed3ab422b1c041c3e013310a1704539348
+PODFILE CHECKSUM: 272d0b1f541b873a9f4a9882466d9bc4032d7f4b
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.2.0

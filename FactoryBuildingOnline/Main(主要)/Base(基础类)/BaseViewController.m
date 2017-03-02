@@ -8,7 +8,7 @@
 
 #import "BaseViewController.h"
 #import "BaseNavigationController.h"
-
+#import <AliHotFix/AliHotFix.h>
 #import "HomeViewController.h"
 #import "LogoViewController.h"
 #import "MeViewController.h"
@@ -19,6 +19,7 @@
 #import "PublishManViewController.h"
 #import "FOLUserInforModel.h"
 #import "LogoViewController.h"
+
 @interface BaseViewController ()<UISearchBarDelegate>
 {
     
@@ -296,6 +297,9 @@
                                              selector:@selector(showLoginView)
                                                  name:@"UnauthorizedRequest"
                                                object:nil];
+    
+    //应用进入前台就同步一次补丁
+    [AliHotFix sync];
 }
 #pragma mark - 跳转登录
 - (void)showLoginView {

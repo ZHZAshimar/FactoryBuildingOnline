@@ -307,7 +307,7 @@ typedef enum{
         // 将数据保存到 user info model中
 //        [UserInfoModel insertUserInfoModel:dic];
         
-        [self.navigationController popViewControllerAnimated:YES];
+        [self.navigationController popToRootViewControllerAnimated:YES];
         
     } failure:^(RequestManager *manager, NSError *error) {
         NSLog(@"error = %@",error.debugDescription);
@@ -334,7 +334,6 @@ typedef enum{
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:RegisterPWDFlagKey];
         
         [[NSUserDefaults standardUserDefaults] synchronize];
-
     }
 }
 

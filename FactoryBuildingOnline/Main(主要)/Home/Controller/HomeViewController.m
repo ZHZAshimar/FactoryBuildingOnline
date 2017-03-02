@@ -16,6 +16,9 @@
 #import "FactoryDetailViewController.h"
 #import "PublishScrollViewViewController.h"
 
+#import "FirstShowViewController.h"
+#import "FOLUserInforModel.h"
+
 #define NAVBAR_CHANGE_POINT 64
 
 @interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UISearchBarDelegate,UITextFieldDelegate>
@@ -26,16 +29,17 @@
     CGFloat segmentedIndexView_width;
 }
 
-@property (nonatomic, strong) HMSegmentedControl *naviSegmentedControl;     // 导航栏上面的 segmented
-@property (nonatomic, strong) UIView *segmentedIndexView;                            // segmented 下面的指示view
+@property (nonatomic, strong) HMSegmentedControl *naviSegmentedControl;  // 导航栏上面的 segmented
+@property (nonatomic, strong) UIView *segmentedIndexView;      // segmented 下面的指示view
 @property (nonatomic, strong) UITextField *searchTF;   // 在导航栏下面的 搜索框
-@property (nonatomic, strong) UIView *greenView;    // 导航栏的绿色View
-@property (nonatomic, strong) UIButton *naviSearchButton;   // 导航栏上的搜索
+
+@property (nonatomic, strong) UIView *greenView;    // 导航栏的绿色View（停用了此功能）
+@property (nonatomic, strong) UIButton *naviSearchButton;   // 导航栏上的搜索（停用了此按钮）
 
 @property (nonatomic,strong) UICollectionView *myCollectionView;
-
-@property (nonatomic, strong) UIView *leftBarView;                        // navigation  的左边的
-@property (nonatomic, strong) UILabel *leftBarAreaLabel;
+@property (nonatomic, strong) UIView *leftBarView;        // 搜索框左边的定位View
+@property (nonatomic, strong) UILabel *leftBarAreaLabel;  // 搜索框左边的定位View 里面的label
+@property (nonatomic, strong) UIButton *slideButton;    // 侧边栏的button
 @property (nonatomic, assign) int segmentedIndex;
 
 @end
@@ -67,7 +71,7 @@
         }
         
     };
-    self.leftBarView.hidden = YES;          // 隐藏导航栏 左边的地理位置的 view
+    self.slideButton.hidden = YES;          // 隐藏导航栏 左边的button
     self.naviSegmentedControl.hidden = YES; // 隐藏导航栏 segmentedControl
     [self.naviSearchButton removeFromSuperview];
     [self.greenView removeFromSuperview];
@@ -97,7 +101,7 @@
     [super viewWillAppear:animated];
     // 显示 tabbar
     [self.rdv_tabBarController setTabBarHidden:NO];
-
+    self.slideButton.hidden = NO;          // 隐藏导航栏 左边的button
     [self loadNavigation];
     _locService.delegate = self;    // 定位代理
     _geocodesearch.delegate = self;  // 此处记得不用的时候需要置nil，否则影响内存的释放
@@ -107,8 +111,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    // 判断是否登录，没有登录的话就跳转到登录界面
+    NSMutableArray *userArray = [FOLUserInforModel findAll];
+    if (userArray.count < 1) {
+        [self.navigationController pushViewController:[FirstShowViewController new] animated:YES];
+    }
     
-     [self.view addSubview:self.searchView];
+    [self.view addSubview:self.searchTF];
+    [self.view addSubview:self.leftBarView];
     
     // 代理
     self.myCollectionView.delegate = self;
@@ -211,8 +221,8 @@
 - (void)loadNavigation {
     // 显示 导航栏
     self.navigationController.navigationBar.hidden = NO;
-    
-    [self.navigationController.navigationBar addSubview:self.leftBarView];
+    // 添加一个展开侧边栏的按钮
+    [self.navigationController.navigationBar addSubview:self.slideButton];
     
     [self.navigationController.navigationBar addSubview:self.naviSegmentedControl];
     
@@ -242,6 +252,12 @@
     
     [self.navigationController pushViewController:selectCityVC animated:YES];
 }
+
+#pragma mark - 出现侧边栏
+- (void)showSlideVC: (UIButton *)sender {
+    
+}
+
 #pragma mark - location sevice delegate - 
 /**
  *用户位置更新后，会调用此函数
@@ -442,10 +458,10 @@
     return _segmentedIndexView;
 }
 
-- (UITextField *)searchView {
+- (UITextField *)searchTF {
     if (!_searchTF) {
-        NSString *string = @"请输入您想搜索的街道/路段/园区";
-        _searchTF = [[UITextField alloc] initWithFrame:CGRectMake(26, 0, Screen_Width-52, Screen_Height*15/284)];
+        NSString *string = @"请输入街道/路段/园区";
+        _searchTF = [[UITextField alloc] initWithFrame:CGRectMake(Screen_Width/3, 0, Screen_Width*2/3-26, Screen_Height*15/284)];
         
         _searchTF.backgroundColor = GRAY_F0;
         _searchTF.text = string;
@@ -459,8 +475,8 @@
         _searchTF.font = [UIFont adjustFont:[UIFont systemFontOfSize:12]];
         
         CGFloat width = [NSString widthForString:string fontSize:[UIFont adjustFontSize:12.0f] andHeight:Screen_Height/16];
-       
-        CGFloat marginOfLeft = (Screen_Width-52)/2-width/2-Screen_Height*15/284/2;
+       // 根据搜索控件的宽度计算出搜索图标需要偏移的位置
+        CGFloat marginOfLeft = (Screen_Width*2/3-26)/2-width/2-Screen_Height*15/284/2;
         // 设置 左边的logo
         UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(0, Screen_Height*15/284/4, Screen_Height*15/284/2, Screen_Height*15/284/2)];
         
@@ -506,7 +522,7 @@
     
     if (!_leftBarView) {
         
-        _leftBarView = [[UIView alloc] initWithFrame:CGRectMake(8, 0, Screen_Width/4, 44)]; // 初始化
+        _leftBarView = [[UIView alloc] initWithFrame:CGRectMake(8, 0, Screen_Width/3, 44)]; // 初始化
         
         UITapGestureRecognizer *tapLeftBarView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(jumpSelectCityAction:)];  // 初始化单击事件
         [_leftBarView addGestureRecognizer:tapLeftBarView]; // 添加单击事件
@@ -548,6 +564,17 @@
         self.greenView.alpha = 0;
     }
     return _greenView;
+}
+
+- (UIButton *)slideButton {
+    if (!_slideButton) {
+        
+        _slideButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _slideButton.frame = CGRectMake(0, 0, 44, 44);
+        [_slideButton setImage:[UIImage imageNamed:@"trash"] forState:0];
+        [_slideButton addTarget:self action:@selector(showSlideVC:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _slideButton;
 }
 
 - (void)didReceiveMemoryWarning

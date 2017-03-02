@@ -60,6 +60,7 @@
         [HTTPREQUEST_SINGLE postRequestWithURL:URL_POST_APP_FEEDBACKS andParameters:params andShowAction:YES success:^(RequestManager *manager, NSDictionary *response) {
             NSLog(@"APP意见反馈：%@",response);
             [MBProgressHUD showSuccess:@"反馈成功，我们将认真查看！" ToView:nil];
+            [self.navigationController popViewControllerAnimated:YES];
         } failure:^(RequestManager *manager, NSError *error) {
             NSLog(@"APP意见反馈：%@",error);
             [MBProgressHUD showSuccess:@"反馈失败！" ToView:nil];

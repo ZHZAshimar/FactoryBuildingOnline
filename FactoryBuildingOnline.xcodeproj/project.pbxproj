@@ -254,6 +254,7 @@
 		A60129211E5D255400A9F45D /* GetVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = A60129201E5D255400A9F45D /* GetVersion.m */; };
 		A60BEA0B1E63F5E0000F14CE /* BrokerIntroCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A60BEA091E63F5E0000F14CE /* BrokerIntroCollectionViewCell.m */; };
 		A60BEA0C1E63F5E0000F14CE /* BrokerIntroCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A60BEA0A1E63F5E0000F14CE /* BrokerIntroCollectionViewCell.xib */; };
+		A625412F1E66B5BF00F6C938 /* AliHotFix.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A625412E1E66B5BF00F6C938 /* AliHotFix.framework */; };
 		A66E7E251E5D8B2D00F571B2 /* TextCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A66E7E231E5D8B2D00F571B2 /* TextCollectionViewCell.m */; };
 		A66E7E261E5D8B2D00F571B2 /* TextCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A66E7E241E5D8B2D00F571B2 /* TextCollectionViewCell.xib */; };
 		A69EA3A01E56955F0048D220 /* MyReserveCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A69EA39E1E56955F0048D220 /* MyReserveCollectionViewCell.m */; };
@@ -277,6 +278,8 @@
 		A6F531BC1E5298560042AA22 /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F531AB1E5298560042AA22 /* MOBFoundation.framework */; };
 		A6F531BD1E5298560042AA22 /* ShareSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A6F531AC1E5298560042AA22 /* ShareSDK.bundle */; };
 		A6F531BE1E5298560042AA22 /* ShareSDKConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F531AD1E5298560042AA22 /* ShareSDKConnector.framework */; };
+		A6F653731E67F1DD00CF28F4 /* FirstShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F653711E67F1DD00CF28F4 /* FirstShowViewController.m */; };
+		A6F653741E67F1DD00CF28F4 /* FirstShowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6F653721E67F1DD00CF28F4 /* FirstShowViewController.xib */; };
 		E33B070581BB59D0E88F01DC /* libPods-FactoryBuildingOnline.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1D87FAC61F70E80126C6F43 /* libPods-FactoryBuildingOnline.a */; };
 /* End PBXBuildFile section */
 
@@ -734,6 +737,7 @@
 		A60BEA081E63F5E0000F14CE /* BrokerIntroCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrokerIntroCollectionViewCell.h; sourceTree = "<group>"; };
 		A60BEA091E63F5E0000F14CE /* BrokerIntroCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrokerIntroCollectionViewCell.m; sourceTree = "<group>"; };
 		A60BEA0A1E63F5E0000F14CE /* BrokerIntroCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrokerIntroCollectionViewCell.xib; sourceTree = "<group>"; };
+		A625412E1E66B5BF00F6C938 /* AliHotFix.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AliHotFix.framework; sourceTree = "<group>"; };
 		A66E7E221E5D8B2D00F571B2 /* TextCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextCollectionViewCell.h; sourceTree = "<group>"; };
 		A66E7E231E5D8B2D00F571B2 /* TextCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextCollectionViewCell.m; sourceTree = "<group>"; };
 		A66E7E241E5D8B2D00F571B2 /* TextCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -762,6 +766,9 @@
 		A6F531AB1E5298560042AA22 /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
 		A6F531AC1E5298560042AA22 /* ShareSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDK.bundle; sourceTree = "<group>"; };
 		A6F531AD1E5298560042AA22 /* ShareSDKConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKConnector.framework; sourceTree = "<group>"; };
+		A6F653701E67F1DD00CF28F4 /* FirstShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstShowViewController.h; sourceTree = "<group>"; };
+		A6F653711E67F1DD00CF28F4 /* FirstShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstShowViewController.m; sourceTree = "<group>"; };
+		A6F653721E67F1DD00CF28F4 /* FirstShowViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstShowViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -770,6 +777,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				099493771E26184B009CC230 /* libsqlite3.tbd in Frameworks */,
+				A625412F1E66B5BF00F6C938 /* AliHotFix.framework in Frameworks */,
 				099493751E261833009CC230 /* ImageIO.framework in Frameworks */,
 				099493731E261825009CC230 /* JavaScriptCore.framework in Frameworks */,
 				099493711E26181D009CC230 /* libstdc++.tbd in Frameworks */,
@@ -847,6 +855,9 @@
 				0905E5381DBF512A0081EDE2 /* RegisterViewController.xib */,
 				09375B051DF4F398002A6D42 /* ForgetPsdViewController.h */,
 				09375B061DF4F398002A6D42 /* ForgetPsdViewController.m */,
+				A6F653701E67F1DD00CF28F4 /* FirstShowViewController.h */,
+				A6F653711E67F1DD00CF28F4 /* FirstShowViewController.m */,
+				A6F653721E67F1DD00CF28F4 /* FirstShowViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1271,6 +1282,7 @@
 		093587A21D9CACC70035AAF6 /* Vender(第三方) */ = {
 			isa = PBXGroup;
 			children = (
+				A625412E1E66B5BF00F6C938 /* AliHotFix.framework */,
 				A6F531921E5298560042AA22 /* ShareSDK */,
 				09BC0C0A1E03BAAF00B988A3 /* UMSDK */,
 				098048D01DE00244007A0EEF /* Geohash */,
@@ -2065,7 +2077,7 @@
 					09FCA9E31D9C9EA50062F063 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = QP56Y9M7W6;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
 								enabled = 0;
@@ -2113,6 +2125,7 @@
 			files = (
 				095D9FD91E275FC50017B3A9 /* BoutiqueHeadViewCollectionReusableView.xib in Resources */,
 				09EC2D351DE2D57B00A7F6D4 /* DetailMapCollectionViewCell.xib in Resources */,
+				A6F653741E67F1DD00CF28F4 /* FirstShowViewController.xib in Resources */,
 				091EAFAE1DBB61A90006CBED /* mapapi.bundle in Resources */,
 				A6F531B81E5298560042AA22 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				09B665A51DB9F1B70094A076 /* TZImagePickerController.bundle in Resources */,
@@ -2196,7 +2209,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		86AC9B0DE667FD556EF79878 /* [CP] Copy Pods Resources */ = {
@@ -2276,6 +2289,7 @@
 				096DB8EE1E4AF41300775CA6 /* AppFeedbackViewController.m in Sources */,
 				09C83BFD1D9DFCFE00DE3F9D /* ViewController.m in Sources */,
 				09C83C0C1D9E030C00DE3F9D /* RecommendViewController.m in Sources */,
+				A6F653731E67F1DD00CF28F4 /* FirstShowViewController.m in Sources */,
 				09588F1E1DD41D7C0001DAA2 /* JDYBrowseActionSheet.m in Sources */,
 				09EC2D261DE2D57A00A7F6D4 /* FactoryPoiModel.m in Sources */,
 				09C83C1E1D9E225C00DE3F9D /* BaseTabBarViewController.m in Sources */,
@@ -2567,8 +2581,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Factory Online (QP56Y9M7W6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Factory Online (QP56Y9M7W6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = QP56Y9M7W6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2580,6 +2594,7 @@
 					"$(PROJECT_DIR)/FactoryBuildingOnline/Vender(第三方)/ShareSDK/Support/PlatformConnector",
 					"$(PROJECT_DIR)/FactoryBuildingOnline/Vender(第三方)/ShareSDK/Support/PlatformSDK/QQSDK",
 					"$(PROJECT_DIR)/FactoryBuildingOnline/Vender(第三方)/ShareSDK/Support/Required",
+					"$(PROJECT_DIR)/FactoryBuildingOnline/Vender(第三方)",
 				);
 				GCC_INPUT_FILETYPE = sourcecode.c.objc;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2594,8 +2609,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fol.FactoryBuildingOnline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d418960e-f499-4cdd-a202-4032dd6f83ad";
-				PROVISIONING_PROFILE_SPECIFIER = FindFactoryAppStore;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2606,8 +2621,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Factory Online (QP56Y9M7W6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Factory Online (QP56Y9M7W6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = QP56Y9M7W6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2619,6 +2634,7 @@
 					"$(PROJECT_DIR)/FactoryBuildingOnline/Vender(第三方)/ShareSDK/Support/PlatformConnector",
 					"$(PROJECT_DIR)/FactoryBuildingOnline/Vender(第三方)/ShareSDK/Support/PlatformSDK/QQSDK",
 					"$(PROJECT_DIR)/FactoryBuildingOnline/Vender(第三方)/ShareSDK/Support/Required",
+					"$(PROJECT_DIR)/FactoryBuildingOnline/Vender(第三方)",
 				);
 				GCC_INPUT_FILETYPE = sourcecode.c.objc;
 				GCC_OPTIMIZATION_LEVEL = s;
@@ -2634,8 +2650,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fol.FactoryBuildingOnline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d418960e-f499-4cdd-a202-4032dd6f83ad";
-				PROVISIONING_PROFILE_SPECIFIER = FindFactoryAppStore;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
