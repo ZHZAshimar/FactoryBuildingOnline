@@ -10,11 +10,13 @@
 #import <BaiduMapAPI_Location/BMKLocationComponent.h>//引入定位功能所有的头文件
 #import <BaiduMapAPI_Search/BMKSearchComponent.h>
 
+typedef void(^ADDRESSBLOCK) (NSString *address);
+
 @interface HomeViewController : BaseViewController<BMKLocationServiceDelegate,BMKGeoCodeSearchDelegate>
 {
     BMKLocationService *_locService;    // 百度定位
     BMKGeoCodeSearch *_geocodesearch;   // 地理编码功能
 }
 @property (nonatomic,strong) NSString *cityNameStr;
-
+@property (nonatomic, strong) ADDRESSBLOCK address;
 @end

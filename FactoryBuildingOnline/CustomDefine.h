@@ -28,6 +28,7 @@
 
 #define LightNaviBackColor [UIColor colorWithRed:137.0/255.0 green:217.0/255.0 blue:82.0/255.0 alpha:0.2]
 
+#define WIHTE_33 [UIColor colorWithHex:0x333333]
 #define GRAY_206 [UIColor colorWithRed:206.0/255.0 green:206.0/255.0 blue:206.0/255.0 alpha:1.0]
 #define GRAY_201 [UIColor colorWithRed:201.0/255.0 green:201.0/255.0 blue:201.0/255.0 alpha:1.0]
 #define GRAY_198 [UIColor colorWithRed:198.0/255.0 green:198.0/255.0 blue:198.0/255.0 alpha:1.0]

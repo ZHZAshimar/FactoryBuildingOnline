@@ -8,9 +8,11 @@
 
 #import <RDVTabBarController/RDVTabBarController.h>
 
+typedef void (^SLIDERSHOWBLOCK)(BOOL showSlider);
+
 @interface BaseTabBarViewController : RDVTabBarController
 
 
 @property (nonatomic,strong) RDVTabBarController *viewController;
-
+@property (nonatomic, strong) SLIDERSHOWBLOCK showSlider;
 @end

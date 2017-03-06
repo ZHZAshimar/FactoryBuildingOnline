@@ -211,7 +211,7 @@ typedef enum{
         
     }
 }
-#pragma mark -
+#pragma mark - 返回
 - (IBAction)backAction:(UIButton *)sender {
     
     CATransition *animation = [CATransition animation]; // 创建动画
@@ -222,7 +222,7 @@ typedef enum{
     animation.subtype = kCATransitionFromBottom;    // 设置动画运动方向
     [self.view.layer addAnimation:animation forKey:nil];    // view.layer 添加动画效果
     
-    [self.navigationController popViewControllerAnimated:NO];   // 使用自定义的动画，取消系统自带的动画
+    [self.navigationController popToRootViewControllerAnimated:NO];   // 使用自定义的动画，取消系统自带的动画
     
 }
 

@@ -19,7 +19,7 @@
 #import "ReserveViewController.h"
 #import "PublishScrollViewViewController.h"
 
-@interface BaseTabBarViewController ()<RDVTabBarControllerDelegate>
+@interface BaseTabBarViewController ()<RDVTabBarControllerDelegate,UIGestureRecognizerDelegate>
 {
     NSInteger selectedTabBarIiemTag;
 }
@@ -47,10 +47,6 @@
     
     self.tabBar.backgroundView.backgroundColor = [UIColor whiteColor];
     
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(showLoginView)
-//                                                 name:@"UnauthorizedRequest"
-//                                               object:nil];
 }
 
 #pragma mark - 显示网络状态
@@ -90,7 +86,7 @@
     [self customizeTabBarForController:self];
     
 }
-
+#pragma mark - 绘制底部导航
 - (void)customizeTabBarForController:(RDVTabBarController *)tabBarController {
     
     NSArray *tabBarItemImages = @[@"nav_home",@"nav_add"/*,@"nav_icon3"*/,@"nav_my"];
@@ -105,14 +101,7 @@
         UIImage *selectedImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_pressed.png",[tabBarItemImages objectAtIndex:index]]];
         
         UIImage *unselectedImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_normal.png",[tabBarItemImages objectAtIndex:index]]];
-//        if (index == 0) {
-//            selectedImage = [UIImage imageNamed:@"1.png"];
-//            unselectedImage = [UIImage imageNamed:@"1.png"];
-//        }
-//        if (index == 1) {
-//            selectedImage = [UIImage imageNamed:@"24x24_2.png"];
-//            unselectedImage = [UIImage imageNamed:@"24x24_2.png"];
-//        }
+
         // 设置选中图片和未选中图片
         [item setFinishedSelectedImage:selectedImage withFinishedUnselectedImage:unselectedImage];
         // 设置名称
@@ -135,7 +124,10 @@
 //        item.itemHeight =Screen_Width*1.0f*(192*1.0f/180)/5;
         item.badgePositionAdjustment = UIOffsetMake(0, 15);
         
-        NSLog(@"------%f",item.itemHeight);
+        if (index == 1) {
+            
+            item.imagePositionAdjustment = UIOffsetMake(0, -2);
+        }
         
         index++;
     }
@@ -179,19 +171,8 @@
         self.addView.tapButtonBlock = ^(NSInteger index) {
             
             switch (index) {
-                case 0:
-                {   // 预定
-                    ReserveViewController *reserveVC = [ReserveViewController new];
                     
-                    BaseNavigationController *navi = [[BaseNavigationController alloc] initWithRootViewController:reserveVC];
-
-                    [weakSelf presentViewController:navi animated:YES completion:nil];
-
-                    [weakSelf.addView removeView];
-
-                }
-                    break;
-                case 1:
+                case 100:
                 {   // 发布
                     PublishScrollViewViewController *publishVC = [PublishScrollViewViewController new];
                     
@@ -203,6 +184,18 @@
                     
                     [weakSelf.addView removeView];
                     
+                }
+                    break;
+                case 102:
+                {   // 预定
+                    ReserveViewController *reserveVC = [ReserveViewController new];
+                    
+                    BaseNavigationController *navi = [[BaseNavigationController alloc] initWithRootViewController:reserveVC];
+
+                    [weakSelf presentViewController:navi animated:YES completion:nil];
+
+                    [weakSelf.addView removeView];
+
                 }
                     break;
                 default:

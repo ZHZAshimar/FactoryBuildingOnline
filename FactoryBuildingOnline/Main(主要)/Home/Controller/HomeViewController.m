@@ -21,12 +21,13 @@
 
 #define NAVBAR_CHANGE_POINT 64
 
-@interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UISearchBarDelegate,UITextFieldDelegate>
+@interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UISearchBarDelegate,UITextFieldDelegate,UIGestureRecognizerDelegate>
 {
     NSArray *fourPathTextArr;
     NSArray *fourPathSubtextArr;
     SelectCityTableViewController *selectCityVC;
     CGFloat segmentedIndexView_width;
+    BOOL isShowSlider;  // 是否展开侧边栏
 }
 
 @property (nonatomic, strong) HMSegmentedControl *naviSegmentedControl;  // 导航栏上面的 segmented
@@ -127,12 +128,28 @@
     [self locationSevice];  // 设置定位
 //     NSLog(@"********%f",Screen_Width);
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotification:) name:@"NAVIGATIONCHANGE" object:nil];
+    
+    // 获取版本更新
     GetVersion *getVersion = [GetVersion new];
     [getVersion appStoreUpdateVersion];
     getVersion.block = ^(NSDictionary *dic){
         [self showVersionUpdate:dic];
     };
+    
+    isShowSlider = YES;
+    // 初始化从屏幕边边扫动的手势
+    UIScreenEdgePanGestureRecognizer *leftEdgeGesture = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(tapMoveLeftAction:)];
+    leftEdgeGesture.edges = UIRectEdgeLeft;
+    leftEdgeGesture.delegate = self;
+    [self.view addGestureRecognizer:leftEdgeGesture];
 }
+
+- (void)tapMoveLeftAction:(UIScreenEdgePanGestureRecognizer *)gesture {
+//    self.showSlider(YES);
+    NSLog(@"左边");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"SHOWSLIDER" object:self userInfo:@{@"showSlider":@(YES)}];
+}
+
 #pragma mark - 接收 NAVIGATIONCHANGE 通知
 - (void)receiveNotification:(NSNotification *)sender {
     
@@ -234,13 +251,16 @@
     // 将greenView 添加到 navigationBar 的 0 位置，
     [self.navigationController.navigationBar insertSubview:self.greenView atIndex:0];
 }
-
+#pragma mark - 初始化定位服务
 - (void)locationSevice {        // 定位设置
     
     _locService = [[BMKLocationService alloc] init];    // 初始化定位 服务
-    
+//    _locService.distanceFilter = 100;
     [_locService startUserLocationService];     // 开启定位
     
+    _locService.headingFilter = 4;
+    _locService.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    _locService.pausesLocationUpdatesAutomatically = YES;
     _geocodesearch = [[BMKGeoCodeSearch alloc] init];
 }
 #pragma mark - 跳转到选择城市界面
@@ -256,9 +276,11 @@
 #pragma mark - 出现侧边栏
 - (void)showSlideVC: (UIButton *)sender {
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"SHOWSLIDER" object:self userInfo:@{@"showSlider":@(YES)}];
+    
 }
 
-#pragma mark - location sevice delegate - 
+#pragma mark - location sevice delegate -
 /**
  *用户位置更新后，会调用此函数
  *@param userLocation 新的用户位置
@@ -267,11 +289,11 @@
     
     CLLocationCoordinate2D pt = (CLLocationCoordinate2D){0, 0};
     pt = (CLLocationCoordinate2D){userLocation.location.coordinate.latitude, userLocation.location.coordinate.longitude};
-    
+
     BMKReverseGeoCodeOption *reverseGeocodeSearchOption = [[BMKReverseGeoCodeOption alloc]init];    ///反geo检索信息类
     reverseGeocodeSearchOption.reverseGeoPoint = pt;    ///经纬度
     BOOL flag = [_geocodesearch reverseGeoCode:reverseGeocodeSearchOption];
-    
+
     if(flag)
     {
         NSLog(@"反geo检索发送成功");
@@ -280,40 +302,71 @@
         NSLog(@"反geo检索发送失败");
         self.leftBarAreaLabel.text = @"定位失败";
     }
-   
+
     [_locService stopUserLocationService];
 }
-
+/**
+ *返回反地理编码搜索结果
+ */
 -(void) onGetReverseGeoCodeResult:(BMKGeoCodeSearch *)searcher result:(BMKReverseGeoCodeResult *)result errorCode:(BMKSearchErrorCode)error
 {
     NSLog(@"定位结果：%u",error);
+    
+    NSString *street;
+    
     if (error == 9) {
-        self.leftBarAreaLabel.text = @"网络超时";
-        return;
+        self.leftBarAreaLabel.text = @"无法定位";
+        street = @"哎呦，定位不到您的位置哦";
+        
+    } else {
+    
+        self.cityNameStr = result.addressDetail.city; // 拿到当前城市
+        self.leftBarAreaLabel.text = self.cityNameStr;
+        street = [NSString stringWithFormat:@"%@%@",result.addressDetail.district, result.addressDetail.streetName];
     }
-    self.cityNameStr = result.addressDetail.city; // 拿到当前城市
-    self.leftBarAreaLabel.text = self.cityNameStr;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"FRESHADDRESS" object:self userInfo:@{@"street":street}];
 }
 
 #pragma mark - scroll delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
     self.segmentedIndex = 0;
-    if (self.myCollectionView.contentOffset.x >= Screen_Width/2 && self.myCollectionView.contentOffset.x < Screen_Width*1.5) {
-        self.segmentedIndex = 1;
-        
-    } else if (self.myCollectionView.contentOffset.x >= Screen_Width*1.5 ) {
-        self.segmentedIndex = 2;
-        
-    } else {
-        self.segmentedIndex = 0;
-    }
+    CGFloat contentOffSetX = self.myCollectionView.contentOffset.x;
     
-    [self.naviSegmentedControl setSelectedSegmentIndex: self.segmentedIndex];
-    // 设置 选中的指示器的中心位置
-    CGFloat x = self.segmentedIndex*self.naviSegmentedControl.frame.size.width/3+self.naviSegmentedControl.frame.size.width/6;
+//    NSLog(@"%d",isShowSlider);
+//    
+//    if (!isShowSlider) {
     
-    self.segmentedIndexView.center = CGPointMake(x+3, self.naviSegmentedControl.frame.size.height);
+        if (contentOffSetX >= Screen_Width/2 && contentOffSetX < Screen_Width*1.5) {
+            self.segmentedIndex = 1;
+            
+        } else if (contentOffSetX >= Screen_Width*1.5 ) {
+            self.segmentedIndex = 2;
+            
+        } else {
+            self.segmentedIndex = 0;
+        }
+        
+        [self.naviSegmentedControl setSelectedSegmentIndex: self.segmentedIndex];
+        // 设置 选中的指示器的中心位置
+        CGFloat x = self.segmentedIndex*self.naviSegmentedControl.frame.size.width/3+self.naviSegmentedControl.frame.size.width/6;
+        
+        self.segmentedIndexView.center = CGPointMake(x+3, self.naviSegmentedControl.frame.size.height);
+//    }else {
+//        
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"SHOWSLIDER" object:self userInfo:@{@"showSlider":@(NO)}];
+//        isShowSlider = YES;
+//    }
+//    
+//    if (contentOffSetX < 0) {
+//        isShowSlider = !isShowSlider;
+//        if (isShowSlider) {
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"SHOWSLIDER" object:self userInfo:@{@"showSlider":@(isShowSlider)}];
+//            
+//        }
+//        return;
+//    }
     
 //    [self changeWithFloat:self.myCollectionView.contentOffset.x];
 }
@@ -361,7 +414,7 @@
     [self gotoSearchVC];
     return NO;
 }
-
+#pragma mark - 跳转搜索界面
 - (void)gotoSearchVC {
     
     SearchViewController *searchVC = [SearchViewController new];
@@ -384,12 +437,6 @@
         // 推送到AppStore  “id” 字符不能缺少
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%@",APPID]]];
     }];
-    
-//    UITextView *textView = [UITextView new];
-//    [alertController]
-//    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-//        
-//    }];
     
     [alertController addAction:ignoreAction];
     [alertController addAction:updateAction];
@@ -510,6 +557,9 @@
         
         _myCollectionView.pagingEnabled = YES;      // 设置分页
         
+         // 关闭了滚动的功能，因为此处与侧滑显示侧边栏手势冲突
+        _myCollectionView.scrollEnabled = NO;
+        
         [self.view addSubview:_myCollectionView];
         
         [_myCollectionView registerClass:[HomeCollectionViewCell class] forCellWithReuseIdentifier:@"HomeCollectionViewCell"];
@@ -571,7 +621,7 @@
         
         _slideButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _slideButton.frame = CGRectMake(0, 0, 44, 44);
-        [_slideButton setImage:[UIImage imageNamed:@"trash"] forState:0];
+        [_slideButton setImage:[UIImage imageNamed:@"home_slider"] forState:0];
         [_slideButton addTarget:self action:@selector(showSlideVC:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _slideButton;

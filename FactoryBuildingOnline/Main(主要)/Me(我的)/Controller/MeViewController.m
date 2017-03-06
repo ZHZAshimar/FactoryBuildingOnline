@@ -209,7 +209,7 @@
             
         } else {    // 未登录状态
             firstHeadReusableView.userHeadImageView.image = [UIImage imageNamed:@"my_normal"];
-            [firstHeadReusableView.nameBtn setTitle:@"未登录，请登录 >" forState:0];
+            [firstHeadReusableView.nameBtn setTitle:@"未登录，点我登录 >" forState:0];
             [firstHeadReusableView.hexagonButton setImage:[UIImage imageNamed:@"my_reserve"] forState:0];
             firstHeadReusableView.hexagonShapeLayer.fillColor = GREEN_19b8.CGColor;
             firstHeadReusableView.publishLabel.text = @"发布\n0";

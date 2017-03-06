@@ -259,7 +259,10 @@
 		A66E7E261E5D8B2D00F571B2 /* TextCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A66E7E241E5D8B2D00F571B2 /* TextCollectionViewCell.xib */; };
 		A69EA3A01E56955F0048D220 /* MyReserveCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A69EA39E1E56955F0048D220 /* MyReserveCollectionViewCell.m */; };
 		A69EA3A11E56955F0048D220 /* MyReserveCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A69EA39F1E56955F0048D220 /* MyReserveCollectionViewCell.xib */; };
+		A6C9B3B31E69DB9400B59B23 /* MainCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C9B3B21E69DB9400B59B23 /* MainCoverView.m */; };
 		A6D55C5C1E5546FF003C04CC /* ScanReserveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D55C5B1E5546FF003C04CC /* ScanReserveViewController.m */; };
+		A6E1CA341E6904D60037FC19 /* SliderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E1CA331E6904D60037FC19 /* SliderViewController.m */; };
+		A6E1CA371E6956360037FC19 /* SliderHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E1CA361E6956360037FC19 /* SliderHeadView.m */; };
 		A6ECF76F1E4C5911009E0FB6 /* HomeOfHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 095D9FCD1E271B060017B3A9 /* HomeOfHomeViewController.m */; };
 		A6F531AE1E5298560042AA22 /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F531931E5298560042AA22 /* ShareSDK.framework */; };
 		A6F531AF1E5298560042AA22 /* ShareSDKConfigFile.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A6F531961E5298560042AA22 /* ShareSDKConfigFile.bundle */; };
@@ -744,8 +747,14 @@
 		A69EA39D1E56955F0048D220 /* MyReserveCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyReserveCollectionViewCell.h; sourceTree = "<group>"; };
 		A69EA39E1E56955F0048D220 /* MyReserveCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyReserveCollectionViewCell.m; sourceTree = "<group>"; };
 		A69EA39F1E56955F0048D220 /* MyReserveCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyReserveCollectionViewCell.xib; sourceTree = "<group>"; };
+		A6C9B3B11E69DB9400B59B23 /* MainCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainCoverView.h; sourceTree = "<group>"; };
+		A6C9B3B21E69DB9400B59B23 /* MainCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainCoverView.m; sourceTree = "<group>"; };
 		A6D55C5A1E5546FF003C04CC /* ScanReserveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanReserveViewController.h; sourceTree = "<group>"; };
 		A6D55C5B1E5546FF003C04CC /* ScanReserveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanReserveViewController.m; sourceTree = "<group>"; };
+		A6E1CA321E6904D60037FC19 /* SliderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderViewController.h; sourceTree = "<group>"; };
+		A6E1CA331E6904D60037FC19 /* SliderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderViewController.m; sourceTree = "<group>"; };
+		A6E1CA351E6956360037FC19 /* SliderHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderHeadView.h; sourceTree = "<group>"; };
+		A6E1CA361E6956360037FC19 /* SliderHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderHeadView.m; sourceTree = "<group>"; };
 		A6F531931E5298560042AA22 /* ShareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDK.framework; sourceTree = "<group>"; };
 		A6F531961E5298560042AA22 /* ShareSDKConfigFile.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDKConfigFile.bundle; sourceTree = "<group>"; };
 		A6F531971E5298560042AA22 /* ShareSDKConfigFile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKConfigFile.framework; sourceTree = "<group>"; };
@@ -1064,8 +1073,9 @@
 			children = (
 				098CAAD21D9DED910079B69E /* Base(基础类) */,
 				09A083111D9CAF8200666393 /* Other */,
-				09EC2C861DE2D57A00A7F6D4 /* Home */,
 				09DDBAE71E2EFFC700168286 /* Add */,
+				A6E1CA2D1E6904130037FC19 /* Slider(侧边栏) */,
+				09EC2C861DE2D57A00A7F6D4 /* Home */,
 				0935878B1D9CACC70035AAF6 /* Me(我的) */,
 				093587901D9CACC70035AAF6 /* Message(消息) */,
 				093587951D9CACC70035AAF6 /* Recommend(推荐) */,
@@ -1609,9 +1619,9 @@
 				09EC2C8F1DE2D57A00A7F6D4 /* MapViewController.h */,
 				09EC2C901DE2D57A00A7F6D4 /* MapViewController.m */,
 				09EC2C911DE2D57A00A7F6D4 /* MapViewController.xib */,
-				09EC2CA71DE2D57A00A7F6D4 /* SearchViewController.h */,
 				09EC2C941DE2D57A00A7F6D4 /* Publish */,
 				09EC2CA81DE2D57A00A7F6D4 /* SearchViewController.m */,
+				09EC2CA71DE2D57A00A7F6D4 /* SearchViewController.h */,
 				092BBB6A1DFE9AAF00856691 /* SearchResultViewController.h */,
 				092BBB6B1DFE9AAF00856691 /* SearchResultViewController.m */,
 				09EC2CA91DE2D57A00A7F6D4 /* SelectCityTableViewController.h */,
@@ -1912,6 +1922,44 @@
 				A1D87FAC61F70E80126C6F43 /* libPods-FactoryBuildingOnline.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A6E1CA2D1E6904130037FC19 /* Slider(侧边栏) */ = {
+			isa = PBXGroup;
+			children = (
+				A6E1CA2E1E69043A0037FC19 /* Model */,
+				A6E1CA311E6904750037FC19 /* Controller */,
+				A6E1CA2F1E69043A0037FC19 /* View */,
+			);
+			path = "Slider(侧边栏)";
+			sourceTree = "<group>";
+		};
+		A6E1CA2E1E69043A0037FC19 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A6E1CA2F1E69043A0037FC19 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A6E1CA351E6956360037FC19 /* SliderHeadView.h */,
+				A6E1CA361E6956360037FC19 /* SliderHeadView.m */,
+				A6C9B3B11E69DB9400B59B23 /* MainCoverView.h */,
+				A6C9B3B21E69DB9400B59B23 /* MainCoverView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A6E1CA311E6904750037FC19 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A6E1CA321E6904D60037FC19 /* SliderViewController.h */,
+				A6E1CA331E6904D60037FC19 /* SliderViewController.m */,
+			);
+			name = Controller;
+			path = View/Controller;
 			sourceTree = "<group>";
 		};
 		A6F531921E5298560042AA22 /* ShareSDK */ = {
@@ -2284,6 +2332,7 @@
 				09B665A41DB9F1B70094A076 /* TZImageManager.m in Sources */,
 				09EC2D3A1DE2D57B00A7F6D4 /* PublisherCollectionViewCell.m in Sources */,
 				09EC2D271DE2D57A00A7F6D4 /* GeoCodeOfBaiduMap.m in Sources */,
+				A6E1CA371E6956360037FC19 /* SliderHeadView.m in Sources */,
 				091EAF911DBB5E4A0006CBED /* JSONKeyMapper.m in Sources */,
 				09588F201DD41D7C0001DAA2 /* JDYBrowseCollectionViewCell.m in Sources */,
 				096DB8EE1E4AF41300775CA6 /* AppFeedbackViewController.m in Sources */,
@@ -2322,6 +2371,7 @@
 				09DEEE151DA3792A00D696C4 /* README.md in Sources */,
 				09588F2C1DD41D7C0001DAA2 /* UIApplication+JTSImageViewController.m in Sources */,
 				0925F0901E2E03D200528F9E /* AddCollectionViewCell.m in Sources */,
+				A6C9B3B31E69DB9400B59B23 /* MainCoverView.m in Sources */,
 				098CAAD81D9DEEB00079B69E /* BaseNavigationController.m in Sources */,
 				0974E4111DD05CFD00112F2B /* NSData+AES.m in Sources */,
 				09EBC2201DEEE54F00E39C51 /* HomeFactoryModel.m in Sources */,
@@ -2413,6 +2463,7 @@
 				A60129211E5D255400A9F45D /* GetVersion.m in Sources */,
 				09C9E54A1E480CA2004A72B8 /* ExpertHomeRequest.m in Sources */,
 				09B665A61DB9F1B70094A076 /* TZImagePickerController.m in Sources */,
+				A6E1CA341E6904D60037FC19 /* SliderViewController.m in Sources */,
 				09EC2D231DE2D57A00A7F6D4 /* SelectCityTableViewController.m in Sources */,
 				09FBC6021E319D12005ABB36 /* BrokerAreaViewController.m in Sources */,
 				09588F281DD41D7C0001DAA2 /* JTSAnimatedGIFUtility.m in Sources */,
