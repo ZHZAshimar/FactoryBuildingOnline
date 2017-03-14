@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>channel</key>
+		<string>推荐</string>
+		<key>view</key>
+		<string>NRemmandView</string>
+		<key>tag</key>
+		<string>0</string>
+	</dict>
+	<dict>
+		<key>channel</key>
+		<string>行情</string>
+		<key>view</key>
+		<string>NMarketView</string>
+		<key>tag</key>
+		<string>1</string>
+	</dict>
+	<dict>
+		<key>channel</key>
+		<string>排行榜</string>
+		<key>view</key>
+		<string>RankingListView</string>
+		<key>tag</key>
+		<string>2</string>
+	</dict>
+	<dict>
+		<key>channel</key>
+		<string>小视频</string>
+		<key>view</key>
+		<string>LittleVideoView</string>
+		<key>tag</key>
+		<string>3</string>
+	</dict>
+	<dict>
+		<key>channel</key>
+		<string>附近</string>
+		<key>view</key>
+		<string>NearView</string>
+		<key>tag</key>
+		<string>4</string>
+	</dict>
+	<dict>
+		<key>channel</key>
+		<string>FM</string>
+		<key>view</key>
+		<string>FMView</string>
+		<key>tag</key>
+		<string>5</string>
+	</dict>
+</array>
+</plist>

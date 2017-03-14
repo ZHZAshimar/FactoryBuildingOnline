@@ -16,13 +16,14 @@
 //    #define URL_HOST @"http://api.oncom.cn:8000/api/v1/"
     #define URL_HOST @"http://oncom.cn:8000/api/v1/"     // 开发环境
 //    #define URL_HOST @"http://192.168.0.195:8000/api/v1"
+//    #define URL_HOST @"http://192.168.0.195:8000/"
 #else
 
     // 测试服务器
 //    #define URL_HOST @"http://api.oncom.cn:8000/api/v1/"    // 上架 服务器
 #define URL_HOST @"http://oncom.cn:8000/api/v1/"     // 开发环境
 //#define URL_HOST @"http://192.168.0.195:8000/api/v1"
-
+//#define URL_HOST @"http://192.168.0.195:8000/"
 #endif /* CustomURL_h */
 
 /**

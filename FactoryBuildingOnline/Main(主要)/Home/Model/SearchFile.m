@@ -9,6 +9,8 @@
 #import "SearchFile.h"
 
 @implementation SearchFile
+//@"searchText.txt"
+
 /**
  *  写入search数组文件
  *
@@ -17,14 +19,14 @@
  *  @return BooL  YES 写入成功 ， NO 写入失败
  */
 
-+(BOOL)writeSearchFileArray:(NSMutableArray *)mArray
++(BOOL)writeSearchFileArray:(NSMutableArray *)mArray documentNamue:(NSString *)name
 {
     NSLog(@"writeFileArray\n");
     //新建userinfomation数组用来存一些信息
     NSArray *writeArr = mArray;
     
     //把writeArr这个数组存入程序指定的一个文件里
-    if ([writeArr writeToFile:[SearchFile documentsPath:@"searchText.txt"] atomically:YES]) {
+    if ([writeArr writeToFile:[SearchFile documentsPath:name] atomically:YES]) {
         
         NSLog(@"保存成功！");
         return YES;
@@ -35,13 +37,13 @@
     }
 }
 /// 读取文件
-+(NSArray *)readFileArray
++(NSArray *)readFileArrayWithdocumentNamue:(NSString *)name
 {
     NSLog(@"readfile........\n");
     //dataPath 表示当前目录下指定的一个文件 data.plist
     //NSString *dataPath = [[NSBundle mainBundle] pathForResource:@"Data" ofType:@"plist"];
     //filePath 表示程序目录下指定文件
-    NSString *filePath = [SearchFile documentsPath:@"searchText.txt"];
+    NSString *filePath = [SearchFile documentsPath:name];
     //从filePath 这个指定的文件里读
     NSArray *searchArr = [NSArray arrayWithContentsOfFile:filePath];
     
@@ -52,10 +54,10 @@
  *
  *  @return BooL  YES 删除成功 ， NO 删除失败
  */
-+ (BOOL)deleteSearchFile {
++ (BOOL)deleteSearchFileWithdocumentNamue:(NSString *)name {
     
     //filePath 表示程序目录下指定文件
-    NSString *filePath = [SearchFile documentsPath:@"searchText.txt"];
+    NSString *filePath = [SearchFile documentsPath:name];
     
     NSFileManager *manager = [NSFileManager defaultManager];
     NSError *error;

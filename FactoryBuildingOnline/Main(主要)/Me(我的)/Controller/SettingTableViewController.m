@@ -143,7 +143,7 @@
         cacheLabel.text = @"缓存：0.00M";
         
         [WantedMessageModel deleteDatabase];  // 删除数据库
-        [SearchFile deleteSearchFile];  // 删除文件
+        [SearchFile deleteSearchFileWithdocumentNamue:@"searchText.txt"];  // 删除文件
     } else {
     
         switch (indexPath.row) {

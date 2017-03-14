@@ -689,7 +689,6 @@
     };
 }
 
-
 - (void)tapImageGestureAction: (UITapGestureRecognizer *)sender {
     
     PictureCollectViewController *pictureVC = [[PictureCollectViewController alloc] init];

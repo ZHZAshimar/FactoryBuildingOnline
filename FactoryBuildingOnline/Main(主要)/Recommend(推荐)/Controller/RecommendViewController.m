@@ -453,9 +453,7 @@
         }
         
         weakSelf.segmentedZoneStr = selectStr;
-        if (selectStr.length <= 2) {
-            weakSelf.segmentedZoneStr = [NSString stringWithFormat:@"  %@  ",selectStr];
-        }
+        
         weakSelf.rightSelectIndex = indexPath.row;
         weakSelf.segmentedTitleArray = @[weakSelf.segmentedZoneStr,weakSelf.segmentedPriceStr,weakSelf.segmentedAreaStr];
 

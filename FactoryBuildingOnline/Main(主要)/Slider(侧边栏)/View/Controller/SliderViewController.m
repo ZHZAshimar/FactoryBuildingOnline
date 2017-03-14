@@ -38,15 +38,14 @@
 
 #pragma mark - 加载数据
 - (void)loadData {
-    
     self.mDataSource = [NSMutableArray arrayWithObjects:
   @{@"title":@"电子合同",@"logo":@"slider_contract"},
   @{@"title":@"电子名片",@"logo":@"slider_card"},
-  @{@"title":@"运动与健康",@"logo":@"slider_activity"},
+  @{@"title":@"运动健康",@"logo":@"slider_activity"},
   @{@"title":@"社保服务",@"logo":@"slider_socialSecurity"},
   @{@"title":@"在线考勤",@"logo":@"slider_attendance"},
   @{@"title":@"客户服务",@"logo":@"slider_service"},
-  @{@"title":@"亲戚计算器",@"logo":@"slider_relative"},nil];
+  @{@"title":@"计算器",@"logo":@"slider_relative"},nil];
 }
 
 #pragma mark - 添加右扫手势，以隐藏侧边栏
@@ -108,7 +107,7 @@
     cell.textLabel.textColor = BLACK_42;
     cell.backgroundColor = [UIColor clearColor];
     cell.imageView.image = [UIImage imageNamed:dic[@"logo"]];
-    
+    cell.textLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:15]];
     // 设置选中时的背景颜色
     UIView *selectBgColorView = [[UIView alloc] initWithFrame:cell.frame];
     selectBgColorView.backgroundColor = [UIColor whiteColor];

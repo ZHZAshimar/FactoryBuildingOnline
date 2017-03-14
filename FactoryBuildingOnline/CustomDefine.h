@@ -58,6 +58,7 @@
 #define BLACK_4c [UIColor colorWithHex:0x4c4c4c]
 #define BLACK_1a [UIColor colorWithHex:0x1a1a1a]
 #define BLACK_138a [UIColor colorWithHex:0x138a5b]
+#define BLACK_66 [UIColor colorWithHex:0x666666]
 
 #define GREEN_1ab8 [UIColor colorWithHex:0x1ab80f]
 #define GREEN_bg   [UIColor colorWithHex:0xbaf1b7]

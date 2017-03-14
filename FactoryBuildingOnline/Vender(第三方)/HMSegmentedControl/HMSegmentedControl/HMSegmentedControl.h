@@ -10,30 +10,30 @@
 
 @class HMSegmentedControl;
 
+typedef void (^IndexChangeBlock)(NSInteger index);
+
 // ZHZ 增加 选中相同的 index 的回调
 typedef void (^IndexSelectSameBlock)(NSInteger index);
 
-typedef void (^IndexChangeBlock)(NSInteger index);
-
 typedef NSAttributedString *(^HMTitleFormatterBlock)(HMSegmentedControl *segmentedControl, NSString *title, NSUInteger index, BOOL selected);
 
-typedef enum {
+typedef NS_ENUM(NSInteger, HMSegmentedControlSelectionStyle) {
     HMSegmentedControlSelectionStyleTextWidthStripe, // Indicator width will only be as big as the text width
     HMSegmentedControlSelectionStyleFullWidthStripe, // Indicator width will fill the whole segment
     HMSegmentedControlSelectionStyleBox, // A rectangle that covers the whole segment
     HMSegmentedControlSelectionStyleArrow // An arrow in the middle of the segment pointing up or down depending on `HMSegmentedControlSelectionIndicatorLocation`
-} HMSegmentedControlSelectionStyle;
+};
 
-typedef enum {
+typedef NS_ENUM(NSInteger, HMSegmentedControlSelectionIndicatorLocation) {
     HMSegmentedControlSelectionIndicatorLocationUp,
     HMSegmentedControlSelectionIndicatorLocationDown,
 	HMSegmentedControlSelectionIndicatorLocationNone // No selection indicator
-} HMSegmentedControlSelectionIndicatorLocation;
+};
 
-typedef enum {
+typedef NS_ENUM(NSInteger, HMSegmentedControlSegmentWidthStyle) {
     HMSegmentedControlSegmentWidthStyleFixed, // Segment width is fixed
     HMSegmentedControlSegmentWidthStyleDynamic, // Segment width will only be as big as the text width (including inset)
-} HMSegmentedControlSegmentWidthStyle;
+};
 
 typedef NS_OPTIONS(NSInteger, HMSegmentedControlBorderType) {
     HMSegmentedControlBorderTypeNone = 0,
@@ -47,17 +47,17 @@ enum {
     HMSegmentedControlNoSegment = -1   // Segment index for no selected segment
 };
 
-typedef enum {
+typedef NS_ENUM(NSInteger, HMSegmentedControlType) {
     HMSegmentedControlTypeText,
     HMSegmentedControlTypeImages,
 	HMSegmentedControlTypeTextImages
-} HMSegmentedControlType;
+};
 
 @interface HMSegmentedControl : UIControl
 
-@property (nonatomic, strong) NSArray *sectionTitles;
-@property (nonatomic, strong) NSArray *sectionImages;
-@property (nonatomic, strong) NSArray *sectionSelectedImages;
+@property (nonatomic, strong) NSArray<NSString *> *sectionTitles;
+@property (nonatomic, strong) NSArray<UIImage *> *sectionImages;
+@property (nonatomic, strong) NSArray<UIImage *> *sectionSelectedImages;
 
 /**
  Provide a block to be executed when selected index is changed.
@@ -65,10 +65,6 @@ typedef enum {
  Alternativly, you could use `addTarget:action:forControlEvents:`
  */
 @property (nonatomic, copy) IndexChangeBlock indexChangeBlock;
-
-// ZHZ 增加一个点击相同的 index 响应的方法
-@property (nonatomic, copy) IndexSelectSameBlock indexSelectSameBlock;
-@property (nonatomic, assign) BOOL showTextLeftImageRight;
 
 /**
  Used to apply custom text styling to titles when set.
@@ -97,11 +93,18 @@ typedef enum {
 @property (nonatomic, strong) UIColor *backgroundColor UI_APPEARANCE_SELECTOR;
 
 /**
- Color for the selection indicator stripe/box
+ Color for the selection indicator stripe
  
  Default is `R:52, G:181, B:229`
  */
 @property (nonatomic, strong) UIColor *selectionIndicatorColor UI_APPEARANCE_SELECTOR;
+
+/**
+ Color for the selection indicator box
+ 
+ Default is selectionIndicatorColor
+ */
+@property (nonatomic, strong) UIColor *selectionIndicatorBoxColor UI_APPEARANCE_SELECTOR;
 
 /**
  Color for the vertical divider between segments.
@@ -222,22 +225,33 @@ typedef enum {
  */
 @property (nonatomic, readwrite) UIEdgeInsets segmentEdgeInset;
 
+@property (nonatomic, readwrite) UIEdgeInsets enlargeEdgeInset;
+
 /**
  Default is YES. Set to NO to disable animation during user selection.
  */
 @property (nonatomic) BOOL shouldAnimateUserSelection;
 
-
+// 选中的指示器对应的layer
 @property (nonatomic, strong) CALayer *selectionIndicatorStripLayer;
 
-- (id)initWithSectionTitles:(NSArray *)sectiontitles;
-- (id)initWithSectionImages:(NSArray *)sectionImages sectionSelectedImages:(NSArray *)sectionSelectedImages;
-- (instancetype)initWithSectionImages:(NSArray *)sectionImages sectionSelectedImages:(NSArray *)sectionSelectedImages titlesForSections:(NSArray *)sectiontitles;
+// 在原来的基础上减掉多长的距离
+@property (nonatomic, assign) CGFloat shouldCutWidth;
+
+// ZHZ 增加一个点击相同的 index 响应的方法
+@property (nonatomic, copy) IndexSelectSameBlock indexSelectSameBlock;
+
+@property (nonatomic, assign) BOOL showTextLeftImageRight;
+
+
+- (id)initWithSectionTitles:(NSArray<NSString *> *)sectiontitles;
+- (id)initWithSectionImages:(NSArray<UIImage *> *)sectionImages sectionSelectedImages:(NSArray<UIImage *> *)sectionSelectedImages;
+- (instancetype)initWithSectionImages:(NSArray<UIImage *> *)sectionImages sectionSelectedImages:(NSArray<UIImage *> *)sectionSelectedImages titlesForSections:(NSArray<NSString *> *)sectiontitles;
 - (void)setSelectedSegmentIndex:(NSUInteger)index animated:(BOOL)animated;
 - (void)setIndexChangeBlock:(IndexChangeBlock)indexChangeBlock;
 - (void)setTitleFormatter:(HMTitleFormatterBlock)titleFormatter;
-
 //  ZHZ 修改点击回调
 - (void)setIndexSelectSameBlock:(IndexSelectSameBlock)indexSelectSameBlock;
 - (instancetype)initWithSectionImages:(NSArray *)sectionImages sectionSelectedImages:(NSArray *)sectionSelectedImages titlesForSections:(NSArray *)sectiontitles showTextAndImage:(BOOL)showTextAndImage;
+
 @end

@@ -10,6 +10,8 @@
 
 @interface SearchFile : NSObject
 
+
+
 /**
  *  写入search数组文件
  *
@@ -18,20 +20,23 @@
  *  @return BooL  YES 写入成功 ， NO 写入失败
  */
 
-+(BOOL)writeSearchFileArray:(NSMutableArray *)mArray;
++(BOOL)writeSearchFileArray:(NSMutableArray *)mArray documentNamue:(NSString *)name;
 
 /**
  *  读取search数组文件
  *
  *  @return NSArray
  */
-+(NSArray *)readFileArray;
++(NSArray *)readFileArrayWithdocumentNamue:(NSString *)name;
 
 /**
  *  删除search数组文件
  *
  *  @return BooL  YES 删除成功 ， NO 删除失败
  */
-+ (BOOL)deleteSearchFile;
++ (BOOL)deleteSearchFileWithdocumentNamue:(NSString *)name;
+
+
+
 
 @end
