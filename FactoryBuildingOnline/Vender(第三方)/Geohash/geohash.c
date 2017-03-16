@@ -164,19 +164,19 @@ GEOHASH_encode(double lat, double lon, unsigned int len)
     char *hash;
     unsigned char bits = 0;
     double mid;
-    GEOHASH_range lat_range = {  90,  -90 };
+    GEOHASH_range lat_range = {  90,  -90 };    // 类
     GEOHASH_range lon_range = { 180, -180 };
 
     double val1, val2, val_tmp;
     GEOHASH_range *range1, *range2, *range_tmp;
 
-    assert(lat >= -90.0);
+    assert(lat >= -90.0);       // 断言
     assert(lat <= 90.0);
     assert(lon >= -180.0);
     assert(lon <= 180.0);
     assert(len <= MAX_HASH_LENGTH);
 
-    hash = (char *)malloc(sizeof(char) * (len + 1));
+    hash = (char *)malloc(sizeof(char) * (len + 1)); // malloc 相当于new
     if (hash == NULL)
         return NULL;
 
