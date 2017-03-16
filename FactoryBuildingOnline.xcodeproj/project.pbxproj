@@ -103,6 +103,14 @@
 		094860E21E496DA700845803 /* BoutiqueRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 094860E11E496DA700845803 /* BoutiqueRequest.m */; };
 		094860E51E49C26700845803 /* ScanHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 094860E41E49C26700845803 /* ScanHistoryViewController.m */; };
 		0948C7761DE7FFA8008DF715 /* SearchResultCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0948C7751DE7FFA7008DF715 /* SearchResultCollectionViewCell.m */; };
+		09527BBE1E7A7E0000D119DF /* ECCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09527BB51E7A7E0000D119DF /* ECCreateViewController.m */; };
+		09527BBF1E7A7E0000D119DF /* ECExportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09527BB81E7A7E0000D119DF /* ECExportViewController.m */; };
+		09527BC01E7A7E0000D119DF /* ECVisitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09527BBB1E7A7E0000D119DF /* ECVisitViewController.m */; };
+		09527BC11E7A7E0000D119DF /* ElectronicContractTabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09527BBD1E7A7E0000D119DF /* ElectronicContractTabbarViewController.m */; };
+		09527BC61E7A867D00D119DF /* ECCreateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09527BC41E7A867D00D119DF /* ECCreateTableViewCell.m */; };
+		09527BC71E7A867D00D119DF /* ECCreateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09527BC51E7A867D00D119DF /* ECCreateTableViewCell.xib */; };
+		09527BCB1E7A929A00D119DF /* ECVisitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09527BC91E7A929A00D119DF /* ECVisitTableViewCell.m */; };
+		09527BCC1E7A929A00D119DF /* ECVisitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09527BCA1E7A929A00D119DF /* ECVisitTableViewCell.xib */; };
 		09588F1C1DD41D7C0001DAA2 /* jdy_browseLoading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09588EF31DD41D7B0001DAA2 /* jdy_browseLoading@2x.png */; };
 		09588F1D1DD41D7C0001DAA2 /* jdy_browseLoading@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09588EF41DD41D7B0001DAA2 /* jdy_browseLoading@3x.png */; };
 		09588F1E1DD41D7C0001DAA2 /* JDYBrowseActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 09588EF61DD41D7B0001DAA2 /* JDYBrowseActionSheet.m */; };
@@ -531,6 +539,20 @@
 		094860E41E49C26700845803 /* ScanHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanHistoryViewController.m; sourceTree = "<group>"; };
 		0948C7741DE7FFA7008DF715 /* SearchResultCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultCollectionViewCell.h; sourceTree = "<group>"; };
 		0948C7751DE7FFA7008DF715 /* SearchResultCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultCollectionViewCell.m; sourceTree = "<group>"; };
+		09527BB41E7A7E0000D119DF /* ECCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECCreateViewController.h; sourceTree = "<group>"; };
+		09527BB51E7A7E0000D119DF /* ECCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECCreateViewController.m; sourceTree = "<group>"; };
+		09527BB71E7A7E0000D119DF /* ECExportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECExportViewController.h; sourceTree = "<group>"; };
+		09527BB81E7A7E0000D119DF /* ECExportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECExportViewController.m; sourceTree = "<group>"; };
+		09527BBA1E7A7E0000D119DF /* ECVisitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECVisitViewController.h; sourceTree = "<group>"; };
+		09527BBB1E7A7E0000D119DF /* ECVisitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECVisitViewController.m; sourceTree = "<group>"; };
+		09527BBC1E7A7E0000D119DF /* ElectronicContractTabbarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElectronicContractTabbarViewController.h; sourceTree = "<group>"; };
+		09527BBD1E7A7E0000D119DF /* ElectronicContractTabbarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ElectronicContractTabbarViewController.m; sourceTree = "<group>"; };
+		09527BC31E7A867D00D119DF /* ECCreateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECCreateTableViewCell.h; sourceTree = "<group>"; };
+		09527BC41E7A867D00D119DF /* ECCreateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECCreateTableViewCell.m; sourceTree = "<group>"; };
+		09527BC51E7A867D00D119DF /* ECCreateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ECCreateTableViewCell.xib; sourceTree = "<group>"; };
+		09527BC81E7A929A00D119DF /* ECVisitTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECVisitTableViewCell.h; sourceTree = "<group>"; };
+		09527BC91E7A929A00D119DF /* ECVisitTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECVisitTableViewCell.m; sourceTree = "<group>"; };
+		09527BCA1E7A929A00D119DF /* ECVisitTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ECVisitTableViewCell.xib; sourceTree = "<group>"; };
 		09588EF31DD41D7B0001DAA2 /* jdy_browseLoading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jdy_browseLoading@2x.png"; sourceTree = "<group>"; };
 		09588EF41DD41D7B0001DAA2 /* jdy_browseLoading@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jdy_browseLoading@3x.png"; sourceTree = "<group>"; };
 		09588EF51DD41D7B0001DAA2 /* JDYBrowseActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDYBrowseActionSheet.h; sourceTree = "<group>"; };
@@ -1544,6 +1566,58 @@
 			path = BoutiqueModel;
 			sourceTree = "<group>";
 		};
+		09527BB21E7A7E0000D119DF /* ElectronicContract(电子合同) */ = {
+			isa = PBXGroup;
+			children = (
+				09527BBC1E7A7E0000D119DF /* ElectronicContractTabbarViewController.h */,
+				09527BBD1E7A7E0000D119DF /* ElectronicContractTabbarViewController.m */,
+				09527BB31E7A7E0000D119DF /* ECCreate(创建合同) */,
+				09527BB61E7A7E0000D119DF /* ECExport(导出合同) */,
+				09527BB91E7A7E0000D119DF /* ECVisit(查看合同) */,
+			);
+			path = "ElectronicContract(电子合同)";
+			sourceTree = "<group>";
+		};
+		09527BB31E7A7E0000D119DF /* ECCreate(创建合同) */ = {
+			isa = PBXGroup;
+			children = (
+				09527BB41E7A7E0000D119DF /* ECCreateViewController.h */,
+				09527BB51E7A7E0000D119DF /* ECCreateViewController.m */,
+			);
+			path = "ECCreate(创建合同)";
+			sourceTree = "<group>";
+		};
+		09527BB61E7A7E0000D119DF /* ECExport(导出合同) */ = {
+			isa = PBXGroup;
+			children = (
+				09527BB71E7A7E0000D119DF /* ECExportViewController.h */,
+				09527BB81E7A7E0000D119DF /* ECExportViewController.m */,
+			);
+			path = "ECExport(导出合同)";
+			sourceTree = "<group>";
+		};
+		09527BB91E7A7E0000D119DF /* ECVisit(查看合同) */ = {
+			isa = PBXGroup;
+			children = (
+				09527BBA1E7A7E0000D119DF /* ECVisitViewController.h */,
+				09527BBB1E7A7E0000D119DF /* ECVisitViewController.m */,
+			);
+			path = "ECVisit(查看合同)";
+			sourceTree = "<group>";
+		};
+		09527BC21E7A7E5D00D119DF /* ElectronicContractView */ = {
+			isa = PBXGroup;
+			children = (
+				09527BC31E7A867D00D119DF /* ECCreateTableViewCell.h */,
+				09527BC41E7A867D00D119DF /* ECCreateTableViewCell.m */,
+				09527BC51E7A867D00D119DF /* ECCreateTableViewCell.xib */,
+				09527BC81E7A929A00D119DF /* ECVisitTableViewCell.h */,
+				09527BC91E7A929A00D119DF /* ECVisitTableViewCell.m */,
+				09527BCA1E7A929A00D119DF /* ECVisitTableViewCell.xib */,
+			);
+			path = ElectronicContractView;
+			sourceTree = "<group>";
+		};
 		09588EF11DD41D7B0001DAA2 /* PictureScan */ = {
 			isa = PBXGroup;
 			children = (
@@ -2194,6 +2268,7 @@
 			children = (
 				A643393C1E77972000D5FBAD /* SliderViewController.h */,
 				A643393D1E77972000D5FBAD /* SliderViewController.m */,
+				09527BB21E7A7E0000D119DF /* ElectronicContract(电子合同) */,
 				A643393E1E77972000D5FBAD /* SocialSecurity(社保) */,
 			);
 			path = Controller;
@@ -2276,6 +2351,8 @@
 		A6DB9D101E73850C00874D38 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				A6DB9D131E73850C00874D38 /* HomeViewController.h */,
+				A6DB9D141E73850C00874D38 /* HomeViewController.m */,
 				095D9FC91E271AC20017B3A9 /* HomeCollectionViewCell.h */,
 				095D9FCA1E271AC20017B3A9 /* HomeCollectionViewCell.m */,
 				095D9FCC1E271B060017B3A9 /* HomeOfHomeViewController.h */,
@@ -2284,8 +2361,6 @@
 				0927D8951E2C6E4900FE7B27 /* ExpertOfHomeViewController.m */,
 				A6DB9D111E73850C00874D38 /* BoutiqueViewController.h */,
 				A6DB9D121E73850C00874D38 /* BoutiqueViewController.m */,
-				A6DB9D131E73850C00874D38 /* HomeViewController.h */,
-				A6DB9D141E73850C00874D38 /* HomeViewController.m */,
 				A6DB9D151E73850C00874D38 /* MapViewController.h */,
 				A6DB9D161E73850C00874D38 /* MapViewController.m */,
 				A6DB9D171E73850C00874D38 /* MapViewController.xib */,
@@ -2377,6 +2452,7 @@
 		A6E1CA2F1E69043A0037FC19 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				09527BC21E7A7E5D00D119DF /* ElectronicContractView */,
 				A643395A1E77CEE300D5FBAD /* SocialSecurityView */,
 				A6E1CA351E6956360037FC19 /* SliderHeadView.h */,
 				A6E1CA361E6956360037FC19 /* SliderHeadView.m */,
@@ -2635,6 +2711,7 @@
 				A6F531BA1E5298560042AA22 /* read_me.txt in Resources */,
 				09588F1C1DD41D7C0001DAA2 /* jdy_browseLoading@2x.png in Resources */,
 				A6DB9D551E73F3A600874D38 /* NDynamicMapCollectionReusableView.xib in Resources */,
+				09527BCC1E7A929A00D119DF /* ECVisitTableViewCell.xib in Resources */,
 				A64881081E763FFE00B9F169 /* NDynamicFactoryCollectionViewCell.xib in Resources */,
 				095A6B091DAF679B0066E076 /* Main.storyboard in Resources */,
 				A6F531AF1E5298560042AA22 /* ShareSDKConfigFile.bundle in Resources */,
@@ -2664,6 +2741,7 @@
 				091D81C81DFA8CEA003DB151 /* BrokerDetailViewController.xib in Resources */,
 				A64339671E77CF1A00D5FBAD /* SSHomeCollectionViewCell.xib in Resources */,
 				09EC2D371DE2D57B00A7F6D4 /* DetailOfFactoryInfoCollectionViewCell.xib in Resources */,
+				09527BC71E7A867D00D119DF /* ECCreateTableViewCell.xib in Resources */,
 				0927D8A41E2C7AEC00FE7B27 /* ExpertPersonCollectionViewCell.xib in Resources */,
 				0905E53A1DBF512A0081EDE2 /* RegisterViewController.xib in Resources */,
 				09EC2D4E1DE2D57B00A7F6D4 /* ImagePlayerCollectionViewCell.xib in Resources */,
@@ -2815,6 +2893,7 @@
 				09DDBAEA1E2EFFEC00168286 /* ReserveViewController.m in Sources */,
 				09EC2D181DE2D57A00A7F6D4 /* PublishScrollViewViewController.m in Sources */,
 				094860DF1E496A0300845803 /* BoutiqueContacterModel.m in Sources */,
+				09527BC61E7A867D00D119DF /* ECCreateTableViewCell.m in Sources */,
 				095D9FCB1E271AC20017B3A9 /* HomeCollectionViewCell.m in Sources */,
 				09588F2E1DD41D7C0001DAA2 /* SJAvatarBrowser.m in Sources */,
 				09588F241DD41D7C0001DAA2 /* JDYBrowseViewController.m in Sources */,
@@ -2829,7 +2908,9 @@
 				09EBC21D1DEEE53500E39C51 /* HomeContacterModel.m in Sources */,
 				093816351DE3D9C2007916DB /* ContacterModel.m in Sources */,
 				09588F231DD41D7C0001DAA2 /* JDYBrowseRemindView.m in Sources */,
+				09527BCB1E7A929A00D119DF /* ECVisitTableViewCell.m in Sources */,
 				098CAAD51D9DEDE90079B69E /* BaseViewController.m in Sources */,
+				09527BBF1E7A7E0000D119DF /* ECExportViewController.m in Sources */,
 				09DEEE151DA3792A00D696C4 /* README.md in Sources */,
 				09588F2C1DD41D7C0001DAA2 /* UIApplication+JTSImageViewController.m in Sources */,
 				0925F0901E2E03D200528F9E /* AddCollectionViewCell.m in Sources */,
@@ -2845,6 +2926,7 @@
 				A6DB9D211E73850C00874D38 /* MapViewController.m in Sources */,
 				09CD77131DE2F8DF006A754D /* WantedMessageModel.m in Sources */,
 				091EAF8B1DBB5E4A0006CBED /* JSONModel.m in Sources */,
+				09527BC01E7A7E0000D119DF /* ECVisitViewController.m in Sources */,
 				A64339451E77972000D5FBAD /* SocialSecurityTabBarViewController.m in Sources */,
 				A643394E1E7797F200D5FBAD /* SSHomeViewController.m in Sources */,
 				0927D89F1E2C772F00FE7B27 /* ExpertImageCollectionReusableView.m in Sources */,
@@ -2900,7 +2982,9 @@
 				094860E21E496DA700845803 /* BoutiqueRequest.m in Sources */,
 				0927D9541E2CAB5D00FE7B27 /* AreaCollectionViewCell.m in Sources */,
 				A6DB9D291E739EFF00874D38 /* LittleVideoView.m in Sources */,
+				09527BBE1E7A7E0000D119DF /* ECCreateViewController.m in Sources */,
 				092896E31DF2769200B40DC5 /* ChangePasswordViewController.m in Sources */,
+				09527BC11E7A7E0000D119DF /* ElectronicContractTabbarViewController.m in Sources */,
 				094860D91E4969D200845803 /* BoutiqueWantedModel.m in Sources */,
 				A61935B11E710235006228A5 /* PGScView.m in Sources */,
 				09375B071DF4F398002A6D42 /* ForgetPsdViewController.m in Sources */,

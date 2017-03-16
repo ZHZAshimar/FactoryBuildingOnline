@@ -10,8 +10,8 @@
 #import "SliderHeadView.h"
 #import "FOLUserInforModel.h"
 #import "SecurityUtil.h"
-#import "SocialSecurityTabBarViewController.h"
-
+#import "SocialSecurityTabBarViewController.h"      // 社保
+#import "ElectronicContractTabbarViewController.h"  // 电子合同
 @interface SliderViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *myTableView;     // 表视图
@@ -123,7 +123,8 @@
     switch (indexPath.row) {
         case 0:
         {
-        
+            ElectronicContractTabbarViewController *ecTabBarVC = [ElectronicContractTabbarViewController new];
+            [self presentViewController:ecTabBarVC animated:YES completion:nil];
         }
             break;
         case 1:

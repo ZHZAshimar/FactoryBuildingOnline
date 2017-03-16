@@ -270,6 +270,38 @@
             endingLineNumber = "211"
             landmarkName = "-registerBtnAction:"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[RegisterViewController registerBtnAction:]"
+                  moduleName = "FactoryBuildingOnline"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/myios/Desktop/%E5%8E%82%E6%88%BF%E5%9C%A8%E7%BA%BF%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/Project%20source/1.0.2/FactoryBuildingOnline/FactoryBuildingOnline/Main(%E4%B8%BB%E8%A6%81)/Other/LoginAndRegister/Controller/RegisterViewController.m"
+                  timestampString = "511350844.722479"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "212"
+                  endingLineNumber = "212"
+                  offsetFromSymbolStart = "1308">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__44-[RegisterViewController registerBtnAction:]_block_invoke"
+                  moduleName = "FactoryBuildingOnline"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/myios/Desktop/%E5%8E%82%E6%88%BF%E5%9C%A8%E7%BA%BF%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/Project%20source/1.0.2/FactoryBuildingOnline/FactoryBuildingOnline/Main(%E4%B8%BB%E8%A6%81)/Other/LoginAndRegister/Controller/RegisterViewController.m"
+                  timestampString = "511350844.723811"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "213"
+                  endingLineNumber = "213"
+                  offsetFromSymbolStart = "140">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -487,7 +519,7 @@
                   moduleName = "FactoryBuildingOnline"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/myios/Desktop/%E5%8E%82%E6%88%BF%E5%9C%A8%E7%BA%BF%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/Project%20source/1.0.2/FactoryBuildingOnline/FactoryBuildingOnline/Main(%E4%B8%BB%E8%A6%81)/Me(%E6%88%91%E7%9A%84)/Model/MeNetRequest.m"
-                  timestampString = "508228225.531095"
+                  timestampString = "511350844.748706"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "137"
@@ -502,7 +534,7 @@
                   moduleName = "FactoryBuildingOnline"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/myios/Desktop/%E5%8E%82%E6%88%BF%E5%9C%A8%E7%BA%BF%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/Project%20source/1.0.2/FactoryBuildingOnline/FactoryBuildingOnline/Main(%E4%B8%BB%E8%A6%81)/Me(%E6%88%91%E7%9A%84)/Model/MeNetRequest.m"
-                  timestampString = "508228225.532433"
+                  timestampString = "511350844.750218"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "139"
