@@ -8,7 +8,7 @@
 
 #import "BaseViewController.h"
 #import "BaseNavigationController.h"
-#import <AliHotFix/AliHotFix.h>
+//#import <AliHotFix/AliHotFix.h>
 #import "HomeViewController.h"
 #import "LogoViewController.h"
 #import "MeViewController.h"
@@ -299,7 +299,7 @@
                                                object:nil];
     
     //应用进入前台就同步一次补丁
-    [AliHotFix sync];
+//    [AliHotFix sync];
 }
 #pragma mark - 跳转登录
 - (void)showLoginView {
