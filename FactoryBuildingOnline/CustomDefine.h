@@ -40,6 +40,7 @@
 #define GRAY_e6  [UIColor colorWithHex:0xe6e6e6]
 #define GRAY_9d9c  [UIColor colorWithHex:0x9d9ca2]
 #define GRAY_f4 [UIColor colorWithHex:0xf4f4f7]
+#define GRAY_F4F5F9 [UIColor colorWithHex:0xF4F5F9]
 #define GRAY_eb [UIColor colorWithHex:0xebebeb]
 #define GRAY_cc [UIColor colorWithHex:0xcccccc]
 #define GRAY_db [UIColor colorWithHex:0xdbdbdb]
@@ -58,7 +59,9 @@
 #define BLACK_4c [UIColor colorWithHex:0x4c4c4c]
 #define BLACK_1a [UIColor colorWithHex:0x1a1a1a]
 #define BLACK_138a [UIColor colorWithHex:0x138a5b]
+#define BLACK_33 [UIColor colorWithHex:0x333333]
 #define BLACK_66 [UIColor colorWithHex:0x666666]
+#define BLACK_99 [UIColor colorWithHex:0x999999]
 
 #define GREEN_1ab8 [UIColor colorWithHex:0x1ab80f]
 #define GREEN_bg   [UIColor colorWithHex:0xbaf1b7]

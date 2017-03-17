@@ -8,6 +8,7 @@
 
 #import "ECCreateViewController.h"
 #import "ECCreateTableViewCell.h"
+#import "ECWriteHouseContractViewController.h"// 房
 
 @interface ECCreateViewController ()<UITableViewDelegate, UITableViewDataSource>
 {
@@ -85,6 +86,19 @@
     cell.detailLabel.text = [NSString stringWithFormat:@"%@项必填",dic[@"detail"]];
     
     return cell;
+}
+
+#pragma mark - tableView delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.row == 3) {
+        
+        ECWriteHouseContractViewController *houseVC = [ECWriteHouseContractViewController new];
+        
+        [self.navigationController pushViewController:houseVC animated:YES];
+        
+    }
+    
 }
 
 #pragma mark - lazy load
