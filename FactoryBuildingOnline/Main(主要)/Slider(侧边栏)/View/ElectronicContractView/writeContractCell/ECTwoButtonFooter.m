@@ -51,7 +51,7 @@
 
 
 - (void)tagButonAction: (UIButton *)sender {
-    
+    self.tagBlock(sender.tag);
 }
 
 /*

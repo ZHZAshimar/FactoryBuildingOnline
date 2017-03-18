@@ -89,6 +89,11 @@
 		093683091DF6970500FB31C5 /* startPage_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 093683061DF6970500FB31C5 /* startPage_2.png */; };
 		0936830A1DF6970500FB31C5 /* startPage_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 093683071DF6970500FB31C5 /* startPage_2@2x.png */; };
 		0936830B1DF6970500FB31C5 /* startPage_2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 093683081DF6970500FB31C5 /* startPage_2@3x.png */; };
+		0936C1D71E7CC0C400D942EC /* ECDrawBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0936C1D61E7CC0C400D942EC /* ECDrawBoardView.m */; };
+		0936C1DA1E7CC10600D942EC /* ECSignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0936C1D91E7CC10600D942EC /* ECSignatureViewController.m */; };
+		0936C1DD1E7D02F800D942EC /* PickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0936C1DC1E7D02F800D942EC /* PickerView.m */; };
+		0936C2061E7D146A00D942EC /* ECHouseInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0936C2051E7D146A00D942EC /* ECHouseInputView.m */; };
+		0936C2091E7D2ABE00D942EC /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0936C2081E7D2ABE00D942EC /* DatePickerView.m */; };
 		09375B071DF4F398002A6D42 /* ForgetPsdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09375B061DF4F398002A6D42 /* ForgetPsdViewController.m */; };
 		093816321DE3D7F2007916DB /* FactoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 093816311DE3D7F2007916DB /* FactoryModel.m */; };
 		093816351DE3D9C2007916DB /* ContacterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 093816341DE3D9C2007916DB /* ContacterModel.m */; };
@@ -526,6 +531,16 @@
 		093683061DF6970500FB31C5 /* startPage_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = startPage_2.png; sourceTree = "<group>"; };
 		093683071DF6970500FB31C5 /* startPage_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "startPage_2@2x.png"; sourceTree = "<group>"; };
 		093683081DF6970500FB31C5 /* startPage_2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "startPage_2@3x.png"; sourceTree = "<group>"; };
+		0936C1D51E7CC0C400D942EC /* ECDrawBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECDrawBoardView.h; sourceTree = "<group>"; };
+		0936C1D61E7CC0C400D942EC /* ECDrawBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECDrawBoardView.m; sourceTree = "<group>"; };
+		0936C1D81E7CC10600D942EC /* ECSignatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSignatureViewController.h; sourceTree = "<group>"; };
+		0936C1D91E7CC10600D942EC /* ECSignatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSignatureViewController.m; sourceTree = "<group>"; };
+		0936C1DB1E7D02F800D942EC /* PickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerView.h; sourceTree = "<group>"; };
+		0936C1DC1E7D02F800D942EC /* PickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerView.m; sourceTree = "<group>"; };
+		0936C2041E7D146A00D942EC /* ECHouseInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECHouseInputView.h; sourceTree = "<group>"; };
+		0936C2051E7D146A00D942EC /* ECHouseInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECHouseInputView.m; sourceTree = "<group>"; };
+		0936C2071E7D2ABE00D942EC /* DatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerView.h; sourceTree = "<group>"; };
+		0936C2081E7D2ABE00D942EC /* DatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerView.m; sourceTree = "<group>"; };
 		09375B051DF4F398002A6D42 /* ForgetPsdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPsdViewController.h; sourceTree = "<group>"; };
 		09375B061DF4F398002A6D42 /* ForgetPsdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPsdViewController.m; sourceTree = "<group>"; };
 		093816301DE3D7F2007916DB /* FactoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FactoryModel.h; path = ../../Home/Model/FactoryModel.h; sourceTree = "<group>"; };
@@ -1587,6 +1602,10 @@
 				0925F0801E2DB1A900528F9E /* ZHZPageControl.m */,
 				0986EB0B1E3051F600D314E6 /* ZHZShareView.h */,
 				0986EB0C1E3051F600D314E6 /* ZHZShareView.m */,
+				0936C1DB1E7D02F800D942EC /* PickerView.h */,
+				0936C1DC1E7D02F800D942EC /* PickerView.m */,
+				0936C2071E7D2ABE00D942EC /* DatePickerView.h */,
+				0936C2081E7D2ABE00D942EC /* DatePickerView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1625,6 +1644,8 @@
 				09527BB51E7A7E0000D119DF /* ECCreateViewController.m */,
 				09E85AE11E7BB2ED0048AA45 /* ECWriteHouseContractViewController.h */,
 				09E85AE21E7BB2ED0048AA45 /* ECWriteHouseContractViewController.m */,
+				0936C1D81E7CC10600D942EC /* ECSignatureViewController.h */,
+				0936C1D91E7CC10600D942EC /* ECSignatureViewController.m */,
 			);
 			path = "ECCreate(创建合同)";
 			sourceTree = "<group>";
@@ -1662,6 +1683,8 @@
 				09E85ADB1E7B69F40048AA45 /* ECExportTableViewCell.xib */,
 				09E85ADE1E7B872E0048AA45 /* ShareViewOfContract.h */,
 				09E85ADF1E7B872E0048AA45 /* ShareViewOfContract.m */,
+				0936C1D51E7CC0C400D942EC /* ECDrawBoardView.h */,
+				0936C1D61E7CC0C400D942EC /* ECDrawBoardView.m */,
 			);
 			path = ElectronicContractView;
 			sourceTree = "<group>";
@@ -1905,6 +1928,8 @@
 				09E85B0A1E7BDE340048AA45 /* ECInputNumTableViewCell.h */,
 				09E85B0B1E7BDE340048AA45 /* ECInputNumTableViewCell.m */,
 				09E85B0C1E7BDE340048AA45 /* ECInputNumTableViewCell.xib */,
+				0936C2041E7D146A00D942EC /* ECHouseInputView.h */,
+				0936C2051E7D146A00D942EC /* ECHouseInputView.m */,
 			);
 			path = writeContractCell;
 			sourceTree = "<group>";
@@ -3004,6 +3029,7 @@
 				A61935B51E71289F006228A5 /* SelectItemViewController.m in Sources */,
 				09EBC2201DEEE54F00E39C51 /* HomeFactoryModel.m in Sources */,
 				090E32011DBDACE1008CCCBB /* NSString+Judge.m in Sources */,
+				0936C1DD1E7D02F800D942EC /* PickerView.m in Sources */,
 				09588F1F1DD41D7C0001DAA2 /* JDYBrowseActionSheetCell.m in Sources */,
 				094860E51E49C26700845803 /* ScanHistoryViewController.m in Sources */,
 				A6DB9D211E73850C00874D38 /* MapViewController.m in Sources */,
@@ -3055,8 +3081,11 @@
 				091EAF8C1DBB5E4A0006CBED /* JSONModelClassProperty.m in Sources */,
 				0925F08E1E2E03D200528F9E /* ClusterAnnotation.m in Sources */,
 				0908D2271DCB1DFD00CA0E74 /* CuttingLineView.m in Sources */,
+				0936C1D71E7CC0C400D942EC /* ECDrawBoardView.m in Sources */,
 				A643396A1E77DA9B00D5FBAD /* SSMyHeaderView.m in Sources */,
 				09FDD2C31DC1EF710062E642 /* NSObject+runtime.m in Sources */,
+				0936C1DA1E7CC10600D942EC /* ECSignatureViewController.m in Sources */,
+				0936C2091E7D2ABE00D942EC /* DatePickerView.m in Sources */,
 				091EAF8E1DBB5E4A0006CBED /* JSONAPI.m in Sources */,
 				0905E5341DBF50F70081EDE2 /* LoginOfPhoneView.m in Sources */,
 				093683041DF66E7D00FB31C5 /* PictureCollectViewController.m in Sources */,
@@ -3080,6 +3109,7 @@
 				09FBC6061E31A3BD005ABB36 /* AreaExpertPersonCollectionViewCell.m in Sources */,
 				09EC2D361DE2D57B00A7F6D4 /* DetailOfFactoryInfoCollectionViewCell.m in Sources */,
 				A6DB9D5E1E7402EF00874D38 /* NDynamicFooterCollectionReusableView.m in Sources */,
+				0936C2061E7D146A00D942EC /* ECHouseInputView.m in Sources */,
 				0925F08F1E2E03D200528F9E /* MapCollectionView.m in Sources */,
 				093816381DE3F35C007916DB /* RequestMessage.m in Sources */,
 				A64339601E77CEE300D5FBAD /* SSHomeLogoTextCollectionViewCell.m in Sources */,

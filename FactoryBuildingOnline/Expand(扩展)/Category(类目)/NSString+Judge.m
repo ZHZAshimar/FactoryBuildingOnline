@@ -262,4 +262,19 @@
     return timeStr;
 }
 
++ (NSString *)getDateFormatter:(NSString *)timeFormatter withTimer:(NSTimeInterval)time {
+    
+    if (!time) {
+        time = [[NSDate date] timeIntervalSince1970];
+    }
+    
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    
+    [dateFormatter setDateFormat:timeFormatter];
+    
+    NSString *timerStr = [NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:time]]];
+    
+    return timerStr;
+}
+
 @end

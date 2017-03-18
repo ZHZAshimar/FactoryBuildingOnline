@@ -93,4 +93,7 @@
  */
 + (NSString *)getTimeFormatter:(NSString *)timeStamp;
 
+
+
++ (NSString *)getDateFormatter:(NSString *)timeFormatter withTimer:(NSTimeInterval)time;
 @end

@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^TAGBLOCK) (NSInteger tagIndex);
+
 @interface ECTwoButtonFooter : UIView
+
+@property (nonatomic, copy) TAGBLOCK tagBlock;
 
 @end
