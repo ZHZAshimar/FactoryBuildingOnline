@@ -18,6 +18,7 @@ PODS:
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
   - HappyDNS (0.3.10)
+  - IQKeyboardManager (4.0.8)
   - MJRefresh (3.1.12)
   - Qiniu (7.1.1):
     - AFNetworking (~> 3)
@@ -30,6 +31,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - FMDB
+  - IQKeyboardManager
   - MJRefresh
   - Qiniu (~> 7.1)
   - RDVTabBarController
@@ -39,11 +41,12 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   HappyDNS: 06a9fed2796663fd87626dbf02552933265bf059
+  IQKeyboardManager: 1a8189fa153bf09044355ee0ad36826f6767e7f7
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   Qiniu: 5e5d7d759d22393bb4b87cdfacf8fab951260f3e
   RDVTabBarController: 67794f7a7a37f8e32f046f85ac67d06ab92d624a
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: 1a461ca3cfefb230288f351bc4e0340d11f7dabf
+PODFILE CHECKSUM: 025a63496aa6b51686a04cbe591bb6e866a521fa
 
 COCOAPODS: 1.2.0

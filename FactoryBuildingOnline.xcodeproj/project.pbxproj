@@ -90,7 +90,6 @@
 		0936830A1DF6970500FB31C5 /* startPage_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 093683071DF6970500FB31C5 /* startPage_2@2x.png */; };
 		0936830B1DF6970500FB31C5 /* startPage_2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 093683081DF6970500FB31C5 /* startPage_2@3x.png */; };
 		0936C1D71E7CC0C400D942EC /* ECDrawBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0936C1D61E7CC0C400D942EC /* ECDrawBoardView.m */; };
-		0936C1DA1E7CC10600D942EC /* ECSignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0936C1D91E7CC10600D942EC /* ECSignatureViewController.m */; };
 		0936C1DD1E7D02F800D942EC /* PickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0936C1DC1E7D02F800D942EC /* PickerView.m */; };
 		0936C2061E7D146A00D942EC /* ECHouseInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0936C2051E7D146A00D942EC /* ECHouseInputView.m */; };
 		0936C2091E7D2ABE00D942EC /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0936C2081E7D2ABE00D942EC /* DatePickerView.m */; };
@@ -356,6 +355,7 @@
 		A6DB9D641E74030D00874D38 /* NDynamicImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6DB9D621E74030D00874D38 /* NDynamicImageCollectionViewCell.xib */; };
 		A6E1CA371E6956360037FC19 /* SliderHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E1CA361E6956360037FC19 /* SliderHeadView.m */; };
 		A6ECF76F1E4C5911009E0FB6 /* HomeOfHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 095D9FCD1E271B060017B3A9 /* HomeOfHomeViewController.m */; };
+		A6EEC5B81E7F5C7900227878 /* ECSignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EEC5B71E7F5C7900227878 /* ECSignatureViewController.m */; };
 		A6F531AE1E5298560042AA22 /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F531931E5298560042AA22 /* ShareSDK.framework */; };
 		A6F531AF1E5298560042AA22 /* ShareSDKConfigFile.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A6F531961E5298560042AA22 /* ShareSDKConfigFile.bundle */; };
 		A6F531B01E5298560042AA22 /* ShareSDKConfigFile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F531971E5298560042AA22 /* ShareSDKConfigFile.framework */; };
@@ -534,7 +534,6 @@
 		0936C1D51E7CC0C400D942EC /* ECDrawBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECDrawBoardView.h; sourceTree = "<group>"; };
 		0936C1D61E7CC0C400D942EC /* ECDrawBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECDrawBoardView.m; sourceTree = "<group>"; };
 		0936C1D81E7CC10600D942EC /* ECSignatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSignatureViewController.h; sourceTree = "<group>"; };
-		0936C1D91E7CC10600D942EC /* ECSignatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSignatureViewController.m; sourceTree = "<group>"; };
 		0936C1DB1E7D02F800D942EC /* PickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerView.h; sourceTree = "<group>"; };
 		0936C1DC1E7D02F800D942EC /* PickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerView.m; sourceTree = "<group>"; };
 		0936C2041E7D146A00D942EC /* ECHouseInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECHouseInputView.h; sourceTree = "<group>"; };
@@ -1005,6 +1004,7 @@
 		A6DB9D621E74030D00874D38 /* NDynamicImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NDynamicImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		A6E1CA351E6956360037FC19 /* SliderHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderHeadView.h; sourceTree = "<group>"; };
 		A6E1CA361E6956360037FC19 /* SliderHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderHeadView.m; sourceTree = "<group>"; };
+		A6EEC5B71E7F5C7900227878 /* ECSignatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSignatureViewController.m; sourceTree = "<group>"; };
 		A6F531931E5298560042AA22 /* ShareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDK.framework; sourceTree = "<group>"; };
 		A6F531961E5298560042AA22 /* ShareSDKConfigFile.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDKConfigFile.bundle; sourceTree = "<group>"; };
 		A6F531971E5298560042AA22 /* ShareSDKConfigFile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKConfigFile.framework; sourceTree = "<group>"; };
@@ -1644,8 +1644,8 @@
 				09527BB51E7A7E0000D119DF /* ECCreateViewController.m */,
 				09E85AE11E7BB2ED0048AA45 /* ECWriteHouseContractViewController.h */,
 				09E85AE21E7BB2ED0048AA45 /* ECWriteHouseContractViewController.m */,
+				A6EEC5B71E7F5C7900227878 /* ECSignatureViewController.m */,
 				0936C1D81E7CC10600D942EC /* ECSignatureViewController.h */,
-				0936C1D91E7CC10600D942EC /* ECSignatureViewController.m */,
 			);
 			path = "ECCreate(创建合同)";
 			sourceTree = "<group>";
@@ -3002,6 +3002,7 @@
 				094860DF1E496A0300845803 /* BoutiqueContacterModel.m in Sources */,
 				09527BC61E7A867D00D119DF /* ECCreateTableViewCell.m in Sources */,
 				095D9FCB1E271AC20017B3A9 /* HomeCollectionViewCell.m in Sources */,
+				A6EEC5B81E7F5C7900227878 /* ECSignatureViewController.m in Sources */,
 				09588F2E1DD41D7C0001DAA2 /* SJAvatarBrowser.m in Sources */,
 				09588F241DD41D7C0001DAA2 /* JDYBrowseViewController.m in Sources */,
 				09B665A21DB9F1B70094A076 /* TZAssetCell.m in Sources */,
@@ -3084,7 +3085,6 @@
 				0936C1D71E7CC0C400D942EC /* ECDrawBoardView.m in Sources */,
 				A643396A1E77DA9B00D5FBAD /* SSMyHeaderView.m in Sources */,
 				09FDD2C31DC1EF710062E642 /* NSObject+runtime.m in Sources */,
-				0936C1DA1E7CC10600D942EC /* ECSignatureViewController.m in Sources */,
 				0936C2091E7D2ABE00D942EC /* DatePickerView.m in Sources */,
 				091EAF8E1DBB5E4A0006CBED /* JSONAPI.m in Sources */,
 				0905E5341DBF50F70081EDE2 /* LoginOfPhoneView.m in Sources */,

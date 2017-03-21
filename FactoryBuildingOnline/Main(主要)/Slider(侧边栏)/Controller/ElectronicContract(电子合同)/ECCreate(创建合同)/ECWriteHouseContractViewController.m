@@ -11,11 +11,12 @@
 #import "ECHouseInputView.h"
 #import "ECSignatureViewController.h"   // 画板的View
 
-
+#import <IQKeyboardReturnKeyHandler.h>
 
 @interface ECWriteHouseContractViewController ()
 
 @property (nonatomic, strong) ECHouseInputView *houseInputView;
+@property (nonatomic, strong) IQKeyboardReturnKeyHandler *returnKeyHandler;  // 键盘监听
 
 @end
 
@@ -51,6 +52,11 @@
     self.title = @"个人房屋租赁合同";
     
     [self.view addSubview:self.houseInputView];
+    
+    
+    self.returnKeyHandler = [[IQKeyboardReturnKeyHandler alloc] initWithViewController:self];
+    self.returnKeyHandler.lastTextFieldReturnKeyType = UIReturnKeyDone;
+    
 }
 
 

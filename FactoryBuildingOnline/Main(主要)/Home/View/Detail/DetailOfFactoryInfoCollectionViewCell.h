@@ -8,22 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^TAGBLOCK) (BOOL isTag);
+
 @interface DetailOfFactoryInfoCollectionViewCell : UICollectionViewCell
+
+@property (nonatomic, copy) TAGBLOCK tagBlock;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *cellHeight;
-@property (weak, nonatomic) IBOutlet UILabel *pLabel;
-@property (weak, nonatomic) IBOutlet UILabel *sLabel;
-@property (weak, nonatomic) IBOutlet UILabel *rLabel;
-@property (weak, nonatomic) IBOutlet UILabel *cLabel;
-@property (weak, nonatomic) IBOutlet UILabel *nLabel;
 
-@property (weak, nonatomic) IBOutlet UILabel *publishTimeLabel; // 发布时间
-
-@property (weak, nonatomic) IBOutlet UILabel *scanCountLabel;   // 浏览量
-@property (weak, nonatomic) IBOutlet UILabel *rentTypeLabel;    // 出租方式
-@property (weak, nonatomic) IBOutlet UILabel *cashpledgeLabel;  // 押金
-
-@property (weak, nonatomic) IBOutlet UILabel *numberLabel;  // 编号
-
+@property (weak, nonatomic) IBOutlet UIButton *moreBtn; // 更多按钮
 
 @property (nonatomic, strong) NSDictionary *dataDic;
 

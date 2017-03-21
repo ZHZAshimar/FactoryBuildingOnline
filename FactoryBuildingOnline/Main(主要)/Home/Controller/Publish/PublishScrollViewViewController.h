@@ -52,10 +52,31 @@ typedef enum NSInteger{
 
 @property (weak, nonatomic) IBOutlet UIButton *saveBtn;         // 保存按钮
 
-
 @property (weak, nonatomic) IBOutlet UIView *imageBGView;       // 图片的背景view
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightOfView;      // 整个View 的高度约束
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightOfImageView; // ImageView 的高度约束
+@property (weak, nonatomic) IBOutlet UITextField *officeareaTF; // 办公室面积
+@property (weak, nonatomic) IBOutlet UITextField *hostelAreaTF; // 宿舍面积
+@property (weak, nonatomic) IBOutlet UITextField *rantAndSaleTF;    // 租售方式
+@property (weak, nonatomic) IBOutlet UITextField *rantTF;   // 出租方式
+@property (weak, nonatomic) IBOutlet UITextField *owerTypeTF;
+
+@property (weak, nonatomic) IBOutlet UITextField *olderLevelTF;
+
+@property (weak, nonatomic) IBOutlet UITextField *adjustTradeTF;
+@property (weak, nonatomic) IBOutlet UITextField *electricityTF;
+@property (weak, nonatomic) IBOutlet UITextField *onFloorTF;
+@property (weak, nonatomic) IBOutlet UITextField *floorStrucureTF;
+@property (weak, nonatomic) IBOutlet UITextField *factoryCanteenTF;
+@property (weak, nonatomic) IBOutlet UITextField *parkMakingTF;
+
+@property (weak, nonatomic) IBOutlet UITextField *elevatorTF;
+@property (weak, nonatomic) IBOutlet UITextField *fireControlTF;
+
+@property (weak, nonatomic) IBOutlet UITextField *floorHeightTF;
+
+
+
 
 @end

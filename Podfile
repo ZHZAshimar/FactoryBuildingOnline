@@ -8,5 +8,5 @@ pod 'SDWebImage'
 pod 'RDVTabBarController'
 pod "Qiniu", "~> 7.1"
 pod "FMDB"
-
+pod "IQKeyboardManager"
 end

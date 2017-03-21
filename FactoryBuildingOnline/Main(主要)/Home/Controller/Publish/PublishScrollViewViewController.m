@@ -26,6 +26,7 @@
 #import "GeoCodeOfBaiduMap.h"
 
 #import "FOLUserInforModel.h"
+//#import <IQKeyboardManager.h>
 
 #define ImageViewHeight 170
 #define ViewHeight 850
@@ -51,27 +52,34 @@
 - (void)dealloc {
     imagePickerVC.delegate = nil;
     
-    
     if (_geocodesearch != nil) {
         _geocodesearch = nil;
     }
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     _geocodesearch.delegate = nil; // 不用时，置nil
 }
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+}
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
     
+//    [[IQKeyboardManager sharedManager] setEnable:NO];
+    
     [self.rdv_tabBarController setTabBarHidden:YES];
     
     _geocodesearch.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
-}
+    }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -113,11 +121,11 @@
     self.takeAphotoBtn.layer.cornerRadius = 32;
     
     self.lotTF.delegate = self;
-    self.factoryAreaTF.delegate = self;
-    self.priceTF.delegate = self;
+//    self.factoryAreaTF.delegate = self;
+//    self.priceTF.delegate = self;
     self.titleTF.delegate = self;
-    self.linkmanTF.delegate = self;
-    self.phoneNumTF.delegate = self;
+//    self.linkmanTF.delegate = self;
+//    self.phoneNumTF.delegate = self;
     self.depositStyleTF.delegate = self;
     self.rantStyleTF.delegate = self;
     self.describeTextView.delegate = self;
@@ -542,21 +550,22 @@
     
     [self judgeStringisPublish:YES];
     
-    
 }
 
 #pragma mark - textfield delegate
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
     //    textField.layer.borderColor = NaviBackColor.CGColor;
     //    textField.layer.borderWidth = 1;
     [self setPublishBtnStyle:NO];   // 设置发布按钮的样式
     
-    if (textField == self.factoryAreaTF && self.factoryAreaTF.text.length > 0){
+    NSLog(@"1111");
+    if (textField.tag == 102 && self.factoryAreaTF.text.length > 0){
         
         NSString *string = [self.factoryAreaTF.text stringByReplacingOccurrencesOfString:@"平方米" withString:@""];
         self.factoryAreaTF.text = string;
+        
     }
-    if (textField == self.priceTF && self.priceTF.text.length > 0){
+    if (textField.tag == 103 && self.priceTF.text.length > 0){
         
         NSString *string = [self.priceTF.text stringByReplacingOccurrencesOfString:@"/月/m²" withString:@""];
         self.priceTF.text = string;
@@ -564,7 +573,7 @@
     
     __weak PublishScrollViewViewController *weakSelf = self;
     
-    if (textField.tag == 6) {    // 跳转到 押金 的 VC
+    if (textField.tag == 106) {    // 跳转到 押金 的 VC
         SelectDepositTableViewController *depositVC = [SelectDepositTableViewController new];
         
         depositVC.depositStr = self.depositStyleTF.text;
@@ -575,12 +584,12 @@
             [self judgeStringisPublish:NO];
         };
         
+        [textField resignFirstResponder];
         [self.navigationController pushViewController:depositVC animated:YES];
         
-        return NO;
     }
     
-    if (textField.tag == 7) {   // 跳转到选择 出租方式的VC
+    if (textField.tag == 107) {   // 跳转到选择 出租方式的VC
         
         SelectRantTypeTableViewController *rantTypeVC = [SelectRantTypeTableViewController new];
         
@@ -591,13 +600,11 @@
             weakSelf.rantStyleTF.text = rantType;
             [self judgeStringisPublish:NO];
         };
-        
+        [textField resignFirstResponder];
         [self.navigationController pushViewController:rantTypeVC animated:YES];
         
-        return NO;
     }
     
-    return YES;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{

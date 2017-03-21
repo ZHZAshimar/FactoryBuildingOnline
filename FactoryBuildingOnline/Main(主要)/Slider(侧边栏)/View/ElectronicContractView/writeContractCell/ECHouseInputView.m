@@ -17,7 +17,6 @@
 
 #import "ECSignatureViewController.h"   // 画板的View
 
-
 #import "PickerView.h"
 #import "DatePickerView.h"
 @interface ECHouseInputView ()<UITableViewDelegate, UITableViewDataSource>
@@ -37,6 +36,7 @@
         [self addSubview:self.myTabelView];
         [self addSubview:self.pickView];
         [self addSubview:self.dateView];
+        
     }
     return self;
 }
@@ -324,7 +324,10 @@ return 12;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    CGRect rectInTableView = [tableView rectForRowAtIndexPath:indexPath];
+    CGRect rect  = [tableView convertRect:rectInTableView toView:[tableView superview]];
     
+    // 先隐藏，需要显示的时候再显示
     self.dateView.hidden = YES;
     self.pickView.hidden = YES;
     

@@ -8,23 +8,6 @@
 
 #import "FactoryDetailViewController.h"
 
-#import "FootCollectionReusableView.h"
-#import "PublisherCollectionViewCell.h"
-#import "DetailPictureCollectionViewCell.h"
-#import "DetailMapCollectionViewCell.h"
-#import "DetailFactoryIntroduceCollectionViewCell.h"
-#import "DetailHeadCollectionReusableView.h"
-#import "DetailOfFactoryInfoCollectionViewCell.h"
-
-#import "PublishManViewController.h"
-#import "ReportViewController.h"
-#import "NSString+Judge.h"
-#import "RequestMessage.h"
-#import "FOLUserInforModel.h"
-#import "GeoCodeOfBaiduMap.h"
-#import "SecurityUtil.h"
-#import "ZHZShareView.h"    // 分享界面
-
 @interface FactoryDetailViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,PublisherCollectionViewCellDelegate>
 {
     BOOL isLike;
@@ -52,6 +35,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *linkManImageView;
 @property (nonatomic, strong) UIImage *mapImage;
 @property (nonatomic, strong) NSDictionary *contanterDic;
+@property (nonatomic, assign) BOOL infoSeeMore;     // 更多详情
+
 @end
 
 @implementation FactoryDetailViewController
@@ -424,7 +409,13 @@
         }
             break;
         case 1: // infomation
-            return CGSizeMake(Screen_Width, Screen_Height*45/284);
+        {
+            if (self.infoSeeMore) {
+                return CGSizeMake(Screen_Width, Screen_Height*28*11/568);
+            } else {
+                return CGSizeMake(Screen_Width, Screen_Height*28*5/568);
+            }
+        }
             break;
         case 2: // introduce
             
@@ -526,6 +517,12 @@
                      @"view_count":@(self.model.view_count),
                      @"factory_id":@(self.model.ftModel.id),
                      @"data_type":@(1)};
+    __weak typeof(self) weakSelf = self;
+    cell.tagBlock = ^(BOOL isTag) {
+        weakSelf.infoSeeMore = isTag;
+        [weakSelf.myCollectionView reloadData];
+    };
+    
     return cell;
     
 }

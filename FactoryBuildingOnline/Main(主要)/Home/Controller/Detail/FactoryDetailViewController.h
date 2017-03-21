@@ -9,6 +9,22 @@
 #import "BaseViewController.h"
 #import "WantedMessageModel.h"
 
+#import "FootCollectionReusableView.h"
+#import "PublisherCollectionViewCell.h"
+#import "DetailPictureCollectionViewCell.h"
+#import "DetailMapCollectionViewCell.h"
+#import "DetailFactoryIntroduceCollectionViewCell.h"
+#import "DetailHeadCollectionReusableView.h"
+#import "DetailOfFactoryInfoCollectionViewCell.h"
+
+#import "PublishManViewController.h"
+#import "ReportViewController.h"
+#import "NSString+Judge.h"
+#import "RequestMessage.h"
+#import "FOLUserInforModel.h"
+#import "GeoCodeOfBaiduMap.h"
+#import "SecurityUtil.h"
+#import "ZHZShareView.h"    // 分享界面
 
 @interface FactoryDetailViewController : BaseViewController
 
