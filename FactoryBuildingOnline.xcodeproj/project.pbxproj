@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090234691E8110BA008D8E8B /* NewsTextCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 090234671E8110BA008D8E8B /* NewsTextCollectionViewCell.m */; };
+		0902346A1E8110BA008D8E8B /* NewsTextCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 090234681E8110BA008D8E8B /* NewsTextCollectionViewCell.xib */; };
 		0905E52F1DBF50F70081EDE2 /* LogoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0905E5211DBF50F70081EDE2 /* LogoViewController.m */; };
 		0905E5301DBF50F70081EDE2 /* LogoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0905E5221DBF50F70081EDE2 /* LogoViewController.xib */; };
 		0905E5311DBF50F70081EDE2 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 0905E5251DBF50F70081EDE2 /* User.m */; };
@@ -201,6 +203,8 @@
 		09DEEE141DA3792A00D696C4 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 09DEEE111DA3792A00D696C4 /* LICENSE */; };
 		09DEEE151DA3792A00D696C4 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 09DEEE121DA3792A00D696C4 /* README.md */; };
 		09E1EB571DA492AE00EECAEA /* NSArray+ZHZUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E1EB561DA492AE00EECAEA /* NSArray+ZHZUtil.m */; };
+		09E851AD1E82172D00BE0CB0 /* PublishSelect.plist in Resources */ = {isa = PBXBuildFile; fileRef = 09E851AC1E82172D00BE0CB0 /* PublishSelect.plist */; };
+		09E851B01E822DEC00BE0CB0 /* AdjustTradeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E851AF1E822DEC00BE0CB0 /* AdjustTradeTableViewCell.m */; };
 		09E85ADC1E7B69F40048AA45 /* ECExportTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E85ADA1E7B69F40048AA45 /* ECExportTableViewCell.m */; };
 		09E85ADD1E7B69F40048AA45 /* ECExportTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09E85ADB1E7B69F40048AA45 /* ECExportTableViewCell.xib */; };
 		09E85AE01E7B872E0048AA45 /* ShareViewOfContract.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E85ADF1E7B872E0048AA45 /* ShareViewOfContract.m */; };
@@ -223,7 +227,7 @@
 		09EC2D181DE2D57A00A7F6D4 /* PublishScrollViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EC2C961DE2D57A00A7F6D4 /* PublishScrollViewViewController.m */; };
 		09EC2D191DE2D57A00A7F6D4 /* PublishScrollViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09EC2C971DE2D57A00A7F6D4 /* PublishScrollViewViewController.xib */; };
 		09EC2D1A1DE2D57A00A7F6D4 /* SelectAreaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EC2C991DE2D57A00A7F6D4 /* SelectAreaTableViewController.m */; };
-		09EC2D1B1DE2D57A00A7F6D4 /* SelectDepositTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EC2C9B1DE2D57A00A7F6D4 /* SelectDepositTableViewController.m */; };
+		09EC2D1B1DE2D57A00A7F6D4 /* AdjustTradeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EC2C9B1DE2D57A00A7F6D4 /* AdjustTradeTableViewController.m */; };
 		09EC2D1C1DE2D57A00A7F6D4 /* SelectRantTypeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EC2C9D1DE2D57A00A7F6D4 /* SelectRantTypeTableViewController.m */; };
 		09EC2D1D1DE2D57A00A7F6D4 /* SelectTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EC2C9F1DE2D57A00A7F6D4 /* SelectTagViewController.m */; };
 		09EC2D1E1DE2D57A00A7F6D4 /* SelectTagViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09EC2CA01DE2D57A00A7F6D4 /* SelectTagViewController.xib */; };
@@ -396,6 +400,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		090234661E8110BA008D8E8B /* NewsTextCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTextCollectionViewCell.h; sourceTree = "<group>"; };
+		090234671E8110BA008D8E8B /* NewsTextCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTextCollectionViewCell.m; sourceTree = "<group>"; };
+		090234681E8110BA008D8E8B /* NewsTextCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsTextCollectionViewCell.xib; sourceTree = "<group>"; };
 		0905E5201DBF50F70081EDE2 /* LogoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoViewController.h; sourceTree = "<group>"; };
 		0905E5211DBF50F70081EDE2 /* LogoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogoViewController.m; sourceTree = "<group>"; };
 		0905E5221DBF50F70081EDE2 /* LogoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogoViewController.xib; sourceTree = "<group>"; };
@@ -738,6 +745,9 @@
 		09DEEE121DA3792A00D696C4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		09E1EB551DA492AE00EECAEA /* NSArray+ZHZUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ZHZUtil.h"; sourceTree = "<group>"; };
 		09E1EB561DA492AE00EECAEA /* NSArray+ZHZUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ZHZUtil.m"; sourceTree = "<group>"; };
+		09E851AC1E82172D00BE0CB0 /* PublishSelect.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PublishSelect.plist; sourceTree = "<group>"; };
+		09E851AE1E822DEC00BE0CB0 /* AdjustTradeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdjustTradeTableViewCell.h; sourceTree = "<group>"; };
+		09E851AF1E822DEC00BE0CB0 /* AdjustTradeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdjustTradeTableViewCell.m; sourceTree = "<group>"; };
 		09E85AD91E7B69F40048AA45 /* ECExportTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECExportTableViewCell.h; sourceTree = "<group>"; };
 		09E85ADA1E7B69F40048AA45 /* ECExportTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECExportTableViewCell.m; sourceTree = "<group>"; };
 		09E85ADB1E7B69F40048AA45 /* ECExportTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ECExportTableViewCell.xib; sourceTree = "<group>"; };
@@ -776,8 +786,8 @@
 		09EC2C971DE2D57A00A7F6D4 /* PublishScrollViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PublishScrollViewViewController.xib; sourceTree = "<group>"; };
 		09EC2C981DE2D57A00A7F6D4 /* SelectAreaTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectAreaTableViewController.h; sourceTree = "<group>"; };
 		09EC2C991DE2D57A00A7F6D4 /* SelectAreaTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectAreaTableViewController.m; sourceTree = "<group>"; };
-		09EC2C9A1DE2D57A00A7F6D4 /* SelectDepositTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectDepositTableViewController.h; sourceTree = "<group>"; };
-		09EC2C9B1DE2D57A00A7F6D4 /* SelectDepositTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectDepositTableViewController.m; sourceTree = "<group>"; };
+		09EC2C9A1DE2D57A00A7F6D4 /* AdjustTradeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdjustTradeTableViewController.h; sourceTree = "<group>"; };
+		09EC2C9B1DE2D57A00A7F6D4 /* AdjustTradeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdjustTradeTableViewController.m; sourceTree = "<group>"; };
 		09EC2C9C1DE2D57A00A7F6D4 /* SelectRantTypeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectRantTypeTableViewController.h; sourceTree = "<group>"; };
 		09EC2C9D1DE2D57A00A7F6D4 /* SelectRantTypeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectRantTypeTableViewController.m; sourceTree = "<group>"; };
 		09EC2C9E1DE2D57A00A7F6D4 /* SelectTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectTagViewController.h; sourceTree = "<group>"; };
@@ -1255,6 +1265,8 @@
 				0925F08B1E2E03D200528F9E /* PictureCollectionViewCell.h */,
 				0925F08C1E2E03D200528F9E /* PictureCollectionViewCell.m */,
 				0925F08D1E2E03D200528F9E /* PictureCollectionViewCell.xib */,
+				09E851AE1E822DEC00BE0CB0 /* AdjustTradeTableViewCell.h */,
+				09E851AF1E822DEC00BE0CB0 /* AdjustTradeTableViewCell.m */,
 			);
 			path = Publish;
 			sourceTree = "<group>";
@@ -1321,10 +1333,10 @@
 			isa = PBXGroup;
 			children = (
 				098CAAD21D9DED910079B69E /* Base(基础类) */,
+				09EC2C861DE2D57A00A7F6D4 /* Home */,
 				09A083111D9CAF8200666393 /* Other */,
 				09DDBAE71E2EFFC700168286 /* Add */,
 				A6E1CA2D1E6904130037FC19 /* Slider(侧边栏) */,
-				09EC2C861DE2D57A00A7F6D4 /* Home */,
 				0935878B1D9CACC70035AAF6 /* Me(我的) */,
 				093587901D9CACC70035AAF6 /* Message(消息) */,
 				093587951D9CACC70035AAF6 /* Recommend(推荐) */,
@@ -1535,6 +1547,7 @@
 			children = (
 				09F14DBE1DDE94800050DD83 /* CityInfo.plist */,
 				A60253531E72818500C18BA4 /* NewsChannel.plist */,
+				09E851AC1E82172D00BE0CB0 /* PublishSelect.plist */,
 			);
 			path = Plist;
 			sourceTree = "<group>";
@@ -1968,8 +1981,8 @@
 				09EC2C971DE2D57A00A7F6D4 /* PublishScrollViewViewController.xib */,
 				09EC2C981DE2D57A00A7F6D4 /* SelectAreaTableViewController.h */,
 				09EC2C991DE2D57A00A7F6D4 /* SelectAreaTableViewController.m */,
-				09EC2C9A1DE2D57A00A7F6D4 /* SelectDepositTableViewController.h */,
-				09EC2C9B1DE2D57A00A7F6D4 /* SelectDepositTableViewController.m */,
+				09EC2C9A1DE2D57A00A7F6D4 /* AdjustTradeTableViewController.h */,
+				09EC2C9B1DE2D57A00A7F6D4 /* AdjustTradeTableViewController.m */,
 				09EC2C9C1DE2D57A00A7F6D4 /* SelectRantTypeTableViewController.h */,
 				09EC2C9D1DE2D57A00A7F6D4 /* SelectRantTypeTableViewController.m */,
 				09EC2C9E1DE2D57A00A7F6D4 /* SelectTagViewController.h */,
@@ -2357,6 +2370,9 @@
 				A60253361E72554E00C18BA4 /* Market */,
 				A60253391E72554E00C18BA4 /* RankingList */,
 				A602533A1E72554E00C18BA4 /* Recommand */,
+				090234661E8110BA008D8E8B /* NewsTextCollectionViewCell.h */,
+				090234671E8110BA008D8E8B /* NewsTextCollectionViewCell.m */,
+				090234681E8110BA008D8E8B /* NewsTextCollectionViewCell.xib */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -2722,7 +2738,7 @@
 				TargetAttributes = {
 					09FCA9E31D9C9EA50062F063 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = QP56Y9M7W6;
+						DevelopmentTeam = Y637SH92KM;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
@@ -2781,6 +2797,7 @@
 				A6F531BB1E5298560042AA22 /* README.txt in Resources */,
 				09DEEE141DA3792A00D696C4 /* LICENSE in Resources */,
 				09D7BD9F1DF17DC900A405C9 /* VersionText.txt in Resources */,
+				09E851AD1E82172D00BE0CB0 /* PublishSelect.plist in Resources */,
 				A6DB9D261E73850C00874D38 /* SelectCityTableViewController.xib in Resources */,
 				A66ED4DA1E7914C700DB7495 /* SSPayHeaderCollectionReusableView.xib in Resources */,
 				09EC2D391DE2D57B00A7F6D4 /* DetailPictureCollectionViewCell.xib in Resources */,
@@ -2811,6 +2828,7 @@
 				0905E5301DBF50F70081EDE2 /* LogoViewController.xib in Resources */,
 				A6F531BA1E5298560042AA22 /* read_me.txt in Resources */,
 				09588F1C1DD41D7C0001DAA2 /* jdy_browseLoading@2x.png in Resources */,
+				0902346A1E8110BA008D8E8B /* NewsTextCollectionViewCell.xib in Resources */,
 				A6DB9D551E73F3A600874D38 /* NDynamicMapCollectionReusableView.xib in Resources */,
 				09527BCC1E7A929A00D119DF /* ECVisitTableViewCell.xib in Resources */,
 				A64881081E763FFE00B9F169 /* NDynamicFactoryCollectionViewCell.xib in Resources */,
@@ -2961,7 +2979,7 @@
 				092896E01DF270EF00B40DC5 /* ChangeNameViewController.m in Sources */,
 				09E85AE31E7BB2ED0048AA45 /* ECWriteHouseContractViewController.m in Sources */,
 				A64881131E76494A00B9F169 /* NPeopleView.m in Sources */,
-				09EC2D1B1DE2D57A00A7F6D4 /* SelectDepositTableViewController.m in Sources */,
+				09EC2D1B1DE2D57A00A7F6D4 /* AdjustTradeTableViewController.m in Sources */,
 				A643394B1E7797DA00D5FBAD /* SSMyViewController.m in Sources */,
 				09387D1E1DD2BC0000E8ABAF /* SettingTableViewController.m in Sources */,
 				09EC2D1A1DE2D57A00A7F6D4 /* SelectAreaTableViewController.m in Sources */,
@@ -3159,10 +3177,12 @@
 				09588F261DD41D7C0001DAA2 /* UIImage+JDYScale.m in Sources */,
 				09EC2D381DE2D57B00A7F6D4 /* DetailPictureCollectionViewCell.m in Sources */,
 				09C83C081D9E02F500DE3F9D /* MessageViewController.m in Sources */,
+				090234691E8110BA008D8E8B /* NewsTextCollectionViewCell.m in Sources */,
 				A64339441E77972000D5FBAD /* SliderViewController.m in Sources */,
 				09588F2D1DD41D7C0001DAA2 /* UIImage+JTSImageEffects.m in Sources */,
 				09C83C041D9E02E400DE3F9D /* MeViewController.m in Sources */,
 				09EC2D4D1DE2D57B00A7F6D4 /* ImagePlayerCollectionViewCell.m in Sources */,
+				09E851B01E822DEC00BE0CB0 /* AdjustTradeTableViewCell.m in Sources */,
 				091EAF921DBB5E4A0006CBED /* JSONValueTransformer.m in Sources */,
 				A6DB9D4A1E73DC8E00874D38 /* NearView.m in Sources */,
 				09EC2D301DE2D57A00A7F6D4 /* DetailFactoryIntroduceCollectionViewCell.m in Sources */,
@@ -3323,9 +3343,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = QP56Y9M7W6;
+				DEVELOPMENT_TEAM = Y637SH92KM;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3363,9 +3383,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = QP56Y9M7W6;
+				DEVELOPMENT_TEAM = Y637SH92KM;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

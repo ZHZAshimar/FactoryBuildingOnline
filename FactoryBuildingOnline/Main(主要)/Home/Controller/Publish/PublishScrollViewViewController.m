@@ -9,7 +9,7 @@
 #import "PublishScrollViewViewController.h"
 
 #import "SelectAreaTableViewController.h"
-#import "SelectDepositTableViewController.h"
+#import "AdjustTradeTableViewController.h"
 #import "SelectRantTypeTableViewController.h"
 #import "SelectTagViewController.h"
 
@@ -27,7 +27,7 @@
 
 #import "FOLUserInforModel.h"
 //#import <IQKeyboardManager.h>
-
+#import "PickerView.h"
 #define ImageViewHeight 170
 #define ViewHeight 850
 @interface PublishScrollViewViewController ()<TZImagePickerControllerDelegate,UITextFieldDelegate,UITextViewDelegate>
@@ -39,11 +39,15 @@
     NSArray *tagIndexArray; // 标签数组对应的按钮tag 值
     NSString *townID_pub;
     NSString *cityID_pub;
+    UIButton *officeLastButton;     // officearea最后一个按钮
+    UIButton *hostelLastButton;     // hostelarea最后一个按钮
+    
 }
 @property (nonatomic, strong) NSMutableArray *imageArray;       // 已选的图片数组
 @property (nonatomic, strong) NSMutableArray *imageKeyArr;      // 存放图片名称的数组
-
+@property (nonatomic, strong) NSArray *selectDataArray;         // 选项的数组
 @property (nonatomic, strong) UIButton *againTakePhotoBtn;
+@property (nonatomic, strong) PickerView *myPickerView;         // 自定义的PickerView
 
 @end
 
@@ -56,8 +60,8 @@
         _geocodesearch = nil;
     }
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
     
 }
 
@@ -95,18 +99,25 @@
     } else {
         [self setVCName:@"发布招租" andShowSearchBar:NO andTintColor:BLACK_42 andBackBtnStr:nil];
     }
-    
+    [self initData];
     [self drawView];
     
     _geocodesearch = [[BMKGeoCodeSearch alloc] init];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showKeyboardAction:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hiddenKeyboardAction:) name:UIKeyboardWillHideNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showKeyboardAction:) name:UIKeyboardWillShowNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hiddenKeyboardAction:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)backAction {
     
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)initData {
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"PublishSelect.plist" ofType:nil]; // 获取选择项中的内容
+    
+    self.selectDataArray = [NSArray arrayWithContentsOfFile:path];
 }
 
 - (void)drawView {
@@ -120,15 +131,35 @@
     self.takeAphotoBtn.layer.masksToBounds = YES;
     self.takeAphotoBtn.layer.cornerRadius = 32;
     
-    self.lotTF.delegate = self;
-//    self.factoryAreaTF.delegate = self;
-//    self.priceTF.delegate = self;
-    self.titleTF.delegate = self;
-//    self.linkmanTF.delegate = self;
-//    self.phoneNumTF.delegate = self;
-    self.depositStyleTF.delegate = self;
+    // 下拉显示的 textfield
     self.rantStyleTF.delegate = self;
+    self.rantAndSaleTF.delegate = self;
+    self.depositStyleTF.delegate = self;
+    self.owerTypeTF.delegate = self;
+    self.olderLevelTF.delegate = self;
+    self.adjustTradeTF.delegate = self;
+    self.onFloorTF.delegate = self;
+    self.floorStrucureTF.delegate = self;
+    self.factoryCanteenTF.delegate = self;
+    self.parkMakingTF.delegate = self;
+    self.elevatorTF.delegate = self;
+    self.fireControlTF.delegate = self;
+    self.enviromentalTF.delegate = self;
+    
+    // 填写内容的
+    
+    self.lotTF.delegate = self;
+    //    self.factoryAreaTF.delegate = self;
+    self.priceTF.delegate = self;
+    self.titleTF.delegate = self;
+    //    self.linkmanTF.delegate = self;
+    self.phoneNumTF.delegate = self;
     self.describeTextView.delegate = self;
+    
+    self.officeareaTF.delegate = self;
+    self.hostelAreaTF.delegate = self;
+    self.electricityTF.delegate = self;
+    self.floorHeightTF.delegate = self;
     
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImageGestureAction:)]; // 为 图片 视图添加点击事件
@@ -264,6 +295,35 @@
     
     [self presentViewController:imagePickerVC animated:YES completion:nil];
 }
+
+#pragma mark - 办公室面积
+- (IBAction)officeAreaButtonAction:(UIButton *)sender {
+    
+    [officeLastButton setImage:[UIImage imageNamed:@"uncheck"] forState:0];
+    
+    if (sender.tag == 100) {
+        [sender setImage:[UIImage imageNamed:@"publish_Check"] forState:0];
+    } else {
+        [sender setImage:[UIImage imageNamed:@"publish_Check"] forState:0];
+        [self.officeareaTF becomeFirstResponder];   // 开启第一响应者
+    }
+    officeLastButton = sender;
+}
+#pragma mark - 宿舍面积
+- (IBAction)hotelAreaButtonAction:(UIButton *)sender {
+    
+    [hostelLastButton setImage:[UIImage imageNamed:@"uncheck"] forState:0];
+    if (sender.tag == 100) {
+        [sender setImage:[UIImage imageNamed:@"publish_Check"] forState:0];
+    } else {
+        [sender setImage:[UIImage imageNamed:@"publish_Check"] forState:0];
+        [self.hostelAreaTF becomeFirstResponder];   // 开启第一响应者
+    }
+    hostelLastButton = sender;
+}
+
+
+
 #pragma mark - 选择区域
 - (IBAction)areaSelectAction:(UIButton *)sender {
     
@@ -573,36 +633,40 @@
     
     __weak PublishScrollViewViewController *weakSelf = self;
     
-    if (textField.tag == 106) {    // 跳转到 押金 的 VC
-        SelectDepositTableViewController *depositVC = [SelectDepositTableViewController new];
-        
-        depositVC.depositStr = self.depositStyleTF.text;
-        
-        depositVC.depositTypeBlock = ^(NSString *depositType) {
-            
-            weakSelf.depositStyleTF.text = depositType;
-            [self judgeStringisPublish:NO];
-        };
+    // 下拉按钮的判断
+    if (textField.tag >= 200 && textField.tag < 250) {
         
         [textField resignFirstResponder];
-        [self.navigationController pushViewController:depositVC animated:YES];
+        
+        NSInteger index = textField.tag - 200;
+        
+        self.myPickerView.hidden = NO;
+        
+        self.myPickerView.dataSource = self.selectDataArray[index];
+        
+        self.myPickerView.selectStrBlock = ^(NSString *selectStrBlock) {
+            
+            textField.text = selectStrBlock;
+            
+        };
         
     }
     
-    if (textField.tag == 107) {   // 跳转到选择 出租方式的VC
+    if (textField.tag == 250) {
+        // 跳转到选择适用行业
+        AdjustTradeTableViewController *adjustVC = [AdjustTradeTableViewController new];
         
-        SelectRantTypeTableViewController *rantTypeVC = [SelectRantTypeTableViewController new];
+        adjustVC.depositStr = self.adjustTradeTF.text;
         
-        rantTypeVC.rantStr = self.rantStyleTF.text;
-        
-        rantTypeVC.rantBlock = ^(NSString *rantType) {
-        
-            weakSelf.rantStyleTF.text = rantType;
+        adjustVC.depositTypeBlock = ^(NSString *depositType) {
+            
+            weakSelf.adjustTradeTF.text = depositType;
+            
             [self judgeStringisPublish:NO];
         };
-        [textField resignFirstResponder];
-        [self.navigationController pushViewController:rantTypeVC animated:YES];
         
+        [textField resignFirstResponder];
+        [self.navigationController pushViewController:adjustVC animated:YES];
     }
     
 }
@@ -782,6 +846,16 @@
     }
     
     return _againTakePhotoBtn;
+}
+
+- (PickerView *)myPickerView {
+    if (!_myPickerView ) {
+        _myPickerView = [[PickerView alloc] initWithFrame:CGRectMake(0, Screen_Height-Screen_Height*206/568-64, Screen_Width, 206)];
+        _myPickerView.hidden = YES;
+        [self.view bringSubviewToFront:_myPickerView];
+        [self.view addSubview:_myPickerView];
+    }
+    return _myPickerView;
 }
 
 @end

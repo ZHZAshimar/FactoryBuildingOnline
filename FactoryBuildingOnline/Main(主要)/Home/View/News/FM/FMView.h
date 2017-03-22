@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FMView : UIView
+@interface FMView : UICollectionViewCell
 
 @end

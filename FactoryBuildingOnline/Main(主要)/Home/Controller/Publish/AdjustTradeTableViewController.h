@@ -10,7 +10,7 @@
 
 typedef void(^SELECTDEPOSITBLOCK) (NSString *depositType);
 
-@interface SelectDepositTableViewController : BaseViewController
+@interface AdjustTradeTableViewController : BaseViewController
 
 /// 已选的押金方式
 @property (nonatomic, strong) NSString *depositStr;

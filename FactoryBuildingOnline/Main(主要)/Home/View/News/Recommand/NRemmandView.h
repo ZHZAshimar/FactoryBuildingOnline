@@ -10,6 +10,6 @@
 
 #import "NRecommandHeaderCollectionReusableView.h"
 
-@interface NRemmandView : UIView
+@interface NRemmandView : UICollectionViewCell
 
 @end

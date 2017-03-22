@@ -24,6 +24,8 @@
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         
+        self.backgroundColor = [UIColor colorWithHex:0xD2D5DC];
+        
         self.dataSource = [NSArray array];
         
         UIView *bgView = [[UIView alloc] initWithFrame:self.bounds];
@@ -76,6 +78,8 @@
         NSInteger i = [self.pickerView selectedRowInComponent:0];
         
         [self getSelectString:i];
+        
+        self.hidden = YES;
     }
 }
 

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NearView : UIView
+@interface NearView : UICollectionViewCell
 
 @end

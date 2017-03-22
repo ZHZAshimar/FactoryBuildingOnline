@@ -278,13 +278,13 @@
                   symbolName = "-[RegisterViewController registerBtnAction:]"
                   moduleName = "FactoryBuildingOnline"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/myios/Desktop/%E5%8E%82%E6%88%BF%E5%9C%A8%E7%BA%BF%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/Project%20source/1.0.2/FactoryBuildingOnline/FactoryBuildingOnline/Main(%E4%B8%BB%E8%A6%81)/Other/LoginAndRegister/Controller/RegisterViewController.m"
-                  timestampString = "511519213.120663"
+                  urlString = "file:///Users/myios/Desktop/1.0.2/FactoryBuildingOnline/FactoryBuildingOnline/Main(%E4%B8%BB%E8%A6%81)/Other/LoginAndRegister/Controller/RegisterViewController.m"
+                  timestampString = "511857155.666301"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "212"
                   endingLineNumber = "212"
-                  offsetFromSymbolStart = "1308">
+                  offsetFromSymbolStart = "1244">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -293,13 +293,13 @@
                   symbolName = "__44-[RegisterViewController registerBtnAction:]_block_invoke"
                   moduleName = "FactoryBuildingOnline"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/myios/Desktop/%E5%8E%82%E6%88%BF%E5%9C%A8%E7%BA%BF%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/Project%20source/1.0.2/FactoryBuildingOnline/FactoryBuildingOnline/Main(%E4%B8%BB%E8%A6%81)/Other/LoginAndRegister/Controller/RegisterViewController.m"
-                  timestampString = "511519213.12208"
+                  urlString = "file:///Users/myios/Desktop/1.0.2/FactoryBuildingOnline/FactoryBuildingOnline/Main(%E4%B8%BB%E8%A6%81)/Other/LoginAndRegister/Controller/RegisterViewController.m"
+                  timestampString = "511857155.667701"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "213"
                   endingLineNumber = "213"
-                  offsetFromSymbolStart = "140">
+                  offsetFromSymbolStart = "172">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -518,13 +518,13 @@
                   symbolName = "-[MeNetRequest getUserInfoAfterUpdateData:]"
                   moduleName = "FactoryBuildingOnline"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/myios/Desktop/%E5%8E%82%E6%88%BF%E5%9C%A8%E7%BA%BF%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/Project%20source/1.0.2/FactoryBuildingOnline/FactoryBuildingOnline/Main(%E4%B8%BB%E8%A6%81)/Me(%E6%88%91%E7%9A%84)/Model/MeNetRequest.m"
-                  timestampString = "511519213.1449"
+                  urlString = "file:///Users/myios/Desktop/1.0.2/FactoryBuildingOnline/FactoryBuildingOnline/Main(%E4%B8%BB%E8%A6%81)/Me(%E6%88%91%E7%9A%84)/Model/MeNetRequest.m"
+                  timestampString = "511857155.691791"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "137"
                   endingLineNumber = "137"
-                  offsetFromSymbolStart = "44">
+                  offsetFromSymbolStart = "24">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -533,13 +533,13 @@
                   symbolName = "__43-[MeNetRequest getUserInfoAfterUpdateData:]_block_invoke"
                   moduleName = "FactoryBuildingOnline"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/myios/Desktop/%E5%8E%82%E6%88%BF%E5%9C%A8%E7%BA%BF%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/Project%20source/1.0.2/FactoryBuildingOnline/FactoryBuildingOnline/Main(%E4%B8%BB%E8%A6%81)/Me(%E6%88%91%E7%9A%84)/Model/MeNetRequest.m"
-                  timestampString = "511519213.146232"
+                  urlString = "file:///Users/myios/Desktop/1.0.2/FactoryBuildingOnline/FactoryBuildingOnline/Main(%E4%B8%BB%E8%A6%81)/Me(%E6%88%91%E7%9A%84)/Model/MeNetRequest.m"
+                  timestampString = "511857155.693154"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "139"
                   endingLineNumber = "139"
-                  offsetFromSymbolStart = "132">
+                  offsetFromSymbolStart = "116">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -678,13 +678,45 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FactoryBuildingOnline/Main(&#x4e3b;&#x8981;)/Other/Public(&#x516c;&#x7528;)/View/PickerView.m"
-            timestampString = "511519198.163286"
+            filePath = "FactoryBuildingOnline/Main(&#x4e3b;&#x8981;)/Home/Controller/Publish/AdjustTradeTableViewController.m"
+            timestampString = "511857153.898504"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "-pickerView:titleForRow:forComponent:"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FactoryBuildingOnline/Main(&#x4e3b;&#x8981;)/Home/Controller/Publish/AdjustTradeTableViewController.m"
+            timestampString = "511857153.898504"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FactoryBuildingOnline/Main(&#x4e3b;&#x8981;)/Home/Controller/Publish/PublishScrollViewViewController.m"
+            timestampString = "511857135.246584"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "380"
+            endingLineNumber = "380"
+            landmarkName = "-selectTagBtnAction:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

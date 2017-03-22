@@ -411,7 +411,6 @@ return 12;
 - (PickerView *)pickView {
     if (!_pickView) {
         _pickView = [[PickerView alloc] initWithFrame:CGRectMake(0, Screen_Height*(1-207/568)-200, Screen_Width, Screen_Height*207/568)];
-        _pickView.backgroundColor = [UIColor colorWithHex:0xD2D5DC];
         _pickView.hidden = YES;
         
     }

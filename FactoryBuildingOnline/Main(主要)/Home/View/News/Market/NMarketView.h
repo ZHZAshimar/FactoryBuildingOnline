@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NMarketView : UIView
+@interface NMarketView : UICollectionViewCell
 
 @end

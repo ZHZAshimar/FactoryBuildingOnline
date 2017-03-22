@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LittleVideoView : UIView
+@interface LittleVideoView : UICollectionViewCell
 
 @end

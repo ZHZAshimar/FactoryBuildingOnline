@@ -7,16 +7,18 @@
 //
 
 #import "SelectItemViewController.h"
-#import "TextCollectionViewCell.h"      // 文字cell
+#import "NewsTextCollectionViewCell.h"     // 文字cell
 #import "NewsChannelHeaderCollectionReusableView.h"
 #import "SearchFile.h"
 
 @interface SelectItemViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 {
     NSArray *allChannelArray;   // 所有频道
+    BOOL isClose;               // 是否可以操作移除 默认为 no
 }
 @property (nonatomic, strong) UICollectionView *myCollectionView;
 @property (nonatomic, strong) NSMutableArray *recommendChannelArray;
+@property (nonatomic, strong) UILabel *headerLabel;
 @end
 
 @implementation SelectItemViewController
@@ -57,6 +59,8 @@
     [self addRightItemWithLogo:[UIImage imageNamed:@"closeBack"] andItemTintColor:GREEN_19b8];
     
     self.view.backgroundColor = GRAY_F5;
+    
+    self.navigationItem.hidesBackButton = YES;  // 隐藏返回按钮
 }
 
 - (void)setMyChannelArray:(NSMutableArray *)myChannelArray {
@@ -73,6 +77,19 @@
 #pragma mark - 编辑按钮
 - (void)editBtnAction:(UIButton *)button {
     NSLog(@"编辑");
+    button.selected = !button.selected;
+    
+    if (button.selected) {
+        isClose = YES;
+        [self.myCollectionView reloadData];
+        
+        [button setTitle:@"完成" forState:UIControlStateSelected];
+    } else {
+        isClose = NO;
+        [self.myCollectionView reloadData];
+        
+        [button setTitle:@"编辑" forState:0];
+    }
 }
 
 #pragma mark - collectinView dataSource
@@ -89,16 +106,21 @@
     UICollectionReusableView *headerView;
     
     if (kind == UICollectionElementKindSectionHeader) {
-        NewsChannelHeaderCollectionReusableView *channelHeaderView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"headerView" forIndexPath:indexPath];
+        
         if (indexPath.section == 0) {
+            NewsChannelHeaderCollectionReusableView *channelHeaderView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"headerView" forIndexPath:indexPath];
             channelHeaderView.cellTitle.text = @"我的频道";
             channelHeaderView.isShowEditBtn = YES;
             [channelHeaderView.editButton addTarget:self action:@selector(editBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+            
+            headerView = channelHeaderView;
         } else {
-            channelHeaderView.cellTitle.text = @"推荐频道";
-            channelHeaderView.isShowEditBtn = NO;
+            headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"normalHeader" forIndexPath:indexPath];
+            if (![[headerView subviews] containsObject:self.headerLabel]) {
+                [headerView addSubview:self.headerLabel];
+            }
+            
         }
-        headerView = channelHeaderView;
     }
     return headerView;
 }
@@ -123,14 +145,22 @@
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    TextCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"textCell" forIndexPath:indexPath];
+    NewsTextCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"textCell" forIndexPath:indexPath];
     
     if (indexPath.section == 0) {
         cell.label.text = self.myChannelArray[indexPath.item];
         
+        if (isClose) {
+            cell.closeImageView.hidden = NO;
+        } else {
+            cell.closeImageView.hidden = YES;
+        }
     } else {
+        
+        cell.closeImageView.hidden = YES;
         cell.label.text = self.recommendChannelArray[indexPath.item];
     }
+    
     
     return cell;
 }
@@ -158,20 +188,22 @@
 #pragma mark - collectionView delegate 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.section == 0) {
-        NSString *channel = self.myChannelArray[indexPath.row];
-        [self.myChannelArray removeObject:channel];
-        [self.recommendChannelArray addObject:channel];
+    if (isClose) {
+        if (indexPath.section == 0) {
+            NSString *channel = self.myChannelArray[indexPath.row];
+            [self.myChannelArray removeObject:channel];
+            [self.recommendChannelArray addObject:channel];
+            
+        } else {
+            
+            NSString *channel = self.recommendChannelArray[indexPath.row];
+            [self.recommendChannelArray removeObject:channel];
+            [self.myChannelArray addObject:channel];
+            
+        }
         
-    } else {
-        
-        NSString *channel = self.recommendChannelArray[indexPath.row];
-        [self.recommendChannelArray removeObject:channel];
-        [self.myChannelArray addObject:channel];
-        
+        [self.myCollectionView reloadData];
     }
-    
-    [self.myCollectionView reloadData];
 }
 
 - (void)handleLongGesture: (UILongPressGestureRecognizer *)sender {
@@ -223,7 +255,9 @@
         _myCollectionView.backgroundColor = [UIColor clearColor];
         _myCollectionView.delegate = self;
         _myCollectionView.dataSource = self;
-        [_myCollectionView registerClass:[TextCollectionViewCell class] forCellWithReuseIdentifier:@"textCell"];
+        
+        [_myCollectionView registerClass:[NewsTextCollectionViewCell class] forCellWithReuseIdentifier:@"textCell"];
+        [_myCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"normalHeader"];
         [_myCollectionView registerClass:[NewsChannelHeaderCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"headerView"];
         
 //        UILongPressGestureRecognizer *longGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongGesture:)];
@@ -232,6 +266,16 @@
 
     }
     return _myCollectionView;
+}
+
+- (UILabel *)headerLabel {
+    if (!_headerLabel) {
+        _headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(12, 0, Screen_Width, Screen_Height*50/568)];
+        _headerLabel.text = @"推荐频道";
+        _headerLabel.font = [UIFont systemFontOfSize:16 weight:0.2];
+       
+    }
+    return _headerLabel;
 }
 
 - (void)didReceiveMemoryWarning {

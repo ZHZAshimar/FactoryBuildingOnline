@@ -51,7 +51,7 @@
         layout.minimumLineSpacing = 0;
         layout.minimumInteritemSpacing = 0;
         
-        _myCollectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:layout];
+        _myCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height-64) collectionViewLayout:layout];
         _myCollectionView.delegate = self;
         _myCollectionView.dataSource = self;
         _myCollectionView.backgroundColor = [UIColor clearColor];

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RankingListView : UIView
+@interface RankingListView : UICollectionViewCell
 
 @end
