@@ -10,4 +10,6 @@
 
 @interface NDynamicView : UIView
 
+@property (nonatomic, strong) NSDictionary *dataDic;
+
 @end

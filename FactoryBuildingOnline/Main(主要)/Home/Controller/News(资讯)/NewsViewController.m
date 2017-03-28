@@ -19,6 +19,7 @@
 #import "LittleVideoView.h"
 #import "FMView.h"
 #import "NearView.h"
+#import "LogoViewController.h"
 
 @interface NewsViewController ()<UIScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UICollectionViewDataSource>
 {
@@ -51,6 +52,24 @@
 //    [self.view addSubview: self.myScrollView];
     [self.view addSubview:self.myCollectionView];
     [self.navigationController.navigationBar addSubview:self.mySegmentedControl];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotoLoginVC) name:@"GOTOLOGINOFNEWS" object:nil];
+}
+
+- (void)gotoLoginVC {
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"您未登录，登录后可以再操作哦~" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"先看看" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    UIAlertAction *loginAction = [UIAlertAction actionWithTitle:@"去登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        LogoViewController *loginVC = [LogoViewController new];
+        [self.navigationController pushViewController:loginVC animated:YES];
+    }];
+    [alertController addAction:cancelAction];
+    [alertController addAction:loginAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -63,6 +82,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.mySegmentedControl.hidden = YES;
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"GOTOLOGINOFNEWS" object:nil];
 }
 // 加载导航栏
 - (void)initNavi {
@@ -148,7 +168,7 @@
     
     [self.navigationController pushViewController:selectItemVC animated:YES];
 }
-
+#pragma mark - scrollView delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
     CGFloat scrollContentX = scrollView.contentOffset.x;

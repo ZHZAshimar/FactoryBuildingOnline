@@ -34,6 +34,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *fmLabel;  // 园区配套
 @property (weak, nonatomic) IBOutlet UILabel *fireLabel;    // 消防
 // ________________ 上面是灰色的label，用于修改文字大小
+@property (weak, nonatomic) IBOutlet UILabel *utLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *evrmLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *publishTimeLabel; // 发布时间
 @property (weak, nonatomic) IBOutlet UILabel *scanCountLabel;   // 浏览量
@@ -56,6 +59,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *fireControlLabel;     // 消防
 @property (weak, nonatomic) IBOutlet UILabel *factoryElevatorLabel; // 厂房电梯
 @property (weak, nonatomic) IBOutlet UILabel *floorHeightLabel; // 楼层高度
+@property (weak, nonatomic) IBOutlet UILabel *enviromentalLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *updateTimeLabel;
+
 @end
 
 @implementation DetailOfFactoryInfoCollectionViewCell
@@ -110,7 +117,17 @@
     self.fireControlLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:fontSize]];
     self.floorHeightLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:fontSize]];
     self.factoryElevatorLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:fontSize]];
+    self.floorHeightLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:fontSize]];
+    self.factoryElevatorLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:fontSize]];
     
+    self.updateTimeLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:fontSize]];
+    self.enviromentalLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:fontSize]];
+    
+    
+    self.utLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:fontSize-1]];
+    self.evrmLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:fontSize-1]];
+    
+
     
     self.pLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:fontSize-1]];
     self.sLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:fontSize-1]];

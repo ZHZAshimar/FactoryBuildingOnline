@@ -7,7 +7,7 @@
 //
 
 #import "NDynamicFactoryCollectionViewCell.h"
-
+#import "SecurityUtil.h"
 @implementation NDynamicFactoryCollectionViewCell
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
@@ -31,5 +31,23 @@
     self.layer.masksToBounds = YES;
 //    self.titleLabel.font = [UIFont adjustFont:[UIFont systemFontOfSize:self.titleLabel.font.pointSize weight:0.2]];
 }
+
+- (void)setDataDic:(NSDictionary *)dataDic {
+    
+    _dataDic = dataDic;
+    NSString *imageStr = [SecurityUtil decodeBase64String:dataDic[@"map_url"]];
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:imageStr] placeholderImage:[UIImage imageNamed:@"loading"]];
+    
+    self.titleLabel.text = dataDic[@"title"];
+    self.contentLabel.text = [NSString stringWithFormat:@"%@km",dataDic[@"range"]];
+}
+
+/*
+ "browse_count" = 0;
+ id = 12;
+ "map_url" = "aHR0cDovL29pNjUzZXphbi5ia3QuY2xvdWRkbi5jb20vZmFjdG9yeV8wMjQyZWNjZi1hNTFiLWU2NGItYTcxNi1hNTdiYmJkYWRhMjk=";
+ range = "2226.302";
+ title = "\U8d85\U5927\U5382\U623f";
+ */
 
 @end

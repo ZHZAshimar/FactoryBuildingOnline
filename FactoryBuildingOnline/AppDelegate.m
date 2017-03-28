@@ -38,8 +38,8 @@
 
 //#import <AliHotFix/AliHotFix.h>
 
-//#import <IQKeyboardManager.h>
-
+#import <IQKeyboardManager.h>
+#import "PublishScrollViewViewController.h"
 @interface AppDelegate ()<RDVTabBarControllerDelegate>
 {
     BMKMapManager *_mapManager;
@@ -88,17 +88,19 @@
     [self umengTrack];  //  友盟的方法本身是异步执行，所以不需要再异步调用
     [self shareSDKSetting];
 //    [self aliHotfixSetting];   // 阿里百川热更新
-//    [self addIQKeyboardManager];    // 开启键盘监听功能
+    [self addIQKeyboardManager];    // 开启键盘监听功能
+//    [[[IQKeyboardManager sharedManager] disabledDistanceHandlingClasses] addObject:[PublishScrollViewViewController class]];
     return YES;
 }
 
-//- (void)addIQKeyboardManager {
-//    IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
-//    manager.enable = YES;   // 开启整个功能
-//    manager.shouldResignOnTouchOutside = YES;   // 控制点击背景是否收起键盘
-//    manager.shouldToolbarUsesTextFieldTintColor = YES;  // 控制键盘上的工具条颜色是否用户自定义。
-//    manager.enableAutoToolbar = NO; // 控制键是否显示盘上的工具条
-//}
+- (void)addIQKeyboardManager {
+    IQKeyboardManager *manager = IQKEYBOARDMANAGER;
+    manager.enable = YES;   // 开启整个功能
+    manager.shouldResignOnTouchOutside = YES;   // 控制点击背景是否收起键盘
+    manager.shouldToolbarUsesTextFieldTintColor = YES;  // 控制键盘上的工具条颜色是否用户自定义。
+    manager.enableAutoToolbar = YES; // 控制键是否显示盘上的工具条
+    
+}
 
 /**
  *  网络监听

@@ -1,5 +1,5 @@
 //
-//  ECWriteHouseContractViewController.h
+//  ECTimerView.h
 //  FactoryBuildingOnline
 //
 //  Created by myios on 2017/3/17.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ECWriteHouseContractViewController : UIViewController
+@interface ECTimerView : UIView
+
+
 
 @end

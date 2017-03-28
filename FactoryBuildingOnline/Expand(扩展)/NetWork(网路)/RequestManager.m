@@ -225,7 +225,7 @@ static AFHTTPSessionManager * instance;
  */
 - (void)postRequestWithService:(NSString *)urlStr andParameters:(NSDictionary *)params isShowActivity:(BOOL)isShow dicIsEncode:(BOOL)isEncode success:(void(^)(RequestManager *manager,NSDictionary *response))success failure:(void(^)(RequestManager *manager,NSError *error))failure {
 
-    urlStr = [NSString stringWithFormat:@"%@%@",URL_HOST,urlStr];
+    urlStr = [NSString stringWithFormat:@"%@%@",@"http://192.168.0.112:8000/",urlStr];
     
     __weak RequestManager *weakSelf = self;
     
@@ -452,9 +452,6 @@ static AFHTTPSessionManager * instance;
         default:
             break;
     }
-    
-    
-    
 }
 
 /**
@@ -500,7 +497,7 @@ static AFHTTPSessionManager * instance;
     
     __weak RequestManager *weakSelf = self;
     
-    [MBProgressHUD showAction:PULL_REFRESH_TEXT ToView:nil];
+//    [MBProgressHUD showAction:PULL_REFRESH_TEXT ToView:nil];
     //    [instance.requestSerializer setValue:@"7a228e88d27b64d46beb7f8a72d9831d" forHTTPHeaderField:@"apikey"];
     
     if (token) {
@@ -677,8 +674,40 @@ static AFHTTPSessionManager * instance;
             failure(weakSelf,error);    // 通过block,将错误信息回调
         }
     }];
+}
+
+- (void)putDataToServiceWithURL:(NSString*)url withParams:(NSDictionary *)params andisToken:(BOOL)isToken andisActivity:(BOOL)isActivity andisEncry:(BOOL)isEncry success:(void(^)(RequestManager *manager,NSDictionary *response))success failure:(void(^)(RequestManager *manager,NSError *error))failure{
+    
+    if (isActivity) {   // 需要指示器
+        [MBProgressHUD showAction:@"正在加载……" ToView:nil];
+    }
+    
+    if (isToken) {      // 需要token
+        [RequestManager getTokenAndTime];
+    }
+    
+    __weak RequestManager *weakSelf = self;
+
+    [instance PUT:url parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        if (isActivity) {
+            [MBProgressHUD hideHUD];
+        }
+        
+        NSDictionary *responseDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
+        success(weakSelf,responseDic);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (isActivity) {
+            [MBProgressHUD hideHUD];
+        }
+        if (failure) {
+            failure(weakSelf,error);
+        }
+    }];
     
 }
+
 /**
  *  Delect 退出登录
  *

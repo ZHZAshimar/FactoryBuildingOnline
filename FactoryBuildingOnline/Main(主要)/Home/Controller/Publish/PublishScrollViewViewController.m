@@ -4,14 +4,15 @@
 //
 //  Created by myios on 2016/10/20.
 //  Copyright © 2016年 XFZY. All rights reserved.
-//
+//  失败的一个界面，待优化
 
 #import "PublishScrollViewViewController.h"
 
 #import "SelectAreaTableViewController.h"
 #import "AdjustTradeTableViewController.h"
-#import "SelectRantTypeTableViewController.h"
+#import "ParkMakingTypeTableViewController.h"
 #import "SelectTagViewController.h"
+#import "SelectAllAreaViewController.h"
 
 #import "TZImagePickerController.h"
 #import "PictureCollectViewController.h"
@@ -26,7 +27,7 @@
 #import "GeoCodeOfBaiduMap.h"
 
 #import "FOLUserInforModel.h"
-//#import <IQKeyboardManager.h>
+#import <IQKeyboardManager.h>
 #import "PickerView.h"
 #define ImageViewHeight 170
 #define ViewHeight 850
@@ -41,14 +42,20 @@
     NSString *cityID_pub;
     UIButton *officeLastButton;     // officearea最后一个按钮
     UIButton *hostelLastButton;     // hostelarea最后一个按钮
-    
+    CGFloat officeAreaStr;        // 办公室面积   按需分配：-1
+    CGFloat hostelAreaStr;        // 宿舍面积     按需分配：-1
+    UITextField *lastTF;
 }
 @property (nonatomic, strong) NSMutableArray *imageArray;       // 已选的图片数组
 @property (nonatomic, strong) NSMutableArray *imageKeyArr;      // 存放图片名称的数组
 @property (nonatomic, strong) NSArray *selectDataArray;         // 选项的数组
 @property (nonatomic, strong) UIButton *againTakePhotoBtn;
 @property (nonatomic, strong) PickerView *myPickerView;         // 自定义的PickerView
+@property (nonatomic, strong) NSMutableArray *postDataArray;    // 上传的数据记载
 
+@property (nonatomic, strong) NSString *adjustStr;
+@property (nonatomic, strong) NSString *parkMakingStr;
+@property (nonatomic, strong) NSDictionary *areaDict;
 @end
 
 @implementation PublishScrollViewViewController
@@ -68,22 +75,19 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     _geocodesearch.delegate = nil; // 不用时，置nil
+//    [[IQKeyboardManager sharedManager] setEnable:_wasKeyboardManagerEnabled];
+//    [IQKeyboardManager sharedManager].canGoNext = NO;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-
-}
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
     
-//    [[IQKeyboardManager sharedManager] setEnable:NO];
-    
     [self.rdv_tabBarController setTabBarHidden:YES];
     
     _geocodesearch.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
-    }
+    [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -104,8 +108,6 @@
     
     _geocodesearch = [[BMKGeoCodeSearch alloc] init];
     
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showKeyboardAction:) name:UIKeyboardWillShowNotification object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hiddenKeyboardAction:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)backAction {
@@ -118,10 +120,31 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:@"PublishSelect.plist" ofType:nil]; // 获取选择项中的内容
     
     self.selectDataArray = [NSArray arrayWithContentsOfFile:path];
+    self.postDataArray = [NSMutableArray array];
+    // 先给数组添加数据，在选择器选择之后进行替换
+    for (int i = 0; i < 11; i++) {
+        [self.postDataArray addObject:@(-1)];
+        switch (i) {
+            case 0:case 1:case 2:case 3:case 4:case 8:case 9:case 10:
+            {
+                [self.postDataArray addObject:@(0)];
+            }
+                break;
+            case 6:
+            {
+                [self.postDataArray addObject:@(1)];
+            }
+                break;
+            default:
+                break;
+        }
+    }
+    
+    self.areaDict = [NSDictionary dictionary];
 }
 
 - (void)drawView {
-    
+    self.scrollView.delegate = self;
     publishDic = [NSDictionary dictionary];
     
     self.imageArray = [NSMutableArray array];       // 初始化图片数组
@@ -188,6 +211,7 @@
     tapGestureRecognizer.cancelsTouchesInView = NO;
     //将触摸事件添加到当前view
     [self.scrollView addGestureRecognizer:tapGestureRecognizer];
+    
 }
 
 -(void)keyboardHide:(UITapGestureRecognizer*)tap{
@@ -299,10 +323,11 @@
 #pragma mark - 办公室面积
 - (IBAction)officeAreaButtonAction:(UIButton *)sender {
     
-    [officeLastButton setImage:[UIImage imageNamed:@"uncheck"] forState:0];
+    [officeLastButton setImage:[UIImage imageNamed:@"publish_unCheck"] forState:0];
     
     if (sender.tag == 100) {
         [sender setImage:[UIImage imageNamed:@"publish_Check"] forState:0];
+        officeAreaStr = -1;
     } else {
         [sender setImage:[UIImage imageNamed:@"publish_Check"] forState:0];
         [self.officeareaTF becomeFirstResponder];   // 开启第一响应者
@@ -312,38 +337,103 @@
 #pragma mark - 宿舍面积
 - (IBAction)hotelAreaButtonAction:(UIButton *)sender {
     
-    [hostelLastButton setImage:[UIImage imageNamed:@"uncheck"] forState:0];
+    [hostelLastButton setImage:[UIImage imageNamed:@"publish_unCheck"] forState:0];
     if (sender.tag == 100) {
         [sender setImage:[UIImage imageNamed:@"publish_Check"] forState:0];
+        hostelAreaStr = -1;
     } else {
         [sender setImage:[UIImage imageNamed:@"publish_Check"] forState:0];
         [self.hostelAreaTF becomeFirstResponder];   // 开启第一响应者
     }
     hostelLastButton = sender;
 }
-
-
-
 #pragma mark - 选择区域
 - (IBAction)areaSelectAction:(UIButton *)sender {
     
-    SelectAreaTableViewController *selectAreaVC = [SelectAreaTableViewController new];
+    SelectAllAreaViewController *selectAreaVC = [SelectAllAreaViewController new];
     
-    selectAreaVC.selectedStr = self.selectAreaBtn.titleLabel.text;
+//    selectAreaVC.selectedStr = self.selectAreaBtn.titleLabel.text;
     
     __weak PublishScrollViewViewController *weakSelf = self;
-    
-    selectAreaVC.selectAreaBlock = ^(NSString *town,NSString *townID ,NSString *city,NSString *cityID) {
+    selectAreaVC.pushDict = self.areaDict;
+    selectAreaVC.areaBlock = ^(NSDictionary *dict) {
         
-        [weakSelf.selectAreaBtn setTitle:[NSString stringWithFormat:@"%@-%@",city,town] forState:(UIControlStateNormal)];
-        townID_pub = townID;
-        cityID_pub = cityID;
-        NSLog(@"%@--%@",cityID,townID);
+        weakSelf.areaDict = dict;
+        [weakSelf.selectAreaBtn setTitle:[NSString stringWithFormat:@"%@-%@-%@",dict[@"province"][0],dict[@"city"][0],dict[@"area"][0]] forState:(UIControlStateNormal)];
+//        townID_pub = townID;
+//        cityID_pub = cityID;
+//        NSLog(@"%@--%@",cityID,townID);
     };
     
     [self.navigationController pushViewController:selectAreaVC animated:YES];
     
 }
+#pragma mark - 下拉按钮的响应事件
+- (IBAction)selectItemAction:(UIButton *)sender {
+    
+    __weak PublishScrollViewViewController *weakSelf = self;
+    
+    // 下拉按钮的判断
+    if (sender.tag >= 110 && sender.tag < 130) {
+        
+        NSInteger tagIndex = sender.tag-110;
+
+        self.myPickerView.hidden = NO;
+        
+        self.myPickerView.dataSource = self.selectDataArray[tagIndex];
+        
+        self.myPickerView.selectStrBlock = ^(NSString *selectStr,NSInteger index) {
+            
+            if (index < 1) {
+                return ;
+            }
+            switch (tagIndex) {
+                case 0:
+                    weakSelf.rantStyleTF.text = selectStr;
+                    break;
+                case 1:
+                    weakSelf.rantAndSaleTF.text = selectStr;
+                    break;
+                case 2:
+                    weakSelf.depositStyleTF.text = selectStr;
+                    break;
+                case 3:
+                    weakSelf.owerTypeTF.text = selectStr;
+                    break;
+                case 4:
+                    weakSelf.olderLevelTF.text = selectStr;
+                    break;
+                case 5:
+                    weakSelf.onFloorTF.text = selectStr;
+                    break;
+                case 6:
+                    weakSelf.floorStrucureTF.text = selectStr;
+                    break;
+                case 7:
+                    weakSelf.factoryCanteenTF.text = selectStr;
+                    break;
+                case 8:
+                    weakSelf.elevatorTF.text = selectStr;
+                    break;
+                case 9:
+                    weakSelf.fireControlTF.text = selectStr;
+                    break;
+                case 10:
+                    weakSelf.enviromentalTF.text = selectStr;
+                    break;
+                default:
+                    break;
+            }
+            
+            [weakSelf.postDataArray replaceObjectAtIndex:tagIndex withObject:@(index-1)];
+            
+            [weakSelf judgeStringisPublish:NO]; // 判断是否能发布
+        };
+        
+    }
+}
+
+
 #pragma mark - 选择 标签Tag 按钮
 - (IBAction)selectTagBtnAction:(UIButton *)sender {
     
@@ -458,10 +548,23 @@
     
     if (tagMArrary.count <= 0) return;
     
-    if (self.depositStyleTF.text.length <= 0) return;
-    
-    if (self.rantStyleTF.text.length <= 0) return;
+    if (self.parkMakingTF.text.length <= 0) return;
 
+    if (self.adjustTradeTF.text.length <= 0) return;
+
+    if (self.floorHeightTF.text.length <= 0) return;
+    
+    if (self.moneyRewardTF.text.length <= 0) return;
+    
+    if (![NSString validatePureNumandCharacters:self.moneyRewardTF.text]) {
+        [MBProgressHUD showError:@"请输入纯文字" ToView:nil];
+    }
+    for (NSString *obj in self.postDataArray) {
+        int tagIndex = [obj intValue];
+        if (tagIndex < 0) {
+            return;
+        }
+    }
     
     [self setPublishBtnStyle:YES];
     
@@ -487,12 +590,6 @@
             NSLog(@"%@",self.priceTF.text);
             return;
         }
-        
-//        if (self.titleTF.text.length < 8 || self.titleTF.text.length >28) {
-//            zhzAlertView = [[ZHZAlertView alloc] initWithFrame:self.view.bounds alertWord:@"请输入标题，8~28字哦~"];
-//            [self.view addSubview:zhzAlertView];
-//            return;
-//        }
         
         if (self.describeTextView.text.length <= 0) {
             
@@ -536,19 +633,44 @@
 //    NSString *tag = [NSString arrayToJson:tagMArrary];
 //    NSString *pics = [NSString arrayToJson:self.imageKeyArr];
     FOLUserInforModel *model = [[FOLUserInforModel findAll] firstObject];
-     publishDic = @{@"tags":tagMArrary,@"user_id":model.userID,@"city_id":cityID_pub,
-                    @"area_id":townID_pub,@"address":self.lotTF.text,
-                    @"price":[self.priceTF.text stringByReplacingOccurrencesOfString:@"/月/m²" withString:@""],
-                    @"range":[self.factoryAreaTF.text stringByReplacingOccurrencesOfString:@"平方米" withString:@""],
-                    @"title":self.titleTF.text,@"rent_type": self.rantStyleTF.text,
-                    @"pre_pay":self.depositStyleTF.text,@"description":self.describeTextView.text,
-                    @"contact_name":self.linkmanTF.text,@"contact_num":self.phoneNumTF.text,
-                    @"pics":self.imageKeyArr,@"geohash":geohashStr
-                    };
+//     publishDic = @{@"tags":tagMArrary,@"user_id":model.userID,@"city_id":cityID_pub,
+//                    @"area_id":townID_pub,@"address":self.lotTF.text,
+//                    @"price":[self.priceTF.text stringByReplacingOccurrencesOfString:@"/月/m²" withString:@""],
+//                    @"range":[self.factoryAreaTF.text stringByReplacingOccurrencesOfString:@"平方米" withString:@""],
+//                    @"title":self.titleTF.text,@"rent_type": self.rantStyleTF.text,
+//                    @"pre_pay":self.depositStyleTF.text,@"description":self.describeTextView.text,
+//                    @"contact_name":self.linkmanTF.text,@"contact_num":self.phoneNumTF.text,
+//                    @"pics":self.imageKeyArr,@"geohash":geohashStr
+//                    };
     
-    NSString *publishStr = [NSString dictionaryToJson:publishDic];
     
-    [HTTPREQUEST_SINGLE postRequestWithService:URL_POST_PUBLISH andParameters:@{@"publish":publishStr} isShowActivity:YES dicIsEncode:NO success:^(RequestManager *manager, NSDictionary *response) {
+//    NSString *publishStr = [NSString dictionaryToJson:publishDic];
+    NSString *tagStr;
+    for (NSString *str in tagMArrary) {
+        tagStr = [NSString stringWithFormat:@"%@,%@",tagStr,str];
+    }
+    NSString *imageKeyStr;
+    for (NSString *imageKey in self.imageKeyArr) {
+        imageKeyStr = [NSString stringWithFormat:@"%@,%@",imageKeyStr,imageKey];
+    }
+    NSDictionary *dic = @{@"title":self.titleTF.text,@"selling_point":self.describeTextView.text,
+                          @"enjoy":self.moneyRewardTF.text,@"total_area":self.factoryAreaTF.text,
+                          @"dorm_area":self.hostelAreaTF.text,@"office_area":self.officeareaTF.text,
+                          @"contacts":self.linkmanTF.text,@"phone_num":self.phoneNumTF.text,
+                          @"price":[self.priceTF.text stringByReplacingOccurrencesOfString:@"/月/m²" withString:@""],
+                          @"distribution":self.electricityTF.text,@"floor_hight":self.floorHeightTF.text,
+                          @"trade_id":self.adjustStr,@"facilities":self.parkMakingStr,
+                          @"tags":tagStr,@"thumbnails":imageKeyStr,
+                          @"address":self.lotTF.text,@"area_code":self.areaDict[@"area"][2],
+                          @"dorm_area":@(hostelAreaStr),@"office_area":@(officeAreaStr),
+                          @"rent_type_id":self.postDataArray[0],@"rent_mode_id":self.postDataArray[1],
+                          @"foregift_id":self.postDataArray[2],@"owner_type_id":self.postDataArray[3],
+                          @"newold_id":self.postDataArray[4],@"floor_pos_id":self.postDataArray[5],
+                          @"struct_id":self.postDataArray[6],@"canteen":self.postDataArray[7],
+                        @"is_elevator":self.postDataArray[8],@"is_fire_protection":self.postDataArray[9],
+                          @"green_card":self.postDataArray[10]};
+    
+    [HTTPREQUEST_SINGLE postRequestWithService:@"apps/factory/issuance/" andParameters:dic isShowActivity:YES dicIsEncode:NO success:^(RequestManager *manager, NSDictionary *response) {
         NSLog(@"发布：%@",response);
         if ([response[@"erro_code"] intValue] != 200) [MBProgressHUD showSuccess:@"发布失败" ToView:nil];
         else [MBProgressHUD showSuccess:@"发布成功" ToView:nil];
@@ -556,7 +678,7 @@
         
 //        [self.navigationController popViewControllerAnimated:YES];
         
-        [self dismissViewControllerAnimated:YES completion:nil];
+//        [self dismissViewControllerAnimated:YES completion:nil];
         
     } failure:^(RequestManager *manager, NSError *error) {
         NSLog(@"error:%@",error.debugDescription);
@@ -570,8 +692,6 @@
     }
 
 }
-
-
 - (void)setPublishBtnStyle:(BOOL)isEnable {
     
     if (isEnable) {
@@ -604,6 +724,41 @@
 //    [PublishModel insertPublishModel:publishDic];
 //    
 }
+#pragma mark - 适用行业
+- (IBAction)jumpAdjustVC:(UIButton *)sender {
+    
+    __weak PublishScrollViewViewController *weakSelf = self;
+    // 跳转到选择适用行业
+    AdjustTradeTableViewController *adjustVC = [AdjustTradeTableViewController new];
+    
+    adjustVC.adjustStr = self.adjustTradeTF.text;
+    
+    adjustVC.adjustTypeBlock = ^(NSString *depositType, NSString *indexStr) {
+        
+        weakSelf.adjustTradeTF.text = depositType;
+        weakSelf.adjustStr = indexStr;
+        [self judgeStringisPublish:NO];
+    };
+    [self.navigationController pushViewController:adjustVC animated:YES];
+    
+}
+#pragma mark - 园区配套
+- (IBAction)parkMakingAction:(UIButton *)sender {
+    
+    __weak PublishScrollViewViewController *weakSelf = self;
+    // 跳转到选择适用行业
+    ParkMakingTypeTableViewController *adjustVC = [ParkMakingTypeTableViewController new];
+    
+    adjustVC.parkTypeStr = self.parkMakingTF.text;
+    
+    adjustVC.parkTypeBlock = ^(NSString *depositType, NSString *indexStr) {
+        
+        weakSelf.parkMakingTF.text = depositType;
+        weakSelf.parkMakingStr = indexStr;
+        [self judgeStringisPublish:NO];
+    };
+    [self.navigationController pushViewController:adjustVC animated:YES];
+}
 
 #pragma mark - 发布按钮
 - (IBAction)publishBtnAction:(UIButton *)sender {
@@ -611,7 +766,6 @@
     [self judgeStringisPublish:YES];
     
 }
-
 #pragma mark - textfield delegate
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     //    textField.layer.borderColor = NaviBackColor.CGColor;
@@ -630,50 +784,25 @@
         NSString *string = [self.priceTF.text stringByReplacingOccurrencesOfString:@"/月/m²" withString:@""];
         self.priceTF.text = string;
     }
+    lastTF = textField;
     
-    __weak PublishScrollViewViewController *weakSelf = self;
+}
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+//    [[IQKeyboardManager sharedManager] resignFirstResponder];
+    [textField resignFirstResponder];
     
-    // 下拉按钮的判断
     if (textField.tag >= 200 && textField.tag < 250) {
-        
-        [textField resignFirstResponder];
-        
-        NSInteger index = textField.tag - 200;
-        
-        self.myPickerView.hidden = NO;
-        
-        self.myPickerView.dataSource = self.selectDataArray[index];
-        
-        self.myPickerView.selectStrBlock = ^(NSString *selectStrBlock) {
-            
-            textField.text = selectStrBlock;
-            
-        };
-        
+        return NO;
     }
     
-    if (textField.tag == 250) {
-        // 跳转到选择适用行业
-        AdjustTradeTableViewController *adjustVC = [AdjustTradeTableViewController new];
-        
-        adjustVC.depositStr = self.adjustTradeTF.text;
-        
-        adjustVC.depositTypeBlock = ^(NSString *depositType) {
-            
-            weakSelf.adjustTradeTF.text = depositType;
-            
-            [self judgeStringisPublish:NO];
-        };
-        
-        [textField resignFirstResponder];
-        [self.navigationController pushViewController:adjustVC animated:YES];
-    }
-    
+    return YES;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     // may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
     NSLog(@"编辑结束");
+    [textField resignFirstResponder];
+//    [[IQKeyboardManager sharedManager] resignFirstResponder];
     
     textField.layer.borderColor = [UIColor clearColor].CGColor;
     
@@ -689,11 +818,19 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [self judgeStringisPublish:NO];
-    [self.lotTF resignFirstResponder];
-    [self.priceTF resignFirstResponder];
-    [self.titleTF resignFirstResponder];
-    [self.linkmanTF resignFirstResponder];
-    [self.phoneNumTF resignFirstResponder];
+    
+    if (textField == self.hostelAreaTF) {
+        hostelAreaStr = [self.hostelAreaTF.text floatValue];
+    } else if (textField == self.officeareaTF){
+        officeAreaStr = [self.officeareaTF.text floatValue];
+    }
+    
+    [textField resignFirstResponder];
+//    [self.lotTF resignFirstResponder];
+//    [self.priceTF resignFirstResponder];
+//    [self.titleTF resignFirstResponder];
+//    [self.linkmanTF resignFirstResponder];
+//    [self.phoneNumTF resignFirstResponder];
     return YES;
 }
 
@@ -850,7 +987,7 @@
 
 - (PickerView *)myPickerView {
     if (!_myPickerView ) {
-        _myPickerView = [[PickerView alloc] initWithFrame:CGRectMake(0, Screen_Height-Screen_Height*206/568-64, Screen_Width, 206)];
+        _myPickerView = [[PickerView alloc] initWithFrame:CGRectMake(0, Screen_Height-Screen_Height*206/568, Screen_Width, 206)];
         _myPickerView.hidden = YES;
         [self.view bringSubviewToFront:_myPickerView];
         [self.view addSubview:_myPickerView];

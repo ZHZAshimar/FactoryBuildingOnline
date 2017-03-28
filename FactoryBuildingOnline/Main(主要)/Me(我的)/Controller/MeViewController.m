@@ -22,6 +22,7 @@
 #import "AppFeedbackViewController.h"
 #import "ScanHistoryViewController.h"
 #import "ScanReserveViewController.h"
+#import "MyPublishViewController.h"
 
 @interface MeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,MeFirstHeadCollectionReusableViewDelegate>
 {
@@ -140,9 +141,9 @@
     // 身份为专家的时，跳转到我发布的厂房页面；当身份为用户时，跳转到我发布的需求页面
     if (userModel.type == 2) {
         // 跳转到我发布的厂房页面
-        PublishAndCollectViewController *publishVC = [PublishAndCollectViewController new];
+        MyPublishViewController *publishVC = [MyPublishViewController new];
         
-        publishVC.datatype = MYPUBLISH_TYPE;
+//        publishVC.datatype = MYPUBLISH_TYPE;
         
         [self.navigationController pushViewController:publishVC animated:YES];
 

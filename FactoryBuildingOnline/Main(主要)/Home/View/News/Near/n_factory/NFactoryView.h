@@ -10,4 +10,6 @@
 
 @interface NFactoryView : UIView
 
+@property (nonatomic, strong) NSString *geohashStr;
+
 @end

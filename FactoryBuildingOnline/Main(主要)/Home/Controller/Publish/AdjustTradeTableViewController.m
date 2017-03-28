@@ -11,7 +11,7 @@
 #import "AdjustTradeTableViewCell.h"
 @interface AdjustTradeTableViewController ()<UITableViewDelegate, UITableViewDataSource>
 {
-    NSInteger selectedCount;
+    NSInteger selectedCount;        // 记录选中的个数
     
 }
 
@@ -39,37 +39,98 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    selectedCount = 1;
     [self setVCName:@"适用行业" andShowSearchBar:NO andTintColor:GREEN_19b8 andBackBtnStr:@"返回"];
     [self.leftNaviButton setImage:[UIImage imageNamed:@"greenBack"] forState:UIControlStateNormal];
     [self addRightItemWithString:@"完成" andItemTintColor:GREEN_19b8];
     self.dataSource = [NSMutableArray arrayWithArray:@[
-                                                       @{@"title":@"医药卫生",@"isSelect":@(0)},
-                                                       @{@"title":@"机械机电",@"isSelect":@(0)},
-                                                       @{@"title":@"轻工食品",@"isSelect":@(0)},
-                                                       @{@"title":@"服装纺织",@"isSelect":@(0)},
-                                                       @{@"title":@"办公文教",@"isSelect":@(0)},
-                                                       @{@"title":@"电子电工",@"isSelect":@(0)},
-                                                       @{@"title":@"家居用品",@"isSelect":@(0)}]];
+                   @{@"title":@"其他",@"isSelect":@(0)},
+                   @{@"title":@"医药卫生",@"isSelect":@(0)},
+                   @{@"title":@"机械机电",@"isSelect":@(0)},
+                   @{@"title":@"轻工食品",@"isSelect":@(0)},
+                   @{@"title":@"服装纺织",@"isSelect":@(0)},
+                   @{@"title":@"办公文教",@"isSelect":@(0)},
+                   @{@"title":@"电子电工",@"isSelect":@(0)},
+                   @{@"title":@"家居用品",@"isSelect":@(0)}]];
     
-//    if (self.depositStr.length > 0) {
-//        
-//        // 获取已选的 押金方式
-//        int i = 0;
-//        for (NSString *str in self.dataSource) {
-//            if ([str isEqualToString:self.depositStr]) {
-//                
-//                selectedIndex = i;
-//            }
-//            i++;
-//        }
-//    }
+    // 将拿到的字符串进行分解，确定已选的项
+    if (self.adjustStr.length > 0) {
+        
+        if (self.adjustStr.length > 4) {
+            
+            NSArray *strArray = [self.adjustStr componentsSeparatedByString:@"/"];
+            NSMutableArray *mArray = [NSMutableArray array];
+            // 获取已选的 押金方式
+            for (NSString *str in strArray) {
+                
+                int i = 0;
+                // 遍历数组，拿到指定的index
+                for (NSMutableDictionary *mDic in self.dataSource) {
+                    
+                    if ([mDic[@"title"] isEqualToString:str]) {
+                        [mArray addObject:@(i)];
+
+                        selectedCount++;
+                    }
+                    i++;
+                }
+                
+            }
+            // 遍历指定的index的数组，修改dataSource数组
+            for (NSString *str in mArray) {
+                NSInteger index = [str integerValue];
+                NSMutableDictionary *mDic = [NSMutableDictionary dictionaryWithDictionary:self.dataSource[index]];
+                [mDic setValue:@(1) forKey:@"isSelect"];
+                [self.dataSource replaceObjectAtIndex:index withObject:mDic];
+            }
+            
+        } else {
+            // 获取已选的 押金方式
+            int i = 0;
+            for (NSMutableDictionary *mDic in self.dataSource) {
+                
+                if ([mDic[@"title"] isEqualToString:self.adjustStr]) {
+                    selectedCount++;
+                    break;
+                }
+                i++;
+            }
+            
+            NSMutableDictionary *mDic = [NSMutableDictionary dictionaryWithDictionary:self.dataSource[i]];
+            [mDic setValue:@(1) forKey:@"isSelect"];
+            [self.dataSource replaceObjectAtIndex:i withObject:mDic];
+            
+        }
+        
+    }
     
     [self.view addSubview:self.myTableView];
-    selectedCount = 1;
+    
 }
-// 完成
+#pragma mark - 完成
 - (void)rightItemButtonAction {
+    NSString *indexStr = @"";
+    self.adjustStr = @"";
+    
+    int i = 0,count = 0;
+        for (NSMutableDictionary *dic in self.dataSource) {
+            
+            if ([dic[@"isSelect"] integerValue] == 1) {
+                if (count == 0) {
+                    self.adjustStr = dic[@"title"];
+                    indexStr = [NSString stringWithFormat:@"%d",i];
+                } else {
+                    self.adjustStr = [NSString stringWithFormat:@"%@/%@",self.adjustStr,dic[@"title"]];
+                    indexStr = [NSString stringWithFormat:@"%@,%d",indexStr,i];
+                }
+                
+                count++;
+            }
+            i++;
+            
+        }
+    self.adjustTypeBlock(self.adjustStr,indexStr);
+
     
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -94,13 +155,13 @@
     
     cell.titleLabel.text = dic[@"title"];
     
-//    if (self.depositStr.length > 0 && indexPath.row == selectedIndex) {         // 绘制选中的钩钩
-//        
-//        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"choose_publish"]];
-//        
-//        imageView.frame = CGRectMake(Screen_Width - 30, 16, 16, 11);
-//
-//    }
+    if ([dic[@"isSelect"] intValue] == 0) {
+        cell.selectImageView.image = [UIImage imageNamed:@""];
+    } else {
+        cell.selectImageView.image = [UIImage imageNamed:@"choose_publish"];
+    }
+
+
     
     return cell;
 }

@@ -29,8 +29,8 @@
                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="经纪" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dvS-YN-R15">
-                    <rect key="frame" x="53" y="31.5" width="22.5" height="13.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="经纪" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dvS-YN-R15">
+                    <rect key="frame" x="53" y="32" width="30" height="14"/>
                     <color key="backgroundColor" red="0.90982222557067871" green="0.90980517864227295" blue="0.90981674194335938" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     <color key="textColor" red="0.32549019607843138" green="0.74117647058823533" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -39,7 +39,7 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017/03/13" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bgl-u2-QxP">
                     <rect key="frame" x="247" y="21" width="59" height="14"/>
                     <constraints>
-                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="76" id="UvA-sW-ThQ"/>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="UvA-sW-ThQ"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -54,7 +54,7 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.44km" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="guA-zl-kwG">
                     <rect key="frame" x="199" y="21" width="40" height="14"/>
                     <constraints>
-                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="76" id="0Jf-aq-YrD"/>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="0Jf-aq-YrD"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -79,6 +79,14 @@
                 <constraint firstItem="vcO-QS-Se6" firstAttribute="leading" secondItem="lzQ-5p-Rno" secondAttribute="trailing" constant="6" id="tgR-st-Izk"/>
                 <constraint firstAttribute="trailing" secondItem="hu0-mH-O5l" secondAttribute="trailing" constant="12" id="zwm-6R-lkK"/>
             </constraints>
+            <connections>
+                <outlet property="avatarImageView" destination="lzQ-5p-Rno" id="UGd-gs-S7t"/>
+                <outlet property="contentLabel" destination="hu0-mH-O5l" id="iAf-mv-dyI"/>
+                <outlet property="distanceLabel" destination="guA-zl-kwG" id="pan-Q6-uHo"/>
+                <outlet property="tagLabel" destination="dvS-YN-R15" id="6OO-PP-om7"/>
+                <outlet property="timeLabel" destination="Bgl-u2-QxP" id="HN7-50-NFF"/>
+                <outlet property="userNameLabel" destination="vcO-QS-Se6" id="2uE-4V-UVd"/>
+            </connections>
             <point key="canvasLocation" x="-353" y="121"/>
         </collectionReusableView>
     </objects>

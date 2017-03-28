@@ -1,19 +1,18 @@
 //
-//  NDynamicMapCollectionReusableView.m
+//  NRankHeaderCollectionReusableView.m
 //  FactoryBuildingOnline
 //
-//  Created by 郑惠珠 on 2017/3/11.
+//  Created by 郑惠珠 on 2017/3/27.
 //  Copyright © 2017年 XFZY. All rights reserved.
 //
 
-#import "NDynamicMapCollectionReusableView.h"
+#import "NRankHeaderCollectionReusableView.h"
 
-@implementation NDynamicMapCollectionReusableView
-
+@implementation NRankHeaderCollectionReusableView
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         
-        NSArray *arrayOfViews = [[NSBundle mainBundle] loadNibNamed:@"NDynamicMapCollectionReusableView" owner:self options:nil];
+        NSArray *arrayOfViews = [[NSBundle mainBundle] loadNibNamed:@"NRankHeaderCollectionReusableView" owner:self options:nil];
         if (arrayOfViews.count < 1) {
             return nil;
         }
@@ -28,6 +27,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.textLabel.font = [UIFont systemFontOfSize:[UIFont adjustFontSize:11.0]];
 }
 
 @end

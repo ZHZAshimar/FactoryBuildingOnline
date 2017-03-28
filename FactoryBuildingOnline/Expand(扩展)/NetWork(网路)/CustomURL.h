@@ -16,7 +16,8 @@
 //    #define URL_HOST @"http://api.oncom.cn:8000/api/v1/"
     #define URL_HOST @"http://oncom.cn:8000/api/v1/"     // 开发环境
 //    #define URL_HOST @"http://192.168.0.195:8000/api/v1"
-//    #define URL_HOST @"http://192.168.0.195:8000/"
+    #define URL_HOST_LOCATION @"http://192.168.0.116:8000/"  // 本地测试服务
+
 #else
 
     // 测试服务器

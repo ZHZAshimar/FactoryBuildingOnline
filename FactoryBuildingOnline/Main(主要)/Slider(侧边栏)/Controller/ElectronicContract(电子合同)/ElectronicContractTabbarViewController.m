@@ -57,9 +57,9 @@
         
         navi.tabBarItem.image = [[UIImage imageNamed:picArray[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];   // 图标
         
-        [navi.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:GREEN_19b8,NSFontAttributeName:[UIFont systemFontOfSize:[UIFont adjustFontSize:12]]} forState:UIControlStateSelected];      // 设置选中时的文字大小及颜色
+        [navi.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:GREEN_19b8,NSFontAttributeName:[UIFont systemFontOfSize:[UIFont adjustFontSize:10]]} forState:UIControlStateSelected];      // 设置选中时的文字大小及颜色
         
-        [navi.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithHex:0x666666],NSFontAttributeName:[UIFont systemFontOfSize:[UIFont adjustFontSize:12]]}  forState:0];    // 设置未选中时的文字大小及颜色
+        [navi.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithHex:0x666666],NSFontAttributeName:[UIFont systemFontOfSize:[UIFont adjustFontSize:10]]}  forState:0];    // 设置未选中时的文字大小及颜色
         
         [mArray addObject:navi];        // 将设置好的VC添加到数组中
         

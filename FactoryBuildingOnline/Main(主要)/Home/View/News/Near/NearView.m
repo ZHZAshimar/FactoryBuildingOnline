@@ -11,18 +11,27 @@
 #import "NFactoryView.h"
 
 #import "NPeopleView.h"
+#import "GeoCodeOfBaiduMap.h"
+#import "UserLocation.h"
 
 @interface NearView () {
     UIButton *lastButton;
+    NSString *geoHashString;
 }
 @property (nonatomic, strong) UIScrollView *myScrollView;
 @end
 
 @implementation NearView
 
+- (void)dealloc {
+}
+
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
+        geoHashString = [UserLocation shareInstance].geohashStr;
+        
         [self initView];
+        
         [self addSubview:self.myScrollView];
     }
     return self;
@@ -55,7 +64,6 @@
         }
         [self addSubview:button];
     }
-    [self addSubview:self.myScrollView];
 }
 
 - (void)buttonAction:(UIButton *)sender {
@@ -78,9 +86,12 @@
         _myScrollView.scrollEnabled = NO;
         
         NDynamicView *dynamicView = [[NDynamicView alloc] initWithFrame:CGRectMake(Screen_Width*2, 0, Screen_Width, self.myScrollView.frame.size.height)];
-        [_myScrollView addSubview:dynamicView];
+                [_myScrollView addSubview:dynamicView];
+        
         NFactoryView *factoryView = [[NFactoryView alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, self.myScrollView.frame.size.height)];
+        
         [_myScrollView addSubview:factoryView];
+        
         NPeopleView *peopleView = [[NPeopleView alloc] initWithFrame:CGRectMake(Screen_Width, 0, Screen_Width, self.myScrollView.frame.size.height)];
         [_myScrollView addSubview:peopleView];
     }

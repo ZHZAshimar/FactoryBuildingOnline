@@ -23,12 +23,12 @@
 	</array>
 	<array>
 		<string>请选择业主类型</string>
+		<string>业主</string>
 		<string>村委会</string>
 		<string>镇政府</string>
 		<string>区政府</string>
 		<string>市政府</string>
-		<string>业主</string>
-		<string>经纪</string>
+		<string>经纪人</string>
 	</array>
 	<array>
 		<string>请选择新旧程度</string>
@@ -40,28 +40,23 @@
 	</array>
 	<array>
 		<string>请选择所在楼层</string>
+		<string>其他</string>
 		<string>一楼</string>
 		<string>二楼以上</string>
 		<string>独栋</string>
 		<string>独院</string>
-		<string>其他</string>
 	</array>
 	<array>
 		<string>请选择楼层结构</string>
+		<string>其他</string>
 		<string>标准厂房</string>
 		<string>简易厂房</string>
 		<string>钢结构厂房</string>
-		<string>其他</string>
 	</array>
 	<array>
 		<string>请选择厂房食堂类型</string>
 		<string>公有</string>
 		<string>私有</string>
-		<string>无</string>
-	</array>
-	<array>
-		<string>请选择园区配套</string>
-		<string>有</string>
 		<string>无</string>
 	</array>
 	<array>

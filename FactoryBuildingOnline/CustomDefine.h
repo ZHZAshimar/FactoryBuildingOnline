@@ -38,6 +38,7 @@
 #define GRAY_F5  [UIColor colorWithHex:0xf5f5f5]
 #define GRAY_9e  [UIColor colorWithHex:0x9e9e9e]
 #define GRAY_e6  [UIColor colorWithHex:0xe6e6e6]
+#define GRAY_ee  [UIColor colorWithHex:0xeeeeee]
 #define GRAY_9d9c  [UIColor colorWithHex:0x9d9ca2]
 #define GRAY_f4 [UIColor colorWithHex:0xf4f4f7]
 #define GRAY_F4F5F9 [UIColor colorWithHex:0xF4F5F9]
@@ -99,10 +100,10 @@
 #define UserKey @"UserKey"
 #define UserPath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"user.txt"]
 
-#define BaiduMapKey @"1HrdffOWqBOYwdae2VUsNMzajPTOlHMO"
+#define BaiduMapKey @"lOvpMTjBrAH9YjuTH7uG677bHvgWwp59"
 
 #define HTTPREQUEST_SINGLE [RequestManager shareInstance]
-
+#define IQKEYBOARDMANAGER  [IQKeyboardManager sharedManager]
 #define PLACEHOLDER_IMAGE [UIImage imageNamed:@"loading"]      // 图片为加载出来时的图片
 
 #endif /* CustomDefine_h */

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^SELECTSTRBLOCK)(NSString *selectStrBlock) ;
+typedef void(^SELECTSTRBLOCK)(NSString *selectStrBlock,NSInteger index) ;
 
 @interface PickerView : UIView
 

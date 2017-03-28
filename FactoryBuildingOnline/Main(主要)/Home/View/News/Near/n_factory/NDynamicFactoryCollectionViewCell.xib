@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="144" height="180"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_publish" translatesAutoresizingMaskIntoConstraints="NO" id="Evx-8W-oYe">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading" translatesAutoresizingMaskIntoConstraints="NO" id="Evx-8W-oYe">
                         <rect key="frame" x="0.0" y="0.0" width="144" height="180"/>
                     </imageView>
                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qrn-gP-rtK">
@@ -57,10 +57,15 @@
                 <constraint firstItem="FuG-cN-eOH" firstAttribute="leading" secondItem="LIe-ct-fSy" secondAttribute="trailing" id="z3B-7g-wVO"/>
                 <constraint firstItem="qrn-gP-rtK" firstAttribute="height" secondItem="Evx-8W-oYe" secondAttribute="height" multiplier="31/180" id="zAw-0Y-y38"/>
             </constraints>
+            <connections>
+                <outlet property="contentLabel" destination="FuG-cN-eOH" id="DFW-48-Tbf"/>
+                <outlet property="imageView" destination="Evx-8W-oYe" id="7G1-a6-jkR"/>
+                <outlet property="titleLabel" destination="LIe-ct-fSy" id="JFo-ks-Onz"/>
+            </connections>
             <point key="canvasLocation" x="-27" y="1"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="bg_publish" width="320" height="170"/>
+        <image name="loading" width="500" height="500"/>
     </resources>
 </document>

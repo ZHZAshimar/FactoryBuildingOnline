@@ -19,6 +19,8 @@
 #import "FirstShowViewController.h"
 #import "FOLUserInforModel.h"
 
+#import "UserLocation.h"
+
 #define NAVBAR_CHANGE_POINT 64
 
 @interface HomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UISearchBarDelegate,UITextFieldDelegate,UIGestureRecognizerDelegate>
@@ -284,7 +286,9 @@
     
     CLLocationCoordinate2D pt = (CLLocationCoordinate2D){0, 0};
     pt = (CLLocationCoordinate2D){userLocation.location.coordinate.latitude, userLocation.location.coordinate.longitude};
-
+    NSString *str = [GeoCodeOfBaiduMap getGeohash:userLocation.location.coordinate.latitude andLon:userLocation.location.coordinate.longitude andLength:12];
+    [UserLocation shareInstance].geohashStr = str;
+    
     BMKReverseGeoCodeOption *reverseGeocodeSearchOption = [[BMKReverseGeoCodeOption alloc]init];    ///反geo检索信息类
     reverseGeocodeSearchOption.reverseGeoPoint = pt;    ///经纬度
     BOOL flag = [_geocodesearch reverseGeoCode:reverseGeocodeSearchOption];
@@ -488,6 +492,7 @@
                 { // 跳转到咨询界面
                     NewsViewController *newsVC = [NewsViewController new];
                     [weakSelf.navigationController pushViewController:newsVC animated:YES];
+                    weakSelf.naviSegmentedControl.selectedSegmentIndex = 0;
                     return;
                 }
                     break;

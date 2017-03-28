@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface NDynamicFactoryCollectionViewCell : UICollectionViewCell
+@property (nonatomic, strong) NSDictionary *dataDic;
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @end

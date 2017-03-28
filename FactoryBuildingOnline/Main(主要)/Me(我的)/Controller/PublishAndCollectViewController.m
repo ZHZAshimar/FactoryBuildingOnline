@@ -16,6 +16,7 @@
 #import <MJRefresh.h>
 #import "WantedMessageModel.h"
 #import "HomeRequest.h"
+
 @interface PublishAndCollectViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,RequestMessageDelegate>
 {
     NSString *urlStr;
@@ -241,7 +242,7 @@
         
         [_myCollectionView registerClass:[FivePathCollectionViewCell class] forCellWithReuseIdentifier:@"FivePathCollectionViewCell"];
         [_myCollectionView registerClass:[BrokerIntroCollectionViewCell class] forCellWithReuseIdentifier:@"BrokerIntroCollectionViewCell"];
-        
+
         __weak typeof (self) weakSelf = self;
         
         _myCollectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{

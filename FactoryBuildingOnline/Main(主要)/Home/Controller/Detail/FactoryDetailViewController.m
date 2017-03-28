@@ -117,6 +117,8 @@
     // foot 灰色
     [self.myCollectionView registerClass:[FootCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"FootCollectionReusableView"];
     
+    [self.myCollectionView registerClass:[RewardCollectionViewCell class] forCellWithReuseIdentifier:@"RewardCollectionViewCell"];
+    
     [self.myCollectionView registerClass:[PublisherCollectionViewCell class] forCellWithReuseIdentifier:@"PublisherCollectionViewCell"];    // 注册发布人的cellView
 }
 
@@ -328,7 +330,7 @@
 #pragma mark - collection datasource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
 
-    return 5;
+    return 6;
 }
 
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -345,9 +347,9 @@
 #pragma mark-  头部高度
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
     switch (section) {
-        case 0:case 4:
+        case 0:case 5:
             break;
-        case 1:case 2:case 3:
+        case 1:case 2:case 3:case 4:
         {
             return CGSizeMake(Screen_Width, Screen_Height*37/568);
         }
@@ -372,15 +374,21 @@
         switch (indexPath.section) {
             case 1:
             {
+                headView.headLabel.text = @"悬赏金额";
+            }
+                break;
+
+            case 2:
+            {
                 headView.headLabel.text = @"厂房信息";
             }
                 break;
-            case 2:
+            case 3:
             {
                 headView.headLabel.text = @"厂房介绍";
             }
                 break;
-            case 3:
+            case 4:
             {
                 headView.headLabel.text = @"厂房位置";
             }
@@ -410,14 +418,19 @@
             break;
         case 1: // infomation
         {
+            return CGSizeMake(Screen_Width, Screen_Height*44/568);
+            
+        }
+        case 2: // infomation
+        {
             if (self.infoSeeMore) {
-                return CGSizeMake(Screen_Width, Screen_Height*28*11/568);
+                return CGSizeMake(Screen_Width, Screen_Height*28*12/568);
             } else {
                 return CGSizeMake(Screen_Width, Screen_Height*28*5/568);
             }
         }
             break;
-        case 2: // introduce
+        case 3: // introduce
             
             allHeight = [NSString getHeightOfAttributeRectWithStr:string andSize:CGSizeMake(Screen_Width-30, MAXFLOAT) andFontSize:[UIFont adjustFontSize:14.0f] andLineSpace:5.0f];
             
@@ -446,10 +459,10 @@
             
             return CGSizeMake(Screen_Width, 30+introduceHeight);
             break;
-        case 3: // map
+        case 4: // map
             return CGSizeMake(Screen_Width, Screen_Height*183/568);
             break;
-        case 4: // publisher
+        case 5: // publisher
             return CGSizeMake(Screen_Width, Screen_Height*14/71);
             break;
         default:
@@ -471,20 +484,27 @@
             break;
         case 1:
         {
-            return [self infoCollectionView:collectionView cellForItemAtIndexPath:indexPath];
+            RewardCollectionViewCell *rewardCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RewardCollectionViewCell" forIndexPath:indexPath];
+//            rewardCell.contentLabel.text =
+            return rewardCell;
         }
             break;
         case 2:
         {
-            return [self introduceCollectionView:collectionView cellForItemAtIndexPath:indexPath];
+            return [self infoCollectionView:collectionView cellForItemAtIndexPath:indexPath];
         }
             break;
         case 3:
         {
-            return [self mapCollectionView:collectionView cellForItemAtIndexPath:indexPath];
+            return [self introduceCollectionView:collectionView cellForItemAtIndexPath:indexPath];
         }
             break;
         case 4:
+        {
+            return [self mapCollectionView:collectionView cellForItemAtIndexPath:indexPath];
+        }
+            break;
+        case 5:
         {
             return [self publisherCollectionView:collectionView cellForItemAtIndexPath:indexPath];
         }

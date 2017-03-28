@@ -77,7 +77,10 @@
         
         NSInteger i = [self.pickerView selectedRowInComponent:0];
         
-        [self getSelectString:i];
+        if (self.dataSource.count > 0) {
+            
+            [self getSelectString:i];
+        }
         
         self.hidden = YES;
     }
@@ -87,9 +90,7 @@
     
     NSString *string = self.dataSource[index];
     
-    NSLog(@"%@",string);
-    
-    self.selectStrBlock(string);    // 回调
+    self.selectStrBlock(string,index);    // 回调
 }
 
 #pragma mark - lazyload

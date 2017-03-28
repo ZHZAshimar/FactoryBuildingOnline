@@ -51,7 +51,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017-03-13" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RcL-qj-z0G">
                         <rect key="frame" x="251" y="17" width="57" height="12"/>
                         <constraints>
-                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="66" id="bVX-yv-Bdb"/>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="bVX-yv-Bdb"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -60,7 +60,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.4km" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCM-2Z-uiw">
                         <rect key="frame" x="213" y="17" width="30" height="12"/>
                         <constraints>
-                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="66" id="UF2-sv-NnV"/>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="UF2-sv-NnV"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -84,6 +84,15 @@
                 <constraint firstItem="qom-Ye-rqW" firstAttribute="leading" secondItem="vlD-0r-pAO" secondAttribute="trailing" constant="10" id="pA6-JP-a2w"/>
                 <constraint firstItem="qom-Ye-rqW" firstAttribute="top" secondItem="vlD-0r-pAO" secondAttribute="top" constant="6" id="peo-kg-EfO"/>
             </constraints>
+            <connections>
+                <outlet property="avatarImageView" destination="vlD-0r-pAO" id="4ZL-gN-5rd"/>
+                <outlet property="companyLabel" destination="CRN-sZ-C4L" id="B4O-DY-UIa"/>
+                <outlet property="distanceLabel" destination="hCM-2Z-uiw" id="1X6-LZ-Vkp"/>
+                <outlet property="tagLabel" destination="yqQ-Vw-34b" id="PPS-Y8-eob"/>
+                <outlet property="timeLabel" destination="RcL-qj-z0G" id="Xy4-MB-Fm9"/>
+                <outlet property="userNameLabel" destination="qom-Ye-rqW" id="YGp-Fo-hEC"/>
+            </connections>
+            <point key="canvasLocation" x="-190" y="56"/>
         </collectionViewCell>
     </objects>
     <resources>

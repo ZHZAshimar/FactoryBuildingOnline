@@ -8,7 +8,7 @@
 
 #import "ECCreateViewController.h"
 #import "ECCreateTableViewCell.h"
-#import "ECWriteHouseContractViewController.h"// 房
+#import "ECWriteContractViewController.h"// 房
 
 @interface ECCreateViewController ()<UITableViewDelegate, UITableViewDataSource>
 {
@@ -91,13 +91,15 @@
 #pragma mark - tableView delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.row == 3) {
-        
-        ECWriteHouseContractViewController *houseVC = [ECWriteHouseContractViewController new];
-        
-        [self.navigationController pushViewController:houseVC animated:YES];
-        
+    ECWriteContractViewController *writeContractVC = [ECWriteContractViewController new];
+    
+    if (indexPath.row == 0) {
+        writeContractVC.contractType = 0;
+    } else if (indexPath.row == 3) {
+        writeContractVC.contractType = 3;
     }
+    
+    [self.navigationController pushViewController:writeContractVC animated:YES];
     
 }
 

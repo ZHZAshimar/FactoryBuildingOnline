@@ -16,6 +16,7 @@
 #import "DetailFactoryIntroduceCollectionViewCell.h"
 #import "DetailHeadCollectionReusableView.h"
 #import "DetailOfFactoryInfoCollectionViewCell.h"
+#import "RewardCollectionViewCell.h"
 
 #import "PublishManViewController.h"
 #import "ReportViewController.h"

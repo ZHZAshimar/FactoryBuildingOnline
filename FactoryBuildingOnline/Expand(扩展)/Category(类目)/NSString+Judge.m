@@ -261,6 +261,21 @@
     }
     return timeStr;
 }
+/**
+ *  自定义时间格式
+ *
+ *  @param timeFormatter 时间格式
+ *  @param date 传入时间date
+ *
+ *  @return 时间差距的表示方式
+ */
+
++(NSString *)custemDateFormatter:(NSString *)timeFormatter withDate:(NSDate*)date{
+
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    [dateFormatter setDateFormat:timeFormatter];
+    return  [NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:date]];
+}
 
 + (NSString *)getDateFormatter:(NSString *)timeFormatter withTimer:(NSTimeInterval)time {
     

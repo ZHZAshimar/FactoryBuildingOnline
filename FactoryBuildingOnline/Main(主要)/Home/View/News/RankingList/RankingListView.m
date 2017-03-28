@@ -8,6 +8,7 @@
 
 #import "RankingListView.h"
 #import "NRankCollectionViewCell.h"
+#import "NRankHeaderCollectionReusableView.h"
 
 @interface RankingListView ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
@@ -39,29 +40,7 @@
     
     if (kind == UICollectionElementKindSectionHeader) {
         headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"nrheaderCell" forIndexPath:indexPath];
-        UIImageView *upImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"rankingList"]];
-        [headerView addSubview:upImageView];
         
-        UIImageView *downImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"rankingListLogo"]];
-        downImageView.contentMode = UIViewContentModeScaleAspectFit;
-        [headerView addSubview:downImageView];
-        
-        UILabel *titleLabel = [UILabel new];
-        titleLabel.text = @"排行";
-        titleLabel.textColor = GRAY_80;
-        titleLabel.font = [UIFont systemFontOfSize:14];
-        titleLabel.textAlignment = NSTextAlignmentCenter;
-        [headerView addSubview:titleLabel];
-        
-        upImageView.translatesAutoresizingMaskIntoConstraints = NO;
-        downImageView.translatesAutoresizingMaskIntoConstraints = NO;
-        titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        
-        [headerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-12-[upImageView]-12-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(headerView,upImageView)]];
-        [headerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-12-[downImageView]-12-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(headerView, downImageView)]];
-        [headerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-12-[titleLabel]-12-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(headerView, titleLabel)]];
-        
-        [headerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[upImageView(upHeight)]-[downImageView(downHeight)]-(0)-[titleLabel(30)]-(0)-|" options:0 metrics:@{@"upHeight":@(Screen_Height*85/568),@"downHeight":@(Screen_Height*35/568)} views:NSDictionaryOfVariableBindings(headerView,upImageView,downImageView,titleLabel)]];
     }
     return headerView;
 }
@@ -97,7 +76,7 @@
         _myCollectionView.dataSource = self;
         _myCollectionView.backgroundColor = [UIColor clearColor];
         [_myCollectionView registerClass:[NRankCollectionViewCell class] forCellWithReuseIdentifier:@"nrcell"];
-        [_myCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"nrheaderCell"];
+        [_myCollectionView registerClass:[NRankHeaderCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"nrheaderCell"];
     }
     return _myCollectionView;
 }

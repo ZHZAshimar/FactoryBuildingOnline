@@ -22,21 +22,21 @@
                         <constraint firstAttribute="height" constant="6" id="xqy-Dh-SPY"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F3D-UX-1N9">
+                <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F3D-UX-1N9">
                     <rect key="frame" x="12" y="0.0" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="lOr-Ar-ZbD"/>
                     </constraints>
                     <state key="normal" image="near_like"/>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDE-OS-iCz">
+                <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDE-OS-iCz">
                     <rect key="frame" x="62" y="0.0" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="xGg-UD-5Sk"/>
                     </constraints>
                     <state key="normal" image="near_discuss"/>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hyw-dQ-v2p">
+                <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hyw-dQ-v2p">
                     <rect key="frame" x="280" y="0.0" width="40" height="44"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="6UY-w4-a66"/>
@@ -65,7 +65,7 @@
                 <outlet property="likeBtn" destination="F3D-UX-1N9" id="edG-IB-qyf"/>
                 <outlet property="moreBtn" destination="Hyw-dQ-v2p" id="GOH-Ey-wWl"/>
             </connections>
-            <point key="canvasLocation" x="-65" y="83"/>
+            <point key="canvasLocation" x="-248" y="64"/>
         </collectionReusableView>
     </objects>
     <resources>
